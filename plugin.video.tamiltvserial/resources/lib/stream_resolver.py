@@ -2,6 +2,9 @@
 
 import html as html_module
 import http.cookiejar
+import base64
+import binascii
+import json
 import re
 import ssl
 import urllib.error
@@ -172,6 +175,13 @@ def _extract_woodviolet_stream(html, base_url):
     if 'woodviolet.xyz' not in (base_url or '').lower() and 'woodviolet.xyz' not in (html or '').lower():
         return ''
 
+    decoded_player = _decode_juicycodes_payload(html)
+    if decoded_player:
+        url = _stream_from_woodviolet_config(decoded_player)
+        if url:
+            log(f'Found woodviolet decoded stream: {url}')
+            return url
+
     for pattern in (
         re.compile(r'["\'](https?://[^"\']+\.m3u8[^"\']*)["\']', re.I),
         re.compile(r'["\'](https?://[^"\']+\.mp4[^"\']*)["\']', re.I),
@@ -184,6 +194,68 @@ def _extract_woodviolet_stream(html, base_url):
                 return url
 
     return ''
+
+
+def _stream_from_woodviolet_config(decoded_player):
+    config_match = re.search(r'var\s+config\s*=\s*(\{.*?\});\s*jwplayer', decoded_player, re.S)
+    if config_match:
+        try:
+            config = json.loads(config_match.group(1))
+            sources = config.get('sources') or {}
+            url = sources.get('file') or ''
+            if url:
+                return _clean_url(url)
+        except (TypeError, ValueError) as exc:
+            log_error(f'Could not parse woodviolet config JSON: {exc}')
+
+    source_match = re.search(r'"sources"\s*:\s*\{.*?"file"\s*:\s*"([^"]+)"', decoded_player, re.I | re.S)
+    if source_match:
+        return _clean_url(source_match.group(1))
+
+    for pattern in (
+        re.compile(r'"file"\s*:\s*"([^"]+\.m3u8[^"]*)"', re.I),
+        re.compile(r'"file"\s*:\s*\'([^\']+\.m3u8[^\']*)\'', re.I),
+        re.compile(r'"file"\s*:\s*"([^"]+\.mp4[^"]*)"', re.I),
+        re.compile(r'"file"\s*:\s*\'([^\']+\.mp4[^\']*)\'', re.I),
+    ):
+        match = pattern.search(decoded_player)
+        if match:
+            return _clean_url(match.group(1))
+
+    return ''
+
+
+def _decode_juicycodes_payload(html):
+    match = re.search(r'_juicycodes\((.*?)\);</script>', html or '', re.S)
+    if not match:
+        return ''
+
+    first_arg = match.group(1).rsplit(',', 1)[0]
+    encoded = ''.join(re.findall(r'"([^"]*)"', first_arg))
+    if len(encoded) <= 3:
+        return ''
+
+    try:
+        salt = int(''.join(str(ord(char) - 100) for char in encoded[-3:]))
+        payload = encoded[:-3]
+        padding = '=' * ((4 - len(payload) % 4) % 4)
+        decoded = base64.b64decode(
+            (payload + padding).replace('_', '+').replace('-', '/')
+        ).decode('utf-8', 'replace')
+    except (ValueError, TypeError, binascii.Error) as exc:
+        log_error(f'Could not decode woodviolet payload: {exc}')
+        return ''
+
+    symbol_map = ['`', '%', '-', '+', '*', '$', '!', '_', '^', '=']
+    try:
+        digits = ''.join(str(symbol_map.index(char)) for char in decoded)
+        return ''.join(
+            chr((int(digits[index:index + 4]) % 1000) - salt)
+            for index in range(0, len(digits) - 3, 4)
+        )
+    except (ValueError, TypeError) as exc:
+        log_error(f'Could not unpack woodviolet payload: {exc}')
+        return ''
 
 
 def _best_stream_from_page(html, base_url):
