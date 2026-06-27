@@ -79,7 +79,7 @@ def patch_fetch():
         )
         try:
             with opener.open(request, timeout=timeout) as response:
-                return response.status, response.read().decode('utf-8', 'replace'), response.geturl(), ''
+                return getattr(response, 'status', response.getcode()), response.read().decode('utf-8', 'replace'), response.geturl(), ''
         except urllib.error.HTTPError as exc:
             location = exc.headers.get('Location', '')
             body = exc.read().decode('utf-8', 'replace') if exc.fp else ''

@@ -181,6 +181,10 @@ def _build_opener(cookie_jar):
     )
 
 
+def _response_status(response):
+    return getattr(response, 'status', response.getcode())
+
+
 def _fetch(url, referer=BASE_URL, timeout=45, opener=None):
     headers = {
         'User-Agent': USER_AGENT,
@@ -193,7 +197,7 @@ def _fetch(url, referer=BASE_URL, timeout=45, opener=None):
         with opener.open(request, timeout=timeout) as response:
             final_url = response.geturl()
             html = response.read().decode('utf-8', 'replace')
-            return response.status, html, final_url, ''
+            return _response_status(response), html, final_url, ''
     except urllib.error.HTTPError as exc:
         location = exc.headers.get('Location', '')
         body = ''

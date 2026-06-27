@@ -338,7 +338,17 @@ class Router:
         xbmc.executebuiltin('Container.Refresh')
 
     def play(self, params):
-        post_id = int(params['post_id'])
+        post_id = params.get('post_id')
+        if not post_id:
+            xbmcgui.Dialog().notification(
+                addon().getAddonInfo('name'),
+                localize(30040),
+                xbmcgui.NOTIFICATION_ERROR,
+            )
+            xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+            return
+
+        post_id = int(post_id)
         category_id = params.get('category_id', '')
         posts, _headers = api_get('posts', params={'include': post_id, '_embed': 1})
         if not posts:
@@ -382,17 +392,10 @@ class Router:
 
         self._schedule_autoplay(params.get('next_post_id', ''), category_id)
 
-        list_item = xbmcgui.ListItem(path=stream_url)
+        list_item = xbmcgui.ListItem(label=episode['title'], path=stream_url)
         if episode.get('thumb'):
             list_item.setArt({'thumb': episode['thumb']})
 
         apply_stream_properties(list_item, stream_url, stream_referer)
-
-        set_video_info(list_item, {
-            'title': episode['title'],
-            'plot': episode.get('plot', ''),
-            'mediatype': 'episode',
-            'episode': episode.get('episode_number'),
-        })
         list_item.setProperty('IsPlayable', 'true')
         xbmcplugin.setResolvedUrl(self.handle, True, list_item)
