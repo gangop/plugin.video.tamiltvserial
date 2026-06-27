@@ -210,45 +210,15 @@ class Router:
         xbmcplugin.setPluginCategory(self.handle, title)
         self._set_view('files')
 
-        version = addon().getAddonInfo('version')
-        isa_status = inputstream_adaptive_status()
         lines = [
-            f'Addon version: {version}',
-            f'InputStream Adaptive: {isa_status}',
+            localize(30043),
+            f'Addon version: {addon().getAddonInfo("version")}',
+            'Menu opened successfully',
+            'Next step: try Latest Episodes',
         ]
 
-        try:
-            posts, headers = api_get('posts', params={
-                '_embed': '1',
-                'per_page': 1,
-                'orderby': 'date',
-                'order': 'desc',
-            })
-            if posts:
-                episode = normalize_post(posts[0])
-                lines.extend([
-                    'TamilTvSerial API: OK',
-                    f'Latest episode: {episode.get("title", "Episode")}',
-                    f'Play links on latest episode: {len(episode.get("maskr_urls", []))}',
-                    f'Total pages header: {headers.get("X-WP-TotalPages", headers.get("x-wp-totalpages", ""))}',
-                ])
-                heading = localize(30043)
-            else:
-                lines.append('TamilTvSerial API: OK, but no episodes were returned')
-                heading = localize(30044)
-        except Exception as exc:
-            log_error(f'Diagnostics failed: {exc}')
-            lines.extend([
-                'TamilTvSerial API: FAILED',
-                f'Error: {exc}',
-            ])
-            lines.insert(0, localize(30044))
-
-        if lines and lines[0] not in (localize(30043), localize(30044)):
-            lines.insert(0, heading)
-
         for line in lines:
-            self._add_info_item(line)
+            self._add_folder(line, {'action': 'root'})
 
         xbmcplugin.endOfDirectory(self.handle, succeeded=True)
 
