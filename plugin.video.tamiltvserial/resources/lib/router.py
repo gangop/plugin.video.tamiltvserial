@@ -8,7 +8,7 @@ import xbmcplugin
 
 from constants import CHANNELS, PROP_AUTOPLAY_ACTIVE, PROP_NEXT_CATEGORY, PROP_NEXT_POST, TAMIL_TV_SHOWS_ID
 from favorites import add_favorite, is_favorite, load_favorites, remove_favorite
-from scraper import find_next_post_id, list_child_categories, list_posts, next_post_id_from_list, normalize_post
+from scraper import find_next_post_id, list_child_categories, list_posts, normalize_post
 from stream_resolver import resolve_episode_stream
 from utils import (
     addon,
@@ -151,15 +151,36 @@ class Router:
         url = build_plugin_url(self.plugin_url, **play_params)
         xbmcplugin.addDirectoryItem(self.handle, url, list_item, False)
 
-    def _finish_listing(self, posts, page, total_pages, base_params, category_id=None):
+    @staticmethod
+    def _episode_desc_key(episode):
+        return (
+            episode.get('date') or '',
+            episode.get('episode_number') or 0,
+            episode.get('id') or 0,
+        )
+
+    def _finish_listing(
+        self,
+        posts,
+        page,
+        total_pages,
+        base_params,
+        category_id=None,
+        force_desc=False,
+        add_sort_methods=True,
+    ):
         if not posts:
             xbmcgui.Dialog().ok(addon().getAddonInfo('name'), localize(30019))
 
-        for index, post in enumerate(posts):
-            episode = normalize_post(post)
+        episodes = [normalize_post(post) for post in posts]
+        if force_desc:
+            episodes.sort(key=self._episode_desc_key, reverse=True)
+
+        for index, episode in enumerate(episodes):
             next_post_id = ''
             if category_id:
-                next_post_id = next_post_id_from_list(posts, index)
+                if index > 0:
+                    next_post_id = str(episodes[index - 1].get('id', ''))
             self._add_episode(episode, category_id=category_id, next_post_id=next_post_id)
 
         if page < total_pages:
@@ -167,8 +188,9 @@ class Router:
             next_params['page'] = page + 1
             self._add_folder(localize(30017), next_params)
 
-        xbmcplugin.addSortMethod(self.handle, xbmcplugin.SORT_METHOD_DATE)
-        xbmcplugin.addSortMethod(self.handle, xbmcplugin.SORT_METHOD_LABEL)
+        if add_sort_methods:
+            xbmcplugin.addSortMethod(self.handle, xbmcplugin.SORT_METHOD_DATE)
+            xbmcplugin.addSortMethod(self.handle, xbmcplugin.SORT_METHOD_LABEL)
         xbmcplugin.endOfDirectory(self.handle)
 
     def _clear_autoplay(self):
@@ -316,6 +338,8 @@ class Router:
                 'page': page,
             },
             category_id=category_id,
+            force_desc=True,
+            add_sort_methods=False,
         )
 
     def search(self, params):
@@ -343,6 +367,8 @@ class Router:
             page,
             total_pages,
             {'action': 'search', 'query': query, 'page': page},
+            force_desc=True,
+            add_sort_methods=False,
         )
 
     def add_favorite_action(self, params):
