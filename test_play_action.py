@@ -147,14 +147,15 @@ def _fetch(url, referer=sr.BASE_URL, timeout=45, opener=None):
 sr._fetch = _fetch
 
 
-def _build_opener(cookie_jar):
+def _build_opener(cookie_jar, verify_ssl=True):
     class NoRedirectHandler(urllib.request.HTTPRedirectHandler):
         def redirect_request(self, req, fp, code, msg, headers, newurl):
             return None
 
+    context = ssl.create_default_context() if verify_ssl else SSL_CTX
     return urllib.request.build_opener(
         urllib.request.HTTPCookieProcessor(cookie_jar),
-        urllib.request.HTTPSHandler(context=SSL_CTX),
+        urllib.request.HTTPSHandler(context=context),
         NoRedirectHandler(),
     )
 

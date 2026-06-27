@@ -85,14 +85,18 @@ def patch_fetch():
             body = exc.read().decode('utf-8', 'replace') if exc.fp else ''
             return exc.code, body, url, location
 
-    def _build_opener(cookie_jar):
+    def _build_opener(cookie_jar, verify_ssl=True):
         class NoRedirectHandler(urllib.request.HTTPRedirectHandler):
             def redirect_request(self, req, fp, code, msg, headers, newurl):
                 return None
 
+        context = SSL_CTX
+        if verify_ssl:
+            context = ssl.create_default_context()
+
         return urllib.request.build_opener(
             urllib.request.HTTPCookieProcessor(cookie_jar),
-            urllib.request.HTTPSHandler(context=SSL_CTX),
+            urllib.request.HTTPSHandler(context=context),
             NoRedirectHandler(),
         )
 

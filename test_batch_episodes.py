@@ -72,14 +72,15 @@ def setup():
             body = exc.read().decode('utf-8', 'replace') if exc.fp else ''
             return exc.code, body, url, exc.headers.get('Location', '')
 
-    def build_opener(cookie_jar):
+    def build_opener(cookie_jar, verify_ssl=True):
         class NoRedirectHandler(urllib.request.HTTPRedirectHandler):
             def redirect_request(self, req, fp, code, msg, headers, newurl):
                 return None
 
+        context = ssl.create_default_context() if verify_ssl else ctx
         return urllib.request.build_opener(
             urllib.request.HTTPCookieProcessor(cookie_jar),
-            urllib.request.HTTPSHandler(context=ctx),
+            urllib.request.HTTPSHandler(context=context),
             NoRedirectHandler(),
         )
 

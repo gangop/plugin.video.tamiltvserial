@@ -427,12 +427,13 @@ class Router:
 
         if is_hls_url(stream_url):
             isa_status = inputstream_adaptive_status()
-            if isa_status != 'ready':
+            if isa_status == 'disabled':
                 self._clear_autoplay()
-                message = localize(30041) if isa_status == 'disabled' else localize(30037)
-                xbmcgui.Dialog().ok(addon().getAddonInfo('name'), message)
+                xbmcgui.Dialog().ok(addon().getAddonInfo('name'), localize(30041))
                 xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
                 return
+            if isa_status == 'missing':
+                log_error('InputStream Adaptive status reported missing; trying playback anyway')
 
         self._schedule_autoplay(params.get('next_post_id', ''), category_id)
 

@@ -8,8 +8,11 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-import xbmc
 from xbmcaddon import Addon
+try:
+    import xbmc
+except ImportError:
+    xbmc = None
 
 from constants import ADDON_ID, API_URL, BASE_URL, USER_AGENT
 
@@ -129,12 +132,17 @@ def get_setting_bool(setting_id, default=False):
     return default
 
 
-def log(message, level=xbmc.LOGINFO):
-    xbmc.log(f'[{ADDON_ID}] {message}', level)
+def log(message, level=None):
+    if level is None:
+        level = getattr(xbmc, 'LOGINFO', 1)
+    if xbmc and hasattr(xbmc, 'log'):
+        xbmc.log(f'[{ADDON_ID}] {message}', level)
+        return
+    _addon.log(str(message), level)
 
 
 def log_error(message):
-    log(message, level=xbmc.LOGERROR)
+    log(message, level=getattr(xbmc, 'LOGERROR', 4))
 
 
 def build_plugin_url(base_url, **params):
@@ -215,9 +223,9 @@ def inputstream_adaptive_status():
     try:
         isa = Addon('inputstream.adaptive')
         enabled = isa.getAddonInfo('enabled')
-        if enabled in ('true', '1', True):
-            return 'ready'
-        return 'disabled'
+        if enabled in ('false', '0', False):
+            return 'disabled'
+        return 'ready'
     except Exception as exc:
         log_error(f'InputStream Adaptive check failed: {exc}')
         return 'missing'
