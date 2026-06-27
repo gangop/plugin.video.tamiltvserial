@@ -2,7 +2,6 @@
 
 import html
 import json
-import os
 import re
 import sys
 import urllib.error
@@ -10,10 +9,6 @@ import urllib.parse
 import urllib.request
 
 from xbmcaddon import Addon
-try:
-    import xbmcvfs
-except ImportError:
-    xbmcvfs = None
 
 from constants import API_URL, BASE_URL, USER_AGENT
 
@@ -248,47 +243,28 @@ def build_stream_headers(referer=None):
     return '&'.join(parts)
 
 
-def translate_path(path):
-    if not path:
-        return ''
-    if xbmcvfs and hasattr(xbmcvfs, 'translatePath'):
-        return xbmcvfs.translatePath(path)
-    try:
-        import xbmc
-        return xbmc.translatePath(path)
-    except Exception:
-        return path
-
-
-def create_hls_playlist(stream_url, referer=None):
+def build_playback_url(stream_url, referer=None):
     headers = build_stream_headers(referer)
-    profile_path = translate_path(addon().getAddonInfo('profile'))
-    playlist_path = os.path.join(profile_path, 'current_playback.m3u')
-    os.makedirs(os.path.dirname(playlist_path), exist_ok=True)
-    playlist_body = (
-        '#EXTM3U\n'
-        '#KODIPROP:mimetype=application/vnd.apple.mpegurl\n'
-        '#KODIPROP:inputstream=inputstream.adaptive\n'
-        '#KODIPROP:inputstream.adaptive.manifest_type=hls\n'
-        f'#KODIPROP:inputstream.adaptive.manifest_headers={headers}\n'
-        f'#KODIPROP:inputstream.adaptive.stream_headers={headers}\n'
-        f'{stream_url}\n'
-    )
-    with open(playlist_path, 'w', encoding='utf-8') as handle:
-        handle.write(playlist_body)
-    return playlist_path
+    return f'{stream_url}|{headers}' if headers else stream_url
 
 
 def apply_stream_properties(list_item, stream_url, referer=None):
+    headers = build_stream_headers(referer)
+    playback_url = build_playback_url(stream_url, referer)
+    list_item.setPath(playback_url)
+
     if is_hls_url(stream_url):
-        playlist_path = create_hls_playlist(stream_url, referer)
-        list_item.setPath(playlist_path)
         list_item.setMimeType('application/vnd.apple.mpegurl')
+        list_item.setProperty('inputstream', 'inputstream.adaptive')
+        list_item.setProperty('inputstreamaddon', 'inputstream.adaptive')
+        list_item.setProperty('inputstream.adaptive.manifest_type', 'hls')
+        list_item.setProperty('inputstream.adaptive.manifest_headers', headers)
+        list_item.setProperty('inputstream.adaptive.stream_headers', headers)
+        list_item.setProperty('inputstream.adaptive.common_headers', headers)
+        list_item.setProperty('inputstream.adaptive.is_realtime_stream', 'false')
         return
 
-    headers = build_stream_headers(referer)
     try:
-        list_item.setPath(stream_url)
         if stream_url.lower().split('?', 1)[0].endswith('.mp4'):
             list_item.setMimeType('video/mp4')
             return

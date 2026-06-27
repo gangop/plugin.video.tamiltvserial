@@ -220,15 +220,13 @@ def main():
     if not RESOLVED['success']:
         print('FAIL: setResolvedUrl returned False')
         return 1
-    if not RESOLVED['path'].endswith('.m3u'):
-        print(f'FAIL: expected local .m3u playlist, got {RESOLVED["path"]}')
+    if '.m3u8' not in RESOLVED['path'] or 'User-Agent=' not in RESOLVED['path']:
+        print(f'FAIL: expected direct HLS playback URL with headers, got {RESOLVED["path"]}')
         return 1
-    with open(RESOLVED['path'], encoding='utf-8') as handle:
-        playlist = handle.read()
-    if 'inputstream.adaptive' not in playlist or 'vimeocdn.com' not in playlist:
-        print('FAIL: playlist missing ISA props or stream URL')
+    if 'vimeocdn.com' not in RESOLVED['path']:
+        print('FAIL: playback URL missing stream host')
         return 1
-    print('PASS: play action completed with HLS playlist')
+    print('PASS: play action completed with direct HLS playback URL')
     return 0
 
 
