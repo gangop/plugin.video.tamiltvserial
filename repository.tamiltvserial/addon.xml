@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.tamiltvserial" name="Tamil TV Serial Repository" version="1.0.0" provider-name="TV Clone">
+    <extension point="xbmc.addon.repository" name="Tamil TV Serial Repository">
+        <dir>
+            <info compressed="false">https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/main/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/main/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/main/zips/</datadir>
+        </dir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en_GB">Auto-updates for Tamil TV Serial addon</summary>
+        <description lang="en_GB">Install this repository once to receive automatic updates for the Tamil TV Serial Kodi video addon.</description>
+        <disclaimer lang="en_GB">This repository is not affiliated with TamilTvSerial.com or any TV broadcaster.</disclaimer>
+        <platform>all</platform>
+        <license>GPL-3.0-or-later</license>
+        <assets>
+            <icon>resources/icon.png</icon>
+        </assets>
+    </extension>
+</addon>
