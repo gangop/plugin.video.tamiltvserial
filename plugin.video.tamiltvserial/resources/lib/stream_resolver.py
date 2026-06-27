@@ -187,7 +187,10 @@ def _follow_redirect_chain(start_url, referer=BASE_URL, max_hops=15):
         for candidate in _extract_candidates(html, final_url):
             if _is_probable_stream(candidate):
                 log(f'Resolved stream: {candidate}')
-                return _clean_url(candidate)
+                referer = final_url
+                if 'vimeocdn.com' in candidate.lower():
+                    referer = 'https://player.vimeo.com/'
+                return _clean_url(candidate), referer
 
         redirect_targets = []
         other_targets = []
@@ -216,12 +219,12 @@ def _follow_redirect_chain(start_url, referer=BASE_URL, max_hops=15):
                 continue
             queue.append((candidate, final_url))
 
-    return ''
+    return '', ''
 
 
 def resolve_stream(maskr_url, referer=BASE_URL):
     if not maskr_url:
-        return ''
+        return '', ''
 
     log(f'Resolving stream from {maskr_url}')
     return _follow_redirect_chain(maskr_url, referer=referer)
@@ -234,18 +237,18 @@ def resolve_streams(maskr_urls, referer=BASE_URL):
             continue
         seen.add(maskr_url)
 
-        stream_url = resolve_stream(maskr_url, referer=referer)
+        stream_url, stream_referer = resolve_stream(maskr_url, referer=referer)
         if stream_url:
-            return stream_url
+            return stream_url, stream_referer
 
-    return ''
+    return '', ''
 
 
 def resolve_episode_stream(content_html, episode_link=''):
     maskr_urls = extract_maskr_urls(content_html)
     if not maskr_urls:
         log('No maskr URLs found in episode content')
-        return ''
+        return '', ''
 
     referer = episode_link or BASE_URL
     log(f'Trying {len(maskr_urls)} play link(s)')

@@ -8,7 +8,7 @@ from constants import CHANNELS, PROP_AUTOPLAY_ACTIVE, PROP_NEXT_CATEGORY, PROP_N
 from favorites import add_favorite, is_favorite, load_favorites, remove_favorite
 from scraper import find_next_post_id, list_child_categories, list_posts, next_post_id_from_list, normalize_post
 from stream_resolver import resolve_episode_stream
-from utils import addon, api_get, build_plugin_url, get_setting_bool, localize
+from utils import addon, api_get, apply_stream_properties, build_plugin_url, get_setting_bool, has_inputstream_adaptive, is_hls_url, localize
 
 
 class Router:
@@ -330,7 +330,7 @@ class Router:
             f'Notification({addon().getAddonInfo("name")}, {localize(30021)}, 3000)'
         )
 
-        stream_url = resolve_episode_stream(
+        stream_url, stream_referer = resolve_episode_stream(
             episode.get('content_html', ''),
             episode_link=episode.get('link', ''),
         )
@@ -341,6 +341,12 @@ class Router:
                 localize(30020),
                 xbmcgui.NOTIFICATION_ERROR,
             )
+            xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+            return
+
+        if is_hls_url(stream_url) and not has_inputstream_adaptive():
+            self._clear_autoplay()
+            xbmcgui.Dialog().ok(addon().getAddonInfo('name'), localize(30037))
             xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
             return
 
@@ -357,9 +363,7 @@ class Router:
         if episode.get('thumb'):
             list_item.setArt({'thumb': episode['thumb']})
 
-        if stream_url.lower().split('?')[0].endswith('.m3u8'):
-            list_item.setProperty('inputstream', 'inputstream.adaptive')
-            list_item.setProperty('inputstream.adaptive.manifest_type', 'hls')
+        apply_stream_properties(list_item, stream_url, stream_referer)
 
         info = list_item.getVideoInfoTag()
         info.setMediaType('episode')

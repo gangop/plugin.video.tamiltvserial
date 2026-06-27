@@ -39,6 +39,8 @@ _STRING_FALLBACKS = {
     30034: 'No favorites yet. Long-press a serial and choose Add to Favorites.',
     30035: 'Removed from favorites',
     30036: 'Playing next episode...',
+    30037: 'Install InputStream Adaptive from Kodi\'s official add-on repository (VideoPlayer InputStream), then try again.',
+    30038: 'InputStream Adaptive required',
 }
 
 
@@ -149,3 +151,59 @@ def get_terms(post, taxonomy='category'):
             if term.get('taxonomy') == taxonomy:
                 collected.append(term.get('name', ''))
     return collected
+
+
+def is_hls_url(url):
+    lower = (url or '').lower()
+    path = lower.split('?', 1)[0]
+    return path.endswith('.m3u8') or '.m3u8' in path
+
+
+def has_inputstream_adaptive():
+    try:
+        Addon('inputstream.adaptive')
+        return True
+    except RuntimeError:
+        return False
+
+
+def playback_referer(referer):
+    referer = (referer or BASE_URL).strip()
+    lower = referer.lower()
+    if 'vimeocdn.com' in lower:
+        return 'https://player.vimeo.com/'
+    return referer or BASE_URL
+
+
+def build_stream_headers(referer=None):
+    referer = playback_referer(referer)
+    origin = referer
+    try:
+        parsed = urllib.parse.urlparse(referer)
+        if parsed.scheme and parsed.netloc:
+            origin = f'{parsed.scheme}://{parsed.netloc}'
+    except (ValueError, AttributeError):
+        pass
+
+    return (
+        f'User-Agent={USER_AGENT}\r\n'
+        f'Referer={referer}\r\n'
+        f'Origin={origin}\r\n'
+    )
+
+
+def apply_stream_properties(list_item, stream_url, referer=None):
+    headers = build_stream_headers(referer)
+
+    if is_hls_url(stream_url):
+        list_item.setMimeType('application/x-mpegURL')
+        list_item.setProperty('inputstream', 'inputstream.adaptive')
+        list_item.setProperty('inputstream.adaptive.manifest_type', 'hls')
+        list_item.setProperty('inputstream.adaptive.manifest_headers', headers)
+        list_item.setProperty('inputstream.adaptive.stream_headers', headers)
+        return
+
+    if stream_url.lower().split('?', 1)[0].endswith('.mp4'):
+        list_item.setMimeType('video/mp4')
+        list_item.setProperty('inputstream.adaptive.manifest_headers', headers)
+        list_item.setProperty('inputstream.adaptive.stream_headers', headers)

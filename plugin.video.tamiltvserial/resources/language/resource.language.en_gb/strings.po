@@ -82,3 +82,9 @@ msgstr "Removed from favorites"
 
 msgid "30036"
 msgstr "Playing next episode..."
+
+msgid "30037"
+msgstr "Install InputStream Adaptive from Kodi's official add-on repository (VideoPlayer InputStream), then try again."
+
+msgid "30038"
+msgstr "InputStream Adaptive required"

@@ -127,13 +127,14 @@ def main():
     for index, url in enumerate(maskr_urls, 1):
         print(f"  Source {index}: {url}")
 
-    stream_url = sr.resolve_episode_stream(
+    stream_url, stream_referer = sr.resolve_episode_stream(
         episode['content_html'],
         episode_link=episode['link'],
     )
 
     if stream_url:
         print(f"\nSUCCESS: {stream_url}")
+        print(f"Referer: {stream_referer}")
         return 0
 
     print('\nFAILED: Could not resolve stream URL')
