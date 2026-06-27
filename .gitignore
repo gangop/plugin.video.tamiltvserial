@@ -1,6 +1,6 @@
 .tools/
 *.zip
-!zips/*.zip
+!zips/**/*.zip
 __pycache__/
 *.pyc
 *.pyo

@@ -17,15 +17,8 @@ def generate(addon_xml: Path, output_dir: Path) -> str:
     root.append(addon_elem)
 
     addons_xml = output_dir / 'addons.xml'
-    tree = ET.ElementTree(root)
-    if hasattr(ET, 'indent'):
-        ET.indent(tree, space='  ')
-    tree.write(
-        addons_xml,
-        encoding='UTF-8',
-        xml_declaration=True,
-        short_empty_elements=False,
-    )
+    xml_bytes = ET.tostring(root, encoding='UTF-8')
+    addons_xml.write_bytes(b'<?xml version="1.0" encoding="UTF-8"?>\n' + xml_bytes + b'\n')
 
     payload = addons_xml.read_bytes()
     (output_dir / 'addons.xml.md5').write_text(
