@@ -1,5 +1,6 @@
 .tools/
 *.zip
+!repository.tamiltvserial.zip
 !zips/**/*.zip
 __pycache__/
 *.pyc
