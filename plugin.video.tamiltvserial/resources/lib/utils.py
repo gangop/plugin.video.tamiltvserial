@@ -261,5 +261,6 @@ def apply_stream_properties(list_item, stream_url, referer=None):
             list_item.setMimeType('video/mp4')
             list_item.setProperty('inputstream.adaptive.manifest_headers', headers)
             list_item.setProperty('inputstream.adaptive.stream_headers', headers)
+            return
     except AttributeError:
         pass

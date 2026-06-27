@@ -12,8 +12,8 @@ from utils import log, log_error
 
 
 STREAM_PATTERNS = (
-    re.compile(r'["\']([^"\']+\.m3u8(?:\?[^"\']*)?)["\']', re.I),
     re.compile(r'["\']([^"\']+\.mp4(?:\?[^"\']*)?)["\']', re.I),
+    re.compile(r'["\']([^"\']+\.m3u8(?:\?[^"\']*)?)["\']', re.I),
     re.compile(r'file\s*:\s*["\']([^"\']+)["\']', re.I),
     re.compile(r'source\s*:\s*["\']([^"\']+)["\']', re.I),
     re.compile(r'<source[^>]+src=["\']([^"\']+)["\']', re.I),
@@ -126,44 +126,48 @@ def _extract_candidates(html, base_url):
     return candidates
 
 
-def _pick_lowest_h264_variant(m3u8_text, base_url):
-    lines = (m3u8_text or '').splitlines()
-    best_url = ''
-    best_bandwidth = None
-    index = 0
-    while index < len(lines):
-        line = lines[index].strip()
-        if line.startswith('#EXT-X-STREAM-INF'):
-            bandwidth_match = re.search(r'BANDWIDTH=(\d+)', line)
-            codecs_match = re.search(r'CODECS="([^"]+)"', line)
-            bandwidth = int(bandwidth_match.group(1)) if bandwidth_match else 0
-            codecs = codecs_match.group(1) if codecs_match else ''
-            variant_line = lines[index + 1].strip() if index + 1 < len(lines) else ''
-            if 'avc1' in codecs and variant_line and not variant_line.startswith('#'):
-                if best_bandwidth is None or bandwidth < best_bandwidth:
-                    best_bandwidth = bandwidth
-                    best_url = _normalize_url(variant_line, base_url)
-            index += 2
+def _extract_vimeo_progressive_urls(html):
+    urls = []
+    seen = set()
+    for match in re.finditer(r'"url"\s*:\s*"(https://[^"\\]+)"', html or ''):
+        url = _clean_url(match.group(1).replace('\\/', '/'))
+        if '.mp4' not in url.lower() or url in seen:
             continue
-        index += 1
-    return best_url
+        seen.add(url)
+        urls.append(url)
+    return urls
 
 
-def _finalize_hls_stream(url, referer, opener):
-    if '.m3u8' not in (url or '').lower():
-        return url
+def _best_stream_from_page(html, base_url):
+    progressive_urls = _extract_vimeo_progressive_urls(html)
+    if progressive_urls:
+        stream_url = progressive_urls[-1]
+        log(f'Found Vimeo progressive MP4: {stream_url}')
+        return stream_url, 'https://player.vimeo.com/'
 
-    try:
-        status, html, final_url, _location = _fetch(url, referer=referer, opener=opener)
-        if status == 200 and '#EXT-X-STREAM-INF' in html:
-            variant = _pick_lowest_h264_variant(html, final_url)
-            if variant:
-                log(f'Using compatible HLS variant: {variant}')
-                return variant
-    except (urllib.error.URLError, urllib.error.HTTPError, ValueError) as exc:
-        log_error(f'HLS variant selection failed: {exc}')
+    mp4_candidates = []
+    m3u8_candidates = []
+    for candidate in _extract_candidates(html, base_url):
+        if not _is_probable_stream(candidate):
+            continue
+        if candidate.lower().split('?', 1)[0].endswith('.mp4'):
+            mp4_candidates.append(candidate)
+        else:
+            m3u8_candidates.append(candidate)
 
-    return url
+    if mp4_candidates:
+        stream_url = _clean_url(mp4_candidates[0])
+        referer = 'https://player.vimeo.com/' if 'vimeocdn.com' in stream_url.lower() else base_url
+        log(f'Found MP4 stream: {stream_url}')
+        return stream_url, referer
+
+    if m3u8_candidates:
+        stream_url = _clean_url(m3u8_candidates[0])
+        referer = 'https://player.vimeo.com/' if 'vimeocdn.com' in stream_url.lower() else base_url
+        log(f'Found HLS stream: {stream_url}')
+        return stream_url, referer
+
+    return '', ''
 
 
 def _build_opener(cookie_jar):
@@ -224,15 +228,10 @@ def _follow_redirect_chain(start_url, referer=BASE_URL, max_hops=15):
             log_error(f'Failed to fetch {current_url}: {exc}')
             continue
 
-        for candidate in _extract_candidates(html, final_url):
-            if _is_probable_stream(candidate):
-                stream_url = _clean_url(candidate)
-                stream_referer = final_url
-                if 'vimeocdn.com' in candidate.lower():
-                    stream_referer = 'https://player.vimeo.com/'
-                stream_url = _finalize_hls_stream(stream_url, stream_referer, opener)
-                log(f'Resolved stream: {stream_url}')
-                return stream_url, stream_referer
+        stream_url, stream_referer = _best_stream_from_page(html, final_url)
+        if stream_url:
+            log(f'Resolved stream: {stream_url}')
+            return stream_url, stream_referer
 
         redirect_targets = []
         other_targets = []

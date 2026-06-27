@@ -380,18 +380,7 @@ class Router:
                 xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
                 return
 
-        next_post_id = params.get('next_post_id', '')
-        if not next_post_id and category_id:
-            try:
-                next_post_id = find_next_post_id(
-                    int(category_id),
-                    post_id,
-                    episode['title'],
-                )
-            except Exception as exc:
-                log_error(f'Autoplay lookup failed: {exc}')
-                next_post_id = ''
-        self._schedule_autoplay(next_post_id, category_id)
+        self._schedule_autoplay(params.get('next_post_id', ''), category_id)
 
         list_item = xbmcgui.ListItem(path=stream_url)
         if episode.get('thumb'):
