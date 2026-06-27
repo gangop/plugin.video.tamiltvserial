@@ -293,20 +293,26 @@ class Router:
             category_id=category_id,
         )
 
-    def search(self, _params):
-        keyboard = xbmc.Keyboard('', localize(30018))
-        keyboard.doModal()
-        if not keyboard.isConfirmed():
-            return
+    def search(self, params):
+        query = params.get('query', '').strip()
+        page = int(params.get('page', 1))
 
-        query = keyboard.getText().strip()
         if not query:
+            keyboard = xbmc.Keyboard('', localize(30018))
+            keyboard.doModal()
+            if not keyboard.isConfirmed():
+                xbmcplugin.endOfDirectory(self.handle, succeeded=False)
+                return
+
+            query = keyboard.getText().strip()
+        if not query:
+            xbmcplugin.endOfDirectory(self.handle, succeeded=False)
             return
 
         xbmcplugin.setPluginCategory(self.handle, f"{localize(30012)}: {query}")
         self._set_view('episodes')
 
-        posts, page, total_pages = list_posts(search=query, page=1)
+        posts, page, total_pages = list_posts(search=query, page=page)
         self._finish_listing(
             posts,
             page,
