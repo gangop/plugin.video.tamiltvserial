@@ -8,9 +8,10 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
+import xbmc
 from xbmcaddon import Addon
 
-from constants import API_URL, BASE_URL, USER_AGENT
+from constants import ADDON_ID, API_URL, BASE_URL, USER_AGENT
 
 
 _addon = Addon()
@@ -128,12 +129,12 @@ def get_setting_bool(setting_id, default=False):
     return default
 
 
-def log(message, level=3):
-    _addon.log(str(message), level)
+def log(message, level=xbmc.LOGINFO):
+    xbmc.log(f'[{ADDON_ID}] {message}', level)
 
 
 def log_error(message):
-    log(message, level=4)
+    log(message, level=xbmc.LOGERROR)
 
 
 def build_plugin_url(base_url, **params):
