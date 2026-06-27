@@ -10,8 +10,9 @@ import ssl
 import urllib.error
 import urllib.parse
 import urllib.request
+import uuid
 
-from constants import BASE_URL, USER_AGENT
+from constants import BASE_URL, USER_AGENT, WOODVIOLET_USER_AGENT
 from scraper import extract_maskr_urls
 from utils import log, log_error
 
@@ -255,7 +256,55 @@ def _decode_juicycodes_payload(html):
         )
     except (ValueError, TypeError) as exc:
         log_error(f'Could not unpack woodviolet payload: {exc}')
-        return ''
+    return ''
+
+
+def _woodviolet_player_data(html):
+    match = re.search(r'window\.juicyData\s*=\s*(\{.*?\})</script>', html or '', re.S)
+    if not match:
+        return {}
+
+    try:
+        return (json.loads(match.group(1)) or {}).get('data') or {}
+    except (TypeError, ValueError) as exc:
+        log_error(f'Could not parse woodviolet player data: {exc}')
+        return {}
+
+
+def _post_woodviolet_ping(html, base_url, opener):
+    data = _woodviolet_player_data(html)
+    routes = data.get('routes') or {}
+    ping_path = routes.get('ping') or ''
+    token = data.get('token') or ''
+    if not ping_path or not token:
+        return
+
+    ping_url = _normalize_url(ping_path, base_url)
+    parsed = urllib.parse.urlparse(base_url)
+    origin = f'{parsed.scheme}://{parsed.netloc}' if parsed.scheme and parsed.netloc else 'https://woodviolet.xyz'
+    payload = json.dumps({
+        '_token': token,
+        '__type': 'dawn',
+        'pingID': uuid.uuid4().hex,
+    }, separators=(',', ':')).encode('utf-8')
+    headers = {
+        'User-Agent': WOODVIOLET_USER_AGENT,
+        'Accept': '*/*',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Content-Type': 'application/json',
+        'Origin': origin,
+        'Referer': base_url,
+        'Sec-Fetch-Site': 'same-origin',
+        'Sec-Fetch-Mode': 'cors',
+        'Sec-Fetch-Dest': 'empty',
+    }
+
+    try:
+        request = urllib.request.Request(ping_url, data=payload, headers=headers, method='POST')
+        with opener.open(request, timeout=20) as response:
+            log(f'Prepared woodviolet playback session: {response.getcode()}')
+    except (urllib.error.URLError, urllib.error.HTTPError) as exc:
+        log_error(f'Could not prepare woodviolet playback session: {exc}')
 
 
 def _best_stream_from_page(html, base_url):
@@ -321,11 +370,18 @@ def _response_status(response):
 
 
 def _fetch(url, referer=BASE_URL, timeout=20, opener=None):
+    is_woodviolet = (
+        'woodviolet.xyz' in (url or '').lower()
+        or 'woodviolet.xyz' in (referer or '').lower()
+    )
+    user_agent = WOODVIOLET_USER_AGENT if is_woodviolet else USER_AGENT
     headers = {
-        'User-Agent': USER_AGENT,
+        'User-Agent': user_agent,
         'Accept': '*/*',
         'Referer': referer,
     }
+    if is_woodviolet:
+        headers['Accept-Language'] = 'en-US,en;q=0.9'
     request = urllib.request.Request(url, headers=headers)
     opener = opener or urllib.request.build_opener()
     try:
@@ -381,6 +437,8 @@ def _follow_redirect_chain(start_url, referer=BASE_URL, max_hops=10):
 
         stream_url, stream_referer = _best_stream_from_page(html, final_url)
         if stream_url:
+            if 'woodviolet.xyz' in (stream_referer or '').lower():
+                _post_woodviolet_ping(html, stream_referer, opener)
             log(f'Resolved stream: {stream_url}')
             return stream_url, stream_referer
 

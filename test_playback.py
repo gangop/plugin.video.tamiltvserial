@@ -68,11 +68,18 @@ utils.request_url = _request_url_ssl
 
 def patch_fetch():
     def _fetch(url, referer=sr.BASE_URL, timeout=20, opener=None):
+        is_woodviolet = (
+            'woodviolet.xyz' in (url or '').lower()
+            or 'woodviolet.xyz' in (referer or '').lower()
+        )
+        user_agent = sr.WOODVIOLET_USER_AGENT if is_woodviolet else sr.USER_AGENT
         headers = {
-            'User-Agent': sr.USER_AGENT,
+            'User-Agent': user_agent,
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
             'Referer': referer,
         }
+        if is_woodviolet:
+            headers['Accept-Language'] = 'en-US,en;q=0.9'
         request = urllib.request.Request(url, headers=headers)
         opener = opener or urllib.request.build_opener(
             urllib.request.HTTPSHandler(context=SSL_CTX),

@@ -14,7 +14,7 @@ try:
 except ImportError:
     xbmc = None
 
-from constants import ADDON_ID, API_URL, BASE_URL, USER_AGENT
+from constants import ADDON_ID, API_URL, BASE_URL, USER_AGENT, WOODVIOLET_USER_AGENT
 
 
 _addon = Addon()
@@ -245,10 +245,16 @@ def playback_referer(referer):
 
 def build_stream_headers(referer=None):
     referer = playback_referer(referer)
+    user_agent = WOODVIOLET_USER_AGENT if 'woodviolet.xyz' in referer.lower() else USER_AGENT
     parts = [
-        f'User-Agent={encode_header_value(USER_AGENT)}',
+        f'User-Agent={encode_header_value(user_agent)}',
         f'Referer={encode_header_value(referer)}',
     ]
+    if 'woodviolet.xyz' in referer.lower():
+        parts.extend([
+            'Origin=https%3A%2F%2Fwoodviolet.xyz',
+            'Accept-Language=en-US%2Cen%3Bq%3D0.9',
+        ])
     return '&'.join(parts)
 
 
