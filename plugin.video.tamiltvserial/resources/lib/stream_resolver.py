@@ -126,6 +126,46 @@ def _extract_candidates(html, base_url):
     return candidates
 
 
+def _pick_lowest_h264_variant(m3u8_text, base_url):
+    lines = (m3u8_text or '').splitlines()
+    best_url = ''
+    best_bandwidth = None
+    index = 0
+    while index < len(lines):
+        line = lines[index].strip()
+        if line.startswith('#EXT-X-STREAM-INF'):
+            bandwidth_match = re.search(r'BANDWIDTH=(\d+)', line)
+            codecs_match = re.search(r'CODECS="([^"]+)"', line)
+            bandwidth = int(bandwidth_match.group(1)) if bandwidth_match else 0
+            codecs = codecs_match.group(1) if codecs_match else ''
+            variant_line = lines[index + 1].strip() if index + 1 < len(lines) else ''
+            if 'avc1' in codecs and variant_line and not variant_line.startswith('#'):
+                if best_bandwidth is None or bandwidth < best_bandwidth:
+                    best_bandwidth = bandwidth
+                    best_url = _normalize_url(variant_line, base_url)
+            index += 2
+            continue
+        index += 1
+    return best_url
+
+
+def _finalize_hls_stream(url, referer, opener):
+    if '.m3u8' not in (url or '').lower():
+        return url
+
+    try:
+        status, html, final_url, _location = _fetch(url, referer=referer, opener=opener)
+        if status == 200 and '#EXT-X-STREAM-INF' in html:
+            variant = _pick_lowest_h264_variant(html, final_url)
+            if variant:
+                log(f'Using compatible HLS variant: {variant}')
+                return variant
+    except (urllib.error.URLError, urllib.error.HTTPError, ValueError) as exc:
+        log_error(f'HLS variant selection failed: {exc}')
+
+    return url
+
+
 def _build_opener(cookie_jar):
     class NoRedirectHandler(urllib.request.HTTPRedirectHandler):
         def redirect_request(self, req, fp, code, msg, headers, newurl):
@@ -137,10 +177,10 @@ def _build_opener(cookie_jar):
     )
 
 
-def _fetch(url, referer=BASE_URL, timeout=20, opener=None):
+def _fetch(url, referer=BASE_URL, timeout=45, opener=None):
     headers = {
         'User-Agent': USER_AGENT,
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept': '*/*',
         'Referer': referer,
     }
     request = urllib.request.Request(url, headers=headers)
@@ -186,11 +226,13 @@ def _follow_redirect_chain(start_url, referer=BASE_URL, max_hops=15):
 
         for candidate in _extract_candidates(html, final_url):
             if _is_probable_stream(candidate):
-                log(f'Resolved stream: {candidate}')
-                referer = final_url
+                stream_url = _clean_url(candidate)
+                stream_referer = final_url
                 if 'vimeocdn.com' in candidate.lower():
-                    referer = 'https://player.vimeo.com/'
-                return _clean_url(candidate), referer
+                    stream_referer = 'https://player.vimeo.com/'
+                stream_url = _finalize_hls_stream(stream_url, stream_referer, opener)
+                log(f'Resolved stream: {stream_url}')
+                return stream_url, stream_referer
 
         redirect_targets = []
         other_targets = []

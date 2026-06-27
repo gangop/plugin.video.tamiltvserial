@@ -242,6 +242,11 @@ def apply_stream_properties(list_item, stream_url, referer=None):
     headers = build_stream_headers(referer)
 
     try:
+        list_item.setContentLookup(False)
+    except AttributeError:
+        pass
+
+    try:
         if is_hls_url(stream_url):
             list_item.setMimeType('application/vnd.apple.mpegurl')
             list_item.setProperty('inputstream', 'inputstream.adaptive')
