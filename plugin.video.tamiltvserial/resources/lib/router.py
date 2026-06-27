@@ -415,6 +415,7 @@ class Router:
         )
         if not stream_url:
             self._clear_autoplay()
+            log_error(f'No stream resolved for post_id={post_id}')
             xbmcgui.Dialog().notification(
                 addon().getAddonInfo('name'),
                 localize(30020),
