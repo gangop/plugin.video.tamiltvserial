@@ -1,0 +1,84 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgctxt "#Addon Summary"
+msgid "Browse and stream Tamil TV serials from TamilTvSerial.com"
+msgstr "Browse and stream Tamil TV serials from TamilTvSerial.com"
+
+msgctxt "#Addon Description"
+msgid "Watch Sun TV, Vijay TV, Zee Tamil serials and Tamil TV shows."
+msgstr "Watch Sun TV, Vijay TV, Zee Tamil serials and Tamil TV shows."
+
+msgctxt "#Addon Disclaimer"
+msgid "This addon is not affiliated with TamilTvSerial.com."
+msgstr "This addon is not affiliated with TamilTvSerial.com."
+
+msgid "30001"
+msgstr "General"
+
+msgid "30002"
+msgstr "Episodes per page"
+
+msgid "30003"
+msgstr "Enable search"
+
+msgid "30010"
+msgstr "Latest Episodes"
+
+msgid "30011"
+msgstr "Browse by Channel"
+
+msgid "30012"
+msgstr "Search"
+
+msgid "30013"
+msgstr "Sun TV Serials"
+
+msgid "30014"
+msgstr "Vijay TV Serials"
+
+msgid "30015"
+msgstr "Zee Tamil Serials"
+
+msgid "30016"
+msgstr "Tamil TV Shows"
+
+msgid "30017"
+msgstr "Next page"
+
+msgid "30018"
+msgstr "Enter search term"
+
+msgid "30019"
+msgstr "No episodes found"
+
+msgid "30020"
+msgstr "Could not resolve stream URL"
+
+msgid "30021"
+msgstr "Resolving stream..."
+
+msgid "30022"
+msgstr "Favorites"
+
+msgid "30023"
+msgstr "Auto-play next episode"
+
+msgid "30031"
+msgstr "Add to Favorites"
+
+msgid "30032"
+msgstr "Remove from Favorites"
+
+msgid "30033"
+msgstr "Added to favorites"
+
+msgid "30034"
+msgstr "No favorites yet. Long-press a serial and choose Add to Favorites."
+
+msgid "30035"
+msgstr "Removed from favorites"
+
+msgid "30036"
+msgstr "Playing next episode..."

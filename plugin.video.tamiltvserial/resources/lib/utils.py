@@ -15,13 +15,47 @@ from constants import API_URL, BASE_URL, USER_AGENT
 
 _addon = Addon()
 
+_STRING_FALLBACKS = {
+    30001: 'General',
+    30002: 'Episodes per page',
+    30003: 'Enable search',
+    30010: 'Latest Episodes',
+    30011: 'Browse by Channel',
+    30012: 'Search',
+    30013: 'Sun TV Serials',
+    30014: 'Vijay TV Serials',
+    30015: 'Zee Tamil Serials',
+    30016: 'Tamil TV Shows',
+    30017: 'Next page',
+    30018: 'Enter search term',
+    30019: 'No episodes found',
+    30020: 'Could not resolve stream URL',
+    30021: 'Resolving stream...',
+    30022: 'Favorites',
+    30023: 'Auto-play next episode',
+    30031: 'Add to Favorites',
+    30032: 'Remove from Favorites',
+    30033: 'Added to favorites',
+    30034: 'No favorites yet. Long-press a serial and choose Add to Favorites.',
+    30035: 'Removed from favorites',
+    30036: 'Playing next episode...',
+}
+
 
 def addon():
     return _addon
 
 
 def localize(string_id):
-    return _addon.getLocalizedString(string_id)
+    try:
+        numeric_id = int(string_id)
+    except (TypeError, ValueError):
+        return str(string_id)
+
+    value = _addon.getLocalizedString(numeric_id)
+    if value:
+        return value
+    return _STRING_FALLBACKS.get(numeric_id, '')
 
 
 def get_setting_int(setting_id, default=0):

@@ -60,9 +60,17 @@ class Router:
 
     def _add_folder(self, label, params, plot='', context_menu=None):
         list_item = xbmcgui.ListItem(label=label)
-        if plot:
+        list_item.setLabel(label)
+        try:
             info = list_item.getVideoInfoTag()
-            info.setPlot(plot)
+            info.setTitle(label)
+            if plot:
+                info.setPlot(plot)
+        except AttributeError:
+            info_dict = {'title': label}
+            if plot:
+                info_dict['plot'] = plot
+            list_item.setInfo('video', info_dict)
         if context_menu:
             list_item.addContextMenuItems(context_menu)
 
@@ -212,7 +220,8 @@ class Router:
                     'category_id': channel['id'],
                     'title': channel['name'],
                 }
-            self._add_folder(localize(channel['label_id']), params)
+            label = localize(channel['label_id']) or channel['name']
+            self._add_folder(label, params)
 
         xbmcplugin.endOfDirectory(self.handle)
 
