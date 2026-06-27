@@ -100,6 +100,11 @@ class Router:
         url = build_plugin_url(self.plugin_url, **params)
         xbmcplugin.addDirectoryItem(self.handle, url, list_item, True)
 
+    def _add_info_item(self, label):
+        list_item = xbmcgui.ListItem(label=label)
+        set_list_label(list_item, label)
+        xbmcplugin.addDirectoryItem(self.handle, self.plugin_url, list_item, False)
+
     def _add_serial_folder(self, serial):
         category_id = serial['id']
         name = serial['name']
@@ -237,14 +242,13 @@ class Router:
                 'TamilTvSerial API: FAILED',
                 f'Error: {exc}',
             ])
-            heading = localize(30044)
+            lines.insert(0, localize(30044))
 
-        message = '\n'.join(lines)
-        dialog = xbmcgui.Dialog()
-        if hasattr(dialog, 'textviewer'):
-            dialog.textviewer(heading, message)
-        else:
-            dialog.ok(heading, message)
+        if lines and lines[0] not in (localize(30043), localize(30044)):
+            lines.insert(0, heading)
+
+        for line in lines:
+            self._add_info_item(line)
 
         xbmcplugin.endOfDirectory(self.handle, succeeded=True)
 
