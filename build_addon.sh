@@ -12,8 +12,9 @@ fi
 
 rm -f "$OUTPUT"
 (
-  cd "$ADDON_DIR"
-  zip -r "$OUTPUT" . -x "*.DS_Store" -x "__pycache__/*" -x "*__pycache__*" -x "*.pyc"
+  cd "$ROOT"
+  zip -r "$OUTPUT" "$(basename "$ADDON_DIR")" \
+    -x "*.DS_Store" -x "__pycache__/*" -x "*__pycache__*" -x "*.pyc"
 )
 
 echo "Created $OUTPUT"
