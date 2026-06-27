@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.tamiltvserial" name="Tamil TV Serial" version="1.1.0" provider-name="TV Clone">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="addon.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.service" library="service.py" start="startup"/>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en_GB">Browse and stream Tamil TV serials from TamilTvSerial.com</summary>
+        <description lang="en_GB">Watch Sun TV, Vijay TV, Zee Tamil serials and Tamil TV shows. Browse by channel or serial, search episodes, and play the latest updates.</description>
+        <disclaimer lang="en_GB">This addon is not affiliated with TamilTvSerial.com or any TV broadcaster. Content availability depends on the source website.</disclaimer>
+        <platform>all</platform>
+        <language>ta en</language>
+        <license>GPL-3.0-or-later</license>
+        <assets>
+            <icon>resources/icon.png</icon>
+        </assets>
+    </extension>
+</addon>

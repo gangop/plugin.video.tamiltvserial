@@ -1,0 +1,362 @@
+# -*- coding: utf-8 -*-
+
+import xbmc
+import xbmcgui
+import xbmcplugin
+
+from constants import CHANNELS, PROP_AUTOPLAY_ACTIVE, PROP_NEXT_CATEGORY, PROP_NEXT_POST, TAMIL_TV_SHOWS_ID
+from favorites import add_favorite, is_favorite, load_favorites, remove_favorite
+from scraper import find_next_post_id, list_child_categories, list_posts, next_post_id_from_list, normalize_post
+from stream_resolver import resolve_episode_stream
+from utils import addon, api_get, build_plugin_url, get_setting_bool, localize
+
+
+class Router:
+    def __init__(self, plugin_url, handle):
+        self.plugin_url = plugin_url
+        self.handle = handle
+
+    def run(self, params):
+        action = params.get('action', 'root')
+
+        routes = {
+            'root': self.show_root,
+            'latest': self.show_latest,
+            'favorites': self.show_favorites,
+            'browse_channel': self.show_channel_picker,
+            'browse_serials': self.show_serials,
+            'browse_shows': self.show_show_groups,
+            'category': self.show_category,
+            'search': self.search,
+            'add_favorite': self.add_favorite_action,
+            'remove_favorite': self.remove_favorite_action,
+            'play': self.play,
+        }
+
+        handler = routes.get(action, self.show_root)
+        handler(params)
+
+    def _set_view(self, content_type='episodes'):
+        xbmcplugin.setContent(self.handle, content_type)
+
+    def _favorite_context_menu(self, category_id, name):
+        if is_favorite(category_id):
+            url = build_plugin_url(
+                self.plugin_url,
+                action='remove_favorite',
+                category_id=category_id,
+                title=name,
+            )
+            label = localize(30032)
+        else:
+            url = build_plugin_url(
+                self.plugin_url,
+                action='add_favorite',
+                category_id=category_id,
+                title=name,
+            )
+            label = localize(30031)
+        return [(label, f'RunPlugin({url})')]
+
+    def _add_folder(self, label, params, plot='', context_menu=None):
+        list_item = xbmcgui.ListItem(label=label)
+        if plot:
+            info = list_item.getVideoInfoTag()
+            info.setPlot(plot)
+        if context_menu:
+            list_item.addContextMenuItems(context_menu)
+
+        url = build_plugin_url(self.plugin_url, **params)
+        xbmcplugin.addDirectoryItem(self.handle, url, list_item, True)
+
+    def _add_serial_folder(self, serial):
+        category_id = serial['id']
+        name = serial['name']
+        label = f'★ {name}' if is_favorite(category_id) else name
+        self._add_folder(
+            label,
+            {
+                'action': 'category',
+                'category_id': category_id,
+                'title': name,
+                'page': 1,
+            },
+            plot=f"{serial.get('count', 0)} episodes",
+            context_menu=self._favorite_context_menu(category_id, name),
+        )
+
+    def _add_episode(self, episode, category_id=None, next_post_id=None):
+        list_item = xbmcgui.ListItem(label=episode['title'])
+        if episode.get('thumb'):
+            list_item.setArt({
+                'thumb': episode['thumb'],
+                'icon': episode['thumb'],
+                'poster': episode['thumb'],
+            })
+
+        info = list_item.getVideoInfoTag()
+        info.setMediaType('episode')
+        info.setTitle(episode['title'])
+        info.setPlot(episode.get('plot', ''))
+        if episode.get('categories'):
+            info.setTvShowTitle(episode['categories'][0])
+        if episode.get('episode_number') is not None:
+            info.setEpisode(episode['episode_number'])
+
+        list_item.setProperty('IsPlayable', 'true')
+        play_params = {'action': 'play', 'post_id': episode['id']}
+        if category_id:
+            play_params['category_id'] = category_id
+        if next_post_id:
+            play_params['next_post_id'] = next_post_id
+        url = build_plugin_url(self.plugin_url, **play_params)
+        xbmcplugin.addDirectoryItem(self.handle, url, list_item, False)
+
+    def _finish_listing(self, posts, page, total_pages, base_params, category_id=None):
+        if not posts:
+            xbmcgui.Dialog().ok(addon().getAddonInfo('name'), localize(30019))
+
+        for index, post in enumerate(posts):
+            episode = normalize_post(post)
+            next_post_id = ''
+            if category_id:
+                next_post_id = next_post_id_from_list(posts, index)
+            self._add_episode(episode, category_id=category_id, next_post_id=next_post_id)
+
+        if page < total_pages:
+            next_params = dict(base_params)
+            next_params['page'] = page + 1
+            self._add_folder(localize(30017), next_params)
+
+        xbmcplugin.addSortMethod(self.handle, xbmcplugin.SORT_METHOD_DATE)
+        xbmcplugin.addSortMethod(self.handle, xbmcplugin.SORT_METHOD_LABEL)
+        xbmcplugin.endOfDirectory(self.handle)
+
+    def _clear_autoplay(self):
+        window = xbmcgui.Window(10000)
+        window.clearProperty(PROP_NEXT_POST)
+        window.clearProperty(PROP_NEXT_CATEGORY)
+        window.clearProperty(PROP_AUTOPLAY_ACTIVE)
+
+    def _schedule_autoplay(self, next_post_id, category_id):
+        if not get_setting_bool('autoplay_next', True):
+            self._clear_autoplay()
+            return
+
+        if not next_post_id:
+            self._clear_autoplay()
+            return
+
+        window = xbmcgui.Window(10000)
+        window.setProperty(PROP_NEXT_POST, str(next_post_id))
+        window.setProperty(PROP_NEXT_CATEGORY, str(category_id or ''))
+        window.setProperty(PROP_AUTOPLAY_ACTIVE, '1')
+
+    def show_root(self, _params):
+        xbmcplugin.setPluginCategory(self.handle, addon().getAddonInfo('name'))
+        self._set_view('files')
+
+        self._add_folder(localize(30010), {'action': 'latest', 'page': 1})
+        self._add_folder(localize(30022), {'action': 'favorites'})
+        self._add_folder(localize(30011), {'action': 'browse_channel'})
+        if get_setting_bool('enable_search', True):
+            self._add_folder(localize(30012), {'action': 'search'})
+
+        xbmcplugin.endOfDirectory(self.handle)
+
+    def show_favorites(self, _params):
+        xbmcplugin.setPluginCategory(self.handle, localize(30022))
+        self._set_view('files')
+
+        favorites = load_favorites()
+        if not favorites:
+            xbmcgui.Dialog().ok(addon().getAddonInfo('name'), localize(30034))
+
+        for item in favorites:
+            category_id = item['id']
+            name = item.get('name', 'Serial')
+            self._add_folder(
+                name,
+                {
+                    'action': 'category',
+                    'category_id': category_id,
+                    'title': name,
+                    'page': 1,
+                },
+                context_menu=self._favorite_context_menu(category_id, name),
+            )
+
+        xbmcplugin.endOfDirectory(self.handle)
+
+    def show_latest(self, params):
+        page = int(params.get('page', 1))
+        xbmcplugin.setPluginCategory(self.handle, localize(30010))
+        self._set_view('episodes')
+
+        posts, page, total_pages = list_posts(page=page)
+        self._finish_listing(posts, page, total_pages, {'action': 'latest', 'page': page})
+
+    def show_channel_picker(self, _params):
+        xbmcplugin.setPluginCategory(self.handle, localize(30011))
+        self._set_view('files')
+
+        for channel in CHANNELS:
+            if channel['mode'] == 'shows':
+                params = {
+                    'action': 'browse_shows',
+                    'title': channel['name'],
+                }
+            else:
+                params = {
+                    'action': 'browse_serials',
+                    'category_id': channel['id'],
+                    'title': channel['name'],
+                }
+            self._add_folder(localize(channel['label_id']), params)
+
+        xbmcplugin.endOfDirectory(self.handle)
+
+    def show_serials(self, params):
+        category_id = int(params['category_id'])
+        title = params.get('title', '')
+        xbmcplugin.setPluginCategory(self.handle, title)
+        self._set_view('files')
+
+        for serial in list_child_categories(category_id):
+            self._add_serial_folder(serial)
+
+        xbmcplugin.endOfDirectory(self.handle)
+
+    def show_show_groups(self, params):
+        title = params.get('title', localize(30016))
+        xbmcplugin.setPluginCategory(self.handle, title)
+        self._set_view('files')
+
+        for subcategory in list_child_categories(TAMIL_TV_SHOWS_ID):
+            self._add_serial_folder(subcategory)
+
+        xbmcplugin.endOfDirectory(self.handle)
+
+    def show_category(self, params):
+        category_id = int(params['category_id'])
+        title = params.get('title', '')
+        page = int(params.get('page', 1))
+
+        xbmcplugin.setPluginCategory(self.handle, title)
+        self._set_view('episodes')
+
+        posts, page, total_pages = list_posts(category_id=category_id, page=page)
+        self._finish_listing(
+            posts,
+            page,
+            total_pages,
+            {
+                'action': 'category',
+                'category_id': category_id,
+                'title': title,
+                'page': page,
+            },
+            category_id=category_id,
+        )
+
+    def search(self, _params):
+        keyboard = xbmc.Keyboard('', localize(30018))
+        keyboard.doModal()
+        if not keyboard.isConfirmed():
+            return
+
+        query = keyboard.getText().strip()
+        if not query:
+            return
+
+        xbmcplugin.setPluginCategory(self.handle, f"{localize(30012)}: {query}")
+        self._set_view('episodes')
+
+        posts, page, total_pages = list_posts(search=query, page=1)
+        self._finish_listing(
+            posts,
+            page,
+            total_pages,
+            {'action': 'search', 'query': query, 'page': page},
+        )
+
+    def add_favorite_action(self, params):
+        category_id = int(params['category_id'])
+        name = params.get('title', 'Serial')
+        if add_favorite(category_id, name):
+            xbmcgui.Dialog().notification(
+                addon().getAddonInfo('name'),
+                localize(30033),
+                xbmcgui.NOTIFICATION_INFO,
+                3000,
+            )
+        xbmc.executebuiltin('Container.Refresh')
+
+    def remove_favorite_action(self, params):
+        category_id = int(params['category_id'])
+        if remove_favorite(category_id):
+            xbmcgui.Dialog().notification(
+                addon().getAddonInfo('name'),
+                localize(30035),
+                xbmcgui.NOTIFICATION_INFO,
+                3000,
+            )
+        xbmc.executebuiltin('Container.Refresh')
+
+    def play(self, params):
+        post_id = int(params['post_id'])
+        category_id = params.get('category_id', '')
+        posts, _headers = api_get('posts', params={'include': post_id, '_embed': 1})
+        if not posts:
+            xbmcgui.Dialog().notification(
+                addon().getAddonInfo('name'),
+                localize(30020),
+                xbmcgui.NOTIFICATION_ERROR,
+            )
+            xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+            return
+
+        episode = normalize_post(posts[0])
+        xbmc.executebuiltin(
+            f'Notification({addon().getAddonInfo("name")}, {localize(30021)}, 3000)'
+        )
+
+        stream_url = resolve_episode_stream(
+            episode.get('content_html', ''),
+            episode_link=episode.get('link', ''),
+        )
+        if not stream_url:
+            self._clear_autoplay()
+            xbmcgui.Dialog().notification(
+                addon().getAddonInfo('name'),
+                localize(30020),
+                xbmcgui.NOTIFICATION_ERROR,
+            )
+            xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+            return
+
+        next_post_id = params.get('next_post_id', '')
+        if not next_post_id and category_id:
+            next_post_id = find_next_post_id(
+                int(category_id),
+                post_id,
+                episode['title'],
+            )
+        self._schedule_autoplay(next_post_id, category_id)
+
+        list_item = xbmcgui.ListItem(path=stream_url)
+        if episode.get('thumb'):
+            list_item.setArt({'thumb': episode['thumb']})
+
+        if stream_url.lower().split('?')[0].endswith('.m3u8'):
+            list_item.setProperty('inputstream', 'inputstream.adaptive')
+            list_item.setProperty('inputstream.adaptive.manifest_type', 'hls')
+
+        info = list_item.getVideoInfoTag()
+        info.setMediaType('episode')
+        info.setTitle(episode['title'])
+        info.setPlot(episode.get('plot', ''))
+        if episode.get('episode_number') is not None:
+            info.setEpisode(episode['episode_number'])
+        list_item.setProperty('IsPlayable', 'true')
+        xbmcplugin.setResolvedUrl(self.handle, True, list_item)

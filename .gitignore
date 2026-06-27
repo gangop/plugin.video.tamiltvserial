@@ -1,0 +1,9 @@
+.tools/
+*.zip
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+*.egg-info/
+.venv/
+venv/
