@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import urllib.error
+
 import xbmc
 import xbmcgui
 import xbmcplugin
@@ -8,7 +10,19 @@ from constants import CHANNELS, PROP_AUTOPLAY_ACTIVE, PROP_NEXT_CATEGORY, PROP_N
 from favorites import add_favorite, is_favorite, load_favorites, remove_favorite
 from scraper import find_next_post_id, list_child_categories, list_posts, next_post_id_from_list, normalize_post
 from stream_resolver import resolve_episode_stream
-from utils import addon, api_get, apply_stream_properties, build_plugin_url, get_setting_bool, has_inputstream_adaptive, is_hls_url, localize
+from utils import (
+    addon,
+    api_get,
+    apply_stream_properties,
+    build_plugin_url,
+    get_setting_bool,
+    inputstream_adaptive_status,
+    is_hls_url,
+    localize,
+    log_error,
+    set_list_label,
+    set_video_info,
+)
 
 
 class Router:
@@ -34,7 +48,21 @@ class Router:
         }
 
         handler = routes.get(action, self.show_root)
-        handler(params)
+        try:
+            handler(params)
+        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as exc:
+            log_error(f'Network error in {action}: {exc}')
+            self._fail(localize(30039), is_play=(action == 'play'))
+        except Exception as exc:
+            log_error(f'Unhandled error in {action}: {exc}')
+            self._fail(localize(30040), is_play=(action == 'play'))
+
+    def _fail(self, message, is_play=False):
+        xbmcgui.Dialog().ok(addon().getAddonInfo('name'), message)
+        if is_play:
+            xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+        else:
+            xbmcplugin.endOfDirectory(self.handle, succeeded=False)
 
     def _set_view(self, content_type='episodes'):
         xbmcplugin.setContent(self.handle, content_type)
@@ -60,17 +88,11 @@ class Router:
 
     def _add_folder(self, label, params, plot='', context_menu=None):
         list_item = xbmcgui.ListItem(label=label)
-        list_item.setLabel(label)
-        try:
-            info = list_item.getVideoInfoTag()
-            info.setTitle(label)
-            if plot:
-                info.setPlot(plot)
-        except AttributeError:
-            info_dict = {'title': label}
-            if plot:
-                info_dict['plot'] = plot
-            list_item.setInfo('video', info_dict)
+        set_list_label(list_item, label)
+        info_dict = {'title': label}
+        if plot:
+            info_dict['plot'] = plot
+        set_video_info(list_item, info_dict)
         if context_menu:
             list_item.addContextMenuItems(context_menu)
 
@@ -95,6 +117,7 @@ class Router:
 
     def _add_episode(self, episode, category_id=None, next_post_id=None):
         list_item = xbmcgui.ListItem(label=episode['title'])
+        set_list_label(list_item, episode['title'])
         if episode.get('thumb'):
             list_item.setArt({
                 'thumb': episode['thumb'],
@@ -102,14 +125,16 @@ class Router:
                 'poster': episode['thumb'],
             })
 
-        info = list_item.getVideoInfoTag()
-        info.setMediaType('episode')
-        info.setTitle(episode['title'])
-        info.setPlot(episode.get('plot', ''))
+        info_dict = {
+            'title': episode['title'],
+            'plot': episode.get('plot', ''),
+            'mediatype': 'episode',
+        }
         if episode.get('categories'):
-            info.setTvShowTitle(episode['categories'][0])
+            info_dict['tvshowtitle'] = episode['categories'][0]
         if episode.get('episode_number') is not None:
-            info.setEpisode(episode['episode_number'])
+            info_dict['episode'] = episode['episode_number']
+        set_video_info(list_item, info_dict)
 
         list_item.setProperty('IsPlayable', 'true')
         play_params = {'action': 'play', 'post_id': episode['id']}
@@ -344,11 +369,16 @@ class Router:
             xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
             return
 
-        if is_hls_url(stream_url) and not has_inputstream_adaptive():
-            self._clear_autoplay()
-            xbmcgui.Dialog().ok(addon().getAddonInfo('name'), localize(30037))
-            xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
-            return
+        if is_hls_url(stream_url):
+            isa_status = inputstream_adaptive_status()
+            if isa_status != 'ready':
+                self._clear_autoplay()
+                if isa_status == 'disabled':
+                    xbmcgui.Dialog().ok(addon().getAddonInfo('name'), localize(30041))
+                else:
+                    xbmcgui.Dialog().ok(addon().getAddonInfo('name'), localize(30037))
+                xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+                return
 
         next_post_id = params.get('next_post_id', '')
         if not next_post_id and category_id:
@@ -365,11 +395,11 @@ class Router:
 
         apply_stream_properties(list_item, stream_url, stream_referer)
 
-        info = list_item.getVideoInfoTag()
-        info.setMediaType('episode')
-        info.setTitle(episode['title'])
-        info.setPlot(episode.get('plot', ''))
-        if episode.get('episode_number') is not None:
-            info.setEpisode(episode['episode_number'])
+        set_video_info(list_item, {
+            'title': episode['title'],
+            'plot': episode.get('plot', ''),
+            'mediatype': 'episode',
+            'episode': episode.get('episode_number'),
+        })
         list_item.setProperty('IsPlayable', 'true')
         xbmcplugin.setResolvedUrl(self.handle, True, list_item)

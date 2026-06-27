@@ -41,7 +41,55 @@ _STRING_FALLBACKS = {
     30036: 'Playing next episode...',
     30037: 'Install InputStream Adaptive from Kodi\'s official add-on repository (VideoPlayer InputStream), then try again.',
     30038: 'InputStream Adaptive required',
+    30039: 'Could not reach TamilTvSerial.com. Check your internet connection and try again.',
+    30040: 'Something went wrong. Please try again.',
+    30041: 'InputStream Adaptive is installed but disabled. Go to My add-ons → VideoPlayer InputStream → InputStream Adaptive → Enable.',
 }
+
+
+def encode_header_value(value):
+    return urllib.parse.quote(str(value), safe='')
+
+
+def set_list_label(list_item, label):
+    if not label:
+        return
+    try:
+        list_item.setLabel(label)
+    except AttributeError:
+        pass
+
+
+def set_video_info(list_item, info_dict):
+    try:
+        info = list_item.getVideoInfoTag()
+    except AttributeError:
+        list_item.setInfo('video', info_dict)
+        return
+
+    title = info_dict.get('title')
+    if title:
+        info.setTitle(title)
+    plot = info_dict.get('plot')
+    if plot:
+        info.setPlot(plot)
+    media_type = info_dict.get('mediatype') or info_dict.get('media_type')
+    if media_type:
+        info.setMediaType(media_type)
+    tvshowtitle = info_dict.get('tvshowtitle')
+    if tvshowtitle:
+        info.setTvShowTitle(tvshowtitle)
+    episode = info_dict.get('episode')
+    if episode is not None:
+        info.setEpisode(episode)
+
+
+def safe_api_get(path, params=None):
+    try:
+        return api_get(path, params=params)
+    except Exception as exc:
+        log_error(f'API request failed for {path}: {exc}')
+        raise
 
 
 def addon():
@@ -159,12 +207,18 @@ def is_hls_url(url):
     return path.endswith('.m3u8') or '.m3u8' in path
 
 
-def has_inputstream_adaptive():
+def inputstream_adaptive_status():
     try:
-        Addon('inputstream.adaptive')
-        return True
-    except RuntimeError:
-        return False
+        isa = Addon('inputstream.adaptive')
+    except Exception:
+        return 'missing'
+    if isa.getAddonInfo('enabled') != 'true':
+        return 'disabled'
+    return 'ready'
+
+
+def has_inputstream_adaptive():
+    return inputstream_adaptive_status() == 'ready'
 
 
 def playback_referer(referer):
@@ -177,33 +231,30 @@ def playback_referer(referer):
 
 def build_stream_headers(referer=None):
     referer = playback_referer(referer)
-    origin = referer
-    try:
-        parsed = urllib.parse.urlparse(referer)
-        if parsed.scheme and parsed.netloc:
-            origin = f'{parsed.scheme}://{parsed.netloc}'
-    except (ValueError, AttributeError):
-        pass
-
-    return (
-        f'User-Agent={USER_AGENT}\r\n'
-        f'Referer={referer}\r\n'
-        f'Origin={origin}\r\n'
-    )
+    parts = [
+        f'User-Agent={encode_header_value(USER_AGENT)}',
+        f'Referer={encode_header_value(referer)}',
+    ]
+    return '&'.join(parts)
 
 
 def apply_stream_properties(list_item, stream_url, referer=None):
     headers = build_stream_headers(referer)
 
-    if is_hls_url(stream_url):
-        list_item.setMimeType('application/x-mpegURL')
-        list_item.setProperty('inputstream', 'inputstream.adaptive')
-        list_item.setProperty('inputstream.adaptive.manifest_type', 'hls')
-        list_item.setProperty('inputstream.adaptive.manifest_headers', headers)
-        list_item.setProperty('inputstream.adaptive.stream_headers', headers)
-        return
+    try:
+        if is_hls_url(stream_url):
+            list_item.setMimeType('application/vnd.apple.mpegurl')
+            list_item.setProperty('inputstream', 'inputstream.adaptive')
+            list_item.setProperty('inputstreamaddon', 'inputstream.adaptive')
+            list_item.setProperty('inputstream.adaptive.manifest_type', 'hls')
+            list_item.setProperty('inputstream.adaptive.manifest_headers', headers)
+            list_item.setProperty('inputstream.adaptive.stream_headers', headers)
+            list_item.setProperty('inputstream.adaptive.is_realtime_stream', 'false')
+            return
 
-    if stream_url.lower().split('?', 1)[0].endswith('.mp4'):
-        list_item.setMimeType('video/mp4')
-        list_item.setProperty('inputstream.adaptive.manifest_headers', headers)
-        list_item.setProperty('inputstream.adaptive.stream_headers', headers)
+        if stream_url.lower().split('?', 1)[0].endswith('.mp4'):
+            list_item.setMimeType('video/mp4')
+            list_item.setProperty('inputstream.adaptive.manifest_headers', headers)
+            list_item.setProperty('inputstream.adaptive.stream_headers', headers)
+    except AttributeError:
+        pass

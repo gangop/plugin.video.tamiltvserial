@@ -88,3 +88,12 @@ msgstr "Install InputStream Adaptive from Kodi's official add-on repository (Vid
 
 msgid "30038"
 msgstr "InputStream Adaptive required"
+
+msgid "30039"
+msgstr "Could not reach TamilTvSerial.com. Check your internet connection and try again."
+
+msgid "30040"
+msgstr "Something went wrong. Please try again."
+
+msgid "30041"
+msgstr "InputStream Adaptive is installed but disabled. Go to My add-ons → VideoPlayer InputStream → InputStream Adaptive → Enable."
