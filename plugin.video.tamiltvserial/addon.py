@@ -2,15 +2,15 @@
 
 import sys
 import traceback
+from pathlib import Path
 from urllib.parse import parse_qsl
 
-import xbmcaddon
 import xbmcgui
 import xbmcplugin
 
-ADDON_PATH = xbmcaddon.Addon().getAddonInfo('path')
-sys.path.insert(0, ADDON_PATH)
-sys.path.insert(0, f'{ADDON_PATH}/resources/lib')
+ADDON_PATH = Path(__file__).resolve().parent
+LIB_PATH = ADDON_PATH / 'resources' / 'lib'
+sys.path.insert(0, str(LIB_PATH))
 
 from router import Router  # noqa: E402
 from utils import addon, log_error  # noqa: E402
