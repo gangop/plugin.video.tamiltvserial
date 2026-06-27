@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import ssl
 import http.cookiejar
 import re
 import urllib.error
@@ -175,17 +176,20 @@ def _build_opener(cookie_jar):
         def redirect_request(self, req, fp, code, msg, headers, newurl):
             return None
 
-    return urllib.request.build_opener(
+    ctx = ssl.create_default_context()
+    handlers = [
+        urllib.request.HTTPSHandler(context=ctx),
         urllib.request.HTTPCookieProcessor(cookie_jar),
         NoRedirectHandler(),
-    )
+    ]
+    return urllib.request.build_opener(*handlers)
 
 
 def _response_status(response):
     return getattr(response, 'status', response.getcode())
 
 
-def _fetch(url, referer=BASE_URL, timeout=45, opener=None):
+def _fetch(url, referer=BASE_URL, timeout=20, opener=None):
     headers = {
         'User-Agent': USER_AGENT,
         'Accept': '*/*',
@@ -206,7 +210,7 @@ def _fetch(url, referer=BASE_URL, timeout=45, opener=None):
         return exc.code, body, url, location
 
 
-def _follow_redirect_chain(start_url, referer=BASE_URL, max_hops=15):
+def _follow_redirect_chain(start_url, referer=BASE_URL, max_hops=10):
     cookie_jar = http.cookiejar.CookieJar()
     opener = _build_opener(cookie_jar)
     visited = set()

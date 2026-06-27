@@ -42,6 +42,7 @@ class Router:
             'browse_shows': self.show_show_groups,
             'category': self.show_category,
             'search': self.search,
+            'diagnostics': self.show_diagnostics,
             'add_favorite': self.add_favorite_action,
             'remove_favorite': self.remove_favorite_action,
             'play': self.play,
@@ -186,7 +187,8 @@ class Router:
         window.setProperty(PROP_AUTOPLAY_ACTIVE, '1')
 
     def show_root(self, _params):
-        xbmcplugin.setPluginCategory(self.handle, addon().getAddonInfo('name'))
+        version = addon().getAddonInfo('version')
+        xbmcplugin.setPluginCategory(self.handle, f"{addon().getAddonInfo('name')} v{version}")
         self._set_view('files')
 
         self._add_folder(localize(30010), {'action': 'latest', 'page': 1})
@@ -194,8 +196,57 @@ class Router:
         self._add_folder(localize(30011), {'action': 'browse_channel'})
         if get_setting_bool('enable_search', True):
             self._add_folder(localize(30012), {'action': 'search'})
+        self._add_folder(localize(30042), {'action': 'diagnostics'})
 
         xbmcplugin.endOfDirectory(self.handle)
+
+    def show_diagnostics(self, _params):
+        title = localize(30042)
+        xbmcplugin.setPluginCategory(self.handle, title)
+        self._set_view('files')
+
+        version = addon().getAddonInfo('version')
+        isa_status = inputstream_adaptive_status()
+        lines = [
+            f'Addon version: {version}',
+            f'InputStream Adaptive: {isa_status}',
+        ]
+
+        try:
+            posts, headers = api_get('posts', params={
+                '_embed': '1',
+                'per_page': 1,
+                'orderby': 'date',
+                'order': 'desc',
+            })
+            if posts:
+                episode = normalize_post(posts[0])
+                lines.extend([
+                    'TamilTvSerial API: OK',
+                    f'Latest episode: {episode.get("title", "Episode")}',
+                    f'Play links on latest episode: {len(episode.get("maskr_urls", []))}',
+                    f'Total pages header: {headers.get("X-WP-TotalPages", headers.get("x-wp-totalpages", ""))}',
+                ])
+                heading = localize(30043)
+            else:
+                lines.append('TamilTvSerial API: OK, but no episodes were returned')
+                heading = localize(30044)
+        except Exception as exc:
+            log_error(f'Diagnostics failed: {exc}')
+            lines.extend([
+                'TamilTvSerial API: FAILED',
+                f'Error: {exc}',
+            ])
+            heading = localize(30044)
+
+        message = '\n'.join(lines)
+        dialog = xbmcgui.Dialog()
+        if hasattr(dialog, 'textviewer'):
+            dialog.textviewer(heading, message)
+        else:
+            dialog.ok(heading, message)
+
+        xbmcplugin.endOfDirectory(self.handle, succeeded=True)
 
     def show_favorites(self, _params):
         xbmcplugin.setPluginCategory(self.handle, localize(30022))
@@ -344,13 +395,22 @@ class Router:
         xbmc.executebuiltin('Container.Refresh')
 
     def play(self, params):
-        post_id = params.get('post_id')
-        if not post_id:
+        try:
+            self._play(params)
+        except Exception as exc:
+            log_error(f'Play failed: {exc}')
+            self._clear_autoplay()
             xbmcgui.Dialog().notification(
                 addon().getAddonInfo('name'),
                 localize(30040),
                 xbmcgui.NOTIFICATION_ERROR,
+                5000,
             )
+            xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+
+    def _play(self, params):
+        post_id = params.get('post_id')
+        if not post_id:
             xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
             return
 
@@ -362,13 +422,17 @@ class Router:
                 addon().getAddonInfo('name'),
                 localize(30020),
                 xbmcgui.NOTIFICATION_ERROR,
+                5000,
             )
             xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
             return
 
         episode = normalize_post(posts[0])
-        xbmc.executebuiltin(
-            f'Notification({addon().getAddonInfo("name")}, {localize(30021)}, 3000)'
+        xbmcgui.Dialog().notification(
+            addon().getAddonInfo('name'),
+            localize(30021),
+            xbmcgui.NOTIFICATION_INFO,
+            2000,
         )
 
         stream_url, stream_referer = resolve_episode_stream(
@@ -381,6 +445,7 @@ class Router:
                 addon().getAddonInfo('name'),
                 localize(30020),
                 xbmcgui.NOTIFICATION_ERROR,
+                5000,
             )
             xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
             return
@@ -389,19 +454,16 @@ class Router:
             isa_status = inputstream_adaptive_status()
             if isa_status != 'ready':
                 self._clear_autoplay()
-                if isa_status == 'disabled':
-                    xbmcgui.Dialog().ok(addon().getAddonInfo('name'), localize(30041))
-                else:
-                    xbmcgui.Dialog().ok(addon().getAddonInfo('name'), localize(30037))
+                message = localize(30041) if isa_status == 'disabled' else localize(30037)
+                xbmcgui.Dialog().ok(addon().getAddonInfo('name'), message)
                 xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
                 return
 
         self._schedule_autoplay(params.get('next_post_id', ''), category_id)
 
-        list_item = xbmcgui.ListItem(label=episode['title'], path=stream_url)
-        if episode.get('thumb'):
-            list_item.setArt({'thumb': episode['thumb']})
-
+        list_item = xbmcgui.ListItem(label=episode.get('title', 'Episode'))
         apply_stream_properties(list_item, stream_url, stream_referer)
         list_item.setProperty('IsPlayable', 'true')
+        playback_path = list_item.getPath() if hasattr(list_item, 'getPath') else stream_url
+        log_error(f'Playing via {playback_path[:120]}')
         xbmcplugin.setResolvedUrl(self.handle, True, list_item)
