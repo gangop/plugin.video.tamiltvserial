@@ -301,9 +301,9 @@ def _post_woodviolet_ping(html, base_url, opener):
 
     try:
         request = urllib.request.Request(ping_url, data=payload, headers=headers, method='POST')
-        with opener.open(request, timeout=20) as response:
+        with opener.open(request, timeout=8) as response:
             log(f'Prepared woodviolet playback session: {response.getcode()}')
-    except (urllib.error.URLError, urllib.error.HTTPError) as exc:
+    except (OSError, urllib.error.URLError, urllib.error.HTTPError) as exc:
         log_error(f'Could not prepare woodviolet playback session: {exc}')
 
 

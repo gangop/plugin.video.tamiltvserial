@@ -13,30 +13,21 @@ WOODVIOLET_USER_AGENT = (
     '(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
 )
 
-CHANNELS = (
+CHANNEL_GROUPS = (
     {
-        'id': 5,
-        'label_id': 30013,
-        'name': 'Sun TV Serials',
-        'mode': 'serials',
+        'name': 'Sun TV',
+        'serials_id': 5,
+        'shows_id': 6392,
     },
     {
-        'id': 3,
-        'label_id': 30014,
-        'name': 'Vijay TV Serials',
-        'mode': 'serials',
+        'name': 'Vijay TV',
+        'serials_id': 3,
+        'shows_id': 6383,
     },
     {
-        'id': 4,
-        'label_id': 30015,
-        'name': 'Zee Tamil Serials',
-        'mode': 'serials',
-    },
-    {
-        'id': 6382,
-        'label_id': 30016,
-        'name': 'Tamil TV Shows',
-        'mode': 'shows',
+        'name': 'Zee Tamil',
+        'serials_id': 4,
+        'shows_id': 6402,
     },
 )
 

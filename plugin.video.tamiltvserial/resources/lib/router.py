@@ -6,9 +6,9 @@ import xbmc
 import xbmcgui
 import xbmcplugin
 
-from constants import CHANNELS, PROP_AUTOPLAY_ACTIVE, PROP_NEXT_CATEGORY, PROP_NEXT_POST, TAMIL_TV_SHOWS_ID
+from constants import CHANNEL_GROUPS, PROP_AUTOPLAY_ACTIVE, PROP_NEXT_CATEGORY, PROP_NEXT_POST, TAMIL_TV_SHOWS_ID
 from favorites import add_favorite, is_favorite, load_favorites, remove_favorite
-from scraper import find_next_post_id, list_child_categories, list_posts, normalize_post
+from scraper import find_next_post_id, list_child_categories, list_posts, list_show_categories_by_latest_episode, normalize_post
 from stream_resolver import resolve_episode_stream
 from utils import (
     addon,
@@ -38,6 +38,7 @@ class Router:
             'latest': self.show_latest,
             'favorites': self.show_favorites,
             'browse_channel': self.show_channel_picker,
+            'browse_channel_group': self.show_channel_group,
             'browse_serials': self.show_serials,
             'browse_shows': self.show_show_groups,
             'category': self.show_category,
@@ -108,17 +109,25 @@ class Router:
     def _add_serial_folder(self, serial):
         category_id = serial['id']
         name = serial['name']
-        label = f'★ {name}' if is_favorite(category_id) else name
+        search_query = serial.get('search_query')
+        has_category = not search_query
+        label = f'★ {name}' if has_category and is_favorite(category_id) else name
+        plot = f"Latest: {serial['latest_title']}" if serial.get('latest_title') else f"{serial.get('count', 0)} episodes"
+        params = {
+            'action': 'search',
+            'query': search_query,
+            'page': 1,
+        } if search_query else {
+            'action': 'category',
+            'category_id': category_id,
+            'title': name,
+            'page': 1,
+        }
         self._add_folder(
             label,
-            {
-                'action': 'category',
-                'category_id': category_id,
-                'title': name,
-                'page': 1,
-            },
-            plot=f"{serial.get('count', 0)} episodes",
-            context_menu=self._favorite_context_menu(category_id, name),
+            params,
+            plot=plot,
+            context_menu=self._favorite_context_menu(category_id, name) if has_category else None,
         )
 
     def _add_episode(self, episode, category_id=None, next_post_id=None):
@@ -280,20 +289,44 @@ class Router:
         xbmcplugin.setPluginCategory(self.handle, localize(30011))
         self._set_view('files')
 
-        for channel in CHANNELS:
-            if channel['mode'] == 'shows':
-                params = {
-                    'action': 'browse_shows',
+        for channel in CHANNEL_GROUPS:
+            self._add_folder(
+                channel['name'],
+                {
+                    'action': 'browse_channel_group',
                     'title': channel['name'],
-                }
-            else:
-                params = {
+                    'serials_id': channel['serials_id'],
+                    'shows_id': channel['shows_id'],
+                },
+            )
+
+        xbmcplugin.endOfDirectory(self.handle)
+
+    def show_channel_group(self, params):
+        title = params.get('title', '')
+        xbmcplugin.setPluginCategory(self.handle, title)
+        self._set_view('files')
+
+        serials_id = params.get('serials_id')
+        shows_id = params.get('shows_id')
+        if serials_id:
+            self._add_folder(
+                localize(30045) or 'Serials',
+                {
                     'action': 'browse_serials',
-                    'category_id': channel['id'],
-                    'title': channel['name'],
-                }
-            label = localize(channel['label_id']) or channel['name']
-            self._add_folder(label, params)
+                    'category_id': serials_id,
+                    'title': f'{title} {localize(30045) or "Serials"}',
+                },
+            )
+        if shows_id:
+            self._add_folder(
+                localize(30046) or 'Shows',
+                {
+                    'action': 'browse_shows',
+                    'category_id': shows_id,
+                    'title': f'{title} {localize(30046) or "Shows"}',
+                },
+            )
 
         xbmcplugin.endOfDirectory(self.handle)
 
@@ -310,10 +343,14 @@ class Router:
 
     def show_show_groups(self, params):
         title = params.get('title', localize(30016))
+        category_id = int(params.get('category_id', TAMIL_TV_SHOWS_ID))
         xbmcplugin.setPluginCategory(self.handle, title)
         self._set_view('files')
 
-        for subcategory in list_child_categories(TAMIL_TV_SHOWS_ID):
+        for subcategory in list_show_categories_by_latest_episode(
+            category_id,
+            excluded_category_ids=[TAMIL_TV_SHOWS_ID],
+        ):
             self._add_serial_folder(subcategory)
 
         xbmcplugin.endOfDirectory(self.handle)

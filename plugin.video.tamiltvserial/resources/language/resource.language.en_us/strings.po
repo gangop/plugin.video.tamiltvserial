@@ -65,6 +65,12 @@ msgstr "Favorites"
 msgid "30023"
 msgstr "Auto-play next episode"
 
+msgid "30045"
+msgstr "Serials"
+
+msgid "30046"
+msgstr "Shows"
+
 msgid "30031"
 msgstr "Add to Favorites"
 

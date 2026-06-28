@@ -51,6 +51,8 @@ _STRING_FALLBACKS = {
     30042: 'Connection Test',
     30043: 'Connection test passed',
     30044: 'Connection test failed',
+    30045: 'Serials',
+    30046: 'Shows',
 }
 
 

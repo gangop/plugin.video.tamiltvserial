@@ -11,6 +11,7 @@ MASKR_ONCLICK_PATTERN = re.compile(
     re.I,
 )
 EPISODE_NUMBER_PATTERN = re.compile(r'Episode\s+(\d+)', re.I)
+TITLE_DATE_PATTERN = re.compile(r'\s*\d{1,2}-\d{1,2}-\d{4}.*$')
 
 
 def extract_maskr_urls(html_content):
@@ -62,6 +63,75 @@ def list_child_categories(parent_id):
     return [cat for cat in categories if cat.get('count', 0) > 0]
 
 
+def list_show_categories_by_latest_episode(channel_category_id, excluded_category_ids=None):
+    excluded = set(excluded_category_ids or [])
+    excluded.add(channel_category_id)
+    shows = {}
+    page = 1
+    total_pages = 1
+
+    while page <= total_pages and page <= 5:
+        posts, headers = api_get('posts', params={
+            'categories': channel_category_id,
+            '_embed': '1',
+            'per_page': 100,
+            'page': page,
+            'orderby': 'date',
+            'order': 'desc',
+        })
+        total_pages = int(headers.get('X-WP-TotalPages', headers.get('x-wp-totalpages', '1')))
+
+        for post in posts:
+            latest = normalize_post(post)
+            embedded = post.get('_embedded') or {}
+            found_show_category = False
+            for group in embedded.get('wp:term') or []:
+                for term in group or []:
+                    if term.get('taxonomy') != 'category':
+                        continue
+                    category_id = term.get('id')
+                    name = term.get('name', '')
+                    if not category_id or category_id in excluded:
+                        continue
+                    if name.lower().endswith('tv shows') or name.lower() == 'tamil tv shows':
+                        continue
+                    found_show_category = True
+                    if category_id in shows:
+                        continue
+                    shows[category_id] = {
+                        'id': category_id,
+                        'name': name,
+                        'count': term.get('count', 0),
+                        'latest_date': latest.get('date', ''),
+                        'latest_title': latest.get('title', ''),
+                        'latest_episode_number': latest.get('episode_number') or 0,
+                    }
+            if not found_show_category:
+                name = parse_show_title(latest.get('title', ''))
+                key = f'search:{name.lower()}'
+                if name and key not in shows:
+                    shows[key] = {
+                        'id': key,
+                        'name': name,
+                        'count': 0,
+                        'search_query': name,
+                        'latest_date': latest.get('date', ''),
+                        'latest_title': latest.get('title', ''),
+                        'latest_episode_number': latest.get('episode_number') or 0,
+                    }
+        page += 1
+
+    return sorted(
+        shows.values(),
+        key=lambda item: (
+            item.get('latest_date') or '',
+            item.get('latest_episode_number') or 0,
+            item.get('name') or '',
+        ),
+        reverse=True,
+    )
+
+
 def get_post_by_slug(slug):
     posts, _headers = api_get('posts', params={'slug': slug, '_embed': '1'})
     return posts[0] if posts else None
@@ -70,6 +140,14 @@ def get_post_by_slug(slug):
 def parse_episode_number(title):
     match = EPISODE_NUMBER_PATTERN.search(title or '')
     return int(match.group(1)) if match else None
+
+
+def parse_show_title(title):
+    title = strip_html(title or '')
+    if '|' in title:
+        title = title.split('|', 1)[0]
+    title = TITLE_DATE_PATTERN.sub('', title)
+    return re.sub(r'\s+', ' ', title).strip()
 
 
 def find_next_post_id(category_id, current_post_id, current_title):
