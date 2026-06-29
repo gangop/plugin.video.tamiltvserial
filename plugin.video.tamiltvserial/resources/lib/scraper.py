@@ -52,7 +52,7 @@ def list_posts(category_id=None, page=1, search=None):
     return posts, page, total_pages
 
 
-def list_child_categories(parent_id):
+def list_child_categories(parent_id, include_empty=False):
     params = {
         'parent': parent_id,
         'per_page': 100,
@@ -60,17 +60,75 @@ def list_child_categories(parent_id):
         'order': 'asc',
     }
     categories, _headers = api_get('categories', params=params)
+    if include_empty:
+        return categories
     return [cat for cat in categories if cat.get('count', 0) > 0]
 
 
-def list_show_categories_by_latest_episode(channel_category_id, excluded_category_ids=None):
+def _is_show_channel_name(name):
+    lower = (name or '').lower()
+    return lower.endswith('tv shows') or lower == 'tamil tv shows' or lower.endswith('tv showz')
+
+
+def _has_known_channel_title(title):
+    lower = (title or '').lower()
+    return any(
+        token in lower
+        for token in ('sun tv show', 'vijay tv show', 'zee tamil tv show')
+    )
+
+
+def _add_show_group(shows, category_id, name, latest=None, count=0, search_query=''):
+    if not name:
+        return
+    key = category_id or f'search:{name.lower()}'
+    if key in shows:
+        return
+
+    latest = latest or {}
+    shows[key] = {
+        'id': key,
+        'name': name,
+        'count': count,
+        'latest_date': latest.get('date', ''),
+        'latest_title': latest.get('title', ''),
+        'latest_episode_number': latest.get('episode_number') or 0,
+    }
+    if search_query:
+        shows[key]['search_query'] = search_query
+
+
+def list_show_categories_by_latest_episode(
+    channel_category_id,
+    excluded_category_ids=None,
+    show_channel_ids=None,
+    only_unclassified=False,
+):
     excluded = set(excluded_category_ids or [])
     excluded.add(channel_category_id)
+    show_channels = set(show_channel_ids or [])
     shows = {}
+
+    for category in list_child_categories(channel_category_id, include_empty=True):
+        category_id = category.get('id')
+        name = strip_html(category.get('name', ''))
+        if not category_id or category_id in excluded or category_id in show_channels:
+            continue
+        if _is_show_channel_name(name):
+            continue
+        count = category.get('count', 0)
+        _add_show_group(
+            shows,
+            category_id if count else '',
+            name,
+            count=count,
+            search_query='' if count else name,
+        )
+
     page = 1
     total_pages = 1
 
-    while page <= total_pages and page <= 5:
+    while page <= total_pages and page <= 10:
         posts, headers = api_get('posts', params={
             'categories': channel_category_id,
             '_embed': '1',
@@ -84,41 +142,42 @@ def list_show_categories_by_latest_episode(channel_category_id, excluded_categor
         for post in posts:
             latest = normalize_post(post)
             embedded = post.get('_embedded') or {}
+            post_category_ids = set()
+            for group in embedded.get('wp:term') or []:
+                for term in group or []:
+                    if term.get('taxonomy') == 'category' and term.get('id'):
+                        post_category_ids.add(term.get('id'))
+
+            if only_unclassified and (
+                post_category_ids.intersection(show_channels)
+                or _has_known_channel_title(latest.get('title', ''))
+            ):
+                continue
+
             found_show_category = False
             for group in embedded.get('wp:term') or []:
                 for term in group or []:
                     if term.get('taxonomy') != 'category':
                         continue
                     category_id = term.get('id')
-                    name = term.get('name', '')
+                    name = strip_html(term.get('name', ''))
                     if not category_id or category_id in excluded:
                         continue
-                    if name.lower().endswith('tv shows') or name.lower() == 'tamil tv shows':
+                    if category_id in show_channels or _is_show_channel_name(name):
                         continue
                     found_show_category = True
-                    if category_id in shows:
-                        continue
-                    shows[category_id] = {
-                        'id': category_id,
-                        'name': name,
-                        'count': term.get('count', 0),
-                        'latest_date': latest.get('date', ''),
-                        'latest_title': latest.get('title', ''),
-                        'latest_episode_number': latest.get('episode_number') or 0,
-                    }
+                    if category_id not in shows or not shows[category_id].get('latest_date'):
+                        shows.pop(category_id, None)
+                        _add_show_group(
+                            shows,
+                            category_id,
+                            name,
+                            latest=latest,
+                            count=term.get('count', 0),
+                        )
             if not found_show_category:
                 name = parse_show_title(latest.get('title', ''))
-                key = f'search:{name.lower()}'
-                if name and key not in shows:
-                    shows[key] = {
-                        'id': key,
-                        'name': name,
-                        'count': 0,
-                        'search_query': name,
-                        'latest_date': latest.get('date', ''),
-                        'latest_title': latest.get('title', ''),
-                        'latest_episode_number': latest.get('episode_number') or 0,
-                    }
+                _add_show_group(shows, '', name, latest=latest, search_query=name)
         page += 1
 
     return sorted(

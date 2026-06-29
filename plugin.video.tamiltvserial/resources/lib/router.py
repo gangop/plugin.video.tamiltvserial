@@ -6,7 +6,7 @@ import xbmc
 import xbmcgui
 import xbmcplugin
 
-from constants import CHANNEL_GROUPS, PROP_AUTOPLAY_ACTIVE, PROP_NEXT_CATEGORY, PROP_NEXT_POST, TAMIL_TV_SHOWS_ID
+from constants import CHANNEL_GROUPS, PROP_AUTOPLAY_ACTIVE, PROP_NEXT_CATEGORY, PROP_NEXT_POST, SHOW_CHANNEL_IDS, TAMIL_TV_SHOWS_ID
 from favorites import add_favorite, is_favorite, load_favorites, remove_favorite
 from scraper import find_next_post_id, list_child_categories, list_posts, list_show_categories_by_latest_episode, normalize_post
 from stream_resolver import resolve_episode_stream
@@ -295,8 +295,9 @@ class Router:
                 {
                     'action': 'browse_channel_group',
                     'title': channel['name'],
-                    'serials_id': channel['serials_id'],
-                    'shows_id': channel['shows_id'],
+                    'serials_id': channel.get('serials_id'),
+                    'shows_id': channel.get('shows_id'),
+                    'other_shows': 1 if channel.get('other_shows') else 0,
                 },
             )
 
@@ -325,6 +326,7 @@ class Router:
                     'action': 'browse_shows',
                     'category_id': shows_id,
                     'title': f'{title} {localize(30046) or "Shows"}',
+                    'other_shows': params.get('other_shows', 0),
                 },
             )
 
@@ -344,12 +346,15 @@ class Router:
     def show_show_groups(self, params):
         title = params.get('title', localize(30016))
         category_id = int(params.get('category_id', TAMIL_TV_SHOWS_ID))
+        only_unclassified = str(params.get('other_shows', '')).lower() in ('1', 'true', 'yes')
         xbmcplugin.setPluginCategory(self.handle, title)
         self._set_view('files')
 
         for subcategory in list_show_categories_by_latest_episode(
             category_id,
             excluded_category_ids=[TAMIL_TV_SHOWS_ID],
+            show_channel_ids=SHOW_CHANNEL_IDS,
+            only_unclassified=only_unclassified,
         ):
             self._add_serial_folder(subcategory)
 

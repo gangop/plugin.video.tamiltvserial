@@ -29,9 +29,19 @@ CHANNEL_GROUPS = (
         'serials_id': 4,
         'shows_id': 6402,
     },
+    {
+        'name': 'Others',
+        'shows_id': 6382,
+        'other_shows': True,
+    },
 )
 
 TAMIL_TV_SHOWS_ID = 6382
+SHOW_CHANNEL_IDS = tuple(
+    channel['shows_id']
+    for channel in CHANNEL_GROUPS
+    if channel.get('shows_id') and not channel.get('other_shows')
+)
 
 ADDON_ID = 'plugin.video.tamiltvserial'
 PROP_NEXT_POST = f'{ADDON_ID}.next_post_id'
