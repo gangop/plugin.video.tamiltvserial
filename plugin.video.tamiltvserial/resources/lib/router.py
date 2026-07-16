@@ -363,10 +363,8 @@ class Router:
         source = candidate.get('source', 'unknown')
         title = episode.get('title', 'Episode')
 
-        # BunnyCDN uses a local rewritten playlist + default player (no ISA).
-        # Other HLS still needs InputStream Adaptive.
-        is_bunny = 'b-cdn.net' in (stream_url or '').lower()
-        if is_hls_url(stream_url) and not is_bunny:
+        # BunnyCDN uses a local rewritten playlist, but still needs ISA for AES-128 HLS.
+        if is_hls_url(stream_url) or 'b-cdn.net' in (stream_url or '').lower():
             isa_status = inputstream_adaptive_status()
             if isa_status == 'disabled':
                 self._clear_autoplay()
