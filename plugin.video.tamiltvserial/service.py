@@ -165,6 +165,13 @@ def _watch_playback_start(monitor, timeout):
 if __name__ == '__main__':
     monitor = AutoplayMonitor()
     log('Autoplay service started')
+    try:
+        from bunny_proxy import ensure_proxy_started
+        port = ensure_proxy_started()
+        if port:
+            log(f'Bunny proxy ready on port {port}')
+    except Exception as exc:
+        log_error(f'Bunny proxy startup failed: {exc}')
     while not monitor.abortRequested():
         window = xbmcgui.Window(10000)
         if window.getProperty(PROP_PLAY_WATCH) == '1':
@@ -173,4 +180,9 @@ if __name__ == '__main__':
             continue
         if monitor.waitForAbort(1):
             break
+    try:
+        from bunny_proxy import stop_proxy
+        stop_proxy()
+    except Exception:
+        pass
     log('Autoplay service stopped')
