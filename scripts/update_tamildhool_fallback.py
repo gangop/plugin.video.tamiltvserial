@@ -39,6 +39,7 @@ CHANNEL_CATEGORIES = (
 )
 
 POSTS_PER_CHANNEL = 80
+POSTS_PER_SERIAL = 8
 TITLE_DATE_PATTERN = re.compile(r'(\d{1,2})-(\d{1,2})-(\d{4})')
 BUNNY_PATTERN = re.compile(
     r'https://(vz-[a-z0-9-]+\.b-cdn\.net)/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/',
@@ -78,28 +79,65 @@ def parse_title(title: str):
     return show, date, channel
 
 
-def api_posts(category_id: int, page: int = 1, per_page: int = 40):
-    params = {
-        'categories': category_id,
-        'per_page': per_page,
-        'page': page,
-        'orderby': 'date',
-        'order': 'desc',
-    }
-    url = 'https://www.tamiltvserial.com/wp-json/wp/v2/posts?' + urllib.parse.urlencode(params)
+def _ssl_context():
     ctx = ssl.create_default_context()
     ctx.check_hostname = False
     ctx.verify_mode = ssl.CERT_NONE
+    return ctx
+
+
+def api_get(endpoint: str, params: dict):
+    url = 'https://www.tamiltvserial.com/wp-json/wp/v2/' + endpoint
+    if params:
+        url += '?' + urllib.parse.urlencode(params)
     request = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-    with urllib.request.urlopen(request, timeout=30, context=ctx) as response:
+    with urllib.request.urlopen(request, timeout=30, context=_ssl_context()) as response:
         return json.loads(response.read().decode('utf-8'))
 
 
+def api_posts(category_id: int, page: int = 1, per_page: int = 40):
+    return api_get(
+        'posts',
+        {
+            'categories': category_id,
+            'per_page': per_page,
+            'page': page,
+            'orderby': 'date',
+            'order': 'desc',
+        },
+    )
+
+
+def list_serial_categories(parent_id: int):
+    return api_get(
+        'categories',
+        {
+            'parent': parent_id,
+            'per_page': 100,
+            'orderby': 'name',
+            'order': 'asc',
+        },
+    )
+
+
+def _add_episode(episodes: dict, post: dict):
+    title = strip_html((post.get('title') or {}).get('rendered', ''))
+    meta = parse_title(title)
+    if not meta:
+        return
+    show, date, channel = meta
+    channel_slug, _kind = CHANNEL_SLUGS[channel]
+    key = f'{channel_slug}/{slugify(show)}/{date}'
+    if key not in episodes:
+        episodes[key] = (title, show, date, channel)
+
+
 def collect_episodes():
-    """Return dict key -> (title, show, date, channel) for recent channel posts."""
+    """Collect recent episodes from channel feeds and each serial folder."""
     episodes = {}
     per_page = 40
     pages = max(1, (POSTS_PER_CHANNEL + per_page - 1) // per_page)
+
     for category_id, channel_name in CHANNEL_CATEGORIES:
         fetched = 0
         for page in range(1, pages + 1):
@@ -111,19 +149,37 @@ def collect_episodes():
             if not posts:
                 break
             for post in posts:
-                title = strip_html((post.get('title') or {}).get('rendered', ''))
-                meta = parse_title(title)
-                if not meta:
-                    continue
-                show, date, channel = meta
-                channel_slug, _kind = CHANNEL_SLUGS[channel]
-                key = f'{channel_slug}/{slugify(show)}/{date}'
-                if key not in episodes:
-                    episodes[key] = (title, show, date, channel)
+                _add_episode(episodes, post)
                 fetched += 1
             if len(posts) < per_page or fetched >= POSTS_PER_CHANNEL:
                 break
-        print(f'Collected from {channel_name}: {fetched} posts, unique so far {len(episodes)}')
+        print(f'Channel feed {channel_name}: {fetched} posts, unique {len(episodes)}')
+
+        try:
+            serials = list_serial_categories(category_id)
+        except Exception as exc:
+            print(f'Serial list fail {channel_name}: {exc}')
+            continue
+
+        for serial in serials:
+            serial_id = serial.get('id')
+            name = strip_html(serial.get('name', ''))
+            count = int(serial.get('count') or 0)
+            if not serial_id or count <= 0:
+                continue
+            try:
+                posts = api_posts(serial_id, page=1, per_page=POSTS_PER_SERIAL)
+            except Exception as exc:
+                print(f'  serial fail {name}: {exc}')
+                continue
+            before = len(episodes)
+            for post in posts:
+                _add_episode(episodes, post)
+            added = len(episodes) - before
+            if added:
+                print(f'  +{added} from {name}')
+
+    print(f'Total unique episodes to resolve: {len(episodes)}')
     return episodes
 
 
