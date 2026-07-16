@@ -53,6 +53,7 @@ _STRING_FALLBACKS = {
     30044: 'Connection test failed',
     30045: 'Serials',
     30046: 'Shows',
+    30047: 'This episode\'s stream host is temporarily unavailable. Try again later, or play a different serial.',
 }
 
 

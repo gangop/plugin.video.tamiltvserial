@@ -103,3 +103,15 @@ msgstr "Something went wrong. Please try again."
 
 msgid "30041"
 msgstr "InputStream Adaptive is installed but disabled. Go to My add-ons → VideoPlayer InputStream → InputStream Adaptive → Enable."
+
+msgid "30042"
+msgstr "Connection Test"
+
+msgid "30043"
+msgstr "Connection test passed"
+
+msgid "30044"
+msgstr "Connection test failed"
+
+msgid "30047"
+msgstr "This episode's stream host is temporarily unavailable. Try again later, or play a different serial."

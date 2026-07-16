@@ -14,7 +14,8 @@ import uuid
 
 from constants import BASE_URL, USER_AGENT, WOODVIOLET_USER_AGENT
 from scraper import extract_maskr_urls
-from utils import log, log_error
+from tamildhool import resolve_tamildhool_stream
+from utils import is_hls_url, log, log_error
 
 
 STREAM_PATTERNS = (
@@ -522,7 +523,7 @@ def resolve_streams(maskr_urls, referer=BASE_URL):
     return '', '', ''
 
 
-def resolve_episode_stream(content_html, episode_link=''):
+def resolve_episode_stream(content_html, episode_link='', episode_title='', allow_fallback=True):
     referer = episode_link or BASE_URL
     maskr_urls = extract_maskr_urls(content_html)
     seen = set(maskr_urls)
@@ -541,9 +542,65 @@ def resolve_episode_stream(content_html, episode_link=''):
         if stream_url:
             return stream_url, stream_referer, cookies
 
+    if allow_fallback and episode_title:
+        log('Primary source failed; trying TamilDhool fallback')
+        stream_url, stream_referer, cookies = resolve_tamildhool_stream(episode_title)
+        if stream_url:
+            return stream_url, stream_referer, cookies
+
     if not maskr_urls and not page_urls:
         log('No maskr URLs found in episode content or page')
     else:
         log_error('Could not resolve stream from any play link')
 
     return '', '', ''
+
+
+def resolve_fallback_stream(episode_title):
+    return resolve_tamildhool_stream(episode_title)
+
+
+def stream_needs_preflight(stream_url, referer=''):
+    lower_url = (stream_url or '').lower()
+    lower_ref = (referer or '').lower()
+    return (
+        'woodviolet.xyz' in lower_ref
+        or '/stream/variant/' in lower_url
+        or '.click/stream/' in lower_url
+    )
+
+
+def verify_stream_reachable(stream_url, referer='', cookies='', timeout=12):
+    """Return True when the HLS/manifest URL responds with playable content."""
+    if not stream_url:
+        return False
+
+    headers = {
+        'User-Agent': WOODVIOLET_USER_AGENT if stream_needs_preflight(stream_url, referer) else USER_AGENT,
+        'Accept': '*/*',
+        'Referer': referer or BASE_URL,
+    }
+    if 'woodviolet.xyz' in (referer or '').lower():
+        headers['Origin'] = 'https://woodviolet.xyz'
+        headers['Accept-Language'] = 'en-US,en;q=0.9'
+    if cookies:
+        headers['Cookie'] = cookies
+
+    request = urllib.request.Request(stream_url, headers=headers)
+    opener = _build_opener(http.cookiejar.CookieJar(), verify_ssl=False)
+    try:
+        with opener.open(request, timeout=timeout) as response:
+            body = response.read(256)
+            status = _response_status(response)
+            if status >= 400:
+                log_error(f'Stream preflight HTTP {status} for {stream_url[:80]}')
+                return False
+            if is_hls_url(stream_url) and b'#EXTM3U' not in body and b'#EXT' not in body:
+                # Some CDNs return binary/partial first chunk; treat 2xx as ok if not clearly HTML error.
+                if body.lstrip().startswith(b'<'):
+                    log_error(f'Stream preflight returned HTML error for {stream_url[:80]}')
+                    return False
+            return True
+    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as exc:
+        log_error(f'Stream preflight failed for {stream_url[:80]}: {exc}')
+        return False
