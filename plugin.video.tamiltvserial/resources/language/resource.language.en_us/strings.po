@@ -121,3 +121,6 @@ msgstr "Playback start timeout (seconds)"
 
 msgid "30049"
 msgstr "Trying alternate stream source..."
+
+msgid "30050"
+msgstr "Playback failed to start. Try another episode or check your connection."

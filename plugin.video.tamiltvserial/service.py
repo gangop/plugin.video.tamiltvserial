@@ -132,6 +132,21 @@ def _watch_playback_start(monitor, timeout):
     window.clearProperty(PROP_PLAY_WATCH)
     if not remaining:
         log_error('Playback start timed out with no alternate sources')
+        window.clearProperty(PROP_FAILOVER_CANDIDATES)
+        try:
+            if player.isPlaying():
+                player.stop()
+        except Exception:
+            pass
+        try:
+            xbmcgui.Dialog().notification(
+                addon().getAddonInfo('name'),
+                addon().getLocalizedString(30050) or 'Playback failed to start',
+                xbmcgui.NOTIFICATION_ERROR,
+                5000,
+            )
+        except Exception as exc:
+            log_error(f'Failed to show playback error notification: {exc}')
         return
 
     log(f'Playback start timed out; failing over ({len(remaining)} alternate source(s))')

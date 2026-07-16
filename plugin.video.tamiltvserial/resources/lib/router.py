@@ -338,22 +338,23 @@ class Router:
         return None, []
 
     def _store_failover(self, remaining_sources, episode, next_post_id, category_id):
+        """Arm playback-start watch so silent stalls get failover or an error toast."""
         window = xbmcgui.Window(10000)
-        if remaining_sources and episode.get('id'):
-            payload = {
-                'sources': list(remaining_sources),
-                'post_id': int(episode['id']),
-                'title': episode.get('title', 'Episode'),
-                'next_post_id': str(next_post_id or ''),
-                'category_id': str(category_id or ''),
-            }
-            window.setProperty(PROP_FAILOVER_CANDIDATES, json.dumps(payload))
-            window.setProperty(PROP_FAILOVER_TITLE, episode.get('title', 'Episode'))
-            window.setProperty(PROP_FAILOVER_NEXT_POST, str(next_post_id or ''))
-            window.setProperty(PROP_FAILOVER_CATEGORY, str(category_id or ''))
-            window.setProperty(PROP_PLAY_WATCH, '1')
-        else:
+        if not episode.get('id'):
             self._clear_failover()
+            return
+        payload = {
+            'sources': list(remaining_sources or []),
+            'post_id': int(episode['id']),
+            'title': episode.get('title', 'Episode'),
+            'next_post_id': str(next_post_id or ''),
+            'category_id': str(category_id or ''),
+        }
+        window.setProperty(PROP_FAILOVER_CANDIDATES, json.dumps(payload))
+        window.setProperty(PROP_FAILOVER_TITLE, episode.get('title', 'Episode'))
+        window.setProperty(PROP_FAILOVER_NEXT_POST, str(next_post_id or ''))
+        window.setProperty(PROP_FAILOVER_CATEGORY, str(category_id or ''))
+        window.setProperty(PROP_PLAY_WATCH, '1')
 
     def _play_candidate(self, candidate, episode, next_post_id='', category_id='', remaining_sources=None):
         stream_url = candidate['url']
@@ -362,7 +363,10 @@ class Router:
         source = candidate.get('source', 'unknown')
         title = episode.get('title', 'Episode')
 
-        if is_hls_url(stream_url):
+        # BunnyCDN uses a local rewritten playlist + default player (no ISA).
+        # Other HLS still needs InputStream Adaptive.
+        is_bunny = 'b-cdn.net' in (stream_url or '').lower()
+        if is_hls_url(stream_url) and not is_bunny:
             isa_status = inputstream_adaptive_status()
             if isa_status == 'disabled':
                 self._clear_autoplay()
