@@ -570,7 +570,7 @@ def stream_needs_preflight(stream_url, referer=''):
     )
 
 
-def verify_stream_reachable(stream_url, referer='', cookies='', timeout=12):
+def verify_stream_reachable(stream_url, referer='', cookies='', timeout=6):
     """Return True when the HLS/manifest URL responds with playable content."""
     if not stream_url:
         return False

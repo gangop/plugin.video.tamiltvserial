@@ -22,6 +22,7 @@ from stream_resolver import (
     stream_needs_preflight,
     verify_stream_reachable,
 )
+from tamildhool import resolve_from_fallback_index
 from utils import (
     addon,
     api_get,
@@ -520,6 +521,7 @@ class Router:
             return
 
         episode = normalize_post(posts[0])
+        episode_title = episode.get('title', '')
         xbmcgui.Dialog().notification(
             addon().getAddonInfo('name'),
             localize(30021),
@@ -527,46 +529,55 @@ class Router:
             2000,
         )
 
-        stream_url, stream_referer, stream_cookies = resolve_episode_stream(
-            episode.get('content_html', ''),
-            episode_link=episode.get('link', ''),
-            episode_title=episode.get('title', ''),
-            allow_fallback=False,
-        )
-        if not stream_url:
-            log('No primary stream; trying TamilDhool fallback')
-            stream_url, stream_referer, stream_cookies = resolve_fallback_stream(
-                episode.get('title', ''),
+        # Prefer the published TamilDhool index (BunnyCDN) before woodviolet.
+        # Primary hosts often hang for 10+ seconds, then fail — users see "won't play".
+        stream_url, stream_referer, stream_cookies = resolve_from_fallback_index(episode_title)
+        if stream_url:
+            log(f'Using TamilDhool index for {episode_title!r}')
+        else:
+            stream_url, stream_referer, stream_cookies = resolve_episode_stream(
+                episode.get('content_html', ''),
+                episode_link=episode.get('link', ''),
+                episode_title=episode_title,
+                allow_fallback=False,
             )
-        if not stream_url:
-            self._clear_autoplay()
-            log_error(f'No stream resolved for post_id={post_id}')
-            xbmcgui.Dialog().notification(
-                addon().getAddonInfo('name'),
-                localize(30020),
-                xbmcgui.NOTIFICATION_ERROR,
-                5000,
-            )
-            xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
-            return
-
-        if stream_needs_preflight(stream_url, stream_referer):
-            if not verify_stream_reachable(stream_url, stream_referer, stream_cookies):
-                log_error(f'Primary stream host unreachable for post_id={post_id}; trying TamilDhool')
-                fallback_url, fallback_referer, fallback_cookies = resolve_fallback_stream(
-                    episode.get('title', ''),
+            if not stream_url:
+                log('No primary stream; trying TamilDhool fallback')
+                stream_url, stream_referer, stream_cookies = resolve_fallback_stream(
+                    episode_title,
                 )
-                if fallback_url:
-                    stream_url, stream_referer, stream_cookies = (
-                        fallback_url,
-                        fallback_referer,
-                        fallback_cookies,
+            if not stream_url:
+                self._clear_autoplay()
+                log_error(f'No stream resolved for post_id={post_id}')
+                xbmcgui.Dialog().notification(
+                    addon().getAddonInfo('name'),
+                    localize(30020),
+                    xbmcgui.NOTIFICATION_ERROR,
+                    5000,
+                )
+                xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+                return
+
+            if stream_needs_preflight(stream_url, stream_referer):
+                if not verify_stream_reachable(stream_url, stream_referer, stream_cookies):
+                    log_error(
+                        f'Primary stream host unreachable for post_id={post_id}; '
+                        'trying TamilDhool'
                     )
-                else:
-                    self._clear_autoplay()
-                    xbmcgui.Dialog().ok(addon().getAddonInfo('name'), localize(30047))
-                    xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
-                    return
+                    fallback_url, fallback_referer, fallback_cookies = resolve_fallback_stream(
+                        episode_title,
+                    )
+                    if fallback_url:
+                        stream_url, stream_referer, stream_cookies = (
+                            fallback_url,
+                            fallback_referer,
+                            fallback_cookies,
+                        )
+                    else:
+                        self._clear_autoplay()
+                        xbmcgui.Dialog().ok(addon().getAddonInfo('name'), localize(30047))
+                        xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+                        return
 
         if is_hls_url(stream_url):
             isa_status = inputstream_adaptive_status()
