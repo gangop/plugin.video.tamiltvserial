@@ -529,55 +529,67 @@ class Router:
             2000,
         )
 
-        # Prefer the published TamilDhool index (BunnyCDN) before woodviolet.
-        # Primary hosts often hang for 10+ seconds, then fail — users see "won't play".
-        stream_url, stream_referer, stream_cookies = resolve_from_fallback_index(episode_title)
-        if stream_url:
-            log(f'Using TamilDhool index for {episode_title!r}')
-        else:
+        # 1) TamilDhool index → 2) TamilTvSerial → 3) TamilDhool live scrape
+        stream_url, stream_referer, stream_cookies = '', '', ''
+
+        indexed_url, indexed_referer, indexed_cookies = resolve_from_fallback_index(
+            episode_title,
+        )
+        if indexed_url:
+            if verify_stream_reachable(indexed_url, indexed_referer, indexed_cookies):
+                log(f'Using TamilDhool index for {episode_title!r}')
+                stream_url, stream_referer, stream_cookies = (
+                    indexed_url,
+                    indexed_referer,
+                    indexed_cookies,
+                )
+            else:
+                log_error(
+                    f'TamilDhool index stream unreachable for post_id={post_id}; '
+                    'trying TamilTvSerial'
+                )
+
+        if not stream_url:
             stream_url, stream_referer, stream_cookies = resolve_episode_stream(
                 episode.get('content_html', ''),
                 episode_link=episode.get('link', ''),
                 episode_title=episode_title,
                 allow_fallback=False,
             )
-            if not stream_url:
-                log('No primary stream; trying TamilDhool fallback')
-                stream_url, stream_referer, stream_cookies = resolve_fallback_stream(
-                    episode_title,
-                )
-            if not stream_url:
-                self._clear_autoplay()
-                log_error(f'No stream resolved for post_id={post_id}')
-                xbmcgui.Dialog().notification(
-                    addon().getAddonInfo('name'),
-                    localize(30020),
-                    xbmcgui.NOTIFICATION_ERROR,
-                    5000,
-                )
-                xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
-                return
-
-            if stream_needs_preflight(stream_url, stream_referer):
+            if stream_url and stream_needs_preflight(stream_url, stream_referer):
                 if not verify_stream_reachable(stream_url, stream_referer, stream_cookies):
                     log_error(
-                        f'Primary stream host unreachable for post_id={post_id}; '
-                        'trying TamilDhool'
+                        f'TamilTvSerial stream unreachable for post_id={post_id}; '
+                        'trying TamilDhool live'
                     )
-                    fallback_url, fallback_referer, fallback_cookies = resolve_fallback_stream(
-                        episode_title,
-                    )
-                    if fallback_url:
-                        stream_url, stream_referer, stream_cookies = (
-                            fallback_url,
-                            fallback_referer,
-                            fallback_cookies,
-                        )
-                    else:
-                        self._clear_autoplay()
-                        xbmcgui.Dialog().ok(addon().getAddonInfo('name'), localize(30047))
-                        xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
-                        return
+                    stream_url, stream_referer, stream_cookies = '', '', ''
+
+        if not stream_url:
+            # Skip index here — either missing or already proven unreachable.
+            live_url, live_referer, live_cookies = resolve_fallback_stream(
+                episode_title,
+                use_index=False,
+            )
+            if live_url and verify_stream_reachable(live_url, live_referer, live_cookies):
+                stream_url, stream_referer, stream_cookies = (
+                    live_url,
+                    live_referer,
+                    live_cookies,
+                )
+            elif live_url:
+                log_error(f'TamilDhool live stream unreachable for post_id={post_id}')
+
+        if not stream_url:
+            self._clear_autoplay()
+            log_error(f'No stream resolved for post_id={post_id}')
+            xbmcgui.Dialog().notification(
+                addon().getAddonInfo('name'),
+                localize(30020),
+                xbmcgui.NOTIFICATION_ERROR,
+                5000,
+            )
+            xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+            return
 
         if is_hls_url(stream_url):
             isa_status = inputstream_adaptive_status()

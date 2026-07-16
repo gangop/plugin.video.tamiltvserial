@@ -259,7 +259,7 @@ def resolve_dailymotion_stream(video_id):
     return '', ''
 
 
-def resolve_tamildhool_stream(title):
+def resolve_tamildhool_stream(title, use_index=True):
     """Resolve the exact same episode via published index, then live page fetch."""
     show, date, channel, episode_number = parse_episode_meta(title)
     log(
@@ -267,9 +267,10 @@ def resolve_tamildhool_stream(title):
         f'show={show!r} date={date} channel={channel} episode={episode_number}'
     )
 
-    stream_url, referer, cookies = resolve_from_fallback_index(title)
-    if stream_url:
-        return stream_url, referer, cookies
+    if use_index:
+        stream_url, referer, cookies = resolve_from_fallback_index(title)
+        if stream_url:
+            return stream_url, referer, cookies
 
     urls = build_episode_urls(title)
     if not urls:

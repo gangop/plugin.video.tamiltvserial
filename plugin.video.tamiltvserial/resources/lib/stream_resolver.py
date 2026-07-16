@@ -556,8 +556,8 @@ def resolve_episode_stream(content_html, episode_link='', episode_title='', allo
     return '', '', ''
 
 
-def resolve_fallback_stream(episode_title):
-    return resolve_tamildhool_stream(episode_title)
+def resolve_fallback_stream(episode_title, use_index=True):
+    return resolve_tamildhool_stream(episode_title, use_index=use_index)
 
 
 def stream_needs_preflight(stream_url, referer=''):
