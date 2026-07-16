@@ -259,6 +259,7 @@ def _use_woodviolet_headers(referer=None, stream_url=None):
 def build_stream_headers(referer=None, cookies=None, stream_url=None):
     referer = playback_referer(referer)
     use_woodviolet = _use_woodviolet_headers(referer, stream_url)
+    stream_lower = (stream_url or '').lower()
     user_agent = WOODVIOLET_USER_AGENT if use_woodviolet else USER_AGENT
     parts = [
         f'User-Agent={encode_header_value(user_agent)}',
@@ -269,6 +270,9 @@ def build_stream_headers(referer=None, cookies=None, stream_url=None):
             'Origin=https%3A%2F%2Fwoodviolet.xyz',
             'Accept-Language=en-US%2Cen%3Bq%3D0.9',
         ])
+    elif 'b-cdn.net' in stream_lower:
+        # BunnyCDN playlists/keys return 403 without a tamildhool Origin/Referer.
+        parts.append('Origin=' + encode_header_value('https://www.tamildhool.tech'))
     if cookies:
         parts.append(f'Cookie={encode_header_value(cookies)}')
     return '&'.join(parts)

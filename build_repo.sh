@@ -56,3 +56,14 @@ echo "Created $REPO_ZIP"
 echo "Published addon zip: zips/$ADDON_ID/${ADDON_ID}-${ADDON_VERSION}.zip"
 echo "Published repo zip: zips/repository.tamiltvserial/repository.tamiltvserial-${REPO_VERSION}.zip"
 echo "Updated addons.xml and checksum files"
+
+# Bust jsDelivr CDN cache so TVs do not keep serving a stale addons.xml.
+if command -v curl >/dev/null 2>&1; then
+  for path in addons.xml addons.xml.md5 \
+    "zips/${ADDON_ID}/${ADDON_ID}-${ADDON_VERSION}.zip" \
+    "zips/repository.tamiltvserial/repository.tamiltvserial-${REPO_VERSION}.zip"; do
+    curl -fsS "https://purge.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@main/${path}" \
+      >/dev/null 2>&1 || true
+  done
+  echo "Requested jsDelivr purge for index and current zips"
+fi

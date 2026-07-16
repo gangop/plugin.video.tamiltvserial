@@ -12,19 +12,15 @@ from utils import log, log_error, strip_html
 
 
 TAMILDHOOL_BASE = 'https://www.tamildhool.tech'
-# Prefer the latest auto-generated episode index from main; pinned commit is backup.
-INDEX_REF = '9bf231bb6297b4e7200f147dbc24910b139a837a'
-FALLBACK_INDEX_MAIN_URL = (
-    'https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/main/'
-    'fallback/tamildhool.json'
+# Prefer jsDelivr on Google TV (raw.githubusercontent.com is often blocked/cached).
+# GitHub raw remains as a secondary mirror.
+FALLBACK_INDEX_URLS = (
+    'https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@main/fallback/tamildhool.json',
+    'https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/main/fallback/tamildhool.json',
 )
-FALLBACK_INDEX_PINNED_URL = (
-    f'https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/{INDEX_REF}/'
-    'fallback/tamildhool.json'
-)
-SHOW_ALIASES_MAIN_URL = (
-    'https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/main/'
-    'fallback/show_aliases.json'
+SHOW_ALIASES_URLS = (
+    'https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@main/fallback/show_aliases.json',
+    'https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/main/fallback/show_aliases.json',
 )
 # How long the in-memory episode index may be reused before re-fetching from GitHub.
 INDEX_CACHE_TTL_SECONDS = 3600
@@ -151,29 +147,31 @@ def _show_path_aliases():
         return _aliases_cache['data']
 
     aliases = dict(_BUILTIN_SHOW_ALIASES)
-    request = urllib.request.Request(
-        SHOW_ALIASES_MAIN_URL,
-        headers={
-            'User-Agent': WOODVIOLET_USER_AGENT,
-            'Accept': 'application/json',
-            'Cache-Control': 'no-cache',
-        },
-    )
-    try:
-        with urllib.request.urlopen(request, timeout=10, context=_ssl_context()) as response:
-            data = json.loads(response.read().decode('utf-8', 'replace'))
-        if isinstance(data, dict):
-            for key, value in data.items():
-                if isinstance(value, list) and value:
-                    aliases[str(key)] = tuple(str(part) for part in value if part)
-    except (
-        urllib.error.URLError,
-        urllib.error.HTTPError,
-        TimeoutError,
-        OSError,
-        ValueError,
-    ) as exc:
-        log(f'TamilDhool show aliases remote unavailable; using built-ins ({exc})')
+    for url in SHOW_ALIASES_URLS:
+        request = urllib.request.Request(
+            url,
+            headers={
+                'User-Agent': WOODVIOLET_USER_AGENT,
+                'Accept': 'application/json',
+                'Cache-Control': 'no-cache',
+            },
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=10, context=_ssl_context()) as response:
+                data = json.loads(response.read().decode('utf-8', 'replace'))
+            if isinstance(data, dict):
+                for key, value in data.items():
+                    if isinstance(value, list) and value:
+                        aliases[str(key)] = tuple(str(part) for part in value if part)
+                break
+        except (
+            urllib.error.URLError,
+            urllib.error.HTTPError,
+            TimeoutError,
+            OSError,
+            ValueError,
+        ) as exc:
+            log(f'TamilDhool show aliases unavailable from {url}: {exc}')
 
     _aliases_cache['data'] = aliases
     return aliases
@@ -334,11 +332,8 @@ def _load_fallback_index():
         return cached
 
     cache_bust = int(now // 3600)
-    urls = (
-        f'{FALLBACK_INDEX_MAIN_URL}?v={cache_bust}',
-        FALLBACK_INDEX_PINNED_URL,
-    )
-    for url in urls:
+    for base_url in FALLBACK_INDEX_URLS:
+        url = f'{base_url}?v={cache_bust}'
         request = urllib.request.Request(
             url,
             headers={
@@ -360,7 +355,8 @@ def _load_fallback_index():
             log_error(f'TamilDhool fallback index unavailable from {url}: {exc}')
             continue
 
-        if isinstance(data, dict):
+        if isinstance(data, dict) and data:
+            log(f'TamilDhool index loaded ({len(data)} episodes) from {base_url.split("/")[2]}')
             _index_cache['data'] = data
             _index_cache['fetched_at'] = now
             return data
@@ -378,7 +374,11 @@ def resolve_from_fallback_index(title):
     entry = _load_fallback_index().get(key) or {}
     stream_url = entry.get('stream') or ''
     if stream_url:
-        referer = entry.get('referer') or entry.get('page') or (TAMILDHOOL_BASE + '/')
+        # BunnyCDN requires a tamildhool.tech Referer on every playlist/segment request.
+        if 'b-cdn.net' in stream_url.lower():
+            referer = TAMILDHOOL_BASE + '/'
+        else:
+            referer = entry.get('referer') or entry.get('page') or (TAMILDHOOL_BASE + '/')
         log(f'TamilDhool index hit for {key}: {stream_url}')
         return stream_url, referer, ''
 
