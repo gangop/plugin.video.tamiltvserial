@@ -12,7 +12,7 @@ from utils import log, log_error, strip_html
 
 
 TAMILDHOOL_BASE = 'https://www.tamildhool.tech'
-# Prefer the latest index from main; keep a pinned index as a backup if GitHub raw is stale.
+# Prefer the latest auto-generated episode index from main; pinned commit is backup.
 INDEX_REF = '9bf231bb6297b4e7200f147dbc24910b139a837a'
 FALLBACK_INDEX_MAIN_URL = (
     'https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/main/'
@@ -22,6 +22,12 @@ FALLBACK_INDEX_PINNED_URL = (
     f'https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/{INDEX_REF}/'
     'fallback/tamildhool.json'
 )
+SHOW_ALIASES_MAIN_URL = (
+    'https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/main/'
+    'fallback/show_aliases.json'
+)
+# How long the in-memory episode index may be reused before re-fetching from GitHub.
+INDEX_CACHE_TTL_SECONDS = 3600
 TITLE_DATE_PATTERN = re.compile(r'(\d{1,2})-(\d{1,2})-(\d{4})')
 EPISODE_NUMBER_PATTERN = re.compile(r'Episode\s+(\d+)', re.I)
 BUNNY_PATTERN = re.compile(
@@ -42,9 +48,9 @@ CHANNEL_SLUGS = (
     ('zee tamil', 'zee-tamil'),
 )
 
-# TamilDhool folder/episode slugs that differ from the TamilTvSerial title slug.
-# TTS show slug -> (folder_slug, extra episode-path slug bases...)
-SHOW_PATH_ALIASES = {
+# Built-in show-level aliases (folder names). Episode streams are NOT stored here —
+# those come from the CI-generated tamildhool.json for every serial/show.
+_BUILTIN_SHOW_ALIASES = {
     'pudhu-vasantham': ('pudhu-vasantham', 'puthu-vasantham'),
     'sindhu-bairavi': ('sindhu-bairavi-kacheri-arambam',),
     'onna-irukka-kaththukanum': ('onna-irukka-kaththukkanum',),
@@ -53,7 +59,6 @@ SHOW_PATH_ALIASES = {
     'andakakasam': ('anda-ka-kasam-s4',),
     'jodi-are-u-ready': ('jodi-are-u-ready-s3',),
     'jodi-are-u-ready-season-3': ('jodi-are-u-ready-s3',),
-    # Zee Tamil serials / shows
     'paarijatham': ('parijatham',),
     'chinnan-siru-kiliye': ('chinna-siru-kiliye',),
     'saregamapa-lil-champs-season-5': ('saregamapa-little-champs-s5',),
@@ -61,7 +66,8 @@ SHOW_PATH_ALIASES = {
     'mahanadigai': ('mahanadigai-s2',),
 }
 
-_index_cache = {'data': None}
+_index_cache = {'data': None, 'fetched_at': 0.0}
+_aliases_cache = {'data': None}
 
 
 def _slugify(value):
@@ -126,7 +132,7 @@ def episode_index_key(title):
 
 def _path_slugs(show_slug):
     """Return (folder_slug, episode_slug_bases) for TamilDhool URLs."""
-    aliases = SHOW_PATH_ALIASES.get(show_slug)
+    aliases = _show_path_aliases().get(show_slug)
     if not aliases:
         return show_slug, [show_slug]
     folder_slug = aliases[0]
@@ -137,6 +143,40 @@ def _path_slugs(show_slug):
     if folder_slug not in episode_bases:
         episode_bases.insert(0, folder_slug)
     return folder_slug, episode_bases
+
+
+def _show_path_aliases():
+    """Show-level folder aliases (stable). Loaded from GitHub when possible."""
+    if _aliases_cache['data'] is not None:
+        return _aliases_cache['data']
+
+    aliases = dict(_BUILTIN_SHOW_ALIASES)
+    request = urllib.request.Request(
+        SHOW_ALIASES_MAIN_URL,
+        headers={
+            'User-Agent': WOODVIOLET_USER_AGENT,
+            'Accept': 'application/json',
+            'Cache-Control': 'no-cache',
+        },
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=10, context=_ssl_context()) as response:
+            data = json.loads(response.read().decode('utf-8', 'replace'))
+        if isinstance(data, dict):
+            for key, value in data.items():
+                if isinstance(value, list) and value:
+                    aliases[str(key)] = tuple(str(part) for part in value if part)
+    except (
+        urllib.error.URLError,
+        urllib.error.HTTPError,
+        TimeoutError,
+        OSError,
+        ValueError,
+    ) as exc:
+        log(f'TamilDhool show aliases remote unavailable; using built-ins ({exc})')
+
+    _aliases_cache['data'] = aliases
+    return aliases
 
 
 def build_episode_urls(title):
@@ -286,10 +326,14 @@ def _fetch_page(url, timeout=20):
 
 
 def _load_fallback_index():
-    if _index_cache['data'] is not None:
-        return _index_cache['data']
+    """Load CI-generated episode→stream map for all shows (refreshed on a TTL)."""
+    now = time.time()
+    cached = _index_cache['data']
+    fetched_at = _index_cache.get('fetched_at') or 0.0
+    if cached is not None and (now - fetched_at) < INDEX_CACHE_TTL_SECONDS:
+        return cached
 
-    cache_bust = int(time.time() // 3600)
+    cache_bust = int(now // 3600)
     urls = (
         f'{FALLBACK_INDEX_MAIN_URL}?v={cache_bust}',
         FALLBACK_INDEX_PINNED_URL,
@@ -318,10 +362,11 @@ def _load_fallback_index():
 
         if isinstance(data, dict):
             _index_cache['data'] = data
+            _index_cache['fetched_at'] = now
             return data
 
     # Don't cache failures — allow a later play attempt to retry.
-    return {}
+    return cached if isinstance(cached, dict) else {}
 
 
 def resolve_from_fallback_index(title):

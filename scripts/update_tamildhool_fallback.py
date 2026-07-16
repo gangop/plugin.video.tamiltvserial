@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
-"""Refresh fallback/tamildhool.json with exact episode -> BunnyCDN mappings.
+"""Refresh fallback/tamildhool.json for ALL recent serials and shows.
 
-Pulls recent TamilTvSerial posts for Sun/Vijay/Zee serials and shows and maps
-each episode to TamilDhool BunnyCDN (or Dailymotion) when available.
+This script is intentionally show-agnostic: it walks every Sun/Vijay/Zee
+serial and show folder on TamilTvSerial and maps whatever recent episodes
+exist to TamilDhool BunnyCDN / Dailymotion streams.
+
+Hand-maintained show folder aliases live in fallback/show_aliases.json.
+Do not add individual episode keys by hand — run this script (or the
+GitHub Action) instead.
 
 Requires: pip install cloudscraper
 """
@@ -42,8 +47,8 @@ CHANNEL_CATEGORIES = (
     (6402, 'Zee Tamil TV Shows'),
 )
 
-POSTS_PER_CHANNEL = 80
-POSTS_PER_SERIAL = 8
+POSTS_PER_CHANNEL = 120
+POSTS_PER_SERIAL = 16
 TITLE_DATE_PATTERN = re.compile(r'(\d{1,2})-(\d{1,2})-(\d{4})')
 BUNNY_PATTERN = re.compile(
     r'https://(vz-[a-z0-9-]+\.b-cdn\.net)/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/',
@@ -51,22 +56,18 @@ BUNNY_PATTERN = re.compile(
 )
 DAILYMOTION_PATTERN = re.compile(r'(?:dai\.ly/|dailymotion\.com/(?:embed/)?video/)([A-Za-z0-9]+)', re.I)
 
-# TTS show slug -> (folder_slug, extra episode-path slug bases...)
-SHOW_PATH_ALIASES = {
-    'pudhu-vasantham': ('pudhu-vasantham', 'puthu-vasantham'),
-    'sindhu-bairavi': ('sindhu-bairavi-kacheri-arambam',),
-    'onna-irukka-kaththukanum': ('onna-irukka-kaththukkanum',),
-    'startup-singam': ('startup-singam-s2',),
-    'anda-ka-kasam': ('anda-ka-kasam-s4',),
-    'andakakasam': ('anda-ka-kasam-s4',),
-    'jodi-are-u-ready': ('jodi-are-u-ready-s3',),
-    'jodi-are-u-ready-season-3': ('jodi-are-u-ready-s3',),
-    'paarijatham': ('parijatham',),
-    'chinnan-siru-kiliye': ('chinna-siru-kiliye',),
-    'saregamapa-lil-champs-season-5': ('saregamapa-little-champs-s5',),
-    'tamizha-tamizha': ('tamizha-tamizha-s3',),
-    'mahanadigai': ('mahanadigai-s2',),
-}
+ALIASES_FILE = ROOT / 'fallback' / 'show_aliases.json'
+
+
+def load_show_aliases() -> dict:
+    """Show-level TamilDhool folder aliases (not episode-specific)."""
+    if not ALIASES_FILE.is_file():
+        return {}
+    data = json.loads(ALIASES_FILE.read_text(encoding='utf-8'))
+    return {str(k): tuple(v) for k, v in data.items() if isinstance(v, list) and v}
+
+
+SHOW_PATH_ALIASES = load_show_aliases()
 
 
 def slugify(value: str) -> str:
