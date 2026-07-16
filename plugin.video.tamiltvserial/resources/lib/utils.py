@@ -433,6 +433,18 @@ def _profile_dir():
     return fs_dir
 
 
+def _force_mpegts_url(url):
+    """Bunny serves MPEG-TS as .dts; ISA/FFmpeg may reject or misread that extension."""
+    if not url or '|' in url:
+        return url
+    path = url.split('#', 1)[0].split('?', 1)[0]
+    if not path.lower().endswith('.dts'):
+        return url
+    if '?.ts' in url or '&.ts' in url or url.endswith('#.ts'):
+        return url
+    return url + ('&.ts' if '?' in url else '?.ts')
+
+
 def _file_uri(path):
     """Absolute filesystem path as a file:// URI for HLS EXT-X-KEY."""
     if not path:
@@ -449,11 +461,11 @@ def prepare_bunny_playback_url(stream_url, referer=None, timeout=12):
     Why remote Bunny URLs stall / fail on Google TV:
       1. Segments return 403 without Referer.
       2. AES-128 key fetches often omit Referer under ISA.
-      3. Segments are named .dts (MPEG-TS); FFmpeg may reject that extension.
+      3. Segments are named .dts (MPEG-TS); ISA may treat that as DTS audio.
 
-    Fix: clean local HLS (no #KODIPROP in-file — that breaks ISA Open on Android),
-    AES key as file:// next to the playlist, absolute filesystem path for ListItem,
-    ISA headers set on the ListItem only.
+    Fix: clean local HLS (no #KODIPROP in-file), AES key as data URI (file:// is
+    often unreadable by ISA on Android), absolute filesystem path for ListItem,
+    .dts → ?.ts rewrite, ISA headers on the ListItem only.
     """
     if not stream_url or 'b-cdn.net' not in stream_url.lower():
         return stream_url
@@ -500,16 +512,25 @@ def prepare_bunny_playback_url(stream_url, referer=None, timeout=12):
                     key_url = host_base + key_src
                 elif key_src.startswith('data:') or key_src.startswith('file:'):
                     lines.append(line)
+                    key_uri = key_src
                     continue
                 else:
                     key_url = urllib.parse.urljoin(base, key_src)
                 try:
+                    import base64
                     key_bytes = _http_get_bytes(key_url, headers, timeout=timeout)
-                    with open(key_fs_path, 'wb') as key_file:
-                        key_file.write(key_bytes)
-                    key_uri = _file_uri(key_fs_path)
+                    try:
+                        with open(key_fs_path, 'wb') as key_file:
+                            key_file.write(key_bytes)
+                    except OSError:
+                        pass
+                    # Prefer data URI — Android ISA often cannot open file:// keys.
+                    key_uri = (
+                        'data:text/plain;base64,'
+                        + base64.b64encode(key_bytes).decode('ascii')
+                    )
                     line = re.sub(r'URI="[^"]+"', f'URI="{key_uri}"', line, count=1)
-                    log(f'Bunny AES key cached ({len(key_bytes)} bytes)')
+                    log(f'Bunny AES key inlined ({len(key_bytes)} bytes)')
                 except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as exc:
                     log_error(f'Bunny AES key fetch failed: {exc}')
                     if key_src.startswith('/') and host_base:
@@ -526,7 +547,7 @@ def prepare_bunny_playback_url(stream_url, referer=None, timeout=12):
         if stripped and not stripped.startswith('#'):
             saw_media = True
             seg = stripped if stripped.startswith('http') else urllib.parse.urljoin(base, stripped)
-            lines.append(seg)
+            lines.append(_force_mpegts_url(seg))
             continue
         if stripped.startswith('#EXTINF') or stripped.startswith('#EXT-X-'):
             saw_media = True
@@ -544,7 +565,21 @@ def prepare_bunny_playback_url(stream_url, referer=None, timeout=12):
             handle.write(body)
     except OSError as exc:
         log_error(f'Failed to write local Bunny playlist: {exc}')
-        return media_url
+        try:
+            import xbmcvfs
+            special_file = (_play_dir or '').rstrip('/').rstrip('\\') + '/bunny_play.m3u8'
+            with xbmcvfs.File(special_file, 'w') as handle:
+                handle.write(body)
+            # Still prefer translated absolute path when available.
+            if fs_dir:
+                fs_path = os.path.join(fs_dir, 'bunny_play.m3u8')
+            else:
+                fs_path = special_file
+            log(f'Bunny local playlist ready (xbmcvfs): {fs_path}')
+            return fs_path
+        except Exception as vfs_exc:
+            log_error(f'xbmcvfs Bunny playlist write failed: {vfs_exc}')
+            return media_url
 
     if not key_uri:
         log_error('Bunny local playlist written without local AES key; playback may fail')
