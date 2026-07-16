@@ -9,7 +9,6 @@ import xbmcplugin
 from constants import CHANNEL_GROUPS, PROP_AUTOPLAY_ACTIVE, PROP_NEXT_CATEGORY, PROP_NEXT_POST, SHOW_CHANNEL_IDS, TAMIL_TV_SHOWS_ID
 from favorites import add_favorite, is_favorite, load_favorites, remove_favorite
 from scraper import (
-    find_next_post_id,
     list_posts,
     list_serial_categories,
     list_show_categories_by_latest_episode,
@@ -84,8 +83,21 @@ class Router:
     def _set_view(self, content_type='episodes'):
         xbmcplugin.setContent(self.handle, content_type)
 
-    def _favorite_context_menu(self, category_id, name):
-        if is_favorite(category_id):
+    def _favorite_ids(self):
+        return {
+            int(item['id'])
+            for item in load_favorites()
+            if item.get('id') is not None
+        }
+
+    def _favorite_context_menu(self, category_id, name, favorite_ids=None):
+        category_id = int(category_id)
+        is_fav = (
+            category_id in favorite_ids
+            if favorite_ids is not None
+            else is_favorite(category_id)
+        )
+        if is_fav:
             url = build_plugin_url(
                 self.plugin_url,
                 action='remove_favorite',
@@ -121,13 +133,21 @@ class Router:
         set_list_label(list_item, label)
         xbmcplugin.addDirectoryItem(self.handle, self.plugin_url, list_item, False)
 
-    def _add_serial_folder(self, serial):
+    def _add_serial_folder(self, serial, favorite_ids=None):
         category_id = serial['id']
         name = serial['name']
         search_query = serial.get('search_query')
         channel_id = serial.get('channel_id')
         has_category = bool(category_id) and not str(category_id).startswith('search:')
-        label = f'★ {name}' if has_category and is_favorite(category_id) else name
+        if has_category:
+            is_fav = (
+                int(category_id) in favorite_ids
+                if favorite_ids is not None
+                else is_favorite(category_id)
+            )
+        else:
+            is_fav = False
+        label = f'★ {name}' if is_fav else name
         plot = f"Latest: {serial['latest_title']}" if serial.get('latest_title') else f"{serial.get('count', 0)} episodes"
         if search_query:
             params = {
@@ -151,7 +171,11 @@ class Router:
             label,
             params,
             plot=plot,
-            context_menu=self._favorite_context_menu(category_id, name) if has_category else None,
+            context_menu=(
+                self._favorite_context_menu(category_id, name, favorite_ids)
+                if has_category
+                else None
+            ),
         )
 
     def _add_episode(self, episode, category_id=None, next_post_id=None):
@@ -285,6 +309,11 @@ class Router:
         if not favorites:
             xbmcgui.Dialog().ok(addon().getAddonInfo('name'), localize(30034))
 
+        favorite_ids = {
+            int(item['id'])
+            for item in favorites
+            if item.get('id') is not None
+        }
         for item in favorites:
             category_id = item['id']
             name = item.get('name', 'Serial')
@@ -296,7 +325,7 @@ class Router:
                     'title': name,
                     'page': 1,
                 },
-                context_menu=self._favorite_context_menu(category_id, name),
+                context_menu=self._favorite_context_menu(category_id, name, favorite_ids),
             )
 
         xbmcplugin.endOfDirectory(self.handle)
@@ -362,8 +391,9 @@ class Router:
         xbmcplugin.setPluginCategory(self.handle, title)
         self._set_view('files')
 
+        favorite_ids = self._favorite_ids()
         for serial in list_serial_categories(category_id):
-            self._add_serial_folder(serial)
+            self._add_serial_folder(serial, favorite_ids)
 
         xbmcplugin.endOfDirectory(self.handle)
 
@@ -374,13 +404,14 @@ class Router:
         xbmcplugin.setPluginCategory(self.handle, title)
         self._set_view('files')
 
+        favorite_ids = self._favorite_ids()
         for subcategory in list_show_categories_by_latest_episode(
             category_id,
             excluded_category_ids=[TAMIL_TV_SHOWS_ID],
             show_channel_ids=SHOW_CHANNEL_IDS,
             only_unclassified=only_unclassified,
         ):
-            self._add_serial_folder(subcategory)
+            self._add_serial_folder(subcategory, favorite_ids)
 
         xbmcplugin.endOfDirectory(self.handle)
 
@@ -509,7 +540,7 @@ class Router:
 
         post_id = int(post_id)
         category_id = params.get('category_id', '')
-        posts, _headers = api_get('posts', params={'include': post_id, '_embed': 1})
+        posts, _headers = api_get('posts', params={'include': post_id})
         if not posts:
             xbmcgui.Dialog().notification(
                 addon().getAddonInfo('name'),
@@ -617,5 +648,5 @@ class Router:
         apply_stream_properties(list_item, stream_url, stream_referer, cookies=stream_cookies)
         list_item.setProperty('IsPlayable', 'true')
         playback_path = list_item.getPath() if hasattr(list_item, 'getPath') else stream_url
-        log_error(f'Playing via {playback_path[:120]}')
+        log(f'Playing via {playback_path[:120]}')
         xbmcplugin.setResolvedUrl(self.handle, True, list_item)

@@ -36,11 +36,6 @@ def extract_maskr_urls(html_content):
     return urls
 
 
-def extract_maskr_url(html_content):
-    urls = extract_maskr_urls(html_content)
-    return urls[0] if urls else ''
-
-
 def list_posts(category_id=None, page=1, search=None):
     page_size = get_setting_int('page_size', 40)
     params = {
@@ -118,9 +113,9 @@ def list_serial_categories(channel_id):
         page = 1
         total_pages = 1
         while page <= total_pages and page <= 5:
+            # Titles/dates only — skip _embed to shrink empty-category scans.
             posts, headers = api_get('posts', params={
                 'categories': channel_id,
-                '_embed': '1',
                 'per_page': 100,
                 'page': page,
                 'orderby': 'date',
@@ -128,8 +123,8 @@ def list_serial_categories(channel_id):
             })
             total_pages = int(get_response_header(headers, 'X-WP-TotalPages', '1') or '1')
             for post in posts:
-                latest = normalize_post(post)
-                show_name = parse_show_title(latest.get('title', ''))
+                title = strip_html((post.get('title') or {}).get('rendered', ''))
+                show_name = parse_show_title(title)
                 key = show_name.lower()
                 empty = empty_by_name.get(key)
                 if not empty:
@@ -142,8 +137,8 @@ def list_serial_categories(channel_id):
                         'count': empty.get('count', 0),
                         'search_query': empty['name'],
                         'channel_id': channel_id,
-                        'latest_title': latest.get('title', ''),
-                        'latest_date': latest.get('date', ''),
+                        'latest_title': title,
+                        'latest_date': post.get('date', ''),
                     }
             page += 1
 
@@ -279,11 +274,6 @@ def list_show_categories_by_latest_episode(
     )
 
 
-def get_post_by_slug(slug):
-    posts, _headers = api_get('posts', params={'slug': slug, '_embed': '1'})
-    return posts[0] if posts else None
-
-
 def parse_episode_number(title):
     match = EPISODE_NUMBER_PATTERN.search(title or '')
     return int(match.group(1)) if match else None
@@ -297,48 +287,17 @@ def parse_show_title(title):
     return re.sub(r'\s+', ' ', title).strip()
 
 
-def find_next_post_id(category_id, current_post_id, current_title):
-    target_number = parse_episode_number(current_title)
-    if target_number is None:
-        return ''
-
-    wanted_number = target_number + 1
-    page = 1
-    total_pages = 1
-
-    while page <= total_pages and page <= 10:
-        posts, _, total_pages = list_posts(category_id=category_id, page=page)
-        for post in posts:
-            if post.get('id') == current_post_id:
-                continue
-            title = strip_html((post.get('title') or {}).get('rendered', ''))
-            if parse_episode_number(title) == wanted_number:
-                return str(post['id'])
-        page += 1
-
-    return ''
-
-
-def next_post_id_from_list(posts, current_index):
-    if current_index <= 0:
-        return ''
-    return str(posts[current_index - 1].get('id', ''))
-
-
 def normalize_post(post):
     content_html = (post.get('content') or {}).get('rendered', '')
+    title = strip_html((post.get('title') or {}).get('rendered', 'Episode'))
     return {
         'id': post.get('id'),
-        'title': strip_html((post.get('title') or {}).get('rendered', 'Episode')),
+        'title': title,
         'plot': strip_html((post.get('excerpt') or {}).get('rendered', '')),
         'thumb': get_featured_image(post),
         'link': post.get('link', ''),
         'date': post.get('date', ''),
         'categories': get_terms(post, 'category'),
-        'maskr_url': extract_maskr_url(content_html),
-        'maskr_urls': extract_maskr_urls(content_html),
         'content_html': content_html,
-        'episode_number': parse_episode_number(
-            strip_html((post.get('title') or {}).get('rendered', ''))
-        ),
+        'episode_number': parse_episode_number(title),
     }

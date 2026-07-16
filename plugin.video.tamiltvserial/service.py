@@ -7,11 +7,15 @@ from pathlib import Path
 import xbmc
 import xbmcgui
 
-ADDON_ID = 'plugin.video.tamiltvserial'
 ADDON_PATH = Path(__file__).resolve().parent
 sys.path.insert(0, str(ADDON_PATH / 'resources' / 'lib'))
 
-from constants import PROP_AUTOPLAY_ACTIVE, PROP_NEXT_CATEGORY, PROP_NEXT_POST  # noqa: E402
+from constants import (  # noqa: E402
+    ADDON_ID,
+    PROP_AUTOPLAY_ACTIVE,
+    PROP_NEXT_CATEGORY,
+    PROP_NEXT_POST,
+)
 from utils import addon, get_setting_bool, log  # noqa: E402
 
 
@@ -61,6 +65,7 @@ if __name__ == '__main__':
     monitor = AutoplayMonitor()
     log('Autoplay service started')
     while not monitor.abortRequested():
-        if monitor.waitForAbort(1):
+        # Notifications wake the monitor; long sleep just keeps the service alive.
+        if monitor.waitForAbort(60):
             break
     log('Autoplay service stopped')

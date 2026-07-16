@@ -47,5 +47,3 @@ ADDON_ID = 'plugin.video.tamiltvserial'
 PROP_NEXT_POST = f'{ADDON_ID}.next_post_id'
 PROP_NEXT_CATEGORY = f'{ADDON_ID}.next_category_id'
 PROP_AUTOPLAY_ACTIVE = f'{ADDON_ID}.autoplay_active'
-
-DEFAULT_PAGE_SIZE = 40

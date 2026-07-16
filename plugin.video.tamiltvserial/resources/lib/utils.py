@@ -94,14 +94,6 @@ def set_video_info(list_item, info_dict):
         info.setEpisode(episode)
 
 
-def safe_api_get(path, params=None):
-    try:
-        return api_get(path, params=params)
-    except Exception as exc:
-        log_error(f'API request failed for {path}: {exc}')
-        raise
-
-
 def addon():
     return _addon
 
@@ -246,10 +238,6 @@ def inputstream_adaptive_status():
         return 'missing'
 
 
-def has_inputstream_adaptive():
-    return inputstream_adaptive_status() == 'ready'
-
-
 def playback_referer(referer):
     referer = (referer or BASE_URL).strip()
     lower = referer.lower()
@@ -284,14 +272,9 @@ def build_stream_headers(referer=None, cookies=None, stream_url=None):
     return '&'.join(parts)
 
 
-def build_playback_url(stream_url, referer=None, cookies=None):
-    headers = build_stream_headers(referer, cookies=cookies, stream_url=stream_url)
-    return f'{stream_url}|{headers}' if headers else stream_url
-
-
 def apply_stream_properties(list_item, stream_url, referer=None, cookies=None):
     headers = build_stream_headers(referer, cookies=cookies, stream_url=stream_url)
-    playback_url = build_playback_url(stream_url, referer, cookies=cookies)
+    playback_url = f'{stream_url}|{headers}' if headers else stream_url
     list_item.setPath(playback_url)
 
     if is_hls_url(stream_url):

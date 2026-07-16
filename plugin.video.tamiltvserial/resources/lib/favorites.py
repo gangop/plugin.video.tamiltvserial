@@ -36,9 +36,10 @@ def save_favorites(items):
     log(f'Saved {len(items)} favorites')
 
 
-def is_favorite(category_id):
+def is_favorite(category_id, favorites=None):
     category_id = int(category_id)
-    return any(item.get('id') == category_id for item in load_favorites())
+    items = favorites if favorites is not None else load_favorites()
+    return any(item.get('id') == category_id for item in items)
 
 
 def add_favorite(category_id, name):

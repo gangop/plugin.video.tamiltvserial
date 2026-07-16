@@ -243,10 +243,11 @@ def _load_fallback_index():
             data = json.loads(response.read().decode('utf-8', 'replace'))
     except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError, ValueError) as exc:
         log_error(f'TamilDhool fallback index unavailable: {exc}')
-        data = {}
+        # Don't cache failures — allow a later play attempt to retry.
+        return {}
 
     if not isinstance(data, dict):
-        data = {}
+        return {}
     _index_cache['data'] = data
     return data
 
