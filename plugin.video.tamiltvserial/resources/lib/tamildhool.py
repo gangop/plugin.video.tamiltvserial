@@ -11,6 +11,10 @@ from utils import log, log_error, strip_html
 
 
 TAMILDHOOL_BASE = 'https://www.tamildhool.tech'
+FALLBACK_INDEX_URL = (
+    'https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/main/'
+    'fallback/tamildhool.json'
+)
 TITLE_DATE_PATTERN = re.compile(r'(\d{1,2})-(\d{1,2})-(\d{4})')
 EPISODE_NUMBER_PATTERN = re.compile(r'Episode\s+(\d+)', re.I)
 BUNNY_PATTERN = re.compile(
@@ -26,6 +30,8 @@ CHANNEL_SLUGS = (
     ('vijay tv', 'vijay-tv', 'vijay-tv-serial'),
     ('zee tamil', 'zee-tamil', 'zee-tamil-serial'),
 )
+
+_index_cache = {'data': None}
 
 
 def _slugify(value):
@@ -75,6 +81,14 @@ def _channel_entry(channel_name):
     return '', ''
 
 
+def episode_index_key(title):
+    show, date, channel, _episode_number = parse_episode_meta(title)
+    channel_slug, _kind_slug = _channel_entry(channel)
+    if not show or not date or not channel_slug:
+        return ''
+    return f'{channel_slug}/{_slugify(show)}/{date}'
+
+
 def build_episode_urls(title):
     """Build only exact TamilDhool episode URLs for this show/date/channel."""
     show, date, channel, _episode_number = parse_episode_meta(title)
@@ -91,10 +105,16 @@ def build_episode_urls(title):
 
     show_slug = _slugify(show)
     episode_slug = f'{show_slug}-{date}-{kind_slug}'
-    # Canonical TamilDhool episode URL only — no loose channel guessing.
     return [
         f'{TAMILDHOOL_BASE}/{channel_slug}/{kind_slug}/{show_slug}/{episode_slug}/',
     ]
+
+
+def _ssl_context():
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+    return ctx
 
 
 def _is_challenge_page(html):
@@ -107,7 +127,6 @@ def _is_challenge_page(html):
 
 
 def _page_matches_episode(final_url, html, show, date, channel):
-    """Require the opened page to be the exact selected episode."""
     show_slug = _slugify(show)
     channel_slug, kind_slug = _channel_entry(channel)
     if not show_slug or not date or not channel_slug:
@@ -116,7 +135,6 @@ def _page_matches_episode(final_url, html, show, date, channel):
     url_lower = (final_url or '').lower().rstrip('/') + '/'
     expected_tail = f'/{show_slug}/{show_slug}-{date}-{kind_slug}/'
     if expected_tail not in url_lower:
-        # Some pages keep an older slug style without the channel suffix.
         alt_tail = f'/{show_slug}/{show_slug}-{date}/'
         if alt_tail not in url_lower or f'/{channel_slug}/' not in url_lower:
             return False
@@ -128,10 +146,8 @@ def _page_matches_episode(final_url, html, show, date, channel):
         return False
     if date not in page_title and date not in (html or '')[:4000]:
         return False
-    if channel.replace(' tv', '') not in page_lower and channel not in page_lower:
-        # Channel may appear as "Sun Tv Serial" in body/title.
-        if channel_slug.replace('-', ' ') not in page_lower:
-            return False
+    if channel not in page_lower and channel_slug.replace('-', ' ') not in page_lower:
+        return False
     return True
 
 
@@ -143,13 +159,55 @@ def _fetch_page(url, timeout=20):
         'Referer': TAMILDHOOL_BASE + '/',
     }
     request = urllib.request.Request(url, headers=headers)
-    ctx = ssl.create_default_context()
-    ctx.check_hostname = False
-    ctx.verify_mode = ssl.CERT_NONE
-    opener = urllib.request.build_opener(urllib.request.HTTPSHandler(context=ctx))
+    opener = urllib.request.build_opener(urllib.request.HTTPSHandler(context=_ssl_context()))
     with opener.open(request, timeout=timeout) as response:
         html = response.read().decode('utf-8', 'replace')
         return response.geturl(), html
+
+
+def _load_fallback_index():
+    if _index_cache['data'] is not None:
+        return _index_cache['data']
+
+    request = urllib.request.Request(
+        FALLBACK_INDEX_URL,
+        headers={'User-Agent': WOODVIOLET_USER_AGENT, 'Accept': 'application/json'},
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=15, context=_ssl_context()) as response:
+            data = json.loads(response.read().decode('utf-8', 'replace'))
+    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError, ValueError) as exc:
+        log_error(f'TamilDhool fallback index unavailable: {exc}')
+        data = {}
+
+    if not isinstance(data, dict):
+        data = {}
+    _index_cache['data'] = data
+    return data
+
+
+def resolve_from_fallback_index(title):
+    """Resolve exact episode from the published GitHub index (no Cloudflare)."""
+    key = episode_index_key(title)
+    if not key:
+        return '', '', ''
+
+    entry = _load_fallback_index().get(key) or {}
+    stream_url = entry.get('stream') or ''
+    if stream_url:
+        referer = entry.get('referer') or entry.get('page') or (TAMILDHOOL_BASE + '/')
+        log(f'TamilDhool index hit for {key}: {stream_url}')
+        return stream_url, referer, ''
+
+    video_id = entry.get('dailymotion') or ''
+    if video_id:
+        stream_url, referer = resolve_dailymotion_stream(video_id)
+        if stream_url:
+            log(f'TamilDhool index Dailymotion hit for {key}')
+            return stream_url, referer, ''
+
+    log(f'TamilDhool index miss for {key}')
+    return '', '', ''
 
 
 def extract_bunny_playlists(html):
@@ -185,11 +243,8 @@ def resolve_dailymotion_stream(video_id):
         'Referer': 'https://www.dailymotion.com/',
     }
     request = urllib.request.Request(metadata_url, headers=headers)
-    ctx = ssl.create_default_context()
-    ctx.check_hostname = False
-    ctx.verify_mode = ssl.CERT_NONE
     try:
-        with urllib.request.urlopen(request, timeout=15, context=ctx) as response:
+        with urllib.request.urlopen(request, timeout=15, context=_ssl_context()) as response:
             data = json.loads(response.read().decode('utf-8', 'replace'))
     except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError, ValueError) as exc:
         log_error(f'Dailymotion metadata failed for {video_id}: {exc}')
@@ -205,21 +260,29 @@ def resolve_dailymotion_stream(video_id):
 
 
 def resolve_tamildhool_stream(title):
-    """Resolve the exact same episode on TamilDhool (same show, date, and channel)."""
+    """Resolve the exact same episode via published index, then live page fetch."""
     show, date, channel, episode_number = parse_episode_meta(title)
-    urls = build_episode_urls(title)
-    if not urls:
-        return '', '', ''
-
     log(
         'TamilDhool exact episode: '
         f'show={show!r} date={date} channel={channel} episode={episode_number}'
     )
+
+    stream_url, referer, cookies = resolve_from_fallback_index(title)
+    if stream_url:
+        return stream_url, referer, cookies
+
+    urls = build_episode_urls(title)
+    if not urls:
+        return '', '', ''
+
     for page_url in urls:
         log(f'TamilDhool fetching exact URL: {page_url}')
         try:
             final_url, html = _fetch_page(page_url)
-        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as exc:
+        except urllib.error.HTTPError as exc:
+            log_error(f'TamilDhool fetch failed for {page_url}: HTTP {exc.code}')
+            continue
+        except (urllib.error.URLError, TimeoutError, OSError) as exc:
             log_error(f'TamilDhool fetch failed for {page_url}: {exc}')
             continue
 
@@ -243,10 +306,10 @@ def resolve_tamildhool_stream(title):
             return stream_url, final_url, ''
 
         for video_id in extract_dailymotion_ids(html):
-            stream_url, referer = resolve_dailymotion_stream(video_id)
+            stream_url, dm_referer = resolve_dailymotion_stream(video_id)
             if stream_url:
                 log(f'TamilDhool Dailymotion stream for exact episode: {stream_url}')
-                return stream_url, referer or final_url, ''
+                return stream_url, dm_referer or final_url, ''
 
         log(f'TamilDhool exact page had no playable sources: {final_url}')
 
