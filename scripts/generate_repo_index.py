@@ -27,10 +27,10 @@ def generate(addon_xmls: list[Path], output_dir: Path) -> list[tuple[str, str]]:
     addons_xml.write_bytes(b'<?xml version="1.0" encoding="UTF-8"?>\n' + xml_bytes + b'\n')
 
     payload = addons_xml.read_bytes()
-    (output_dir / 'addons.xml.md5').write_text(
-        hashlib.md5(payload).hexdigest() + '\n',
-        encoding='utf-8',
-    )
+    digest = hashlib.md5(payload).hexdigest() + '\n'
+    (output_dir / 'addons.xml.md5').write_text(digest, encoding='utf-8')
+    # jsDelivr returns HTTP 403 for *.md5 paths; keep a non-.md5 mirror for CDN repos.
+    (output_dir / 'addons.xml.checksum').write_text(digest, encoding='utf-8')
     (output_dir / 'addons.xml.sha256').write_text(
         hashlib.sha256(payload).hexdigest() + '\n',
         encoding='utf-8',

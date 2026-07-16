@@ -59,7 +59,7 @@ echo "Updated addons.xml and checksum files"
 
 # Bust jsDelivr CDN cache so TVs do not keep serving a stale addons.xml.
 if command -v curl >/dev/null 2>&1; then
-  for path in addons.xml addons.xml.md5 \
+  for path in addons.xml addons.xml.md5 addons.xml.checksum \
     "zips/${ADDON_ID}/${ADDON_ID}-${ADDON_VERSION}.zip" \
     "zips/repository.tamiltvserial/repository.tamiltvserial-${REPO_VERSION}.zip"; do
     curl -fsS "https://purge.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@main/${path}" \
