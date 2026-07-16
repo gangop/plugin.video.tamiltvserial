@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="repository.tamiltvserial" name="Tamil TV Serial Repository" version="1.0.7" provider-name="TV Clone">
+<addon id="repository.tamiltvserial" name="Tamil TV Serial Repository" version="1.0.8" provider-name="TV Clone">
     <extension point="xbmc.addon.repository" name="Tamil TV Serial Repository">
         <!--
-          jsDelivr blocks *.md5 with HTTP 403, which made Kodi reject the index and
-          keep an old cached catalog (e.g. stuck on addon 1.1.39). Use the
-          addons.xml.checksum mirror on jsDelivr, with GitHub raw as fallback.
+          Prefer GitHub raw first. jsDelivr @main can stay stale for hours and has
+          returned mismatched addons.xml vs checksum, which left TVs stuck on old
+          addon versions. jsDelivr remains as a secondary mirror for zip downloads.
         -->
-        <dir>
-            <info compressed="false">https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@main/addons.xml</info>
-            <checksum>https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@main/addons.xml.checksum</checksum>
-            <datadir zip="true">https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@main/zips/</datadir>
-            <hashes>false</hashes>
-        </dir>
         <dir>
             <info compressed="false">https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/main/addons.xml</info>
             <checksum>https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/main/addons.xml.md5</checksum>
             <datadir zip="true">https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/main/zips/</datadir>
+            <hashes>false</hashes>
+        </dir>
+        <dir>
+            <info compressed="false">https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@main/addons.xml</info>
+            <checksum>https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@main/addons.xml.checksum</checksum>
+            <datadir zip="true">https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@main/zips/</datadir>
             <hashes>false</hashes>
         </dir>
     </extension>
