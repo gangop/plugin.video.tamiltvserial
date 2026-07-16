@@ -33,15 +33,22 @@ TEAMSTODAY_PATTERN = re.compile(
     re.I,
 )
 CHANNEL_SLUGS = (
-    ('sun tv', 'sun-tv', 'sun-tv-serial'),
-    ('vijay tv', 'vijay-tv', 'vijay-tv-serial'),
-    ('zee tamil', 'zee-tamil', 'zee-tamil-serial'),
+    ('sun tv', 'sun-tv'),
+    ('vijay tv', 'vijay-tv'),
+    ('zee tamil', 'zee-tamil'),
 )
 
-# TamilDhool sometimes uses a different episode-path slug than the show folder.
-# folder slug -> extra episode-path slugs to try (folder slug is always tried first).
-EPISODE_SLUG_ALIASES = {
-    'pudhu-vasantham': ('puthu-vasantham',),
+# TamilDhool folder/episode slugs that differ from the TamilTvSerial title slug.
+# TTS show slug -> (folder_slug, extra episode-path slug bases...)
+SHOW_PATH_ALIASES = {
+    'pudhu-vasantham': ('pudhu-vasantham', 'puthu-vasantham'),
+    'sindhu-bairavi': ('sindhu-bairavi-kacheri-arambam',),
+    'onna-irukka-kaththukanum': ('onna-irukka-kaththukkanum',),
+    'startup-singam': ('startup-singam-s2',),
+    'anda-ka-kasam': ('anda-ka-kasam-s4',),
+    'andakakasam': ('anda-ka-kasam-s4',),
+    'jodi-are-u-ready': ('jodi-are-u-ready-s3',),
+    'jodi-are-u-ready-season-3': ('jodi-are-u-ready-s3',),
 }
 
 _index_cache = {'data': None}
@@ -58,7 +65,7 @@ def _normalize_date(day, month, year):
 
 def parse_episode_meta(title):
     """Return (show, date DD-MM-YYYY, channel_name, episode_number)."""
-    title = (title or '').strip()
+    title = strip_html(title or '')
     if not title:
         return '', '', '', None
 
@@ -74,7 +81,7 @@ def parse_episode_meta(title):
 
     channel = ''
     lower = title.lower()
-    for name, _channel_slug, _kind_slug in CHANNEL_SLUGS:
+    for name, _channel_slug in CHANNEL_SLUGS:
         if name in lower:
             channel = name
             break
@@ -87,27 +94,39 @@ def parse_episode_meta(title):
     return show, date, channel, episode_number
 
 
-def _channel_entry(channel_name):
-    for name, channel_slug, kind_slug in CHANNEL_SLUGS:
+def _is_show_title(title):
+    return 'tv show' in (title or '').lower()
+
+
+def _channel_entry(channel_name, title=''):
+    for name, channel_slug in CHANNEL_SLUGS:
         if name == channel_name:
-            return channel_slug, kind_slug
+            kind = 'show' if _is_show_title(title) else 'serial'
+            return channel_slug, f'{channel_slug}-{kind}'
     return '', ''
 
 
 def episode_index_key(title):
     show, date, channel, _episode_number = parse_episode_meta(title)
-    channel_slug, _kind_slug = _channel_entry(channel)
+    channel_slug, _kind_slug = _channel_entry(channel, title)
     if not show or not date or not channel_slug:
         return ''
     return f'{channel_slug}/{_slugify(show)}/{date}'
 
 
-def _episode_path_slugs(show_slug):
-    slugs = [show_slug]
-    for alias in EPISODE_SLUG_ALIASES.get(show_slug, ()):
-        if alias and alias not in slugs:
-            slugs.append(alias)
-    return slugs
+def _path_slugs(show_slug):
+    """Return (folder_slug, episode_slug_bases) for TamilDhool URLs."""
+    aliases = SHOW_PATH_ALIASES.get(show_slug)
+    if not aliases:
+        return show_slug, [show_slug]
+    folder_slug = aliases[0]
+    episode_bases = []
+    for alias in aliases:
+        if alias and alias not in episode_bases:
+            episode_bases.append(alias)
+    if folder_slug not in episode_bases:
+        episode_bases.insert(0, folder_slug)
+    return folder_slug, episode_bases
 
 
 def build_episode_urls(title):
@@ -120,16 +139,22 @@ def build_episode_urls(title):
         )
         return []
 
-    channel_slug, kind_slug = _channel_entry(channel)
+    channel_slug, kind_slug = _channel_entry(channel, title)
     if not channel_slug:
         return []
 
     show_slug = _slugify(show)
+    folder_slug, episode_bases = _path_slugs(show_slug)
     urls = []
-    for episode_slug_base in _episode_path_slugs(show_slug):
+    for episode_slug_base in episode_bases:
         episode_slug = f'{episode_slug_base}-{date}-{kind_slug}'
         urls.append(
-            f'{TAMILDHOOL_BASE}/{channel_slug}/{kind_slug}/{show_slug}/{episode_slug}/'
+            f'{TAMILDHOOL_BASE}/{channel_slug}/{kind_slug}/{folder_slug}/{episode_slug}/'
+        )
+        # Some older pages omit the trailing kind suffix.
+        urls.append(
+            f'{TAMILDHOOL_BASE}/{channel_slug}/{kind_slug}/{folder_slug}/'
+            f'{episode_slug_base}-{date}/'
         )
     return urls
 
@@ -151,20 +176,21 @@ def _is_challenge_page(html):
     return False
 
 
-def _page_matches_episode(final_url, html, show, date, channel):
+def _page_matches_episode(final_url, html, show, date, channel, title=''):
     show_slug = _slugify(show)
-    channel_slug, kind_slug = _channel_entry(channel)
+    channel_slug, kind_slug = _channel_entry(channel, title or show)
     if not show_slug or not date or not channel_slug:
         return False
 
+    folder_slug, episode_bases = _path_slugs(show_slug)
     url_lower = (final_url or '').lower().rstrip('/') + '/'
-    if f'/{channel_slug}/' not in url_lower or f'/{show_slug}/' not in url_lower:
+    if f'/{channel_slug}/' not in url_lower or f'/{folder_slug}/' not in url_lower:
         return False
 
     matched_path = False
-    for episode_slug_base in _episode_path_slugs(show_slug):
-        expected_tail = f'/{show_slug}/{episode_slug_base}-{date}-{kind_slug}/'
-        alt_tail = f'/{show_slug}/{episode_slug_base}-{date}/'
+    for episode_slug_base in episode_bases:
+        expected_tail = f'/{folder_slug}/{episode_slug_base}-{date}-{kind_slug}/'
+        alt_tail = f'/{folder_slug}/{episode_slug_base}-{date}/'
         if expected_tail in url_lower or alt_tail in url_lower:
             matched_path = True
             break
@@ -174,7 +200,8 @@ def _page_matches_episode(final_url, html, show, date, channel):
     title_match = re.search(r'<title[^>]*>(.*?)</title>', html or '', re.I | re.S)
     page_title = strip_html(title_match.group(1) if title_match else '')
     page_lower = page_title.lower()
-    if show.lower() not in page_lower:
+    # Alias folders (e.g. Andakakasam -> Anda Ka Kasam) may not contain the TTS title.
+    if show.lower() not in page_lower and folder_slug.replace('-', ' ') not in page_lower:
         return False
     if date not in page_title and date not in (html or '')[:4000]:
         return False
@@ -330,7 +357,7 @@ def resolve_tamildhool_stream(title, use_index=True):
         if not html:
             continue
 
-        if not _page_matches_episode(final_url, html, show, date, channel):
+        if not _page_matches_episode(final_url, html, show, date, channel, title):
             log_error(
                 f'TamilDhool page did not match selected episode '
                 f'(wanted {show} {date} {channel}, got {final_url})'

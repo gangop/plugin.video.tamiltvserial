@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """Refresh fallback/tamildhool.json with exact episode -> BunnyCDN mappings.
 
-Pulls recent TamilTvSerial posts for Sun/Vijay/Zee and maps each episode to
-TamilDhool BunnyCDN (or Dailymotion) when available.
+Pulls recent TamilTvSerial posts for Sun/Vijay/Zee serials and shows and maps
+each episode to TamilDhool BunnyCDN (or Dailymotion) when available.
 
 Requires: pip install cloudscraper
 """
 
 from __future__ import annotations
 
+import html
 import json
 import re
 import ssl
@@ -26,16 +27,19 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / 'fallback' / 'tamildhool.json'
 
 CHANNEL_SLUGS = {
-    'sun tv': ('sun-tv', 'sun-tv-serial'),
-    'vijay tv': ('vijay-tv', 'vijay-tv-serial'),
-    'zee tamil': ('zee-tamil', 'zee-tamil-serial'),
+    'sun tv': 'sun-tv',
+    'vijay tv': 'vijay-tv',
+    'zee tamil': 'zee-tamil',
 }
 
-# Channel category IDs on TamilTvSerial.com
+# Channel / show category IDs on TamilTvSerial.com
 CHANNEL_CATEGORIES = (
     (5, 'Sun TV'),
     (3, 'Vijay TV'),
     (4, 'Zee Tamil'),
+    (6392, 'Sun TV Shows'),
+    (6383, 'Vijay TV Shows'),
+    (6402, 'Zee Tamil TV Shows'),
 )
 
 POSTS_PER_CHANNEL = 80
@@ -47,6 +51,18 @@ BUNNY_PATTERN = re.compile(
 )
 DAILYMOTION_PATTERN = re.compile(r'(?:dai\.ly/|dailymotion\.com/(?:embed/)?video/)([A-Za-z0-9]+)', re.I)
 
+# TTS show slug -> (folder_slug, extra episode-path slug bases...)
+SHOW_PATH_ALIASES = {
+    'pudhu-vasantham': ('pudhu-vasantham', 'puthu-vasantham'),
+    'sindhu-bairavi': ('sindhu-bairavi-kacheri-arambam',),
+    'onna-irukka-kaththukanum': ('onna-irukka-kaththukkanum',),
+    'startup-singam': ('startup-singam-s2',),
+    'anda-ka-kasam': ('anda-ka-kasam-s4',),
+    'andakakasam': ('anda-ka-kasam-s4',),
+    'jodi-are-u-ready': ('jodi-are-u-ready-s3',),
+    'jodi-are-u-ready-season-3': ('jodi-are-u-ready-s3',),
+}
+
 
 def slugify(value: str) -> str:
     value = re.sub(r'[^a-z0-9]+', '-', (value or '').lower()).strip('-')
@@ -54,7 +70,28 @@ def slugify(value: str) -> str:
 
 
 def strip_html(value: str) -> str:
-    return re.sub(r'<[^>]+>', '', value or '')
+    text = re.sub(r'<[^>]+>', ' ', value or '')
+    return html.unescape(re.sub(r'\s+', ' ', text)).strip()
+
+
+def kind_slug(channel: str, title: str) -> str:
+    channel_slug = CHANNEL_SLUGS[channel]
+    kind = 'show' if 'tv show' in (title or '').lower() else 'serial'
+    return f'{channel_slug}-{kind}'
+
+
+def path_slugs(show_slug: str):
+    aliases = SHOW_PATH_ALIASES.get(show_slug)
+    if not aliases:
+        return show_slug, [show_slug]
+    folder_slug = aliases[0]
+    episode_bases = []
+    for alias in aliases:
+        if alias and alias not in episode_bases:
+            episode_bases.append(alias)
+    if folder_slug not in episode_bases:
+        episode_bases.insert(0, folder_slug)
+    return folder_slug, episode_bases
 
 
 def parse_title(title: str):
@@ -76,7 +113,7 @@ def parse_title(title: str):
     show = re.sub(r'\s+', ' ', show).strip(' -|')
     if not show:
         return None
-    return show, date, channel
+    return show, date, channel, title
 
 
 def _ssl_context():
@@ -125,15 +162,15 @@ def _add_episode(episodes: dict, post: dict):
     meta = parse_title(title)
     if not meta:
         return
-    show, date, channel = meta
-    channel_slug, _kind = CHANNEL_SLUGS[channel]
+    show, date, channel, full_title = meta
+    channel_slug = CHANNEL_SLUGS[channel]
     key = f'{channel_slug}/{slugify(show)}/{date}'
     if key not in episodes:
-        episodes[key] = (title, show, date, channel)
+        episodes[key] = (full_title, show, date, channel)
 
 
 def collect_episodes():
-    """Collect recent episodes from channel feeds and each serial folder."""
+    """Collect recent episodes from channel feeds and each serial/show folder."""
     episodes = {}
     per_page = 40
     pages = max(1, (POSTS_PER_CHANNEL + per_page - 1) // per_page)
@@ -183,33 +220,31 @@ def collect_episodes():
     return episodes
 
 
-EPISODE_SLUG_ALIASES = {
-    'pudhu-vasantham': ('puthu-vasantham',),
-}
-
-
-def resolve_page(scraper, show: str, date: str, channel: str):
-    channel_slug, kind_slug = CHANNEL_SLUGS[channel]
+def resolve_page(scraper, show: str, date: str, channel: str, title: str):
+    channel_slug = CHANNEL_SLUGS[channel]
+    kind = kind_slug(channel, title)
     show_slug = slugify(show)
-    episode_bases = [show_slug] + [
-        alias for alias in EPISODE_SLUG_ALIASES.get(show_slug, ()) if alias != show_slug
-    ]
+    folder_slug, episode_bases = path_slugs(show_slug)
 
     pages = []
     for episode_slug_base in episode_bases:
         pages.append(
-            f'https://www.tamildhool.tech/{channel_slug}/{kind_slug}/'
-            f'{show_slug}/{episode_slug_base}-{date}-{kind_slug}/'
+            f'https://www.tamildhool.tech/{channel_slug}/{kind}/'
+            f'{folder_slug}/{episode_slug_base}-{date}-{kind}/'
+        )
+        pages.append(
+            f'https://www.tamildhool.tech/{channel_slug}/{kind}/'
+            f'{folder_slug}/{episode_slug_base}-{date}/'
         )
 
     # If canonical URLs 404/410, discover the dated link from the show folder.
-    show_index = f'https://www.tamildhool.tech/{channel_slug}/{kind_slug}/{show_slug}/'
+    show_index = f'https://www.tamildhool.tech/{channel_slug}/{kind}/{folder_slug}/'
     try:
         listing = scraper.get(show_index, timeout=30)
         if listing.status_code == 200:
             found = re.findall(
-                rf'https://www\.tamildhool\.tech/{channel_slug}/{kind_slug}/{show_slug}/'
-                rf'[^\"\']+-{re.escape(date)}-{kind_slug}/',
+                rf'https://www\.tamildhool\.tech/{channel_slug}/{kind}/{folder_slug}/'
+                rf'[^\"\']+-{re.escape(date)}(?:-{kind})?/',
                 listing.text,
                 re.I,
             )
@@ -217,7 +252,7 @@ def resolve_page(scraper, show: str, date: str, channel: str):
                 if url not in pages:
                     pages.append(url)
     except Exception as exc:
-        print(f'  listing fail {show_slug}: {exc}')
+        print(f'  listing fail {folder_slug}: {exc}')
 
     last_status = 0
     last_page = pages[0] if pages else ''
@@ -261,7 +296,7 @@ def main() -> int:
 
     ok = skip = fail = 0
     for key, (title, show, date, channel) in sorted(episodes.items()):
-        page, stream, dm, status = resolve_page(scraper, show, date, channel)
+        page, stream, dm, status = resolve_page(scraper, show, date, channel, title)
         if not stream and not dm:
             print(f'SKIP {key} ({status})')
             skip += 1
