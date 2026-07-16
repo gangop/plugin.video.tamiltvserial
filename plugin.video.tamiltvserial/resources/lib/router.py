@@ -363,7 +363,7 @@ class Router:
         source = candidate.get('source', 'unknown')
         title = episode.get('title', 'Episode')
 
-        # BunnyCDN uses a local rewritten playlist, but still needs ISA for AES-128 HLS.
+        # BunnyCDN / HLS needs InputStream Adaptive for AES-128 and .dts segments.
         if is_hls_url(stream_url) or 'b-cdn.net' in (stream_url or '').lower():
             isa_status = inputstream_adaptive_status()
             if isa_status == 'disabled':
@@ -373,7 +373,14 @@ class Router:
                 xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
                 return False
             if isa_status == 'missing':
-                log_error('InputStream Adaptive status reported missing; trying playback anyway')
+                self._clear_autoplay()
+                self._clear_failover()
+                xbmcgui.Dialog().ok(
+                    localize(30038) or 'InputStream Adaptive required',
+                    localize(30037),
+                )
+                xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+                return False
 
         self._schedule_autoplay(next_post_id, category_id)
         self._store_failover(remaining_sources or [], episode, next_post_id, category_id)

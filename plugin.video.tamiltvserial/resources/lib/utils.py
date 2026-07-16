@@ -234,14 +234,20 @@ def is_hls_url(url):
 
 
 def inputstream_adaptive_status():
+    """Return 'ready', 'disabled', or 'missing' for inputstream.adaptive."""
     try:
         isa = Addon('inputstream.adaptive')
+    except Exception as exc:
+        # Kodi logs: Exception Unknown addon id 'inputstream.adaptive'
+        log_error(f'InputStream Adaptive not installed: {exc}')
+        return 'missing'
+    try:
         enabled = isa.getAddonInfo('enabled')
         if enabled in ('false', '0', False):
             return 'disabled'
         return 'ready'
     except Exception as exc:
-        log_error(f'InputStream Adaptive check failed: {exc}')
+        log_error(f'InputStream Adaptive status check failed: {exc}')
         return 'missing'
 
 
