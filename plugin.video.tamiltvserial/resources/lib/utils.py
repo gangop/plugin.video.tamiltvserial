@@ -253,9 +253,11 @@ def playback_referer(referer):
 def _use_woodviolet_headers(referer=None, stream_url=None):
     referer_lower = (referer or '').lower()
     stream_lower = (stream_url or '').lower()
-    if 'woodviolet.xyz' in referer_lower:
+    if 'woodviolet' in referer_lower or 'woodviolet' in stream_lower:
         return True
-    return '/stream/variant/' in stream_lower and stream_lower.endswith('.m3u8')
+    return '.click/stream/' in stream_lower or (
+        '/stream/variant/' in stream_lower and stream_lower.endswith('.m3u8')
+    )
 
 
 def build_stream_headers(referer=None, cookies=None, stream_url=None):

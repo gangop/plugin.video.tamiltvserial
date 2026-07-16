@@ -576,22 +576,27 @@ def verify_stream_reachable(stream_url, referer='', cookies='', timeout=6):
         return False
 
     lower = stream_url.lower()
-    # These woodviolet CDN hosts often pass a short HEAD/GET but never start on device.
-    if '.click/stream/' in lower or 'woodviolet' in lower and '/stream/variant/' in lower:
-        log_error(f'Skipping unreliable woodviolet CDN host: {stream_url[:80]}')
-        return False
+    referer_lower = (referer or '').lower()
+    use_woodviolet = (
+        stream_needs_preflight(stream_url, referer)
+        or 'woodviolet' in lower
+        or 'woodviolet' in referer_lower
+        or '.click/stream/' in lower
+    )
 
     headers = {
-        'User-Agent': WOODVIOLET_USER_AGENT if stream_needs_preflight(stream_url, referer) else USER_AGENT,
+        'User-Agent': WOODVIOLET_USER_AGENT if use_woodviolet else USER_AGENT,
         'Accept': '*/*',
         'Referer': referer or BASE_URL,
     }
-    if 'woodviolet.xyz' in (referer or '').lower():
+    if use_woodviolet:
         headers['Origin'] = 'https://woodviolet.xyz'
         headers['Accept-Language'] = 'en-US,en;q=0.9'
+        if 'woodviolet' not in (headers['Referer'] or '').lower():
+            headers['Referer'] = 'https://woodviolet.xyz/'
     elif 'b-cdn.net' in lower:
         headers['Origin'] = 'https://www.tamildhool.tech'
-        if not referer or 'tamildhool' not in (referer or '').lower():
+        if not referer or 'tamildhool' not in referer_lower:
             headers['Referer'] = 'https://www.tamildhool.tech/'
     if cookies:
         headers['Cookie'] = cookies
