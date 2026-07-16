@@ -12,7 +12,7 @@ from utils import log, log_error, strip_html
 
 TAMILDHOOL_BASE = 'https://www.tamildhool.tech'
 # Bump INDEX_VERSION whenever fallback/tamildhool.json is refreshed (raw CDN caches ~5m).
-INDEX_VERSION = '20260716b'
+INDEX_VERSION = '20260716c'
 FALLBACK_INDEX_URL = (
     'https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/main/'
     f'fallback/tamildhool.json?v={INDEX_VERSION}'
