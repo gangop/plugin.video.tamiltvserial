@@ -136,7 +136,10 @@ def log(message, level=None):
     if xbmc and hasattr(xbmc, 'log'):
         xbmc.log(f'[{ADDON_ID}] {message}', level)
         return
-    _addon.log(str(message), level)
+    try:
+        _addon.log(str(message), level)
+    except Exception:
+        sys.stderr.write(f'[{ADDON_ID}] {message}\n')
 
 
 def log_error(message):
@@ -241,7 +244,10 @@ def inputstream_adaptive_status():
         return 'missing'
 
 
-def playback_referer(referer):
+def playback_referer(referer, stream_url=None):
+    stream_lower = (stream_url or '').lower()
+    if 'b-cdn.net' in stream_lower or 'tamildhool' in stream_lower:
+        return 'https://www.tamildhool.tech/'
     referer = (referer or BASE_URL).strip()
     lower = referer.lower()
     if 'vimeocdn.com' in lower:
@@ -262,7 +268,7 @@ def _use_woodviolet_headers(referer=None, stream_url=None):
 
 
 def build_stream_headers(referer=None, cookies=None, stream_url=None):
-    referer = playback_referer(referer)
+    referer = playback_referer(referer, stream_url=stream_url)
     use_woodviolet = _use_woodviolet_headers(referer, stream_url)
     stream_lower = (stream_url or '').lower()
     user_agent = WOODVIOLET_USER_AGENT if use_woodviolet else USER_AGENT
@@ -318,7 +324,6 @@ def prefer_media_playlist(stream_url, referer=None, timeout=8):
 
 
 def _http_get_bytes(url, headers, timeout=12, retries=3):
-    request = urllib.request.Request(url, headers=headers)
     context = None
     try:
         import ssl
@@ -330,6 +335,7 @@ def _http_get_bytes(url, headers, timeout=12, retries=3):
 
     last_exc = None
     for attempt in range(max(1, int(retries))):
+        request = urllib.request.Request(url, headers=headers)
         try:
             try:
                 with urllib.request.urlopen(request, timeout=timeout, context=context) as response:
@@ -339,7 +345,6 @@ def _http_get_bytes(url, headers, timeout=12, retries=3):
                     return response.read()
         except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as exc:
             last_exc = exc
-            # BunnyCDN occasionally 403s transiently; brief retry helps prepare.
             code = getattr(exc, 'code', None)
             if attempt + 1 < retries and (code in (403, 429, 500, 502, 503) or code is None):
                 try:
@@ -408,7 +413,8 @@ def prepare_bunny_playback_url(stream_url, referer=None, timeout=12):
     if not stream_url or 'b-cdn.net' not in stream_url.lower():
         return stream_url
 
-    referer = playback_referer(referer) or 'https://www.tamildhool.tech/'
+    # BunnyCDN hard-requires tamildhool.tech — never use TamilTvSerial as Referer.
+    referer = 'https://www.tamildhool.tech/'
     media_url = prefer_media_playlist(stream_url, referer=referer, timeout=timeout)
     headers = {
         'User-Agent': USER_AGENT,
@@ -528,14 +534,12 @@ def is_local_bunny_playlist(path):
 
 def apply_stream_properties(list_item, stream_url, referer=None, cookies=None):
     """Configure ListItem for playback. For ISA, never put |headers on the path."""
-    referer = playback_referer(referer)
-    is_bunny = is_hls_url(stream_url) and 'b-cdn.net' in stream_url.lower()
+    is_bunny = is_hls_url(stream_url) and 'b-cdn.net' in (stream_url or '').lower()
+    referer = playback_referer(referer, stream_url=stream_url)
     if is_bunny:
         stream_url = prepare_bunny_playback_url(stream_url, referer=referer)
 
-    headers = build_stream_headers(referer, cookies=cookies, stream_url=stream_url)
-    if is_bunny and not (stream_url or '').lower().startswith('http'):
-        headers = build_stream_headers(referer, cookies=cookies, stream_url='https://vz.b-cdn.net/x')
+    headers = build_stream_headers(referer, cookies=cookies, stream_url=stream_url if not is_bunny else 'https://vz.b-cdn.net/x')
 
     local_bunny = is_local_bunny_playlist(stream_url)
     if local_bunny or is_hls_url(stream_url):
