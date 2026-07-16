@@ -47,7 +47,12 @@ rm -f "$REPO_ZIP" "$REPO_ZIP_ALIAS"
     -x "*.DS_Store" -x "*/__MACOSX/*" -x "__MACOSX/*" -x "__pycache__/*" -x "*__pycache__*" -x "*.pyc"
 )
 cp "$REPO_ZIP" "$REPO_ZIP_ALIAS"
+mkdir -p "$ZIPS_DIR/repository.tamiltvserial"
+cp "$REPO_ZIP" "$ZIPS_DIR/repository.tamiltvserial/repository.tamiltvserial-${REPO_VERSION}.zip"
+# Keep only the current repository zip in the datadir.
+find "$ZIPS_DIR/repository.tamiltvserial" -name 'repository.tamiltvserial-*.zip' ! -name "repository.tamiltvserial-${REPO_VERSION}.zip" -delete
 
 echo "Created $REPO_ZIP"
 echo "Published addon zip: zips/$ADDON_ID/${ADDON_ID}-${ADDON_VERSION}.zip"
+echo "Published repo zip: zips/repository.tamiltvserial/repository.tamiltvserial-${REPO_VERSION}.zip"
 echo "Updated addons.xml and checksum files"
