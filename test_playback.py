@@ -138,7 +138,7 @@ def main():
     for index, url in enumerate(maskr_urls, 1):
         print(f"  Source {index}: {url}")
 
-    stream_url, stream_referer = sr.resolve_episode_stream(
+    stream_url, stream_referer, _cookies = sr.resolve_episode_stream(
         episode['content_html'],
         episode_link=episode['link'],
     )

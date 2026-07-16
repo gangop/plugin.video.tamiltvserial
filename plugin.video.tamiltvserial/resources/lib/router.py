@@ -8,7 +8,14 @@ import xbmcplugin
 
 from constants import CHANNEL_GROUPS, PROP_AUTOPLAY_ACTIVE, PROP_NEXT_CATEGORY, PROP_NEXT_POST, SHOW_CHANNEL_IDS, TAMIL_TV_SHOWS_ID
 from favorites import add_favorite, is_favorite, load_favorites, remove_favorite
-from scraper import find_next_post_id, list_child_categories, list_posts, list_show_categories_by_latest_episode, normalize_post
+from scraper import (
+    find_next_post_id,
+    list_posts,
+    list_serial_categories,
+    list_show_categories_by_latest_episode,
+    normalize_post,
+    title_matches_serial,
+)
 from stream_resolver import resolve_episode_stream
 from utils import (
     addon,
@@ -22,6 +29,7 @@ from utils import (
     log_error,
     set_list_label,
     set_video_info,
+    strip_html,
 )
 
 
@@ -110,19 +118,28 @@ class Router:
         category_id = serial['id']
         name = serial['name']
         search_query = serial.get('search_query')
-        has_category = not search_query
+        channel_id = serial.get('channel_id')
+        has_category = bool(category_id) and not str(category_id).startswith('search:')
         label = f'★ {name}' if has_category and is_favorite(category_id) else name
         plot = f"Latest: {serial['latest_title']}" if serial.get('latest_title') else f"{serial.get('count', 0)} episodes"
-        params = {
-            'action': 'search',
-            'query': search_query,
-            'page': 1,
-        } if search_query else {
-            'action': 'category',
-            'category_id': category_id,
-            'title': name,
-            'page': 1,
-        }
+        if search_query:
+            params = {
+                'action': 'search',
+                'query': search_query,
+                'title': name,
+                'page': 1,
+            }
+            if channel_id:
+                params['channel_id'] = channel_id
+            if has_category:
+                params['category_id'] = category_id
+        else:
+            params = {
+                'action': 'category',
+                'category_id': category_id,
+                'title': name,
+                'page': 1,
+            }
         self._add_folder(
             label,
             params,
@@ -338,7 +355,7 @@ class Router:
         xbmcplugin.setPluginCategory(self.handle, title)
         self._set_view('files')
 
-        for serial in list_child_categories(category_id):
+        for serial in list_serial_categories(category_id):
             self._add_serial_folder(serial)
 
         xbmcplugin.endOfDirectory(self.handle)
@@ -387,6 +404,8 @@ class Router:
     def search(self, params):
         query = params.get('query', '').strip()
         page = int(params.get('page', 1))
+        channel_id = params.get('channel_id', '').strip()
+        match_title = params.get('title', '').strip() or query
 
         if not query:
             keyboard = xbmc.Keyboard('', localize(30018))
@@ -396,19 +415,44 @@ class Router:
                 return
 
             query = keyboard.getText().strip()
+            match_title = query
         if not query:
             xbmcplugin.endOfDirectory(self.handle, succeeded=False)
             return
 
-        xbmcplugin.setPluginCategory(self.handle, f"{localize(30012)}: {query}")
+        label = params.get('title') or f"{localize(30012)}: {query}"
+        xbmcplugin.setPluginCategory(self.handle, label)
         self._set_view('episodes')
 
-        posts, page, total_pages = list_posts(search=query, page=page)
+        category_id = int(channel_id) if channel_id else None
+        posts, page, total_pages = list_posts(
+            category_id=category_id,
+            search=query,
+            page=page,
+        )
+        if channel_id and match_title:
+            posts = [
+                post for post in posts
+                if title_matches_serial(
+                    strip_html((post.get('title') or {}).get('rendered', '')),
+                    match_title,
+                )
+            ]
+
+        base_params = {'action': 'search', 'query': query, 'page': page}
+        if channel_id:
+            base_params['channel_id'] = channel_id
+        if params.get('title'):
+            base_params['title'] = params.get('title')
+        if params.get('category_id'):
+            base_params['category_id'] = params.get('category_id')
+
         self._finish_listing(
             posts,
             page,
             total_pages,
-            {'action': 'search', 'query': query, 'page': page},
+            base_params,
+            category_id=params.get('category_id') or channel_id,
             force_desc=True,
             add_sort_methods=False,
         )
@@ -477,7 +521,7 @@ class Router:
             2000,
         )
 
-        stream_url, stream_referer = resolve_episode_stream(
+        stream_url, stream_referer, stream_cookies = resolve_episode_stream(
             episode.get('content_html', ''),
             episode_link=episode.get('link', ''),
         )
@@ -506,7 +550,7 @@ class Router:
         self._schedule_autoplay(params.get('next_post_id', ''), category_id)
 
         list_item = xbmcgui.ListItem(label=episode.get('title', 'Episode'))
-        apply_stream_properties(list_item, stream_url, stream_referer)
+        apply_stream_properties(list_item, stream_url, stream_referer, cookies=stream_cookies)
         list_item.setProperty('IsPlayable', 'true')
         playback_path = list_item.getPath() if hasattr(list_item, 'getPath') else stream_url
         log_error(f'Playing via {playback_path[:120]}')

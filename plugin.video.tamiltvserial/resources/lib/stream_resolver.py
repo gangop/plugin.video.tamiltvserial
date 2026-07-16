@@ -307,6 +307,10 @@ def _post_woodviolet_ping(html, base_url, opener):
         log_error(f'Could not prepare woodviolet playback session: {exc}')
 
 
+def _cookie_header(cookie_jar):
+    return '; '.join(f'{cookie.name}={cookie.value}' for cookie in cookie_jar)
+
+
 def _best_stream_from_page(html, base_url):
     progressive_urls = _extract_vimeo_progressive_urls(html)
     if progressive_urls:
@@ -440,7 +444,7 @@ def _follow_redirect_chain(start_url, referer=BASE_URL, max_hops=10):
             if 'woodviolet.xyz' in (stream_referer or '').lower():
                 _post_woodviolet_ping(html, stream_referer, opener)
             log(f'Resolved stream: {stream_url}')
-            return stream_url, stream_referer
+            return stream_url, stream_referer, _cookie_header(cookie_jar)
 
         redirect_targets = []
         other_targets = []
@@ -470,7 +474,7 @@ def _follow_redirect_chain(start_url, referer=BASE_URL, max_hops=10):
                 continue
             queue.append((candidate, final_url))
 
-    return '', ''
+    return '', '', ''
 
 
 def _maskr_urls_from_episode_page(episode_link):
@@ -498,7 +502,7 @@ def _maskr_urls_from_episode_page(episode_link):
 
 def resolve_stream(maskr_url, referer=BASE_URL):
     if not maskr_url:
-        return '', ''
+        return '', '', ''
 
     log(f'Resolving stream from {maskr_url}')
     return _follow_redirect_chain(maskr_url, referer=referer)
@@ -511,11 +515,11 @@ def resolve_streams(maskr_urls, referer=BASE_URL):
             continue
         seen.add(maskr_url)
 
-        stream_url, stream_referer = resolve_stream(maskr_url, referer=referer)
+        stream_url, stream_referer, cookies = resolve_stream(maskr_url, referer=referer)
         if stream_url:
-            return stream_url, stream_referer
+            return stream_url, stream_referer, cookies
 
-    return '', ''
+    return '', '', ''
 
 
 def resolve_episode_stream(content_html, episode_link=''):
@@ -525,21 +529,21 @@ def resolve_episode_stream(content_html, episode_link=''):
 
     if maskr_urls:
         log(f'Trying {len(maskr_urls)} play link(s) from API content')
-        stream_url, stream_referer = resolve_streams(maskr_urls, referer=referer)
+        stream_url, stream_referer, cookies = resolve_streams(maskr_urls, referer=referer)
         if stream_url:
-            return stream_url, stream_referer
+            return stream_url, stream_referer, cookies
 
     page_urls = _maskr_urls_from_episode_page(episode_link)
     extra_urls = [url for url in page_urls if url not in seen]
     if extra_urls:
         log(f'Trying {len(extra_urls)} play link(s) from episode page')
-        stream_url, stream_referer = resolve_streams(extra_urls, referer=referer)
+        stream_url, stream_referer, cookies = resolve_streams(extra_urls, referer=referer)
         if stream_url:
-            return stream_url, stream_referer
+            return stream_url, stream_referer, cookies
 
     if not maskr_urls and not page_urls:
         log('No maskr URLs found in episode content or page')
     else:
         log_error('Could not resolve stream from any play link')
 
-    return '', ''
+    return '', '', ''

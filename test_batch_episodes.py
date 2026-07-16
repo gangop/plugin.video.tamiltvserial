@@ -90,9 +90,19 @@ def setup():
     return sr, utils, ctx
 
 
-def verify_m3u8(url, ctx):
+def verify_m3u8(url, referer, cookies, ctx):
     try:
-        request = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': '*/*',
+        }
+        if referer:
+            headers['Referer'] = referer
+            if 'woodviolet.xyz' in referer.lower():
+                headers['Origin'] = 'https://woodviolet.xyz'
+        if cookies:
+            headers['Cookie'] = cookies
+        request = urllib.request.Request(url, headers=headers)
         with urllib.request.urlopen(request, timeout=12, context=ctx) as response:
             return response.status == 200 and b'#EXTM3U' in response.read(256)
     except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError):
@@ -102,7 +112,7 @@ def verify_m3u8(url, ctx):
 def test_episode(sr, ctx, episode):
     from scraper import extract_maskr_urls
 
-    stream = sr.resolve_episode_stream(
+    stream_url, stream_referer, cookies = sr.resolve_episode_stream(
         episode['content_html'],
         episode_link=episode['link'],
     )
@@ -111,9 +121,9 @@ def test_episode(sr, ctx, episode):
         'date': episode['date'][:10],
         'title': episode['title'],
         'links': len(extract_maskr_urls(episode['content_html'])),
-        'resolved': bool(stream),
-        'playable': verify_m3u8(stream, ctx) if stream else False,
-        'stream': stream,
+        'resolved': bool(stream_url),
+        'playable': verify_m3u8(stream_url, stream_referer, cookies, ctx) if stream_url else False,
+        'stream': stream_url,
     }
 
 

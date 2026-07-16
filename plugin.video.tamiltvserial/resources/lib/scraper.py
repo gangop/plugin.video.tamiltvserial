@@ -2,7 +2,15 @@
 
 import re
 
-from utils import api_get, get_featured_image, get_terms, get_setting_int, log_error, strip_html
+from utils import (
+    api_get,
+    get_featured_image,
+    get_response_header,
+    get_terms,
+    get_setting_int,
+    log_error,
+    strip_html,
+)
 
 
 MASKR_PATTERN = re.compile(r'https://maskr\.blog/[A-Za-z0-9]+')
@@ -48,7 +56,7 @@ def list_posts(category_id=None, page=1, search=None):
         params['search'] = search
 
     posts, headers = api_get('posts', params=params)
-    total_pages = int(headers.get('X-WP-TotalPages', headers.get('x-wp-totalpages', '1')))
+    total_pages = int(get_response_header(headers, 'X-WP-TotalPages', '1') or '1')
     return posts, page, total_pages
 
 
@@ -63,6 +71,86 @@ def list_child_categories(parent_id, include_empty=False):
     if include_empty:
         return categories
     return [cat for cat in categories if cat.get('count', 0) > 0]
+
+
+def title_matches_serial(title, serial_name):
+    if not title or not serial_name:
+        return False
+    return parse_show_title(title).lower() == serial_name.strip().lower()
+
+
+def list_serial_categories(channel_id):
+    """List serial folders for a channel, including empty WP categories that still have episodes.
+
+    Some serials (e.g. Sun TV Marumagal) have a category with count=0 because posts are
+    miscategorized. Detect those by scanning recent channel posts and matching titles.
+    """
+    children = list_child_categories(channel_id, include_empty=True)
+    serials = {}
+    empty_by_name = {}
+
+    for category in children:
+        category_id = category.get('id')
+        name = strip_html(category.get('name', ''))
+        if not category_id or not name:
+            continue
+        if _is_show_channel_name(name):
+            continue
+
+        count = category.get('count', 0)
+        if count > 0:
+            serials[category_id] = {
+                'id': category_id,
+                'name': name,
+                'count': count,
+            }
+            continue
+
+        empty_by_name[name.lower()] = {
+            'id': category_id,
+            'name': name,
+            'count': 0,
+            'search_query': name,
+            'channel_id': channel_id,
+        }
+
+    if empty_by_name:
+        page = 1
+        total_pages = 1
+        while page <= total_pages and page <= 5:
+            posts, headers = api_get('posts', params={
+                'categories': channel_id,
+                '_embed': '1',
+                'per_page': 100,
+                'page': page,
+                'orderby': 'date',
+                'order': 'desc',
+            })
+            total_pages = int(get_response_header(headers, 'X-WP-TotalPages', '1') or '1')
+            for post in posts:
+                latest = normalize_post(post)
+                show_name = parse_show_title(latest.get('title', ''))
+                key = show_name.lower()
+                empty = empty_by_name.get(key)
+                if not empty:
+                    continue
+                category_id = empty['id']
+                if category_id not in serials:
+                    serials[category_id] = {
+                        'id': category_id,
+                        'name': empty['name'],
+                        'count': empty.get('count', 0),
+                        'search_query': empty['name'],
+                        'channel_id': channel_id,
+                        'latest_title': latest.get('title', ''),
+                        'latest_date': latest.get('date', ''),
+                    }
+            page += 1
+
+    return sorted(
+        serials.values(),
+        key=lambda item: (item.get('name') or '').lower(),
+    )
 
 
 def _is_show_channel_name(name):
@@ -137,7 +225,7 @@ def list_show_categories_by_latest_episode(
             'orderby': 'date',
             'order': 'desc',
         })
-        total_pages = int(headers.get('X-WP-TotalPages', headers.get('x-wp-totalpages', '1')))
+        total_pages = int(get_response_header(headers, 'X-WP-TotalPages', '1') or '1')
 
         for post in posts:
             latest = normalize_post(post)

@@ -188,6 +188,18 @@ def request_url(url, params=None, referer=BASE_URL, method='GET', data=None, tim
         raise
 
 
+def get_response_header(headers, name, default=''):
+    if not headers:
+        return default
+
+    target = name.lower()
+    for key, value in headers.items():
+        if key.lower() == target:
+            return value or default
+
+    return default
+
+
 def api_get(path, params=None):
     url = API_URL + path.lstrip('/')
     payload, headers, _final_url = request_url(url, params=params)
@@ -245,29 +257,40 @@ def playback_referer(referer):
     return referer or BASE_URL
 
 
-def build_stream_headers(referer=None):
+def _use_woodviolet_headers(referer=None, stream_url=None):
+    referer_lower = (referer or '').lower()
+    stream_lower = (stream_url or '').lower()
+    if 'woodviolet.xyz' in referer_lower:
+        return True
+    return '/stream/variant/' in stream_lower and stream_lower.endswith('.m3u8')
+
+
+def build_stream_headers(referer=None, cookies=None, stream_url=None):
     referer = playback_referer(referer)
-    user_agent = WOODVIOLET_USER_AGENT if 'woodviolet.xyz' in referer.lower() else USER_AGENT
+    use_woodviolet = _use_woodviolet_headers(referer, stream_url)
+    user_agent = WOODVIOLET_USER_AGENT if use_woodviolet else USER_AGENT
     parts = [
         f'User-Agent={encode_header_value(user_agent)}',
         f'Referer={encode_header_value(referer)}',
     ]
-    if 'woodviolet.xyz' in referer.lower():
+    if use_woodviolet:
         parts.extend([
             'Origin=https%3A%2F%2Fwoodviolet.xyz',
             'Accept-Language=en-US%2Cen%3Bq%3D0.9',
         ])
+    if cookies:
+        parts.append(f'Cookie={encode_header_value(cookies)}')
     return '&'.join(parts)
 
 
-def build_playback_url(stream_url, referer=None):
-    headers = build_stream_headers(referer)
+def build_playback_url(stream_url, referer=None, cookies=None):
+    headers = build_stream_headers(referer, cookies=cookies, stream_url=stream_url)
     return f'{stream_url}|{headers}' if headers else stream_url
 
 
-def apply_stream_properties(list_item, stream_url, referer=None):
-    headers = build_stream_headers(referer)
-    playback_url = build_playback_url(stream_url, referer)
+def apply_stream_properties(list_item, stream_url, referer=None, cookies=None):
+    headers = build_stream_headers(referer, cookies=cookies, stream_url=stream_url)
+    playback_url = build_playback_url(stream_url, referer, cookies=cookies)
     list_item.setPath(playback_url)
 
     if is_hls_url(stream_url):
