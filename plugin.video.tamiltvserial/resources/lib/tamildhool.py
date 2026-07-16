@@ -13,7 +13,7 @@ from utils import log, log_error, strip_html
 TAMILDHOOL_BASE = 'https://www.tamildhool.tech'
 # Pin to the commit that published the current index (raw/main CDN can lag).
 # Update INDEX_REF after running scripts/update_tamildhool_fallback.py and pushing.
-INDEX_REF = 'd376cfd345de37022324c29d972e9db88f49e638'
+INDEX_REF = '7320c325a67a8de4d30ad57e6d232305f04d5ec4'
 FALLBACK_INDEX_URL = (
     f'https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/{INDEX_REF}/'
     'fallback/tamildhool.json'
