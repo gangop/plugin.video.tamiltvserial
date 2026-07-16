@@ -284,11 +284,7 @@ def build_stream_headers(referer=None, cookies=None, stream_url=None):
 
 
 def prefer_media_playlist(stream_url, referer=None, timeout=8):
-    """If stream_url is an HLS master, return the first media playlist URL.
-
-    BunnyCDN masters only list relative child playlists; resolving here keeps
-    InputStream Adaptive on a single media playlist while still sending headers.
-    """
+    """If stream_url is an HLS master, return the first media playlist URL."""
     if not stream_url or not is_hls_url(stream_url):
         return stream_url
     if '/480p/' in stream_url or '/720p/' in stream_url or '/360p/' in stream_url:
@@ -302,24 +298,9 @@ def prefer_media_playlist(stream_url, referer=None, timeout=8):
     if 'b-cdn.net' in stream_url.lower():
         headers['Origin'] = 'https://www.tamildhool.tech'
     try:
-        request = urllib.request.Request(stream_url, headers=headers)
-        context = None
-        try:
-            import ssl
-            context = ssl.create_default_context()
-            context.check_hostname = False
-            context.verify_mode = ssl.CERT_NONE
-        except Exception:
-            context = None
-        with urllib.request.urlopen(request, timeout=timeout, context=context) as response:
-            body = response.read(4096).decode('utf-8', 'replace')
-    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError, TypeError):
-        # TypeError: older Python urlopen without context kwarg
-        try:
-            with urllib.request.urlopen(request, timeout=timeout) as response:
-                body = response.read(4096).decode('utf-8', 'replace')
-        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError):
-            return stream_url
+        body = _http_get_bytes(stream_url, headers, timeout=timeout).decode('utf-8', 'replace')
+    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError):
+        return stream_url
 
     if '#EXT-X-STREAM-INF' not in body:
         return stream_url
@@ -335,16 +316,138 @@ def prefer_media_playlist(stream_url, referer=None, timeout=8):
     return stream_url
 
 
+def _http_get_bytes(url, headers, timeout=12):
+    request = urllib.request.Request(url, headers=headers)
+    context = None
+    try:
+        import ssl
+        context = ssl.create_default_context()
+        context.check_hostname = False
+        context.verify_mode = ssl.CERT_NONE
+    except Exception:
+        context = None
+    try:
+        with urllib.request.urlopen(request, timeout=timeout, context=context) as response:
+            return response.read()
+    except TypeError:
+        with urllib.request.urlopen(request, timeout=timeout) as response:
+            return response.read()
+
+
+def _profile_dir():
+    """Writable addon profile path (creates the folder when needed)."""
+    try:
+        import xbmcvfs
+        path = _addon.getAddonInfo('profile')
+        if path and not xbmcvfs.exists(path):
+            xbmcvfs.mkdirs(path)
+        if path:
+            try:
+                return xbmcvfs.translatePath(path)
+            except Exception:
+                return path
+    except Exception:
+        pass
+    import tempfile
+    return tempfile.gettempdir()
+
+
+def prepare_bunny_playback_url(stream_url, referer=None, timeout=12):
+    """Local media playlist with BunnyCDN AES key inlined as a data URI.
+
+    InputStream Adaptive on many Google TV builds does not send Referer on
+    EXT-X-KEY requests, so playback stalls after resolve. Inlining the key
+    avoids that; segments still use stream_headers.
+    """
+    if not stream_url or 'b-cdn.net' not in stream_url.lower():
+        return stream_url
+
+    referer = playback_referer(referer) or 'https://www.tamildhool.tech/'
+    media_url = prefer_media_playlist(stream_url, referer=referer, timeout=timeout)
+    headers = {
+        'User-Agent': USER_AGENT,
+        'Accept': '*/*',
+        'Referer': referer,
+        'Origin': 'https://www.tamildhool.tech',
+    }
+    try:
+        playlist = _http_get_bytes(media_url, headers, timeout=timeout).decode('utf-8', 'replace')
+    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as exc:
+        log_error(f'Bunny playlist fetch failed: {exc}')
+        return media_url
+
+    base = media_url.rsplit('/', 1)[0] + '/'
+    parsed = urllib.parse.urlparse(media_url)
+    host_base = f'{parsed.scheme}://{parsed.netloc}' if parsed.scheme and parsed.netloc else ''
+
+    lines = []
+    for line in playlist.splitlines():
+        if line.startswith('#EXT-X-KEY:'):
+            match = re.search(r'URI="([^"]+)"', line)
+            if match:
+                key_uri = match.group(1)
+                if key_uri.startswith('http'):
+                    key_url = key_uri
+                elif key_uri.startswith('/'):
+                    key_url = host_base + key_uri
+                else:
+                    key_url = urllib.parse.urljoin(base, key_uri)
+                try:
+                    import base64
+                    key_bytes = _http_get_bytes(key_url, headers, timeout=timeout)
+                    data_uri = 'data:text/plain;base64,' + base64.b64encode(key_bytes).decode('ascii')
+                    line = re.sub(r'URI="[^"]+"', f'URI="{data_uri}"', line, count=1)
+                    log(f'Bunny AES key inlined ({len(key_bytes)} bytes)')
+                except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as exc:
+                    log_error(f'Bunny AES key fetch failed: {exc}')
+                    if key_uri.startswith('/') and host_base:
+                        line = re.sub(
+                            r'URI="[^"]+"',
+                            f'URI="{host_base + key_uri}"',
+                            line,
+                            count=1,
+                        )
+            lines.append(line)
+            continue
+
+        stripped = line.strip()
+        if stripped and not stripped.startswith('#'):
+            if not stripped.startswith('http'):
+                line = urllib.parse.urljoin(base, stripped)
+            lines.append(line)
+            continue
+        lines.append(line)
+
+    profile = _profile_dir()
+    if not profile:
+        return media_url
+
+    import os
+    out_path = os.path.join(profile, 'bunny_play.m3u8')
+    try:
+        with open(out_path, 'w', encoding='utf-8') as handle:
+            handle.write('\n'.join(lines) + '\n')
+    except OSError as exc:
+        log_error(f'Failed to write local Bunny playlist: {exc}')
+        return media_url
+
+    log(f'Bunny local playlist ready: {out_path}')
+    return out_path
+
+
 def apply_stream_properties(list_item, stream_url, referer=None, cookies=None):
     """Configure ListItem for playback. For ISA, never put |headers on the path."""
     referer = playback_referer(referer)
-    if is_hls_url(stream_url) and 'b-cdn.net' in stream_url.lower():
-        stream_url = prefer_media_playlist(stream_url, referer=referer)
+    is_bunny = is_hls_url(stream_url) and 'b-cdn.net' in stream_url.lower()
+    if is_bunny:
+        stream_url = prepare_bunny_playback_url(stream_url, referer=referer)
 
     headers = build_stream_headers(referer, cookies=cookies, stream_url=stream_url)
+    # Local rewritten playlist still needs Bunny segment headers.
+    if is_bunny and 'b-cdn.net' not in stream_url.lower():
+        headers = build_stream_headers(referer, cookies=cookies, stream_url='https://vz.b-cdn.net/x')
 
-    if is_hls_url(stream_url):
-        # InputStream Adaptive does NOT support URL|header=value pipe syntax.
+    if is_hls_url(stream_url) or (is_bunny and stream_url.endswith('.m3u8')):
         list_item.setPath(stream_url)
         list_item.setMimeType('application/vnd.apple.mpegurl')
         try:
@@ -358,14 +461,11 @@ def apply_stream_properties(list_item, stream_url, referer=None, cookies=None):
         list_item.setProperty('inputstream.adaptive.stream_headers', headers)
         list_item.setProperty('inputstream.adaptive.common_headers', headers)
         list_item.setProperty('inputstream.adaptive.is_realtime_stream', 'false')
-        # BunnyCDN AES-128 key requests are separate from stream GETs and also
-        # require Referer; without this, manifests resolve then playback stalls.
-        list_item.setProperty('inputstream.adaptive.license_key', '|' + headers)
-        try:
-            drm_cfg = {'none': {'license': {'req_headers': headers}}}
-            list_item.setProperty('inputstream.adaptive.drm', json.dumps(drm_cfg))
-        except Exception as exc:
-            log_error(f'Failed to set ISA DRM key headers: {exc}')
+        # Only use legacy license_key for remote Bunny playlists that still
+        # have an HTTP key URI. Prefer inlined keys (no license_key) — the
+        # drm/none JSON breaks older ISA builds on Google TV.
+        if is_bunny and stream_url.startswith('http'):
+            list_item.setProperty('inputstream.adaptive.license_key', '|' + headers)
         return
 
     playback_url = f'{stream_url}|{headers}' if headers else stream_url
