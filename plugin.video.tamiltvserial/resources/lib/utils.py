@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import html
+import os
 import json
 import re
 import sys
@@ -399,16 +400,28 @@ def _force_mpegts_url(url):
     return url + ('&.ts' if '?' in url else '?.ts')
 
 
+
+def _file_uri(path):
+    """Absolute filesystem path as a file:// URI for HLS EXT-X-KEY."""
+    if not path:
+        return path
+    normalized = os.path.abspath(path).replace('\\', '/')
+    if not normalized.startswith('/'):
+        normalized = '/' + normalized
+    return 'file://' + urllib.parse.quote(normalized, safe='/:')
+
+
 def prepare_bunny_playback_url(stream_url, referer=None, timeout=12):
     """Build a local BunnyCDN media playlist for InputStream Adaptive.
 
-    Why remote Bunny URLs stall after resolve on Google TV:
-      1. Segments return 403 without Referer (ISA sometimes drops it on keys).
-      2. AES-128 keys are fetched without Referer → decrypt never starts.
-      3. Segments are named .dts (MPEG-TS); ISA may treat that as DTS audio.
+    Why remote Bunny URLs stall / fail on Google TV:
+      1. Segments return 403 without Referer.
+      2. AES-128 key fetches often omit Referer under ISA.
+      3. Segments are named .dts (MPEG-TS); FFmpeg may reject that extension.
 
-    Fix: rewrite a local .m3u with #KODIPROP headers, store the AES key as a
-    sibling file (URI=\"bunny_key.bin\"), and rewrite .dts → ?.ts. Play via ISA.
+    Fix: clean local HLS (no #KODIPROP in-file — that breaks ISA Open on Android),
+    AES key as file:// next to the playlist, absolute filesystem path for ListItem,
+    .dts → ?.ts rewrite, ISA headers set on the ListItem only.
     """
     if not stream_url or 'b-cdn.net' not in stream_url.lower():
         return stream_url
@@ -431,60 +444,51 @@ def prepare_bunny_playback_url(stream_url, referer=None, timeout=12):
     base = media_url.rsplit('/', 1)[0] + '/'
     parsed = urllib.parse.urlparse(media_url)
     host_base = f'{parsed.scheme}://{parsed.netloc}' if parsed.scheme and parsed.netloc else ''
-    stream_headers = build_stream_headers(
-        referer, cookies=None, stream_url='https://vz.b-cdn.net/x'
-    )
 
-    play_dir, fs_dir = _profile_paths()
+    _play_dir, fs_dir = _profile_paths()
     if not fs_dir:
         return media_url
 
-    import os
-    key_filename = 'bunny_key.bin'
-    key_fs_path = os.path.join(fs_dir, key_filename)
-    key_ready = False
+    key_fs_path = os.path.join(fs_dir, 'bunny_key.bin')
+    key_uri = None
 
-    lines = [
-        '#EXTM3U',
-        '#KODIPROP:inputstream=inputstream.adaptive',
-        '#KODIPROP:inputstream.adaptive.manifest_type=hls',
-        f'#KODIPROP:inputstream.adaptive.stream_headers={stream_headers}',
-        f'#KODIPROP:inputstream.adaptive.manifest_headers={stream_headers}',
-        f'#KODIPROP:inputstream.adaptive.common_headers={stream_headers}',
-    ]
-
-    saw_extm3u = False
+    lines = ['#EXTM3U']
+    saw_media = False
     for line in playlist.splitlines():
         if line.startswith('#EXTM3U'):
-            saw_extm3u = True
             continue
 
         if line.startswith('#EXT-X-KEY:'):
             match = re.search(r'URI="([^"]+)"', line)
             if match:
-                key_uri = match.group(1)
-                if key_uri.startswith('http'):
-                    key_url = key_uri
-                elif key_uri.startswith('/'):
-                    key_url = host_base + key_uri
-                elif key_uri.startswith('data:') or key_uri == key_filename:
+                key_src = match.group(1)
+                if key_src.startswith('http'):
+                    key_url = key_src
+                elif key_src.startswith('/'):
+                    key_url = host_base + key_src
+                elif key_src.startswith('data:') or key_src.startswith('file:'):
                     lines.append(line)
                     continue
                 else:
-                    key_url = urllib.parse.urljoin(base, key_uri)
+                    key_url = urllib.parse.urljoin(base, key_src)
                 try:
+                    import base64
                     key_bytes = _http_get_bytes(key_url, headers, timeout=timeout)
                     with open(key_fs_path, 'wb') as key_file:
                         key_file.write(key_bytes)
-                    key_ready = True
-                    line = re.sub(r'URI="[^"]+"', f'URI="{key_filename}"', line, count=1)
-                    log(f'Bunny AES key saved locally ({len(key_bytes)} bytes)')
+                    # data URI avoids Android file:// permission issues with ISA.
+                    key_uri = (
+                        'data:text/plain;base64,'
+                        + base64.b64encode(key_bytes).decode('ascii')
+                    )
+                    line = re.sub(r'URI="[^"]+"', f'URI="{key_uri}"', line, count=1)
+                    log(f'Bunny AES key inlined ({len(key_bytes)} bytes)')
                 except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as exc:
                     log_error(f'Bunny AES key fetch failed: {exc}')
-                    if key_uri.startswith('/') and host_base:
+                    if key_src.startswith('/') and host_base:
                         line = re.sub(
                             r'URI="[^"]+"',
-                            f'URI="{host_base + key_uri}"',
+                            f'URI="{host_base + key_src}"',
                             line,
                             count=1,
                         )
@@ -493,16 +497,20 @@ def prepare_bunny_playback_url(stream_url, referer=None, timeout=12):
 
         stripped = line.strip()
         if stripped and not stripped.startswith('#'):
+            saw_media = True
             seg = stripped if stripped.startswith('http') else urllib.parse.urljoin(base, stripped)
-            # Do not append |headers here — ISA uses KODIPROP/stream_headers instead.
             lines.append(_force_mpegts_url(seg))
             continue
+        if stripped.startswith('#EXTINF') or stripped.startswith('#EXT-X-'):
+            saw_media = True
         lines.append(line)
 
-    if not saw_extm3u and not any(l.startswith('#EXTINF') for l in lines):
+    if not saw_media:
         return media_url
 
-    fs_path = os.path.join(fs_dir, 'bunny_play.m3u')
+    # Absolute filesystem path — special:// + ISA often yields
+    # "One or more items failed to play" on Google TV / Android.
+    fs_path = os.path.join(fs_dir, 'bunny_play.m3u8')
     body = '\n'.join(lines) + '\n'
     try:
         with open(fs_path, 'w', encoding='utf-8') as handle:
@@ -511,15 +519,11 @@ def prepare_bunny_playback_url(stream_url, referer=None, timeout=12):
         log_error(f'Failed to write local Bunny playlist: {exc}')
         return media_url
 
-    if not key_ready:
-        log_error('Bunny local playlist written without local AES key; playback may stall')
+    if not key_uri:
+        log_error('Bunny local playlist written without local AES key; playback may fail')
 
-    if play_dir.startswith('special://'):
-        out_path = play_dir.rstrip('/').rstrip('\\') + '/bunny_play.m3u'
-    else:
-        out_path = fs_path
-    log(f'Bunny local playlist ready: {out_path}')
-    return out_path
+    log(f'Bunny local playlist ready: {fs_path}')
+    return fs_path
 
 
 def is_local_bunny_playlist(path):
@@ -529,7 +533,7 @@ def is_local_bunny_playlist(path):
     lower = path.lower().replace('\\', '/')
     if lower.startswith('http://') or lower.startswith('https://'):
         return False
-    return lower.endswith('bunny_play.m3u') or lower.endswith('bunny_play.m3u8')
+    return lower.endswith('bunny_play.m3u8') or lower.endswith('bunny_play.m3u')
 
 
 def apply_stream_properties(list_item, stream_url, referer=None, cookies=None):
