@@ -183,26 +183,68 @@ def collect_episodes():
     return episodes
 
 
+EPISODE_SLUG_ALIASES = {
+    'pudhu-vasantham': ('puthu-vasantham',),
+}
+
+
 def resolve_page(scraper, show: str, date: str, channel: str):
     channel_slug, kind_slug = CHANNEL_SLUGS[channel]
     show_slug = slugify(show)
-    page = (
-        f'https://www.tamildhool.tech/{channel_slug}/{kind_slug}/'
-        f'{show_slug}/{show_slug}-{date}-{kind_slug}/'
-    )
-    response = scraper.get(page, timeout=30)
-    if response.status_code != 200 or 'just a moment' in response.text.lower()[:400]:
-        return page, None, None, response.status_code
-    bunny = BUNNY_PATTERN.findall(response.text)
-    dailymotion = DAILYMOTION_PATTERN.findall(response.text)
-    stream = None
-    dm = None
-    if bunny:
-        host, video_id = bunny[0]
-        stream = f'https://{host}/{video_id}/playlist.m3u8'
-    if dailymotion:
-        dm = dailymotion[0]
-    return page, stream, dm, response.status_code
+    episode_bases = [show_slug] + [
+        alias for alias in EPISODE_SLUG_ALIASES.get(show_slug, ()) if alias != show_slug
+    ]
+
+    pages = []
+    for episode_slug_base in episode_bases:
+        pages.append(
+            f'https://www.tamildhool.tech/{channel_slug}/{kind_slug}/'
+            f'{show_slug}/{episode_slug_base}-{date}-{kind_slug}/'
+        )
+
+    # If canonical URLs 404/410, discover the dated link from the show folder.
+    show_index = f'https://www.tamildhool.tech/{channel_slug}/{kind_slug}/{show_slug}/'
+    try:
+        listing = scraper.get(show_index, timeout=30)
+        if listing.status_code == 200:
+            found = re.findall(
+                rf'https://www\.tamildhool\.tech/{channel_slug}/{kind_slug}/{show_slug}/'
+                rf'[^\"\']+-{re.escape(date)}-{kind_slug}/',
+                listing.text,
+                re.I,
+            )
+            for url in found:
+                if url not in pages:
+                    pages.append(url)
+    except Exception as exc:
+        print(f'  listing fail {show_slug}: {exc}')
+
+    last_status = 0
+    last_page = pages[0] if pages else ''
+    for page in pages:
+        last_page = page
+        response = scraper.get(page, timeout=30)
+        last_status = response.status_code
+        if response.status_code != 200 or 'just a moment' in response.text.lower()[:400]:
+            continue
+        bunny = BUNNY_PATTERN.findall(response.text)
+        dailymotion = DAILYMOTION_PATTERN.findall(response.text)
+        stream = None
+        dm = None
+        if bunny:
+            host, video_id = bunny[0]
+            stream = f'https://{host}/{video_id}/playlist.m3u8'
+        if dailymotion:
+            dm = dailymotion[0]
+        # teamstoday/?video=k... is often a Dailymotion id
+        if not dm:
+            for match in re.findall(r'teamstoday\.com/\?video=([A-Za-z0-9]+)', response.text, re.I):
+                if match.startswith('k') and len(match) >= 10:
+                    dm = match
+                    break
+        if stream or dm:
+            return page, stream, dm, response.status_code
+    return last_page, None, None, last_status
 
 
 def main() -> int:

@@ -202,6 +202,22 @@
     "title": "Chellame Chellame 30-06-2026 | Episode 166 | Sun TV Serial",
     "updated": "2026-07-16T03:41:10.427387Z"
   },
+  "sun-tv/iru-malargal/03-07-2026": {
+    "dailymotion": "k3uUDyRrl7ds4HHio1o",
+    "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/iru-malargal/iru-malargal-03-07-2026-sun-tv-serial/",
+    "referer": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/iru-malargal/iru-malargal-03-07-2026-sun-tv-serial/",
+    "stream": "https://vz-8cf4325c-bc5.b-cdn.net/5edcf246-1992-4e13-8478-3b93cb850dd2/playlist.m3u8",
+    "title": "Iru Malargal 03-07-2026 | Episode 142 | Sun TV Serial",
+    "updated": "2026-07-16T12:24:21.697850Z"
+  },
+  "sun-tv/iru-malargal/04-07-2026": {
+    "dailymotion": "kXZms4HunjPoGpHlmPk",
+    "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/iru-malargal/iru-malargal-04-07-2026-sun-tv-serial/",
+    "referer": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/iru-malargal/iru-malargal-04-07-2026-sun-tv-serial/",
+    "stream": "https://vz-8cf4325c-bc5.b-cdn.net/04d78c9b-f4ae-4b42-80d2-03edda777730/playlist.m3u8",
+    "title": "Iru Malargal 04-07-2026 | Episode 143 | Sun TV Serial",
+    "updated": "2026-07-16T12:24:21.624724Z"
+  },
   "sun-tv/kayal/07-07-2026": {
     "dailymotion": "k4P4vtnKM0DAaPHsGoK",
     "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kayal/kayal-07-07-2026-sun-tv-serial/",
@@ -331,25 +347,38 @@
     "dailymotion": "k2HRvurwdQPDJhFOBRW",
     "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/manamagale-vaa/manamagale-vaa-02-05-2026-sun-tv-serial/",
     "title": "Manamagale Vaa 02-05-2026 | Episode 537 | Sun TV Serial",
-    "updated": "2026-07-16T03:41:21.611307Z"
+    "updated": "2026-07-16T12:24:23.201864Z"
   },
   "sun-tv/manamagale-vaa/04-05-2026": {
     "dailymotion": "kokLatWSuM6AIAFPClO",
     "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/manamagale-vaa/manamagale-vaa-04-05-2026-sun-tv-serial/",
     "title": "Manamagale Vaa 04-05-2026 | Episode 538 | Sun TV Serial",
-    "updated": "2026-07-16T03:41:21.653027Z"
+    "updated": "2026-07-16T12:24:23.121464Z"
   },
   "sun-tv/manamagale-vaa/05-05-2026": {
     "dailymotion": "k6N6we5EpLTwZcFQrpu",
     "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/manamagale-vaa/manamagale-vaa-05-05-2026-sun-tv-serial/",
     "title": "Manamagale Vaa 05-05-2026 | Episode 539 | Sun TV Serial",
-    "updated": "2026-07-16T03:41:21.695172Z"
+    "updated": "2026-07-16T12:24:22.920001Z"
+  },
+  "sun-tv/manamagale-vaa/27-04-2026": {
+    "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/manamagale-vaa/manamagale-vaa-27-04-2026-sun-tv-serial/",
+    "referer": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/manamagale-vaa/manamagale-vaa-27-04-2026-sun-tv-serial/",
+    "stream": "https://vz-8cf4325c-bc5.b-cdn.net/4689e8a5-ace8-4faf-b3f8-d9698df85ff9/playlist.m3u8",
+    "title": "Manamagale Vaa 27-04-2026 | Episode 533 | Sun TV Serial",
+    "updated": "2026-07-16T12:24:23.841273Z"
+  },
+  "sun-tv/manamagale-vaa/28-04-2026": {
+    "dailymotion": "k6GH8Jf3cunhVMFKmT8",
+    "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/manamagale-vaa/manamagale-vaa-28-04-2026-sun-tv-serial/",
+    "title": "Manamagale Vaa 28-04-2026 | Episode 534 | Sun TV Serial",
+    "updated": "2026-07-16T12:24:23.769963Z"
   },
   "sun-tv/manamagale-vaa/30-04-2026": {
     "dailymotion": "k6RNqBBiUquIgQFMy8G",
     "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/manamagale-vaa/manamagale-vaa-30-04-2026-sun-tv-serial/",
     "title": "Manamagale Vaa 30-04-2026 | Episode 536 | Sun TV Serial",
-    "updated": "2026-07-16T03:41:21.911372Z"
+    "updated": "2026-07-16T12:24:23.272908Z"
   },
   "sun-tv/marumagal/04-07-2026": {
     "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/marumagal/marumagal-04-07-2026-sun-tv-serial/",
@@ -554,23 +583,123 @@
     "title": "Poongodi 15-07-2026 | Episode 436 | Sun TV Serial",
     "updated": "2026-07-16T03:41:25.626653Z"
   },
+  "sun-tv/pudhu-vasantham/03-07-2026": {
+    "dailymotion": "k4LNOg4Fm1mZnxHio1s",
+    "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-03-07-2026-sun-tv-serial/",
+    "referer": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-03-07-2026-sun-tv-serial/",
+    "stream": "https://vz-8cf4325c-bc5.b-cdn.net/de10e094-1c82-4049-903c-2138d8510099/playlist.m3u8",
+    "title": "Pudhu Vasantham 03-07-2026 | Episode 926 | Sun TV Serial",
+    "updated": "2026-07-16T12:24:31.203329Z"
+  },
+  "sun-tv/pudhu-vasantham/04-07-2026": {
+    "dailymotion": "k467Ao1GaWVDIyHlhGq",
+    "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-04-07-2026-sun-tv-serial/",
+    "referer": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-04-07-2026-sun-tv-serial/",
+    "stream": "https://vz-8cf4325c-bc5.b-cdn.net/90ab0731-def7-4c90-82a5-0f42d7f7c3f6/playlist.m3u8",
+    "title": "Pudhu Vasantham 04-07-2026 | Episode 927 | Sun TV Serial",
+    "updated": "2026-07-16T12:24:30.519763Z"
+  },
+  "sun-tv/pudhu-vasantham/06-07-2026": {
+    "dailymotion": "k5q3viQdbPVYqlHqca6",
+    "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-06-07-2026-sun-tv-serial/",
+    "referer": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-06-07-2026-sun-tv-serial/",
+    "stream": "https://vz-8cf4325c-bc5.b-cdn.net/11e6f007-cecb-4cfa-8832-3313f3b0f759/playlist.m3u8",
+    "title": "Pudhu Vasantham 06-07-2026 | Episode 928 | Sun TV Serial",
+    "updated": "2026-07-16T12:24:29.885090Z"
+  },
+  "sun-tv/pudhu-vasantham/07-07-2026": {
+    "dailymotion": "k2wTjBjNPxw8WJHsOHE",
+    "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-07-07-2026-sun-tv-serial/",
+    "referer": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-07-07-2026-sun-tv-serial/",
+    "stream": "https://vz-8cf4325c-bc5.b-cdn.net/18de6d82-8cb8-4269-8681-816efe1876c7/playlist.m3u8",
+    "title": "Pudhu Vasantham 07-07-2026 | Episode 929 | Sun TV Serial",
+    "updated": "2026-07-16T12:24:29.269064Z"
+  },
+  "sun-tv/pudhu-vasantham/08-07-2026": {
+    "dailymotion": "k3KEeXkZhopeVuHvEse",
+    "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-08-07-2026-sun-tv-serial/",
+    "referer": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-08-07-2026-sun-tv-serial/",
+    "stream": "https://vz-8cf4325c-bc5.b-cdn.net/009f43a0-2a94-4da0-9eb6-717f79bef37d/playlist.m3u8",
+    "title": "Pudhu Vasantham 08-07-2026 | Episode 930 | Sun TV Serial",
+    "updated": "2026-07-16T12:24:28.626763Z"
+  },
+  "sun-tv/pudhu-vasantham/09-07-2026": {
+    "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-09-07-2026-sun-tv-serial/",
+    "referer": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-09-07-2026-sun-tv-serial/",
+    "stream": "https://vz-8cf4325c-bc5.b-cdn.net/d8de2c58-2c07-4fca-9080-dac2ae23942c/playlist.m3u8",
+    "title": "Pudhu Vasantham 09-07-2026 | Episode 931 | Sun TV Serial",
+    "updated": "2026-07-16T12:24:28.061311Z"
+  },
+  "sun-tv/pudhu-vasantham/10-07-2026": {
+    "dailymotion": "k6I7HZdTY31lK4HEb42",
+    "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-10-07-2026-sun-tv-serial/",
+    "referer": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-10-07-2026-sun-tv-serial/",
+    "stream": "https://vz-8cf4325c-bc5.b-cdn.net/f8af3695-8202-4b96-a210-f8ff7103a9c9/playlist.m3u8",
+    "title": "Pudhu Vasantham 10-07-2026 | Episode 932 | Sun TV Serial",
+    "updated": "2026-07-16T12:24:27.440660Z"
+  },
+  "sun-tv/pudhu-vasantham/11-07-2026": {
+    "dailymotion": "k2YalRUAOS5vz1HGMLs",
+    "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-11-07-2026-sun-tv-serial/",
+    "referer": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-11-07-2026-sun-tv-serial/",
+    "stream": "https://vz-8cf4325c-bc5.b-cdn.net/416592aa-959e-4259-a450-646b10e4afbd/playlist.m3u8",
+    "title": "Pudhu Vasantham 11-07-2026 | Episode 933 | Sun TV Serial",
+    "updated": "2026-07-16T12:24:26.768381Z"
+  },
+  "sun-tv/pudhu-vasantham/14-07-2026": {
+    "dailymotion": "k5kTyhiStPArPzHM9SG",
+    "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-14-07-2026-sun-tv-serial/",
+    "referer": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-14-07-2026-sun-tv-serial/",
+    "stream": "https://vz-8cf4325c-bc5.b-cdn.net/65ec5b65-2526-48f6-94fe-4dfafd32a1d4/playlist.m3u8",
+    "title": "Pudhu Vasantham 14-07-2026 | Episode 935 | Sun TV Serial",
+    "updated": "2026-07-16T12:24:25.649953Z"
+  },
+  "sun-tv/pudhu-vasantham/15-07-2026": {
+    "dailymotion": "k2Gpb2j0STJ9j3HOceS",
+    "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-15-07-2026-sun-tv-serial/",
+    "referer": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-15-07-2026-sun-tv-serial/",
+    "stream": "https://vz-8cf4325c-bc5.b-cdn.net/5361a08a-1082-4f86-96e7-557ee59c8704/playlist.m3u8",
+    "title": "Pudhu Vasantham 15-07-2026 | Episode 936 | Sun TV Serial",
+    "updated": "2026-07-16T12:24:25.034568Z"
+  },
+  "sun-tv/pudhu-vasantham/16-07-2026": {
+    "dailymotion": "k6KpcvPFcpD1KtHPUrU",
+    "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-16-07-2026-sun-tv-serial/",
+    "referer": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-16-07-2026-sun-tv-serial/",
+    "stream": "https://vz-8cf4325c-bc5.b-cdn.net/5d511c58-104a-408a-b098-c25d08a2d6bc/playlist.m3u8",
+    "title": "Pudhu Vasantham 16-07-2026 | Episode 937 | Sun TV Serial",
+    "updated": "2026-07-16T12:24:24.597408Z"
+  },
   "sun-tv/punitha/04-05-2026": {
     "dailymotion": "k6QnHJuZ9mDN79FPClM",
     "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/punitha/punitha-04-05-2026-sun-tv-serial/",
     "title": "Punitha 04-05-2026 | Episode 464 | Sun TV Serial",
-    "updated": "2026-07-16T03:41:28.949962Z"
+    "updated": "2026-07-16T12:24:32.651953Z"
   },
   "sun-tv/punitha/05-05-2026": {
     "dailymotion": "k44jiQATfzRQyKFQqwe",
     "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/punitha/punitha-05-05-2026-sun-tv-serial/",
     "title": "Punitha 05-05-2026 | Episode 465 | Sun TV Serial",
-    "updated": "2026-07-16T03:41:28.995218Z"
+    "updated": "2026-07-16T12:24:32.444099Z"
+  },
+  "sun-tv/punitha/27-04-2026": {
+    "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/punitha/punitha-27-04-2026-sun-tv-serial/",
+    "referer": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/punitha/punitha-27-04-2026-sun-tv-serial/",
+    "stream": "https://vz-8cf4325c-bc5.b-cdn.net/694f5964-8326-466f-946f-ad9a8f646a17/playlist.m3u8",
+    "title": "Punitha 27-04-2026 | Episode 459 | Sun TV Serial",
+    "updated": "2026-07-16T12:24:33.452761Z"
+  },
+  "sun-tv/punitha/28-04-2026": {
+    "dailymotion": "k7LhPqb9octQ2FFKlKC",
+    "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/punitha/punitha-28-04-2026-sun-tv-serial/",
+    "title": "Punitha 28-04-2026 | Episode 460 | Sun TV Serial",
+    "updated": "2026-07-16T12:24:33.384922Z"
   },
   "sun-tv/punitha/30-04-2026": {
     "dailymotion": "k419ddVC2vOBM0FMzLC",
     "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/punitha/punitha-30-04-2026-sun-tv-serial/",
     "title": "Punitha 30-04-2026 | Episode 462 | Sun TV Serial",
-    "updated": "2026-07-16T03:41:29.217159Z"
+    "updated": "2026-07-16T12:24:32.799524Z"
   },
   "sun-tv/thulasi/07-07-2026": {
     "dailymotion": "k75MJdyQThUVT4HsK7o",

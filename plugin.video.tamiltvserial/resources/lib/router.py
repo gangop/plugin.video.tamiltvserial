@@ -536,17 +536,27 @@ class Router:
             episode_title,
         )
         if indexed_url:
-            if verify_stream_reachable(indexed_url, indexed_referer, indexed_cookies):
+            # Index streams are BunnyCDN / Dailymotion — trust them unless they look like
+            # the flaky woodviolet hosts that need a reachability probe.
+            if stream_needs_preflight(indexed_url, indexed_referer):
+                if verify_stream_reachable(indexed_url, indexed_referer, indexed_cookies):
+                    log(f'Using TamilDhool index for {episode_title!r}')
+                    stream_url, stream_referer, stream_cookies = (
+                        indexed_url,
+                        indexed_referer,
+                        indexed_cookies,
+                    )
+                else:
+                    log_error(
+                        f'TamilDhool index stream unreachable for post_id={post_id}; '
+                        'trying TamilTvSerial'
+                    )
+            else:
                 log(f'Using TamilDhool index for {episode_title!r}')
                 stream_url, stream_referer, stream_cookies = (
                     indexed_url,
                     indexed_referer,
                     indexed_cookies,
-                )
-            else:
-                log_error(
-                    f'TamilDhool index stream unreachable for post_id={post_id}; '
-                    'trying TamilTvSerial'
                 )
 
         if not stream_url:

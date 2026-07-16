@@ -28,11 +28,21 @@ DAILYMOTION_PATTERN = re.compile(
     r'(?:dai\.ly/|dailymotion\.com/(?:embed/)?video/)([A-Za-z0-9]+)',
     re.I,
 )
+TEAMSTODAY_PATTERN = re.compile(
+    r'teamstoday\.com/\?video=([A-Za-z0-9]+)',
+    re.I,
+)
 CHANNEL_SLUGS = (
     ('sun tv', 'sun-tv', 'sun-tv-serial'),
     ('vijay tv', 'vijay-tv', 'vijay-tv-serial'),
     ('zee tamil', 'zee-tamil', 'zee-tamil-serial'),
 )
+
+# TamilDhool sometimes uses a different episode-path slug than the show folder.
+# folder slug -> extra episode-path slugs to try (folder slug is always tried first).
+EPISODE_SLUG_ALIASES = {
+    'pudhu-vasantham': ('puthu-vasantham',),
+}
 
 _index_cache = {'data': None}
 
@@ -92,8 +102,16 @@ def episode_index_key(title):
     return f'{channel_slug}/{_slugify(show)}/{date}'
 
 
+def _episode_path_slugs(show_slug):
+    slugs = [show_slug]
+    for alias in EPISODE_SLUG_ALIASES.get(show_slug, ()):
+        if alias and alias not in slugs:
+            slugs.append(alias)
+    return slugs
+
+
 def build_episode_urls(title):
-    """Build only exact TamilDhool episode URLs for this show/date/channel."""
+    """Build exact TamilDhool episode URLs for this show/date/channel."""
     show, date, channel, _episode_number = parse_episode_meta(title)
     if not show or not date or not channel:
         log(
@@ -107,10 +125,14 @@ def build_episode_urls(title):
         return []
 
     show_slug = _slugify(show)
-    episode_slug = f'{show_slug}-{date}-{kind_slug}'
-    return [
-        f'{TAMILDHOOL_BASE}/{channel_slug}/{kind_slug}/{show_slug}/{episode_slug}/',
-    ]
+    urls = []
+    for episode_slug_base in _episode_path_slugs(show_slug):
+        episode_slug = f'{episode_slug_base}-{date}-{kind_slug}'
+        urls.append(
+            f'{TAMILDHOOL_BASE}/{channel_slug}/{kind_slug}/{show_slug}/{episode_slug}/'
+        )
+    return urls
+
 
 
 def _ssl_context():
@@ -136,11 +158,18 @@ def _page_matches_episode(final_url, html, show, date, channel):
         return False
 
     url_lower = (final_url or '').lower().rstrip('/') + '/'
-    expected_tail = f'/{show_slug}/{show_slug}-{date}-{kind_slug}/'
-    if expected_tail not in url_lower:
-        alt_tail = f'/{show_slug}/{show_slug}-{date}/'
-        if alt_tail not in url_lower or f'/{channel_slug}/' not in url_lower:
-            return False
+    if f'/{channel_slug}/' not in url_lower or f'/{show_slug}/' not in url_lower:
+        return False
+
+    matched_path = False
+    for episode_slug_base in _episode_path_slugs(show_slug):
+        expected_tail = f'/{show_slug}/{episode_slug_base}-{date}-{kind_slug}/'
+        alt_tail = f'/{show_slug}/{episode_slug_base}-{date}/'
+        if expected_tail in url_lower or alt_tail in url_lower:
+            matched_path = True
+            break
+    if not matched_path:
+        return False
 
     title_match = re.search(r'<title[^>]*>(.*?)</title>', html or '', re.I | re.S)
     page_title = strip_html(title_match.group(1) if title_match else '')
@@ -230,6 +259,11 @@ def extract_dailymotion_ids(html):
     for match in DAILYMOTION_PATTERN.findall(html or ''):
         video_id = match if isinstance(match, str) else next((part for part in match if part), '')
         if video_id and video_id not in seen:
+            seen.add(video_id)
+            ids.append(video_id)
+    # Newer TamilDhool cards wrap Dailymotion ids in teamstoday.com links.
+    for video_id in TEAMSTODAY_PATTERN.findall(html or ''):
+        if video_id.startswith('k') and len(video_id) >= 10 and video_id not in seen:
             seen.add(video_id)
             ids.append(video_id)
     return ids
