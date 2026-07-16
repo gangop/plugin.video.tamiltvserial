@@ -373,6 +373,8 @@ class Router:
                 xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
                 return False
             if isa_status == 'missing':
+                # Only block when detection is confident; otherwise try playback.
+                log_error('InputStream Adaptive appears missing; showing install help')
                 self._clear_autoplay()
                 self._clear_failover()
                 xbmcgui.Dialog().ok(
@@ -381,6 +383,8 @@ class Router:
                 )
                 xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
                 return False
+            if isa_status == 'ready':
+                log('InputStream Adaptive ready')
 
         self._schedule_autoplay(next_post_id, category_id)
         self._store_failover(remaining_sources or [], episode, next_post_id, category_id)

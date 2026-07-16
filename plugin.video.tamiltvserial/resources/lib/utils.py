@@ -234,21 +234,60 @@ def is_hls_url(url):
 
 
 def inputstream_adaptive_status():
-    """Return 'ready', 'disabled', or 'missing' for inputstream.adaptive."""
+    """Return 'ready', 'disabled', or 'missing' for inputstream.adaptive.
+
+    Prefer Kodi boolean conditions / JSON-RPC. ``Addon('inputstream.adaptive')``
+    often raises ``Unknown addon id`` on Android/Google TV even when ISA is
+    installed — that was wrongly showing the install dialog.
+    """
+    addon_id = 'inputstream.adaptive'
+
+    if xbmc and hasattr(xbmc, 'getCondVisibility'):
+        try:
+            has_addon = xbmc.getCondVisibility(f'System.HasAddon({addon_id})')
+            if has_addon:
+                # AddonIsEnabled exists on Kodi 18+; if missing, assume enabled.
+                try:
+                    enabled = xbmc.getCondVisibility(f'System.AddonIsEnabled({addon_id})')
+                except Exception:
+                    enabled = True
+                if not enabled:
+                    return 'disabled'
+                return 'ready'
+            # HasAddon is false — double-check via JSON-RPC before declaring missing.
+        except Exception as exc:
+            log_error(f'InputStream Adaptive HasAddon check failed: {exc}')
+
+    if xbmc and hasattr(xbmc, 'executeJSONRPC'):
+        try:
+            query = (
+                '{"jsonrpc":"2.0","id":1,"method":"Addons.GetAddonDetails",'
+                '"params":{"addonid":"%s","properties":["enabled","installed"]}}'
+                % addon_id
+            )
+            raw = xbmc.executeJSONRPC(query)
+            data = json.loads(raw) if raw else {}
+            result = (data.get('result') or {}).get('addon') or {}
+            if result.get('installed') or result.get('addonid') == addon_id:
+                if result.get('enabled') is False:
+                    return 'disabled'
+                return 'ready'
+            # explicit error from JSON-RPC → likely not installed
+            if data.get('error'):
+                err = str(data.get('error'))
+                if 'invalid' in err.lower() or 'not found' in err.lower() or '-32602' in err:
+                    return 'missing'
+        except Exception as exc:
+            log_error(f'InputStream Adaptive JSON-RPC check failed: {exc}')
+
+    # Last resort: Addon() — unreliable on some Android builds (raises Unknown
+    # addon id even when ISA is installed). Prefer playing over blocking.
     try:
-        isa = Addon('inputstream.adaptive')
-    except Exception as exc:
-        # Kodi logs: Exception Unknown addon id 'inputstream.adaptive'
-        log_error(f'InputStream Adaptive not installed: {exc}')
-        return 'missing'
-    try:
-        enabled = isa.getAddonInfo('enabled')
-        if enabled in ('false', '0', False):
-            return 'disabled'
+        Addon(addon_id)
         return 'ready'
     except Exception as exc:
-        log_error(f'InputStream Adaptive status check failed: {exc}')
-        return 'missing'
+        log_error(f'InputStream Adaptive Addon() check failed: {exc}')
+        return 'ready'
 
 
 def playback_referer(referer, stream_url=None):
