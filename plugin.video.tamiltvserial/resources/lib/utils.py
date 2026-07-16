@@ -317,7 +317,7 @@ def prefer_media_playlist(stream_url, referer=None, timeout=8):
     return stream_url
 
 
-def _http_get_bytes(url, headers, timeout=12):
+def _http_get_bytes(url, headers, timeout=12, retries=3):
     request = urllib.request.Request(url, headers=headers)
     context = None
     try:
@@ -327,12 +327,29 @@ def _http_get_bytes(url, headers, timeout=12):
         context.verify_mode = ssl.CERT_NONE
     except Exception:
         context = None
-    try:
-        with urllib.request.urlopen(request, timeout=timeout, context=context) as response:
-            return response.read()
-    except TypeError:
-        with urllib.request.urlopen(request, timeout=timeout) as response:
-            return response.read()
+
+    last_exc = None
+    for attempt in range(max(1, int(retries))):
+        try:
+            try:
+                with urllib.request.urlopen(request, timeout=timeout, context=context) as response:
+                    return response.read()
+            except TypeError:
+                with urllib.request.urlopen(request, timeout=timeout) as response:
+                    return response.read()
+        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as exc:
+            last_exc = exc
+            # BunnyCDN occasionally 403s transiently; brief retry helps prepare.
+            code = getattr(exc, 'code', None)
+            if attempt + 1 < retries and (code in (403, 429, 500, 502, 503) or code is None):
+                try:
+                    import time
+                    time.sleep(0.4 * (attempt + 1))
+                except Exception:
+                    pass
+                continue
+            raise
+    raise last_exc
 
 
 def _profile_paths():
