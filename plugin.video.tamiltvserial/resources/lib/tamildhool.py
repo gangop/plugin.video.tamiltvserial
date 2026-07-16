@@ -11,9 +11,11 @@ from utils import log, log_error, strip_html
 
 
 TAMILDHOOL_BASE = 'https://www.tamildhool.tech'
+# Bump INDEX_VERSION whenever fallback/tamildhool.json is refreshed (raw CDN caches ~5m).
+INDEX_VERSION = '20260716b'
 FALLBACK_INDEX_URL = (
     'https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/main/'
-    'fallback/tamildhool.json'
+    f'fallback/tamildhool.json?v={INDEX_VERSION}'
 )
 TITLE_DATE_PATTERN = re.compile(r'(\d{1,2})-(\d{1,2})-(\d{4})')
 EPISODE_NUMBER_PATTERN = re.compile(r'Episode\s+(\d+)', re.I)
