@@ -1,0 +1,39 @@
+name: Update TamilDhool fallback index
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '20 */6 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  update-fallback:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install updater dependencies
+        run: python -m pip install --upgrade cloudscraper
+
+      - name: Refresh fallback index
+        run: python scripts/update_tamildhool_fallback.py
+
+      - name: Commit refreshed index
+        run: |
+          if git diff --quiet -- fallback/tamildhool.json; then
+            echo "No fallback index changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add fallback/tamildhool.json
+          git commit -m "Refresh TamilDhool fallback index"
+          git push

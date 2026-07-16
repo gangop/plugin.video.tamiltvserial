@@ -3,6 +3,7 @@
 import json
 import re
 import ssl
+import time
 import urllib.error
 import urllib.request
 
@@ -11,10 +12,13 @@ from utils import log, log_error, strip_html
 
 
 TAMILDHOOL_BASE = 'https://www.tamildhool.tech'
-# Pin to the commit that published the current index (raw/main CDN can lag).
-# Update INDEX_REF after running scripts/update_tamildhool_fallback.py and pushing.
+# Prefer the latest index from main; keep a pinned index as a backup if GitHub raw is stale.
 INDEX_REF = '9bf231bb6297b4e7200f147dbc24910b139a837a'
-FALLBACK_INDEX_URL = (
+FALLBACK_INDEX_MAIN_URL = (
+    'https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/main/'
+    'fallback/tamildhool.json'
+)
+FALLBACK_INDEX_PINNED_URL = (
     f'https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/{INDEX_REF}/'
     'fallback/tamildhool.json'
 )
@@ -165,6 +169,53 @@ def build_episode_urls(title):
     return urls
 
 
+def _discover_episode_urls(title):
+    """Find dated TamilDhool episode links from the show folder."""
+    show, date, channel, _episode_number = parse_episode_meta(title)
+    if not show or not date or not channel:
+        return []
+
+    channel_slug, kind_slug = _channel_entry(channel, title)
+    if not channel_slug:
+        return []
+
+    show_slug = _slugify(show)
+    folder_slug, _episode_bases = _path_slugs(show_slug)
+    show_index = f'{TAMILDHOOL_BASE}/{channel_slug}/{kind_slug}/{folder_slug}/'
+
+    log(f'TamilDhool discovering episode links from: {show_index}')
+    try:
+        final_url, html = _fetch_page(show_index)
+    except urllib.error.HTTPError as exc:
+        log_error(f'TamilDhool listing fetch failed for {show_index}: HTTP {exc.code}')
+        return []
+    except (urllib.error.URLError, TimeoutError, OSError) as exc:
+        log_error(f'TamilDhool listing fetch failed for {show_index}: {exc}')
+        return []
+
+    if _is_challenge_page(html):
+        log_error('TamilDhool listing returned a Cloudflare challenge page')
+        return []
+
+    base_path = f'{channel_slug}/{kind_slug}/{folder_slug}/'
+    pattern = re.compile(
+        rf'https://www\.tamildhool\.tech/{re.escape(base_path)}[^"\']+-'
+        rf'{re.escape(date)}[^"\']*/',
+        re.I,
+    )
+    urls = []
+    seen = set()
+    for url in pattern.findall(html or ''):
+        clean_url = url.rstrip('/') + '/'
+        if clean_url not in seen:
+            seen.add(clean_url)
+            urls.append(clean_url)
+
+    if urls:
+        log(f'TamilDhool discovered {len(urls)} dated episode link(s) from {final_url}')
+    return urls
+
+
 
 def _ssl_context():
     ctx = ssl.create_default_context()
@@ -200,6 +251,10 @@ def _page_matches_episode(final_url, html, show, date, channel, title=''):
         if expected_tail in url_lower or alt_tail in url_lower:
             matched_path = True
             break
+    if not matched_path and f'/{folder_slug}/' in url_lower and f'-{date}' in url_lower:
+        # Discovered TamilDhool links can include suffixes such as grand-finale or
+        # full-episode between the date and the kind tag.
+        matched_path = True
     if not matched_path:
         return False
 
@@ -234,22 +289,39 @@ def _load_fallback_index():
     if _index_cache['data'] is not None:
         return _index_cache['data']
 
-    request = urllib.request.Request(
-        FALLBACK_INDEX_URL,
-        headers={'User-Agent': WOODVIOLET_USER_AGENT, 'Accept': 'application/json'},
+    cache_bust = int(time.time() // 3600)
+    urls = (
+        f'{FALLBACK_INDEX_MAIN_URL}?v={cache_bust}',
+        FALLBACK_INDEX_PINNED_URL,
     )
-    try:
-        with urllib.request.urlopen(request, timeout=15, context=_ssl_context()) as response:
-            data = json.loads(response.read().decode('utf-8', 'replace'))
-    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError, ValueError) as exc:
-        log_error(f'TamilDhool fallback index unavailable: {exc}')
-        # Don't cache failures — allow a later play attempt to retry.
-        return {}
+    for url in urls:
+        request = urllib.request.Request(
+            url,
+            headers={
+                'User-Agent': WOODVIOLET_USER_AGENT,
+                'Accept': 'application/json',
+                'Cache-Control': 'no-cache',
+            },
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=15, context=_ssl_context()) as response:
+                data = json.loads(response.read().decode('utf-8', 'replace'))
+        except (
+            urllib.error.URLError,
+            urllib.error.HTTPError,
+            TimeoutError,
+            OSError,
+            ValueError,
+        ) as exc:
+            log_error(f'TamilDhool fallback index unavailable from {url}: {exc}')
+            continue
 
-    if not isinstance(data, dict):
-        return {}
-    _index_cache['data'] = data
-    return data
+        if isinstance(data, dict):
+            _index_cache['data'] = data
+            return data
+
+    # Don't cache failures — allow a later play attempt to retry.
+    return {}
 
 
 def resolve_from_fallback_index(title):
@@ -346,6 +418,12 @@ def resolve_tamildhool_stream(title, use_index=True):
     urls = build_episode_urls(title)
     if not urls:
         return '', '', ''
+
+    seen_urls = set(urls)
+    for discovered_url in _discover_episode_urls(title):
+        if discovered_url not in seen_urls:
+            seen_urls.add(discovered_url)
+            urls.append(discovered_url)
 
     for page_url in urls:
         log(f'TamilDhool fetching exact URL: {page_url}')
