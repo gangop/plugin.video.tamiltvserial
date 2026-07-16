@@ -61,6 +61,11 @@ SHOW_PATH_ALIASES = {
     'andakakasam': ('anda-ka-kasam-s4',),
     'jodi-are-u-ready': ('jodi-are-u-ready-s3',),
     'jodi-are-u-ready-season-3': ('jodi-are-u-ready-s3',),
+    'paarijatham': ('parijatham',),
+    'chinnan-siru-kiliye': ('chinna-siru-kiliye',),
+    'saregamapa-lil-champs-season-5': ('saregamapa-little-champs-s5',),
+    'tamizha-tamizha': ('tamizha-tamizha-s3',),
+    'mahanadigai': ('mahanadigai-s2',),
 }
 
 
@@ -242,9 +247,10 @@ def resolve_page(scraper, show: str, date: str, channel: str, title: str):
     try:
         listing = scraper.get(show_index, timeout=30)
         if listing.status_code == 200:
+            # Allow suffixes like -grand-climax / -grand-finale before the kind tag.
             found = re.findall(
                 rf'https://www\.tamildhool\.tech/{channel_slug}/{kind}/{folder_slug}/'
-                rf'[^\"\']+-{re.escape(date)}(?:-{kind})?/',
+                rf'[^\"\']+-{re.escape(date)}[^\"\']*/',
                 listing.text,
                 re.I,
             )

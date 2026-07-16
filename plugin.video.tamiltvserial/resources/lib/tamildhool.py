@@ -49,6 +49,12 @@ SHOW_PATH_ALIASES = {
     'andakakasam': ('anda-ka-kasam-s4',),
     'jodi-are-u-ready': ('jodi-are-u-ready-s3',),
     'jodi-are-u-ready-season-3': ('jodi-are-u-ready-s3',),
+    # Zee Tamil serials / shows
+    'paarijatham': ('parijatham',),
+    'chinnan-siru-kiliye': ('chinna-siru-kiliye',),
+    'saregamapa-lil-champs-season-5': ('saregamapa-little-champs-s5',),
+    'tamizha-tamizha': ('tamizha-tamizha-s3',),
+    'mahanadigai': ('mahanadigai-s2',),
 }
 
 _index_cache = {'data': None}
