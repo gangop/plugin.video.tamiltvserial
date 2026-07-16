@@ -30,6 +30,7 @@ CHANNEL_SLUGS = {
 
 SHOWS = (
     ('Marumagal', 5, 'marumagal'),
+    ('Aadukalam', 6710, 'aadukalam'),
     ('Azhagae Azhagu', 3, 'azhagae'),
 )
 
@@ -56,7 +57,7 @@ def parse_title(title: str):
     return show, date, channel
 
 
-def api_posts(search: str, categories: int, per_page: int = 8):
+def api_posts(search: str, categories: int, per_page: int = 10):
     params = {
         'search': search,
         'categories': categories,
