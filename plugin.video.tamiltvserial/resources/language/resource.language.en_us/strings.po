@@ -115,3 +115,9 @@ msgstr "Connection test failed"
 
 msgid "30047"
 msgstr "This episode's stream host is temporarily unavailable. Try again later, or play a different serial."
+
+msgid "30048"
+msgstr "Playback start timeout (seconds)"
+
+msgid "30049"
+msgstr "Trying alternate stream source..."

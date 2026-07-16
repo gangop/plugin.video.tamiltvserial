@@ -54,6 +54,8 @@ _STRING_FALLBACKS = {
     30045: 'Serials',
     30046: 'Shows',
     30047: 'This episode\'s stream host is temporarily unavailable. Try again later, or play a different serial.',
+    30048: 'Playback start timeout (seconds)',
+    30049: 'Trying alternate stream source...',
 }
 
 

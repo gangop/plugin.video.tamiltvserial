@@ -1,12 +1,25 @@
 # -*- coding: utf-8 -*-
 
+import json
 import urllib.error
 
 import xbmc
 import xbmcgui
 import xbmcplugin
 
-from constants import CHANNEL_GROUPS, PROP_AUTOPLAY_ACTIVE, PROP_NEXT_CATEGORY, PROP_NEXT_POST, SHOW_CHANNEL_IDS, TAMIL_TV_SHOWS_ID
+from constants import (
+    CHANNEL_GROUPS,
+    PROP_AUTOPLAY_ACTIVE,
+    PROP_FAILOVER_CANDIDATES,
+    PROP_FAILOVER_CATEGORY,
+    PROP_FAILOVER_NEXT_POST,
+    PROP_FAILOVER_TITLE,
+    PROP_NEXT_CATEGORY,
+    PROP_NEXT_POST,
+    PROP_PLAY_WATCH,
+    SHOW_CHANNEL_IDS,
+    TAMIL_TV_SHOWS_ID,
+)
 from favorites import add_favorite, is_favorite, load_favorites, remove_favorite
 from scraper import (
     list_posts,
@@ -18,7 +31,6 @@ from scraper import (
 from stream_resolver import (
     resolve_episode_stream,
     resolve_fallback_stream,
-    stream_needs_preflight,
     verify_stream_reachable,
 )
 from tamildhool import resolve_from_fallback_index
@@ -28,6 +40,7 @@ from utils import (
     apply_stream_properties,
     build_plugin_url,
     get_setting_bool,
+    get_setting_int,
     inputstream_adaptive_status,
     is_hls_url,
     localize,
@@ -61,6 +74,7 @@ class Router:
             'add_favorite': self.add_favorite_action,
             'remove_favorite': self.remove_favorite_action,
             'play': self.play,
+            'play_failover': self.play_failover,
         }
 
         handler = routes.get(action, self.show_root)
@@ -256,6 +270,14 @@ class Router:
         window.clearProperty(PROP_NEXT_CATEGORY)
         window.clearProperty(PROP_AUTOPLAY_ACTIVE)
 
+    def _clear_failover(self):
+        window = xbmcgui.Window(10000)
+        window.clearProperty(PROP_PLAY_WATCH)
+        window.clearProperty(PROP_FAILOVER_CANDIDATES)
+        window.clearProperty(PROP_FAILOVER_TITLE)
+        window.clearProperty(PROP_FAILOVER_NEXT_POST)
+        window.clearProperty(PROP_FAILOVER_CATEGORY)
+
     def _schedule_autoplay(self, next_post_id, category_id):
         if not get_setting_bool('autoplay_next', True):
             self._clear_autoplay()
@@ -269,6 +291,216 @@ class Router:
         window.setProperty(PROP_NEXT_POST, str(next_post_id))
         window.setProperty(PROP_NEXT_CATEGORY, str(category_id or ''))
         window.setProperty(PROP_AUTOPLAY_ACTIVE, '1')
+
+    @staticmethod
+    def _candidate(source, url, referer='', cookies=''):
+        return {
+            'source': source,
+            'url': url,
+            'referer': referer or '',
+            'cookies': cookies or '',
+        }
+
+    def _resolve_source(self, source, episode):
+        """Resolve one source name to a stream triple, without verifying."""
+        title = episode.get('title', '')
+        if source == 'tamildhool-index':
+            return resolve_from_fallback_index(title)
+        if source == 'tamiltvserial':
+            return resolve_episode_stream(
+                episode.get('content_html', ''),
+                episode_link=episode.get('link', ''),
+                episode_title=title,
+                allow_fallback=False,
+            )
+        if source == 'tamildhool-live':
+            return resolve_fallback_stream(title, use_index=False)
+        return '', '', ''
+
+    def _next_verified_candidate(self, episode, source_order):
+        """
+        Walk source_order, verify each, return (candidate, remaining_sources).
+        remaining_sources are unverified source names for later failover.
+        """
+        remaining = list(source_order)
+        while remaining:
+            source = remaining.pop(0)
+            log(f'Resolving {source} for {episode.get("title", "")!r}')
+            url, referer, cookies = self._resolve_source(source, episode)
+            if not url:
+                log(f'{source} unavailable')
+                continue
+            if not verify_stream_reachable(url, referer, cookies):
+                log_error(f'{source} stream unreachable; trying next source')
+                continue
+            log(f'Accepted {source}')
+            return self._candidate(source, url, referer, cookies), remaining
+        return None, []
+
+    def _store_failover(self, remaining_sources, episode, next_post_id, category_id):
+        window = xbmcgui.Window(10000)
+        if remaining_sources and episode.get('id'):
+            payload = {
+                'sources': list(remaining_sources),
+                'post_id': int(episode['id']),
+                'title': episode.get('title', 'Episode'),
+                'next_post_id': str(next_post_id or ''),
+                'category_id': str(category_id or ''),
+            }
+            window.setProperty(PROP_FAILOVER_CANDIDATES, json.dumps(payload))
+            window.setProperty(PROP_FAILOVER_TITLE, episode.get('title', 'Episode'))
+            window.setProperty(PROP_FAILOVER_NEXT_POST, str(next_post_id or ''))
+            window.setProperty(PROP_FAILOVER_CATEGORY, str(category_id or ''))
+            window.setProperty(PROP_PLAY_WATCH, '1')
+        else:
+            self._clear_failover()
+
+    def _play_candidate(self, candidate, episode, next_post_id='', category_id='', remaining_sources=None):
+        stream_url = candidate['url']
+        stream_referer = candidate.get('referer', '')
+        stream_cookies = candidate.get('cookies', '')
+        source = candidate.get('source', 'unknown')
+        title = episode.get('title', 'Episode')
+
+        if is_hls_url(stream_url):
+            isa_status = inputstream_adaptive_status()
+            if isa_status == 'disabled':
+                self._clear_autoplay()
+                self._clear_failover()
+                xbmcgui.Dialog().ok(addon().getAddonInfo('name'), localize(30041))
+                xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+                return False
+            if isa_status == 'missing':
+                log_error('InputStream Adaptive status reported missing; trying playback anyway')
+
+        self._schedule_autoplay(next_post_id, category_id)
+        self._store_failover(remaining_sources or [], episode, next_post_id, category_id)
+
+        list_item = xbmcgui.ListItem(label=title or 'Episode')
+        apply_stream_properties(list_item, stream_url, stream_referer, cookies=stream_cookies)
+        list_item.setProperty('IsPlayable', 'true')
+        playback_path = list_item.getPath() if hasattr(list_item, 'getPath') else stream_url
+        log(f'Playing via {source}: {playback_path[:120]}')
+        xbmcplugin.setResolvedUrl(self.handle, True, list_item)
+        return True
+
+    def play_failover(self, _params):
+        """Resolve and play the next alternate source after a start timeout."""
+        window = xbmcgui.Window(10000)
+        raw = window.getProperty(PROP_FAILOVER_CANDIDATES)
+        try:
+            payload = json.loads(raw) if raw else {}
+        except (TypeError, ValueError, json.JSONDecodeError):
+            payload = {}
+
+        sources = list(payload.get('sources') or [])
+        post_id = payload.get('post_id')
+        next_post_id = payload.get('next_post_id') or window.getProperty(PROP_FAILOVER_NEXT_POST)
+        category_id = payload.get('category_id') or window.getProperty(PROP_FAILOVER_CATEGORY)
+
+        if not post_id or not sources:
+            self._clear_failover()
+            xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+            return
+
+        posts, _headers = api_get('posts', params={'include': int(post_id)})
+        if not posts:
+            self._clear_failover()
+            xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+            return
+
+        episode = normalize_post(posts[0])
+        candidate, remaining = self._next_verified_candidate(episode, sources)
+        if not candidate:
+            self._clear_failover()
+            xbmcgui.Dialog().notification(
+                addon().getAddonInfo('name'),
+                localize(30020),
+                xbmcgui.NOTIFICATION_ERROR,
+                5000,
+            )
+            xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+            return
+
+        xbmcgui.Dialog().notification(
+            addon().getAddonInfo('name'),
+            localize(30049),
+            xbmcgui.NOTIFICATION_INFO,
+            2500,
+        )
+        self._play_candidate(
+            candidate,
+            episode=episode,
+            next_post_id=next_post_id,
+            category_id=category_id,
+            remaining_sources=remaining,
+        )
+
+    def play(self, params):
+        try:
+            self._play(params)
+        except Exception as exc:
+            log_error(f'Play failed: {exc}')
+            self._clear_autoplay()
+            self._clear_failover()
+            xbmcgui.Dialog().notification(
+                addon().getAddonInfo('name'),
+                localize(30040),
+                xbmcgui.NOTIFICATION_ERROR,
+                5000,
+            )
+            xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+
+    def _play(self, params):
+        post_id = params.get('post_id')
+        if not post_id:
+            xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+            return
+
+        post_id = int(post_id)
+        category_id = params.get('category_id', '')
+        posts, _headers = api_get('posts', params={'include': post_id})
+        if not posts:
+            xbmcgui.Dialog().notification(
+                addon().getAddonInfo('name'),
+                localize(30020),
+                xbmcgui.NOTIFICATION_ERROR,
+                5000,
+            )
+            xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+            return
+
+        episode = normalize_post(posts[0])
+        xbmcgui.Dialog().notification(
+            addon().getAddonInfo('name'),
+            localize(30021),
+            xbmcgui.NOTIFICATION_INFO,
+            2000,
+        )
+
+        # Universal order for every episode: TamilDhool index → TamilTvSerial → TamilDhool live.
+        source_order = ['tamildhool-index', 'tamiltvserial', 'tamildhool-live']
+        candidate, remaining = self._next_verified_candidate(episode, source_order)
+        if not candidate:
+            self._clear_autoplay()
+            self._clear_failover()
+            log_error(f'No stream resolved for post_id={post_id}')
+            xbmcgui.Dialog().notification(
+                addon().getAddonInfo('name'),
+                localize(30020),
+                xbmcgui.NOTIFICATION_ERROR,
+                5000,
+            )
+            xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+            return
+
+        self._play_candidate(
+            candidate,
+            episode=episode,
+            next_post_id=params.get('next_post_id', ''),
+            category_id=category_id,
+            remaining_sources=remaining,
+        )
 
     def show_root(self, _params):
         version = addon().getAddonInfo('version')
@@ -517,136 +749,3 @@ class Router:
                 3000,
             )
         xbmc.executebuiltin('Container.Refresh')
-
-    def play(self, params):
-        try:
-            self._play(params)
-        except Exception as exc:
-            log_error(f'Play failed: {exc}')
-            self._clear_autoplay()
-            xbmcgui.Dialog().notification(
-                addon().getAddonInfo('name'),
-                localize(30040),
-                xbmcgui.NOTIFICATION_ERROR,
-                5000,
-            )
-            xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
-
-    def _play(self, params):
-        post_id = params.get('post_id')
-        if not post_id:
-            xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
-            return
-
-        post_id = int(post_id)
-        category_id = params.get('category_id', '')
-        posts, _headers = api_get('posts', params={'include': post_id})
-        if not posts:
-            xbmcgui.Dialog().notification(
-                addon().getAddonInfo('name'),
-                localize(30020),
-                xbmcgui.NOTIFICATION_ERROR,
-                5000,
-            )
-            xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
-            return
-
-        episode = normalize_post(posts[0])
-        episode_title = episode.get('title', '')
-        xbmcgui.Dialog().notification(
-            addon().getAddonInfo('name'),
-            localize(30021),
-            xbmcgui.NOTIFICATION_INFO,
-            2000,
-        )
-
-        # 1) TamilDhool index → 2) TamilTvSerial → 3) TamilDhool live scrape
-        stream_url, stream_referer, stream_cookies = '', '', ''
-
-        indexed_url, indexed_referer, indexed_cookies = resolve_from_fallback_index(
-            episode_title,
-        )
-        if indexed_url:
-            # Index streams are BunnyCDN / Dailymotion — trust them unless they look like
-            # the flaky woodviolet hosts that need a reachability probe.
-            if stream_needs_preflight(indexed_url, indexed_referer):
-                if verify_stream_reachable(indexed_url, indexed_referer, indexed_cookies):
-                    log(f'Using TamilDhool index for {episode_title!r}')
-                    stream_url, stream_referer, stream_cookies = (
-                        indexed_url,
-                        indexed_referer,
-                        indexed_cookies,
-                    )
-                else:
-                    log_error(
-                        f'TamilDhool index stream unreachable for post_id={post_id}; '
-                        'trying TamilTvSerial'
-                    )
-            else:
-                log(f'Using TamilDhool index for {episode_title!r}')
-                stream_url, stream_referer, stream_cookies = (
-                    indexed_url,
-                    indexed_referer,
-                    indexed_cookies,
-                )
-
-        if not stream_url:
-            stream_url, stream_referer, stream_cookies = resolve_episode_stream(
-                episode.get('content_html', ''),
-                episode_link=episode.get('link', ''),
-                episode_title=episode_title,
-                allow_fallback=False,
-            )
-            if stream_url and stream_needs_preflight(stream_url, stream_referer):
-                if not verify_stream_reachable(stream_url, stream_referer, stream_cookies):
-                    log_error(
-                        f'TamilTvSerial stream unreachable for post_id={post_id}; '
-                        'trying TamilDhool live'
-                    )
-                    stream_url, stream_referer, stream_cookies = '', '', ''
-
-        if not stream_url:
-            # Skip index here — either missing or already proven unreachable.
-            live_url, live_referer, live_cookies = resolve_fallback_stream(
-                episode_title,
-                use_index=False,
-            )
-            if live_url and verify_stream_reachable(live_url, live_referer, live_cookies):
-                stream_url, stream_referer, stream_cookies = (
-                    live_url,
-                    live_referer,
-                    live_cookies,
-                )
-            elif live_url:
-                log_error(f'TamilDhool live stream unreachable for post_id={post_id}')
-
-        if not stream_url:
-            self._clear_autoplay()
-            log_error(f'No stream resolved for post_id={post_id}')
-            xbmcgui.Dialog().notification(
-                addon().getAddonInfo('name'),
-                localize(30020),
-                xbmcgui.NOTIFICATION_ERROR,
-                5000,
-            )
-            xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
-            return
-
-        if is_hls_url(stream_url):
-            isa_status = inputstream_adaptive_status()
-            if isa_status == 'disabled':
-                self._clear_autoplay()
-                xbmcgui.Dialog().ok(addon().getAddonInfo('name'), localize(30041))
-                xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
-                return
-            if isa_status == 'missing':
-                log_error('InputStream Adaptive status reported missing; trying playback anyway')
-
-        self._schedule_autoplay(params.get('next_post_id', ''), category_id)
-
-        list_item = xbmcgui.ListItem(label=episode.get('title', 'Episode'))
-        apply_stream_properties(list_item, stream_url, stream_referer, cookies=stream_cookies)
-        list_item.setProperty('IsPlayable', 'true')
-        playback_path = list_item.getPath() if hasattr(list_item, 'getPath') else stream_url
-        log(f'Playing via {playback_path[:120]}')
-        xbmcplugin.setResolvedUrl(self.handle, True, list_item)
