@@ -289,6 +289,55 @@ def resolve_page(scraper, show: str, date: str, channel: str, title: str):
     return last_page, None, None, last_status
 
 
+def mirror_crossover_entries(index: dict) -> int:
+    """Copy mahasangamam/crossover streams onto every participating show key.
+
+    Example: a page under lakshmi/…/lakshmi-iru-malargal-mahasangamam-DATE/…
+    also becomes sun-tv/iru-malargal/DATE so either serial plays the shared upload.
+    """
+    shows_by_channel: dict[str, set[str]] = {}
+    for key in index:
+        parts = key.split('/')
+        if len(parts) != 3:
+            continue
+        channel_slug, show_slug, _date = parts
+        shows_by_channel.setdefault(channel_slug, set()).add(show_slug)
+
+    added = 0
+    for key, entry in list(index.items()):
+        if not isinstance(entry, dict):
+            continue
+        page = (entry.get('page') or '').lower()
+        if not page or not (entry.get('stream') or entry.get('dailymotion')):
+            continue
+        parts = key.split('/')
+        if len(parts) != 3:
+            continue
+        channel_slug, primary_show, date = parts
+        basename = page.rstrip('/').rsplit('/', 1)[-1]
+        if 'mahasangamam' not in basename and 'sangamam' not in basename and 'crossover' not in basename:
+            continue
+
+        for show_slug in sorted(shows_by_channel.get(channel_slug, ()), key=len, reverse=True):
+            if show_slug == primary_show or show_slug not in basename:
+                continue
+            alt_key = f'{channel_slug}/{show_slug}/{date}'
+            existing = index.get(alt_key)
+            if isinstance(existing, dict) and existing.get('stream'):
+                existing_page = (existing.get('page') or '').lower()
+                # Keep a real standalone episode; only fill gaps / replace other crossovers.
+                if (
+                    'mahasangamam' not in existing_page
+                    and 'sangamam' not in existing_page
+                    and 'crossover' not in existing_page
+                ):
+                    continue
+            index[alt_key] = dict(entry)
+            added += 1
+            print(f'MIRROR {alt_key} <- {key}')
+    return added
+
+
 def main() -> int:
     scraper = cloudscraper.create_scraper(
         browser={'browser': 'chrome', 'platform': 'windows', 'mobile': False},
@@ -322,6 +371,9 @@ def main() -> int:
         index[key] = entry
         ok += 1
         print(f'OK {key}')
+
+    mirrored = mirror_crossover_entries(index)
+    print(f'Crossover mirrors added/updated: {mirrored}')
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(index, indent=2, sort_keys=True) + '\n', encoding='utf-8')

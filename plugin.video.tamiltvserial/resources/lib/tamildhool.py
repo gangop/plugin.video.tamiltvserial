@@ -126,6 +126,60 @@ def episode_index_key(title):
     return f'{channel_slug}/{_slugify(show)}/{date}'
 
 
+def _find_crossover_index_entry(index, channel_slug, show_slug, date):
+    """Find a same-date index entry whose TamilDhool page also covers this show.
+
+    Used for mahasangamam / crossover uploads that live under a partner show folder
+    (e.g. Lakshmi–Iru Malargal Mahasangamam indexed under lakshmi/).
+    """
+    if not index or not channel_slug or not show_slug or not date:
+        return '', {}
+
+    prefix = f'{channel_slug}/'
+    suffix = f'/{date}'
+    exact = f'{channel_slug}/{show_slug}/{date}'
+    for key, entry in index.items():
+        if key == exact or not isinstance(entry, dict):
+            continue
+        if not key.startswith(prefix) or not key.endswith(suffix):
+            continue
+        if not (entry.get('stream') or entry.get('dailymotion')):
+            continue
+        page = (entry.get('page') or '').lower()
+        if not page:
+            continue
+        basename = page.rstrip('/').rsplit('/', 1)[-1]
+        # Require the show slug inside the episode URL slug (not just folder).
+        if show_slug in basename:
+            return key, entry
+    return '', {}
+
+
+def _lookup_index_entry(title):
+    """Exact episode key, then same-date crossover/mahasangamam mirror."""
+    key = episode_index_key(title)
+    index = _load_fallback_index()
+    if not key:
+        return '', {}
+
+    entry = index.get(key) or {}
+    if isinstance(entry, dict) and (entry.get('stream') or entry.get('dailymotion')):
+        return key, entry
+
+    show, date, channel, _episode_number = parse_episode_meta(title)
+    channel_slug, _kind = _channel_entry(channel, title)
+    if not show or not date or not channel_slug:
+        return key, {}
+
+    alt_key, alt_entry = _find_crossover_index_entry(
+        index, channel_slug, _slugify(show), date,
+    )
+    if alt_entry:
+        log(f'TamilDhool crossover index hit {key} via {alt_key}')
+        return alt_key, alt_entry
+    return key, {}
+
+
 def _path_slugs(show_slug):
     """Return (folder_slug, episode_slug_bases) for TamilDhool URLs."""
     aliases = _show_path_aliases().get(show_slug)
@@ -367,11 +421,10 @@ def _load_fallback_index():
 
 def resolve_from_fallback_index(title):
     """Resolve exact episode from the published GitHub index (no Cloudflare)."""
-    key = episode_index_key(title)
+    key, entry = _lookup_index_entry(title)
     if not key:
         return '', '', ''
 
-    entry = _load_fallback_index().get(key) or {}
     stream_url = entry.get('stream') or ''
     if stream_url:
         # BunnyCDN requires a tamildhool.tech Referer on every playlist/segment request.
