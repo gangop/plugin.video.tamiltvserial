@@ -118,8 +118,15 @@ def _watch_playback_start(monitor, timeout):
 
     raw = window.getProperty(PROP_FAILOVER_CANDIDATES)
     try:
-        remaining = json.loads(raw) if raw else []
+        payload = json.loads(raw) if raw else {}
     except (TypeError, ValueError, json.JSONDecodeError):
+        payload = {}
+
+    if isinstance(payload, dict):
+        remaining = payload.get('sources') or []
+    elif isinstance(payload, list):
+        remaining = payload
+    else:
         remaining = []
 
     window.clearProperty(PROP_PLAY_WATCH)

@@ -245,6 +245,8 @@ def playback_referer(referer):
     lower = referer.lower()
     if 'vimeocdn.com' in lower:
         return 'https://player.vimeo.com/'
+    if 'tamildhool' in lower or 'b-cdn.net' in lower:
+        return 'https://www.tamildhool.tech/'
     return referer or BASE_URL
 
 
@@ -270,21 +272,83 @@ def build_stream_headers(referer=None, cookies=None, stream_url=None):
             'Origin=https%3A%2F%2Fwoodviolet.xyz',
             'Accept-Language=en-US%2Cen%3Bq%3D0.9',
         ])
-    elif 'b-cdn.net' in stream_lower:
-        # BunnyCDN playlists/keys return 403 without a tamildhool Origin/Referer.
+    elif 'b-cdn.net' in stream_lower or 'tamildhool' in (referer or '').lower():
+        # BunnyCDN rejects playlist/key/segment requests without these.
         parts.append('Origin=' + encode_header_value('https://www.tamildhool.tech'))
+        parts.append('Accept=' + encode_header_value('*/*'))
     if cookies:
         parts.append(f'Cookie={encode_header_value(cookies)}')
     return '&'.join(parts)
 
 
+def prefer_media_playlist(stream_url, referer=None, timeout=8):
+    """If stream_url is an HLS master, return the first media playlist URL.
+
+    BunnyCDN masters only list relative child playlists; resolving here keeps
+    InputStream Adaptive on a single media playlist while still sending headers.
+    """
+    if not stream_url or not is_hls_url(stream_url):
+        return stream_url
+    if '/480p/' in stream_url or '/720p/' in stream_url or '/360p/' in stream_url:
+        return stream_url
+
+    headers = {
+        'User-Agent': USER_AGENT,
+        'Accept': '*/*',
+        'Referer': playback_referer(referer),
+    }
+    if 'b-cdn.net' in stream_url.lower():
+        headers['Origin'] = 'https://www.tamildhool.tech'
+    try:
+        request = urllib.request.Request(stream_url, headers=headers)
+        context = None
+        try:
+            import ssl
+            context = ssl.create_default_context()
+            context.check_hostname = False
+            context.verify_mode = ssl.CERT_NONE
+        except Exception:
+            context = None
+        with urllib.request.urlopen(request, timeout=timeout, context=context) as response:
+            body = response.read(4096).decode('utf-8', 'replace')
+    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError, TypeError):
+        # TypeError: older Python urlopen without context kwarg
+        try:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
+                body = response.read(4096).decode('utf-8', 'replace')
+        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError):
+            return stream_url
+
+    if '#EXT-X-STREAM-INF' not in body:
+        return stream_url
+
+    base = stream_url.rsplit('/', 1)[0] + '/'
+    for line in body.splitlines():
+        line = line.strip()
+        if not line or line.startswith('#'):
+            continue
+        child = line if line.startswith('http') else urllib.parse.urljoin(base, line)
+        if is_hls_url(child) or child.endswith('.m3u8'):
+            return child
+    return stream_url
+
+
 def apply_stream_properties(list_item, stream_url, referer=None, cookies=None):
+    """Configure ListItem for playback. For ISA, never put |headers on the path."""
+    referer = playback_referer(referer)
+    if is_hls_url(stream_url) and 'b-cdn.net' in stream_url.lower():
+        stream_url = prefer_media_playlist(stream_url, referer=referer)
+
     headers = build_stream_headers(referer, cookies=cookies, stream_url=stream_url)
-    playback_url = f'{stream_url}|{headers}' if headers else stream_url
-    list_item.setPath(playback_url)
 
     if is_hls_url(stream_url):
+        # InputStream Adaptive does NOT support URL|header=value pipe syntax.
+        list_item.setPath(stream_url)
         list_item.setMimeType('application/vnd.apple.mpegurl')
+        try:
+            list_item.setContentLookup(False)
+        except Exception:
+            pass
         list_item.setProperty('inputstream', 'inputstream.adaptive')
         list_item.setProperty('inputstreamaddon', 'inputstream.adaptive')
         list_item.setProperty('inputstream.adaptive.manifest_type', 'hls')
@@ -292,8 +356,18 @@ def apply_stream_properties(list_item, stream_url, referer=None, cookies=None):
         list_item.setProperty('inputstream.adaptive.stream_headers', headers)
         list_item.setProperty('inputstream.adaptive.common_headers', headers)
         list_item.setProperty('inputstream.adaptive.is_realtime_stream', 'false')
+        # BunnyCDN AES-128 key requests are separate from stream GETs and also
+        # require Referer; without this, manifests resolve then playback stalls.
+        list_item.setProperty('inputstream.adaptive.license_key', '|' + headers)
+        try:
+            drm_cfg = {'none': {'license': {'req_headers': headers}}}
+            list_item.setProperty('inputstream.adaptive.drm', json.dumps(drm_cfg))
+        except Exception as exc:
+            log_error(f'Failed to set ISA DRM key headers: {exc}')
         return
 
+    playback_url = f'{stream_url}|{headers}' if headers else stream_url
+    list_item.setPath(playback_url)
     try:
         if stream_url.lower().split('?', 1)[0].endswith('.mp4'):
             list_item.setMimeType('video/mp4')
