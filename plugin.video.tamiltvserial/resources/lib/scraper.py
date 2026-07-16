@@ -5,9 +5,9 @@ import re
 from utils import (
     api_get,
     get_featured_image,
+    get_page_size,
     get_response_header,
     get_terms,
-    get_setting_int,
     log_error,
     strip_html,
 )
@@ -37,7 +37,7 @@ def extract_maskr_urls(html_content):
 
 
 def list_posts(category_id=None, page=1, search=None):
-    page_size = get_setting_int('page_size', 40)
+    page_size = get_page_size(40)
     params = {
         '_embed': '1',
         'per_page': page_size,

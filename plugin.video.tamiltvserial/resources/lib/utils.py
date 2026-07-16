@@ -122,6 +122,32 @@ def get_setting_int(setting_id, default=0):
         return default
 
 
+# Enum labels for settings.xml page_size (index → count).
+_PAGE_SIZE_CHOICES = (20, 40, 60, 80, 100)
+
+
+def get_page_size(default=40):
+    """Episodes per page from settings (enum index or legacy numeric value)."""
+    raw = (_addon.getSetting('page_size') or '').strip()
+    if raw == '':
+        return default
+    try:
+        value = int(raw)
+    except (TypeError, ValueError):
+        return default
+
+    # settings.xml enum stores the selected index (0..4).
+    if raw in {'0', '1', '2', '3', '4'}:
+        return _PAGE_SIZE_CHOICES[value]
+
+    # Legacy free-number setting.
+    if value in _PAGE_SIZE_CHOICES:
+        return value
+    if value < 10:
+        return default
+    return min(value, 100)
+
+
 def get_setting_bool(setting_id, default=False):
     value = _addon.getSetting(setting_id)
     if value in ('true', '1'):
