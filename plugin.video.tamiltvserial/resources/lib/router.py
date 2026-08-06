@@ -21,6 +21,11 @@ from constants import (
     TAMIL_TV_SHOWS_ID,
 )
 from favorites import add_favorite, is_favorite, load_favorites, remove_favorite
+from livetv import (
+    clearkey_license_payload,
+    list_live_tv_sections,
+    resolve_live_stream,
+)
 from scraper import (
     list_posts,
     list_serial_categories,
@@ -42,6 +47,7 @@ from utils import (
     get_setting_bool,
     get_setting_int,
     inputstream_adaptive_status,
+    is_dash_url,
     is_hls_url,
     localize,
     log,
@@ -64,6 +70,9 @@ class Router:
             'root': self.show_root,
             'latest': self.show_latest,
             'favorites': self.show_favorites,
+            'live_tv': self.show_live_tv,
+            'live_tv_section': self.show_live_tv_section,
+            'play_live_tv': self.play_live_tv,
             'browse_channel': self.show_channel_picker,
             'browse_channel_group': self.show_channel_group,
             'browse_serials': self.show_serials,
@@ -78,14 +87,15 @@ class Router:
         }
 
         handler = routes.get(action, self.show_root)
+        is_play = action in ('play', 'play_failover', 'play_live_tv')
         try:
             handler(params)
         except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as exc:
             log_error(f'Network error in {action}: {exc}')
-            self._fail(localize(30039), is_play=(action == 'play'))
+            self._fail(localize(30039), is_play=is_play)
         except Exception as exc:
             log_error(f'Unhandled error in {action}: {exc}')
-            self._fail(localize(30040), is_play=(action == 'play'))
+            self._fail(localize(30040), is_play=is_play)
 
     def _fail(self, message, is_play=False):
         xbmcgui.Dialog().ok(addon().getAddonInfo('name'), message)
@@ -129,18 +139,42 @@ class Router:
             label = localize(30031)
         return [(label, f'RunPlugin({url})')]
 
-    def _add_folder(self, label, params, plot='', context_menu=None):
+    def _add_folder(self, label, params, plot='', context_menu=None, art=None):
         list_item = xbmcgui.ListItem(label=label)
         set_list_label(list_item, label)
         info_dict = {'title': label}
         if plot:
             info_dict['plot'] = plot
         set_video_info(list_item, info_dict)
+        if art:
+            list_item.setArt(art)
         if context_menu:
             list_item.addContextMenuItems(context_menu)
 
         url = build_plugin_url(self.plugin_url, **params)
         xbmcplugin.addDirectoryItem(self.handle, url, list_item, True)
+
+    def _add_live_channel(self, channel):
+        title = channel.get('title') or 'Live TV'
+        thumb = channel.get('thumb') or ''
+        list_item = xbmcgui.ListItem(label=title)
+        set_list_label(list_item, title)
+        if thumb:
+            list_item.setArt({'thumb': thumb, 'icon': thumb, 'poster': thumb})
+        set_video_info(list_item, {
+            'title': title,
+            'plot': localize(30051),
+            'mediatype': 'video',
+        })
+        list_item.setProperty('IsPlayable', 'true')
+        url = build_plugin_url(
+            self.plugin_url,
+            action='play_live_tv',
+            url=channel.get('url', ''),
+            title=title,
+            thumb=thumb,
+        )
+        xbmcplugin.addDirectoryItem(self.handle, url, list_item, False)
 
     def _add_info_item(self, label):
         list_item = xbmcgui.ListItem(label=label)
@@ -524,12 +558,145 @@ class Router:
 
         self._add_folder(localize(30010), {'action': 'latest', 'page': 1})
         self._add_folder(localize(30022), {'action': 'favorites'})
+        self._add_folder(localize(30051), {'action': 'live_tv'})
         self._add_folder(localize(30011), {'action': 'browse_channel'})
         if get_setting_bool('enable_search', True):
             self._add_folder(localize(30012), {'action': 'search'})
         self._add_folder(localize(30042), {'action': 'diagnostics'})
 
         xbmcplugin.endOfDirectory(self.handle)
+
+    def show_live_tv(self, _params):
+        xbmcplugin.setPluginCategory(self.handle, localize(30051))
+        self._set_view('files')
+
+        sections = list_live_tv_sections()
+        if not sections:
+            xbmcgui.Dialog().ok(addon().getAddonInfo('name'), localize(30052))
+            xbmcplugin.endOfDirectory(self.handle, succeeded=False)
+            return
+
+        if len(sections) == 1:
+            for channel in sections[0].get('channels') or []:
+                self._add_live_channel(channel)
+        else:
+            for index, section in enumerate(sections):
+                self._add_folder(
+                    section.get('name') or localize(30051),
+                    {'action': 'live_tv_section', 'section': index},
+                    plot=f"{len(section.get('channels') or [])} channels",
+                )
+
+        xbmcplugin.endOfDirectory(self.handle)
+
+    def show_live_tv_section(self, params):
+        sections = list_live_tv_sections()
+        try:
+            index = int(params.get('section', 0))
+        except (TypeError, ValueError):
+            index = 0
+        section = sections[index] if 0 <= index < len(sections) else None
+        if not section:
+            xbmcgui.Dialog().ok(addon().getAddonInfo('name'), localize(30052))
+            xbmcplugin.endOfDirectory(self.handle, succeeded=False)
+            return
+
+        title = section.get('name') or localize(30051)
+        xbmcplugin.setPluginCategory(self.handle, title)
+        self._set_view('videos')
+
+        channels = section.get('channels') or []
+        if not channels:
+            xbmcgui.Dialog().ok(addon().getAddonInfo('name'), localize(30052))
+
+        for channel in channels:
+            self._add_live_channel(channel)
+
+        xbmcplugin.endOfDirectory(self.handle)
+
+    def play_live_tv(self, params):
+        page_url = params.get('url') or ''
+        title = params.get('title') or localize(30051)
+        thumb = params.get('thumb') or ''
+        if not page_url:
+            xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+            return
+
+        xbmcgui.Dialog().notification(
+            addon().getAddonInfo('name'),
+            localize(30021),
+            xbmcgui.NOTIFICATION_INFO,
+            2000,
+        )
+
+        try:
+            stream = resolve_live_stream(page_url)
+        except Exception as exc:
+            log_error(f'Live TV resolve failed: {exc}')
+            stream = None
+
+        if not stream:
+            xbmcgui.Dialog().notification(
+                addon().getAddonInfo('name'),
+                localize(30053),
+                xbmcgui.NOTIFICATION_ERROR,
+                5000,
+            )
+            xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+            return
+
+        list_item = xbmcgui.ListItem(label=title)
+        set_list_label(list_item, title)
+        if thumb:
+            list_item.setArt({'thumb': thumb, 'icon': thumb, 'poster': thumb})
+        set_video_info(list_item, {
+            'title': title,
+            'plot': localize(30051),
+            'mediatype': 'video',
+        })
+        list_item.setProperty('IsPlayable', 'true')
+
+        if stream.get('type') == 'youtube':
+            video_id = stream.get('video_id') or ''
+            list_item.setPath(f'plugin://plugin.video.youtube/play/?video_id={video_id}')
+            xbmcplugin.setResolvedUrl(self.handle, True, list_item)
+            return
+
+        stream_url = stream.get('url') or ''
+        needs_isa = is_hls_url(stream_url) or is_dash_url(stream_url)
+        if needs_isa:
+            isa_status = inputstream_adaptive_status()
+            if isa_status == 'disabled':
+                xbmcgui.Dialog().ok(addon().getAddonInfo('name'), localize(30041))
+                xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+                return
+            if isa_status == 'missing':
+                xbmcgui.Dialog().ok(
+                    localize(30038) or 'InputStream Adaptive required',
+                    localize(30037),
+                )
+                xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+                return
+
+        license_type = None
+        license_key = None
+        if stream.get('key_id') and stream.get('key'):
+            license_key = clearkey_license_payload(stream['key_id'], stream['key'])
+            if license_key:
+                license_type = 'org.w3.clearkey'
+
+        apply_stream_properties(
+            list_item,
+            stream_url,
+            referer=stream.get('referer'),
+            license_type=license_type,
+            license_key=license_key,
+            is_live=True,
+        )
+        self._clear_autoplay()
+        self._clear_failover()
+        log(f'Playing live TV: {title} -> {stream_url[:120]}')
+        xbmcplugin.setResolvedUrl(self.handle, True, list_item)
 
     def show_diagnostics(self, _params):
         title = localize(30042)

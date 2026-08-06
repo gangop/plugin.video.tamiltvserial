@@ -21,7 +21,7 @@ def main():
     handle = int(sys.argv[1])
     params = dict(parse_qsl(sys.argv[2][1:])) if len(sys.argv) > 2 else {}
     action = params.get('action', 'root')
-    is_play = action == 'play'
+    is_play = action in ('play', 'play_failover', 'play_live_tv')
 
     try:
         Router(plugin_url, handle).run(params)

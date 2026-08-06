@@ -124,3 +124,12 @@ msgstr "Trying alternate stream source..."
 
 msgid "30050"
 msgstr "Playback failed to start. Try another episode or check your connection."
+
+msgid "30051"
+msgstr "Live TV"
+
+msgid "30052"
+msgstr "No live TV channels found"
+
+msgid "30053"
+msgstr "Could not play this live channel. Try another channel or try again later."

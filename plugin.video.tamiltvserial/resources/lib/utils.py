@@ -58,6 +58,9 @@ _STRING_FALLBACKS = {
     30048: 'Playback start timeout (seconds)',
     30049: 'Trying alternate stream source...',
     30050: 'Playback failed to start. Try another episode or check your connection.',
+    30051: 'Live TV',
+    30052: 'No live TV channels found',
+    30053: 'Could not play this live channel. Try another channel or try again later.',
 }
 
 
@@ -257,6 +260,12 @@ def is_hls_url(url):
     lower = (url or '').lower()
     path = lower.split('?', 1)[0]
     return path.endswith('.m3u8') or '.m3u8' in path
+
+
+def is_dash_url(url):
+    lower = (url or '').lower()
+    path = lower.split('?', 1)[0]
+    return path.endswith('.mpd') or '.mpd' in path
 
 
 def inputstream_adaptive_status():
@@ -587,7 +596,15 @@ def is_local_bunny_playlist(path):
     return lower.endswith('bunny_play.m3u8') or lower.endswith('bunny_play.m3u')
 
 
-def apply_stream_properties(list_item, stream_url, referer=None, cookies=None):
+def apply_stream_properties(
+    list_item,
+    stream_url,
+    referer=None,
+    cookies=None,
+    license_type=None,
+    license_key=None,
+    is_live=False,
+):
     """Configure ListItem for playback. For ISA, never put |headers on the path."""
     is_bunny = is_hls_url(stream_url) and 'b-cdn.net' in (stream_url or '').lower()
     referer = playback_referer(referer, stream_url=stream_url)
@@ -617,21 +634,34 @@ def apply_stream_properties(list_item, stream_url, referer=None, cookies=None):
     )
 
     local_bunny = is_local_bunny_playlist(stream_url)
-    if local_bunny or is_hls_url(stream_url):
+    use_hls = local_bunny or is_hls_url(stream_url)
+    use_dash = (not use_hls) and is_dash_url(stream_url)
+    if use_hls or use_dash:
         list_item.setPath(stream_url)
-        list_item.setMimeType('application/vnd.apple.mpegurl')
+        list_item.setMimeType(
+            'application/vnd.apple.mpegurl' if use_hls else 'application/dash+xml'
+        )
         try:
             list_item.setContentLookup(False)
         except Exception:
             pass
         list_item.setProperty('inputstream', 'inputstream.adaptive')
         list_item.setProperty('inputstreamaddon', 'inputstream.adaptive')
-        list_item.setProperty('inputstream.adaptive.manifest_type', 'hls')
+        list_item.setProperty(
+            'inputstream.adaptive.manifest_type',
+            'hls' if use_hls else 'mpd',
+        )
         list_item.setProperty('inputstream.adaptive.manifest_headers', headers)
         list_item.setProperty('inputstream.adaptive.stream_headers', headers)
         list_item.setProperty('inputstream.adaptive.common_headers', headers)
-        list_item.setProperty('inputstream.adaptive.is_realtime_stream', 'false')
-        if is_bunny and (stream_url or '').startswith('http'):
+        list_item.setProperty(
+            'inputstream.adaptive.is_realtime_stream',
+            'true' if is_live else 'false',
+        )
+        if license_type and license_key:
+            list_item.setProperty('inputstream.adaptive.license_type', license_type)
+            list_item.setProperty('inputstream.adaptive.license_key', license_key)
+        elif is_bunny and (stream_url or '').startswith('http'):
             list_item.setProperty('inputstream.adaptive.license_key', '|' + headers)
         return
 
