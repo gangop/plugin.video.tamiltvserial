@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="repository.tamiltvserial" name="Tamil TV Serial Repository" version="1.0.8" provider-name="TV Clone">
+<addon id="repository.tamiltvserial" name="Tamil TV Serial Repository" version="1.0.9" provider-name="TV Clone">
     <extension point="xbmc.addon.repository" name="Tamil TV Serial Repository">
         <!--
-          Prefer GitHub raw first. jsDelivr @main can stay stale for hours and has
-          returned mismatched addons.xml vs checksum, which left TVs stuck on old
-          addon versions. jsDelivr remains as a secondary mirror for zip downloads.
+          Prefer GitHub raw first. jsDelivr @main can stay stale for days
+          (observed serving plugin 1.1.52 while GitHub had 1.1.55). Pin the
+          CDN mirror to a commit SHA so updates are not stuck on an old branch
+          snapshot. Update the SHA whenever publishing a new plugin version.
         -->
         <dir>
             <info compressed="false">https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/main/addons.xml</info>
@@ -13,9 +14,9 @@
             <hashes>false</hashes>
         </dir>
         <dir>
-            <info compressed="false">https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@main/addons.xml</info>
-            <checksum>https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@main/addons.xml.checksum</checksum>
-            <datadir zip="true">https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@main/zips/</datadir>
+            <info compressed="false">https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@8c5715fe8b655f9a0da7f3898ba40cdf13361dbe/addons.xml</info>
+            <checksum>https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@8c5715fe8b655f9a0da7f3898ba40cdf13361dbe/addons.xml.checksum</checksum>
+            <datadir zip="true">https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@8c5715fe8b655f9a0da7f3898ba40cdf13361dbe/zips/</datadir>
             <hashes>false</hashes>
         </dir>
     </extension>
