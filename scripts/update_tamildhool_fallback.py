@@ -260,13 +260,63 @@ def collect_episodes():
     return episodes
 
 
-def resolve_page(scraper, show: str, date: str, channel: str, title: str):
+def collect_catalog_episodes(catalog: dict | None = None):
+    """Episodes from active_serials recent_episodes (covers TamilDhool-ahead dates).
+
+    Returns (episodes, page_hints) where page_hints maps index key → TamilDhool URL.
+    """
+    if catalog is None and ACTIVE_SERIALS_OUTPUT.is_file():
+        catalog = json.loads(ACTIVE_SERIALS_OUTPUT.read_text(encoding='utf-8'))
+    if not isinstance(catalog, dict):
+        return {}, {}
+
+    id_to_channel = {
+        '5': 'sun tv',
+        '3': 'vijay tv',
+        '4': 'zee tamil',
+    }
+    episodes = {}
+    page_hints = {}
+    for channel_id, entries in (catalog.get('channels') or {}).items():
+        channel = id_to_channel.get(str(channel_id))
+        if not channel or not isinstance(entries, list):
+            continue
+        channel_slug = CHANNEL_SLUGS[channel]
+        for entry in entries:
+            if not isinstance(entry, dict):
+                continue
+            show = strip_html(entry.get('name') or '')
+            if not show:
+                continue
+            show_slug = slugify(show)
+            for episode in entry.get('recent_episodes') or []:
+                if not isinstance(episode, dict):
+                    continue
+                date = episode.get('date') or ''
+                title = strip_html(episode.get('title') or '')
+                if not date:
+                    continue
+                if not title:
+                    title = f'{show} {date} | {channel.title()} Serial'
+                key = f'{channel_slug}/{show_slug}/{date}'
+                if key not in episodes:
+                    episodes[key] = (title, show, date, channel)
+                page = (episode.get('page') or '').strip()
+                if page and key not in page_hints:
+                    page_hints[key] = page
+    print(f'Catalog recent episodes: {len(episodes)} (page hints {len(page_hints)})')
+    return episodes, page_hints
+
+
+def resolve_page(scraper, show: str, date: str, channel: str, title: str, page_hint: str = ''):
     channel_slug = CHANNEL_SLUGS[channel]
     kind = kind_slug(channel, title)
     show_slug = slugify(show)
     folder_slug, episode_bases = path_slugs(show_slug)
 
     pages = []
+    if page_hint:
+        pages.append(page_hint.rstrip('/') + '/')
     for episode_slug_base in episode_bases:
         pages.append(
             f'https://www.tamildhool.tech/{channel_slug}/{kind}/'
@@ -914,11 +964,21 @@ def main(argv=None) -> int:
 
     index = dict(existing)
     episodes = collect_episodes()
+    catalog_episodes, page_hints = collect_catalog_episodes(catalog)
+    for key, meta in catalog_episodes.items():
+        episodes.setdefault(key, meta)
     print(f'Resolving {len(episodes)} unique episodes via TamilDhool...')
 
     ok = skip = fail = 0
     for key, (title, show, date, channel) in sorted(episodes.items()):
-        page, stream, dm, status = resolve_page(scraper, show, date, channel, title)
+        page, stream, dm, status = resolve_page(
+            scraper,
+            show,
+            date,
+            channel,
+            title,
+            page_hint=page_hints.get(key, ''),
+        )
         if not stream and not dm:
             print(f'SKIP {key} ({status})')
             skip += 1

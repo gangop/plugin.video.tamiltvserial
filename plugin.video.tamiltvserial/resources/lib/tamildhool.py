@@ -13,11 +13,11 @@ from utils import log, log_error, strip_html
 
 
 TAMILDHOOL_BASE = 'https://www.tamildhool.tech'
-# Prefer jsDelivr on Google TV (raw.githubusercontent.com is often blocked/cached).
-# GitHub raw remains as a secondary mirror.
+# Prefer GitHub raw for freshness; jsDelivr @main can lag. load_fallback_index()
+# still tries every mirror and keeps the larger index when both respond.
 FALLBACK_INDEX_URLS = (
-    'https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@main/fallback/tamildhool.json',
     'https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/main/fallback/tamildhool.json',
+    'https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@main/fallback/tamildhool.json',
 )
 SHOW_ALIASES_URLS = (
     'https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@main/fallback/show_aliases.json',
@@ -455,7 +455,12 @@ def _load_fallback_index():
     if cached is not None and (now - fetched_at) < INDEX_CACHE_TTL_SECONDS:
         return cached
 
-    data = _fetch_json_urls(FALLBACK_INDEX_URLS, 'TamilDhool fallback index')
+    candidates = []
+    for base_url in FALLBACK_INDEX_URLS:
+        data = _fetch_json_url(base_url, 'TamilDhool fallback index')
+        if isinstance(data, dict) and data:
+            candidates.append(data)
+    data = max(candidates, key=len) if candidates else None
     if isinstance(data, dict) and data:
         log(f'TamilDhool index loaded ({len(data)} episodes)')
         _index_cache['data'] = data
