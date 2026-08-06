@@ -45,3 +45,8 @@ jobs:
             fallback/show_aliases.json
           git commit -m "Refresh TamilDhool fallback index and consolidated serials menu"
           git push
+          # jsDelivr @main can keep a stale active_serials.json without recent_episodes.
+          curl -fsS "https://purge.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@main/fallback/active_serials.json" \
+            || echo "jsDelivr purge skipped/failed"
+          curl -fsS "https://purge.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@main/fallback/tamildhool.json" \
+            || echo "jsDelivr purge skipped/failed"

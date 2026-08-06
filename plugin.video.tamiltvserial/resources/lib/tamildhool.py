@@ -70,9 +70,11 @@ _BUILTIN_SHOW_ALIASES = {
     'singappenne': ('singappenne', 'singapenne'),
 }
 
+# Prefer GitHub raw for freshness; jsDelivr @main can lag and omit recent_episodes.
+# load_active_serials() still tries every mirror and keeps the richest catalog.
 ACTIVE_SERIALS_URLS = (
-    'https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@main/fallback/active_serials.json',
     'https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/main/fallback/active_serials.json',
+    'https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@main/fallback/active_serials.json',
 )
 
 _index_cache = {'data': None, 'fetched_at': 0.0}
@@ -391,37 +393,58 @@ def _fetch_page(url, timeout=20):
         return response.geturl(), html
 
 
+def _fetch_json_url(base_url, label):
+    """Fetch one JSON dict from a published URL, or None on failure."""
+    cache_bust = int(time.time() // 3600)
+    url = f'{base_url}?v={cache_bust}'
+    request = urllib.request.Request(
+        url,
+        headers={
+            'User-Agent': WOODVIOLET_USER_AGENT,
+            'Accept': 'application/json',
+            'Cache-Control': 'no-cache',
+        },
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=15, context=_ssl_context()) as response:
+            data = json.loads(response.read().decode('utf-8', 'replace'))
+    except (
+        urllib.error.URLError,
+        urllib.error.HTTPError,
+        TimeoutError,
+        OSError,
+        ValueError,
+    ) as exc:
+        log_error(f'{label} unavailable from {url}: {exc}')
+        return None
+
+    if isinstance(data, dict) and data:
+        log(f'{label} loaded from {base_url.split("/")[2]}')
+        return data
+    return None
+
+
 def _fetch_json_urls(urls, label):
     """Fetch the first usable JSON dict from a list of published URLs."""
-    now = time.time()
-    cache_bust = int(now // 3600)
     for base_url in urls:
-        url = f'{base_url}?v={cache_bust}'
-        request = urllib.request.Request(
-            url,
-            headers={
-                'User-Agent': WOODVIOLET_USER_AGENT,
-                'Accept': 'application/json',
-                'Cache-Control': 'no-cache',
-            },
-        )
-        try:
-            with urllib.request.urlopen(request, timeout=15, context=_ssl_context()) as response:
-                data = json.loads(response.read().decode('utf-8', 'replace'))
-        except (
-            urllib.error.URLError,
-            urllib.error.HTTPError,
-            TimeoutError,
-            OSError,
-            ValueError,
-        ) as exc:
-            log_error(f'{label} unavailable from {url}: {exc}')
-            continue
-
-        if isinstance(data, dict) and data:
-            log(f'{label} loaded from {base_url.split("/")[2]}')
+        data = _fetch_json_url(base_url, label)
+        if data is not None:
             return data
     return None
+
+
+def _active_serials_score(data):
+    """Prefer catalogs that include recent_episodes (needed to list TD-ahead dates)."""
+    if not isinstance(data, dict) or not data.get('channels'):
+        return (-1, '')
+    episode_count = 0
+    for entries in (data.get('channels') or {}).values():
+        if not isinstance(entries, list):
+            continue
+        for entry in entries:
+            if isinstance(entry, dict):
+                episode_count += len(entry.get('recent_episodes') or [])
+    return (episode_count, data.get('updated') or '')
 
 
 def _load_fallback_index():
@@ -462,19 +485,34 @@ def _load_bundled_active_serials():
 def load_active_serials(channel_id=None):
     """Return TamilDhool-driven serial menu entries for a TTS channel parent id.
 
-    Prefers the published GitHub catalog (refreshed on a TTL), then the copy
-    bundled with the addon. Returns an empty list when neither is available so
-    the caller can keep using the live TamilTvSerial category listing.
+    Tries every published mirror plus the addon bundle and keeps the catalog
+    with the most recent_episodes (jsDelivr @main can serve a stale copy that
+    still has latest_date but empty episode lists). Returns an empty list when
+    nothing usable is available so the caller can fall back to live TTS.
     """
     now = time.time()
     cached = _active_serials_cache['data']
     fetched_at = _active_serials_cache.get('fetched_at') or 0.0
     if cached is None or (now - fetched_at) >= INDEX_CACHE_TTL_SECONDS:
-        data = _fetch_json_urls(ACTIVE_SERIALS_URLS, 'TamilDhool active serials')
-        if not (isinstance(data, dict) and data.get('channels')):
-            data = _load_bundled_active_serials()
-            if data:
-                log('TamilDhool active serials loaded from addon bundle')
+        candidates = []
+        for base_url in ACTIVE_SERIALS_URLS:
+            data = _fetch_json_url(base_url, 'TamilDhool active serials')
+            if isinstance(data, dict) and data.get('channels'):
+                candidates.append(data)
+        bundled = _load_bundled_active_serials()
+        if bundled:
+            candidates.append(bundled)
+            log('TamilDhool active serials candidate from addon bundle')
+
+        data = None
+        if candidates:
+            data = max(candidates, key=_active_serials_score)
+            score, updated = _active_serials_score(data)
+            log(
+                f'TamilDhool active serials selected '
+                f'({score} recent episodes, updated {updated or "unknown"})'
+            )
+
         if isinstance(data, dict) and data.get('channels'):
             _active_serials_cache['data'] = data
             _active_serials_cache['fetched_at'] = now
