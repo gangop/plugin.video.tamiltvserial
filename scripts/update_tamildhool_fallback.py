@@ -813,11 +813,7 @@ def build_active_serials_catalog(scraper) -> dict:
 
         entries = sorted(
             merged.values(),
-            key=lambda item: (
-                _date_sort_key(item.get('latest_date', '')),
-                item.get('name') or '',
-            ),
-            reverse=True,
+            key=lambda item: (item.get('name') or '').lower(),
         )
         channels[str(parent_id)] = entries
         print(f'  {len(entries)} consolidated serials for {channel_slug}')

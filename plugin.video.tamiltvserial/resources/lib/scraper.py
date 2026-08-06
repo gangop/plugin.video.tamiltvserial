@@ -114,8 +114,8 @@ def _serials_from_tamildhool_catalog(channel_id):
             item['channel_id'] = entry.get('channel_id') or channel_id
         serials.append(item)
 
-    # Catalog is already newest-first; keep that order for the menu.
-    return serials or None
+    # Always present serial folders A→Z regardless of catalog publish order.
+    return sorted(serials, key=lambda item: (item.get('name') or '').lower()) or None
 
 
 def catalog_recent_episodes(category_id=None, name=None, folder=None):
