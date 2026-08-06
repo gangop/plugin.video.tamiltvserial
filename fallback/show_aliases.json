@@ -11,5 +11,12 @@
   "chinnan-siru-kiliye": ["chinna-siru-kiliye"],
   "saregamapa-lil-champs-season-5": ["saregamapa-little-champs-s5"],
   "tamizha-tamizha": ["tamizha-tamizha-s3"],
-  "mahanadigai": ["mahanadigai-s2"]
+  "mahanadigai": ["mahanadigai-s2"],
+  "ethirneechal": ["ethir-neechal-thodargirathu", "ethir-neechal", "ethirneechal"],
+  "ethir-neechal": ["ethir-neechal-thodargirathu", "ethir-neechal", "ethirneechal"],
+  "chamanthi": ["samanthi"],
+  "samanthi": ["samanthi"],
+  "moondru-mudichu": ["moondru-mudichi", "moondru-mudichu"],
+  "pandian-stores": ["pandian-stores-s-2", "pandian-stores"],
+  "singappenne": ["singappenne", "singapenne"]
 }

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import json
+import os
 import re
 import ssl
 import time
@@ -60,10 +61,23 @@ _BUILTIN_SHOW_ALIASES = {
     'saregamapa-lil-champs-season-5': ('saregamapa-little-champs-s5',),
     'tamizha-tamizha': ('tamizha-tamizha-s3',),
     'mahanadigai': ('mahanadigai-s2',),
+    'ethirneechal': ('ethir-neechal-thodargirathu', 'ethir-neechal', 'ethirneechal'),
+    'ethir-neechal': ('ethir-neechal-thodargirathu', 'ethir-neechal', 'ethirneechal'),
+    'chamanthi': ('samanthi',),
+    'samanthi': ('samanthi',),
+    'moondru-mudichu': ('moondru-mudichi', 'moondru-mudichu'),
+    'pandian-stores': ('pandian-stores-s-2', 'pandian-stores'),
+    'singappenne': ('singappenne', 'singapenne'),
 }
+
+ACTIVE_SERIALS_URLS = (
+    'https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@main/fallback/active_serials.json',
+    'https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/main/fallback/active_serials.json',
+)
 
 _index_cache = {'data': None, 'fetched_at': 0.0}
 _aliases_cache = {'data': None}
+_active_serials_cache = {'data': None, 'fetched_at': 0.0}
 
 
 def _slugify(value):
@@ -377,16 +391,11 @@ def _fetch_page(url, timeout=20):
         return response.geturl(), html
 
 
-def _load_fallback_index():
-    """Load CI-generated episode→stream map for all shows (refreshed on a TTL)."""
+def _fetch_json_urls(urls, label):
+    """Fetch the first usable JSON dict from a list of published URLs."""
     now = time.time()
-    cached = _index_cache['data']
-    fetched_at = _index_cache.get('fetched_at') or 0.0
-    if cached is not None and (now - fetched_at) < INDEX_CACHE_TTL_SECONDS:
-        return cached
-
     cache_bust = int(now // 3600)
-    for base_url in FALLBACK_INDEX_URLS:
+    for base_url in urls:
         url = f'{base_url}?v={cache_bust}'
         request = urllib.request.Request(
             url,
@@ -406,17 +415,78 @@ def _load_fallback_index():
             OSError,
             ValueError,
         ) as exc:
-            log_error(f'TamilDhool fallback index unavailable from {url}: {exc}')
+            log_error(f'{label} unavailable from {url}: {exc}')
             continue
 
         if isinstance(data, dict) and data:
-            log(f'TamilDhool index loaded ({len(data)} episodes) from {base_url.split("/")[2]}')
-            _index_cache['data'] = data
-            _index_cache['fetched_at'] = now
+            log(f'{label} loaded from {base_url.split("/")[2]}')
             return data
+    return None
+
+
+def _load_fallback_index():
+    """Load CI-generated episode→stream map for all shows (refreshed on a TTL)."""
+    now = time.time()
+    cached = _index_cache['data']
+    fetched_at = _index_cache.get('fetched_at') or 0.0
+    if cached is not None and (now - fetched_at) < INDEX_CACHE_TTL_SECONDS:
+        return cached
+
+    data = _fetch_json_urls(FALLBACK_INDEX_URLS, 'TamilDhool fallback index')
+    if isinstance(data, dict) and data:
+        log(f'TamilDhool index loaded ({len(data)} episodes)')
+        _index_cache['data'] = data
+        _index_cache['fetched_at'] = now
+        return data
 
     # Don't cache failures — allow a later play attempt to retry.
     return cached if isinstance(cached, dict) else {}
+
+
+def _bundled_active_serials_path():
+    # resources/lib/tamildhool.py → resources/data/active_serials.json
+    return os.path.join(os.path.dirname(__file__), '..', 'data', 'active_serials.json')
+
+
+def _load_bundled_active_serials():
+    path = _bundled_active_serials_path()
+    try:
+        with open(path, 'r', encoding='utf-8') as handle:
+            data = json.load(handle)
+    except (OSError, ValueError) as exc:
+        log_error(f'Bundled active serials unavailable: {exc}')
+        return None
+    return data if isinstance(data, dict) and data.get('channels') else None
+
+
+def load_active_serials(channel_id=None):
+    """Return TamilDhool-driven serial menu entries for a TTS channel parent id.
+
+    Prefers the published GitHub catalog (refreshed on a TTL), then the copy
+    bundled with the addon. Returns an empty list when neither is available so
+    the caller can keep using the live TamilTvSerial category listing.
+    """
+    now = time.time()
+    cached = _active_serials_cache['data']
+    fetched_at = _active_serials_cache.get('fetched_at') or 0.0
+    if cached is None or (now - fetched_at) >= INDEX_CACHE_TTL_SECONDS:
+        data = _fetch_json_urls(ACTIVE_SERIALS_URLS, 'TamilDhool active serials')
+        if not (isinstance(data, dict) and data.get('channels')):
+            data = _load_bundled_active_serials()
+            if data:
+                log('TamilDhool active serials loaded from addon bundle')
+        if isinstance(data, dict) and data.get('channels'):
+            _active_serials_cache['data'] = data
+            _active_serials_cache['fetched_at'] = now
+            cached = data
+        elif not isinstance(cached, dict):
+            return []
+
+    channels = (cached or {}).get('channels') or {}
+    if channel_id is None:
+        return channels
+    entries = channels.get(str(channel_id)) or channels.get(channel_id) or []
+    return entries if isinstance(entries, list) else []
 
 
 def resolve_from_fallback_index(title):

@@ -1,0 +1,512 @@
+{
+  "updated": "2026-08-06T00:40:16.680282Z",
+  "sources": [
+    "tamildhool",
+    "tamiltvserial"
+  ],
+  "active_days": 21,
+  "channels": {
+    "5": [
+      {
+        "name": "Vinodhini",
+        "folder": "vinodhini",
+        "count": 87,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Vinodhini 05-08-2026",
+        "id": 6713
+      },
+      {
+        "name": "Thulasi",
+        "folder": "thulasi",
+        "count": 64,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Thulasi 05-08-2026",
+        "id": 6764
+      },
+      {
+        "name": "Siragugal",
+        "folder": "siragugal",
+        "count": 12,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Siragugal 05-08-2026",
+        "id": 6775
+      },
+      {
+        "name": "Singappenne",
+        "folder": "singappenne",
+        "count": 103,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Singappenne 05-08-2026",
+        "id": 6340
+      },
+      {
+        "name": "Pudhu Vasantham",
+        "folder": "pudhu-vasantham",
+        "count": 103,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Pudhu Vasantham 05-08-2026",
+        "id": 6348
+      },
+      {
+        "name": "Poongodi",
+        "folder": "poongodi",
+        "count": 86,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Poongodi 05-08-2026",
+        "id": 6700
+      },
+      {
+        "name": "Moondru Mudichu",
+        "folder": "moondru-mudichi",
+        "count": 88,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Moondru Mudichu 05-08-2026",
+        "id": 6663
+      },
+      {
+        "name": "Marumagal",
+        "folder": "marumagal",
+        "count": 0,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Marumagal 05-08-2026",
+        "id": 6650,
+        "search_query": "Marumagal",
+        "channel_id": 5
+      },
+      {
+        "name": "Malli",
+        "folder": "malli",
+        "count": 102,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Malli 05-08-2026",
+        "id": 6620
+      },
+      {
+        "name": "Lakshmi",
+        "folder": "lakshmi",
+        "count": 0,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Lakshmi 05-08-2026",
+        "id": 6438,
+        "search_query": "Lakshmi",
+        "channel_id": 5
+      },
+      {
+        "name": "Kayal",
+        "folder": "kayal",
+        "count": 87,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Kayal 05-08-2026",
+        "id": 6339
+      },
+      {
+        "name": "Iru Malargal",
+        "folder": "iru-malargal",
+        "count": 88,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Iru Malargal 05-08-2026",
+        "id": 6756
+      },
+      {
+        "name": "Ethir Neechal",
+        "folder": "ethir-neechal-thodargirathu",
+        "count": 102,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Ethir Neechal 05-08-2026",
+        "id": 6344
+      },
+      {
+        "name": "Annam",
+        "folder": "annam",
+        "count": 99,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Annam 05-08-2026",
+        "id": 6692
+      },
+      {
+        "name": "Aadukalam",
+        "folder": "aadukalam",
+        "count": 73,
+        "sources": [
+          "tamiltvserial"
+        ],
+        "latest_date": "18-07-2026",
+        "latest_title": "Aadukalam 18-07-2026 | Episode 439 | Sun TV Serial",
+        "id": 6710
+      }
+    ],
+    "3": [
+      {
+        "name": "Thendrale Mella Pesu",
+        "folder": "thendrale-mella-pesu",
+        "count": 87,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Thendrale Mella Pesu 05-08-2026 | Episode 343 | Vijay TV Serial",
+        "id": 6716
+      },
+      {
+        "name": "Thaai Maaman",
+        "folder": "thaai-maaman",
+        "count": 70,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Thaai Maaman 05-08-2026 | Episode 73 | Vijay TV Serial",
+        "id": 6763
+      },
+      {
+        "name": "Suttum Vizhi Sudare",
+        "folder": "suttum-vizhi-sudare",
+        "count": 87,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Suttum Vizhi Sudare 05-08-2026 | Episode 180 | Vijay TV Serial",
+        "id": 6754
+      },
+      {
+        "name": "Siragadikka Aasai",
+        "folder": "siragadikka-aasai",
+        "count": 90,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Siragadikka Aasai 05-08-2026 | Episode 1077 | Vijay TV Serial",
+        "id": 6357
+      },
+      {
+        "name": "Sindhu Bairavi",
+        "folder": "sindhu-bairavi-kacheri-arambam",
+        "count": 71,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Sindhu Bairavi 05-08-2026",
+        "id": 6695
+      },
+      {
+        "name": "Pandian Stores",
+        "folder": "pandian-stores-s-2",
+        "count": 94,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Pandian Stores 05-08-2026 | Episode 850 | Vijay TV Serial",
+        "id": 6359
+      },
+      {
+        "name": "Onna Irukka Kaththukanum",
+        "folder": "onna-irukka-kaththukkanum",
+        "count": 27,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Onna Irukka Kaththukanum 05-08-2026 | Episode 28 | Vijay TV Serial",
+        "id": 6768
+      },
+      {
+        "name": "Kanmani Anbudan",
+        "folder": "kanmani-anbudan",
+        "count": 87,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Kanmani Anbudan 05-08-2026 | Episode 575 | Vijay TV Serial",
+        "id": 6670
+      },
+      {
+        "name": "Kadhal Kadhal Kadhal",
+        "folder": "kadhal-kadhal-kadhal",
+        "count": 22,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Kadhal Kadhal Kadhal 05-08-2026 | Episode 23 | Vijay TV Serial",
+        "id": 6773
+      },
+      {
+        "name": "Chinna Marumagal",
+        "folder": "chinna-marumagal",
+        "count": 161,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Chinna Marumagal 05-08-2026 | Episode 672 | Vijay TV Serial",
+        "id": 6353
+      },
+      {
+        "name": "Azhagae Azhagu",
+        "folder": "azhagae-azhagu",
+        "count": 95,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Azhagae Azhagu 05-08-2026 | Episode 140 | Vijay TV Serial",
+        "id": 6758
+      },
+      {
+        "name": "Ayyanar Thunai",
+        "folder": "ayyanar-thunai",
+        "count": 89,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Ayyanar Thunai 05-08-2026 | Episode 472 | Vijay TV Serial",
+        "id": 6698
+      }
+    ],
+    "4": [
+      {
+        "name": "Veera",
+        "folder": "veera",
+        "count": 99,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Veera 05-08-2026",
+        "id": 6386
+      },
+      {
+        "name": "Varisu",
+        "folder": "varisu",
+        "count": 87,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Varisu 05-08-2026",
+        "id": 6720
+      },
+      {
+        "name": "Vaagai Sooda Vaa",
+        "folder": "vaagai-sooda-vaa",
+        "count": 95,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Vaagai Sooda Vaa 05-08-2026",
+        "id": 6760
+      },
+      {
+        "name": "Thirumangalyam",
+        "folder": "thirumangalyam",
+        "count": 71,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Thirumangalyam 05-08-2026",
+        "id": 6749
+      },
+      {
+        "name": "Sandhya Raagam",
+        "folder": "sandhya-raagam",
+        "count": 95,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Sandhya Raagam 05-08-2026",
+        "id": 6379
+      },
+      {
+        "name": "Samanthi",
+        "folder": "samanthi",
+        "count": 0,
+        "sources": [
+          "tamildhool"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Samanthi 05-08-2026",
+        "id": 6774,
+        "search_query": "Samanthi",
+        "channel_id": 4
+      },
+      {
+        "name": "Salangai Oli",
+        "folder": "salangai-oli",
+        "count": 189,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Salangai Oli 05-08-2026",
+        "id": 6737
+      },
+      {
+        "name": "Paarijatham",
+        "folder": "parijatham",
+        "count": 75,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Paarijatham 05-08-2026",
+        "id": 6732
+      },
+      {
+        "name": "Karthigai Deepam",
+        "folder": "karthigai-deepam",
+        "count": 91,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Karthigai Deepam 05-08-2026",
+        "id": 6372
+      },
+      {
+        "name": "Idhayam",
+        "folder": "idhayam",
+        "count": 87,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Idhayam 05-08-2026",
+        "id": 6378
+      },
+      {
+        "name": "Chinnan Siru Kiliye",
+        "folder": "chinna-siru-kiliye",
+        "count": 71,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Chinnan Siru Kiliye 05-08-2026",
+        "id": 6722
+      },
+      {
+        "name": "Ayali",
+        "folder": "ayali",
+        "count": 93,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Ayali 05-08-2026",
+        "id": 6715
+      },
+      {
+        "name": "Aval Varuvala",
+        "folder": "aval-varuvala",
+        "count": 262,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Aval Varuvala 05-08-2026",
+        "id": 6750
+      },
+      {
+        "name": "Annamalai Kudumbam",
+        "folder": "annamalai-kudumbam",
+        "count": 88,
+        "sources": [
+          "tamildhool",
+          "tamiltvserial"
+        ],
+        "latest_date": "05-08-2026",
+        "latest_title": "Annamalai Kudumbam 05-08-2026",
+        "id": 6751
+      }
+    ]
+  }
+}

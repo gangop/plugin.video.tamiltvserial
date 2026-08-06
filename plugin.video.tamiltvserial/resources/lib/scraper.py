@@ -74,12 +74,55 @@ def title_matches_serial(title, serial_name):
     return parse_show_title(title).lower() == serial_name.strip().lower()
 
 
-def list_serial_categories(channel_id):
-    """List serial folders for a channel, including empty WP categories that still have episodes.
+def _serials_from_tamildhool_catalog(channel_id):
+    """Build the serials menu from the CI-published consolidated catalog."""
+    try:
+        from tamildhool import load_active_serials
+    except ImportError:
+        return None
 
-    Some serials (e.g. Sun TV Marumagal) have a category with count=0 because posts are
-    miscategorized. Detect those by scanning recent channel posts and matching titles.
+    entries = load_active_serials(channel_id)
+    if not entries:
+        return None
+
+    serials = []
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        name = strip_html(entry.get('name') or '')
+        if not name:
+            continue
+        category_id = entry.get('id')
+        count = int(entry.get('count') or 0)
+        item = {
+            'id': category_id if category_id not in (None, '') else f'search:{name.lower()}',
+            'name': name,
+            'count': count,
+        }
+        if entry.get('latest_date'):
+            item['latest_date'] = entry['latest_date']
+        if entry.get('latest_title'):
+            item['latest_title'] = entry['latest_title']
+        # Empty / miscategorized TTS folders open via channel-scoped title search.
+        if entry.get('search_query') or not category_id or count <= 0:
+            item['search_query'] = entry.get('search_query') or name
+            item['channel_id'] = entry.get('channel_id') or channel_id
+        serials.append(item)
+
+    # Catalog is already newest-first; keep that order for the menu.
+    return serials or None
+
+
+def list_serial_categories(channel_id):
+    """List serial folders from the daily TamilDhool+TamilTvSerial consolidation.
+
+    Falls back to live TamilTvSerial WP categories when the published catalog
+    is missing.
     """
+    catalog = _serials_from_tamildhool_catalog(channel_id)
+    if catalog is not None:
+        return catalog
+
     children = list_child_categories(channel_id, include_empty=True)
     serials = {}
     empty_by_name = {}
@@ -144,7 +187,11 @@ def list_serial_categories(channel_id):
 
     return sorted(
         serials.values(),
-        key=lambda item: (item.get('name') or '').lower(),
+        key=lambda item: (
+            item.get('latest_date') or '',
+            item.get('name') or '',
+        ),
+        reverse=True,
     )
 
 
