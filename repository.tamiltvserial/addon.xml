@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="repository.tamiltvserial" name="Tamil TV Serial Repository" version="1.0.11" provider-name="TV Clone">
+<addon id="repository.tamiltvserial" name="Tamil TV Serial Repository" version="1.0.12" provider-name="TV Clone">
     <extension point="xbmc.addon.repository" name="Tamil TV Serial Repository">
         <dir>
             <info compressed="false">https://raw.githubusercontent.com/gangop/plugin.video.tamiltvserial/main/addons.xml</info>
@@ -8,9 +8,9 @@
             <hashes>false</hashes>
         </dir>
         <dir>
-            <info compressed="false">https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@17da9c8883fadc9de9dd720cd1739053af11dd10/addons.xml</info>
-            <checksum>https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@17da9c8883fadc9de9dd720cd1739053af11dd10/addons.xml.checksum</checksum>
-            <datadir zip="true">https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@17da9c8883fadc9de9dd720cd1739053af11dd10/zips/</datadir>
+            <info compressed="false">https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@dc6b6157595af7e0dc342c0d7ae77f61eb33d2b8/addons.xml</info>
+            <checksum>https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@dc6b6157595af7e0dc342c0d7ae77f61eb33d2b8/addons.xml.checksum</checksum>
+            <datadir zip="true">https://cdn.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@dc6b6157595af7e0dc342c0d7ae77f61eb33d2b8/zips/</datadir>
             <hashes>false</hashes>
         </dir>
     </extension>
