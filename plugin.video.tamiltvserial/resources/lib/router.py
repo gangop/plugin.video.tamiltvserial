@@ -30,6 +30,7 @@ from scraper import (
     list_posts,
     list_serial_categories,
     list_show_categories_by_latest_episode,
+    merge_catalog_episodes,
     normalize_post,
     title_matches_serial,
 )
@@ -215,6 +216,8 @@ class Router:
                 'title': name,
                 'page': 1,
             }
+        if serial.get('folder'):
+            params['td_folder'] = serial['folder']
         self._add_folder(
             label,
             params,
@@ -248,7 +251,11 @@ class Router:
         set_video_info(list_item, info_dict)
 
         list_item.setProperty('IsPlayable', 'true')
-        play_params = {'action': 'play', 'post_id': episode['id']}
+        episode_id = episode.get('id')
+        if isinstance(episode_id, str) and str(episode_id).startswith('td-'):
+            play_params = {'action': 'play', 'title': episode['title']}
+        else:
+            play_params = {'action': 'play', 'post_id': episode_id}
         if category_id:
             play_params['category_id'] = category_id
         if next_post_id:
@@ -258,10 +265,25 @@ class Router:
 
     @staticmethod
     def _episode_desc_key(episode):
+        title = episode.get('title') or ''
+        date_key = ''
+        try:
+            from scraper import TITLE_DATE_CAPTURE_PATTERN
+            date_match = TITLE_DATE_CAPTURE_PATTERN.search(title)
+            if date_match:
+                date_key = (
+                    f'{date_match.group(3)}-{int(date_match.group(2)):02d}-'
+                    f'{int(date_match.group(1)):02d}'
+                )
+        except Exception:
+            pass
+        episode_id = episode.get('id') or 0
+        if isinstance(episode_id, str):
+            episode_id = 0
         return (
-            episode.get('date') or '',
+            date_key or episode.get('date') or '',
             episode.get('episode_number') or 0,
-            episode.get('id') or 0,
+            episode_id,
         )
 
     def _finish_listing(
@@ -285,7 +307,9 @@ class Router:
             next_post_id = ''
             if category_id:
                 if index > 0:
-                    next_post_id = str(episodes[index - 1].get('id', ''))
+                    newer_id = episodes[index - 1].get('id', '')
+                    if not (isinstance(newer_id, str) and str(newer_id).startswith('td-')):
+                        next_post_id = str(newer_id)
             self._add_episode(episode, category_id=category_id, next_post_id=next_post_id)
 
         if page < total_pages:
@@ -502,12 +526,55 @@ class Router:
 
     def _play(self, params):
         post_id = params.get('post_id')
+        title_only = (params.get('title') or '').strip()
+        category_id = params.get('category_id', '')
+
+        if not post_id and title_only:
+            episode = {
+                'id': 0,
+                'title': title_only,
+                'plot': '',
+                'thumb': '',
+                'link': '',
+                'date': '',
+                'categories': [],
+                'content_html': '',
+                'episode_number': None,
+            }
+            xbmcgui.Dialog().notification(
+                addon().getAddonInfo('name'),
+                localize(30021),
+                xbmcgui.NOTIFICATION_INFO,
+                2000,
+            )
+            source_order = ['tamildhool-index', 'tamildhool-live']
+            candidate, remaining = self._next_verified_candidate(episode, source_order)
+            if not candidate:
+                self._clear_autoplay()
+                self._clear_failover()
+                log_error(f'No stream resolved for title={title_only!r}')
+                xbmcgui.Dialog().notification(
+                    addon().getAddonInfo('name'),
+                    localize(30020),
+                    xbmcgui.NOTIFICATION_ERROR,
+                    5000,
+                )
+                xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
+                return
+            self._play_candidate(
+                candidate,
+                episode=episode,
+                next_post_id=params.get('next_post_id', ''),
+                category_id=category_id,
+                remaining_sources=remaining,
+            )
+            return
+
         if not post_id:
             xbmcplugin.setResolvedUrl(self.handle, False, xbmcgui.ListItem())
             return
 
         post_id = int(post_id)
-        category_id = params.get('category_id', '')
         posts, _headers = api_get('posts', params={'include': post_id})
         if not posts:
             xbmcgui.Dialog().notification(
@@ -655,12 +722,6 @@ class Router:
             'mediatype': 'video',
         })
         list_item.setProperty('IsPlayable', 'true')
-
-        if stream.get('type') == 'youtube':
-            video_id = stream.get('video_id') or ''
-            list_item.setPath(f'plugin://plugin.video.youtube/play/?video_id={video_id}')
-            xbmcplugin.setResolvedUrl(self.handle, True, list_item)
-            return
 
         stream_url = stream.get('url') or ''
         needs_isa = is_hls_url(stream_url) or is_dash_url(stream_url)
@@ -838,6 +899,13 @@ class Router:
         self._set_view('episodes')
 
         posts, page, total_pages = list_posts(category_id=category_id, page=page)
+        if page == 1:
+            posts = merge_catalog_episodes(
+                posts,
+                category_id=category_id,
+                name=title,
+                folder=params.get('td_folder'),
+            )
         self._finish_listing(
             posts,
             page,
@@ -847,6 +915,7 @@ class Router:
                 'category_id': category_id,
                 'title': title,
                 'page': page,
+                'td_folder': params.get('td_folder', ''),
             },
             category_id=category_id,
             force_desc=True,
@@ -890,6 +959,18 @@ class Router:
                     match_title,
                 )
             ]
+        if page == 1:
+            merge_category = params.get('category_id') or None
+            try:
+                merge_category = int(merge_category) if merge_category else None
+            except (TypeError, ValueError):
+                merge_category = None
+            posts = merge_catalog_episodes(
+                posts,
+                category_id=merge_category,
+                name=match_title or query,
+                folder=params.get('td_folder'),
+            )
 
         base_params = {'action': 'search', 'query': query, 'page': page}
         if channel_id:
@@ -898,6 +979,8 @@ class Router:
             base_params['title'] = params.get('title')
         if params.get('category_id'):
             base_params['category_id'] = params.get('category_id')
+        if params.get('td_folder'):
+            base_params['td_folder'] = params.get('td_folder')
 
         self._finish_listing(
             posts,

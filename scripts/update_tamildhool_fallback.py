@@ -353,20 +353,47 @@ def _match_tts_category(folder: str, title: str, by_slug: dict):
 
 
 def scrape_tamildhool_serials(scraper, base_url: str, pages: int = 6):
-    """Return ordered {folder, title, latest_date} rows from TamilDhool serial pages."""
+    """Return ordered show rows with recent episode dates from TamilDhool."""
     folder_re = re.compile(
         r'/(sun-tv|vijay-tv|zee-tamil)/(?:sun-tv|vijay-tv|zee-tamil)-serial/([a-z0-9-]+)/',
         re.I,
     )
     title_re = re.compile(
-        r'href=["\']https://www\.tamildhool\.tech/(sun-tv|vijay-tv|zee-tamil)/'
-        r'(?:sun-tv|vijay-tv|zee-tamil)-serial/([a-z0-9-]+)/[^"\']*["\'][^>]*>\s*'
+        r'href=["\'](https://www\.tamildhool\.tech/(sun-tv|vijay-tv|zee-tamil)/'
+        r'(?:sun-tv|vijay-tv|zee-tamil)-serial/([a-z0-9-]+)/[^"\']+)["\'][^>]*>\s*'
         r'([^<]+?)\s+(\d{1,2}-\d{1,2}-\d{4})',
         re.I,
     )
     skip = {'page', 'feed', 'amp'}
     shows = {}
     order = []
+
+    def add_episode(folder, title, date, page_url=''):
+        if folder in skip:
+            return
+        if folder not in shows:
+            shows[folder] = {
+                'folder': folder,
+                'title': title,
+                'latest_date': date,
+                'episodes': [],
+            }
+            order.append(folder)
+        entry = shows[folder]
+        if date and (
+            not entry.get('latest_date')
+            or _date_sort_key(date) > _date_sort_key(entry.get('latest_date', ''))
+        ):
+            entry['latest_date'] = date
+            if title:
+                entry['title'] = title
+        dates = {ep.get('date') for ep in entry['episodes']}
+        if date and date not in dates:
+            entry['episodes'].append({
+                'date': date,
+                'title': title,
+                'page': page_url,
+            })
 
     for page in range(1, pages + 1):
         url = base_url if page == 1 else base_url.rstrip('/') + f'/page/{page}/'
@@ -381,27 +408,53 @@ def scrape_tamildhool_serials(scraper, base_url: str, pages: int = 6):
 
         html = response.text
         for match in title_re.finditer(html):
-            folder = match.group(2).lower()
-            if folder in skip:
-                continue
-            title = re.sub(r'\s+', ' ', strip_html(match.group(3))).strip()
-            date = match.group(4)
-            if folder not in shows:
-                shows[folder] = {'folder': folder, 'title': title, 'latest_date': date}
-                order.append(folder)
-            elif not shows[folder].get('latest_date'):
-                shows[folder]['latest_date'] = date
+            page_url = match.group(1)
+            folder = match.group(3).lower()
+            title = re.sub(r'\s+', ' ', strip_html(match.group(4))).strip()
+            date = match.group(5)
+            # Normalize date to DD-MM-YYYY with zero padding
+            dm = TITLE_DATE_PATTERN.search(date)
+            if dm:
+                date = f'{int(dm.group(1)):02d}-{int(dm.group(2)):02d}-{dm.group(3)}'
+            add_episode(folder, title, date, page_url)
 
         for match in folder_re.finditer(html):
             folder = match.group(2).lower()
             if folder in skip or folder in shows:
                 continue
-            shows[folder] = {
-                'folder': folder,
-                'title': folder.replace('-', ' ').title(),
-                'latest_date': '',
-            }
-            order.append(folder)
+            add_episode(folder, folder.replace('-', ' ').title(), '', '')
+
+    # Pull each show folder page for a denser recent-episode list.
+    for folder in list(order):
+        channel = 'sun-tv'
+        if 'vijay-tv' in base_url:
+            channel = 'vijay-tv'
+        elif 'zee-tamil' in base_url:
+            channel = 'zee-tamil'
+        folder_url = f'https://www.tamildhool.tech/{channel}/{channel}-serial/{folder}/'
+        try:
+            response = scraper.get(folder_url, timeout=45)
+        except Exception as exc:
+            print(f'  folder fail {folder}: {exc}')
+            continue
+        if response.status_code != 200:
+            continue
+        for match in title_re.finditer(response.text):
+            page_url = match.group(1)
+            found_folder = match.group(3).lower()
+            if found_folder != folder:
+                continue
+            title = re.sub(r'\s+', ' ', strip_html(match.group(4))).strip()
+            date = match.group(5)
+            dm = TITLE_DATE_PATTERN.search(date)
+            if dm:
+                date = f'{int(dm.group(1)):02d}-{int(dm.group(2)):02d}-{dm.group(3)}'
+            add_episode(folder, title, date, page_url)
+
+    for folder in order:
+        episodes = shows[folder].get('episodes') or []
+        episodes.sort(key=lambda item: _date_sort_key(item.get('date', '')), reverse=True)
+        shows[folder]['episodes'] = episodes[:16]
 
     return [shows[folder] for folder in order]
 
@@ -523,6 +576,37 @@ def collect_tts_recent_shows(parent_id: int, pages: int = TTS_RECENT_POST_PAGES)
     return [shows[key] for key in order]
 
 
+def _channel_label(channel_slug: str) -> str:
+    return {
+        'sun-tv': 'Sun TV',
+        'vijay-tv': 'Vijay TV',
+        'zee-tamil': 'Zee Tamil',
+    }.get(channel_slug, channel_slug.replace('-', ' ').title())
+
+
+def _normalize_recent_episodes(raw_episodes, display_name: str, channel_slug: str):
+    """Build playable episode titles from TamilDhool scrape rows."""
+    channel_label = _channel_label(channel_slug)
+    episodes = []
+    seen = set()
+    for item in raw_episodes or []:
+        date = item.get('date') or ''
+        if not date or date in seen:
+            continue
+        seen.add(date)
+        # Playback resolvers expect "Show DD-MM-YYYY | Channel Serial".
+        title = f'{display_name} {date} | {channel_label} Serial'
+        episode = {
+            'date': date,
+            'title': title,
+        }
+        if item.get('page'):
+            episode['page'] = item['page']
+        episodes.append(episode)
+    episodes.sort(key=lambda row: _date_sort_key(row.get('date', '')), reverse=True)
+    return episodes[:16]
+
+
 def _entry_from_sources(
     *,
     parent_id: int,
@@ -532,6 +616,8 @@ def _entry_from_sources(
     latest_date: str = '',
     latest_title: str = '',
     sources: list[str],
+    recent_episodes: list | None = None,
+    channel_slug: str = '',
 ):
     display_name, search_name = _display_and_search_names(folder, title, category)
     count = int((category or {}).get('count') or 0)
@@ -550,6 +636,16 @@ def _entry_from_sources(
     if not category_id or count <= 0:
         entry['search_query'] = search_name or display_name
         entry['channel_id'] = parent_id
+    episodes = _normalize_recent_episodes(
+        recent_episodes,
+        display_name=display_name,
+        channel_slug=channel_slug,
+    )
+    if episodes:
+        entry['recent_episodes'] = episodes
+        if not entry.get('latest_date'):
+            entry['latest_date'] = episodes[0]['date']
+            entry['latest_title'] = episodes[0]['title']
     return entry
 
 
@@ -627,6 +723,25 @@ def build_active_serials_catalog(scraper) -> dict:
                     current['latest_title'] = entry['latest_title']
             if 'tamildhool' in (entry.get('sources') or []) and entry.get('folder'):
                 current['folder'] = entry['folder']
+            if entry.get('recent_episodes'):
+                by_date = {
+                    ep.get('date'): ep
+                    for ep in (current.get('recent_episodes') or [])
+                    if ep.get('date')
+                }
+                for ep in entry['recent_episodes']:
+                    date = ep.get('date')
+                    if date and (
+                        date not in by_date
+                        or (ep.get('page') and not by_date[date].get('page'))
+                    ):
+                        by_date[date] = ep
+                merged_eps = sorted(
+                    by_date.values(),
+                    key=lambda row: _date_sort_key(row.get('date', '')),
+                    reverse=True,
+                )
+                current['recent_episodes'] = merged_eps[:16]
             if entry.get('search_query') and (
                 not current.get('id') or int(current.get('count') or 0) <= 0
             ):
@@ -648,10 +763,13 @@ def build_active_serials_catalog(scraper) -> dict:
                 latest_date=info.get('latest_date') or '',
                 latest_title='',
                 sources=['tamildhool'],
+                recent_episodes=info.get('episodes') or [],
+                channel_slug=channel_slug,
             )
             upsert(entry, category)
             status = f"id={entry.get('id')} count={entry.get('count')}" if entry.get('id') else 'NO TTS MATCH'
-            print(f'  TD  {entry["name"]} [{folder}] -> {status}')
+            ep_count = len(entry.get('recent_episodes') or [])
+            print(f'  TD  {entry["name"]} [{folder}] -> {status} episodes={ep_count}')
 
         for info in tts_recent:
             name = info['name']
@@ -669,6 +787,7 @@ def build_active_serials_catalog(scraper) -> dict:
                 latest_date=latest_date,
                 latest_title=info.get('latest_title') or '',
                 sources=['tamiltvserial'],
+                channel_slug=channel_slug,
             )
             for other in merged.values():
                 if other.get('id') and category and other.get('id') == category.get('id'):

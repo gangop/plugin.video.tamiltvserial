@@ -20,6 +20,7 @@ MASKR_ONCLICK_PATTERN = re.compile(
 )
 EPISODE_NUMBER_PATTERN = re.compile(r'Episode\s+(\d+)', re.I)
 TITLE_DATE_PATTERN = re.compile(r'\s*\d{1,2}-\d{1,2}-\d{4}.*$')
+TITLE_DATE_CAPTURE_PATTERN = re.compile(r'(\d{1,2})-(\d{1,2})-(\d{4})')
 
 
 def extract_maskr_urls(html_content):
@@ -99,10 +100,14 @@ def _serials_from_tamildhool_catalog(channel_id):
             'name': name,
             'count': count,
         }
+        if entry.get('folder'):
+            item['folder'] = entry['folder']
         if entry.get('latest_date'):
             item['latest_date'] = entry['latest_date']
         if entry.get('latest_title'):
             item['latest_title'] = entry['latest_title']
+        if entry.get('recent_episodes'):
+            item['recent_episodes'] = entry['recent_episodes']
         # Empty / miscategorized TTS folders open via channel-scoped title search.
         if entry.get('search_query') or not category_id or count <= 0:
             item['search_query'] = entry.get('search_query') or name
@@ -111,6 +116,72 @@ def _serials_from_tamildhool_catalog(channel_id):
 
     # Catalog is already newest-first; keep that order for the menu.
     return serials or None
+
+
+def catalog_recent_episodes(category_id=None, name=None, folder=None):
+    """Return recent TamilDhool episodes from the published serials catalog."""
+    try:
+        from tamildhool import load_active_serials
+    except ImportError:
+        return []
+
+    channels = load_active_serials(None)
+    if not isinstance(channels, dict):
+        return []
+
+    name_key = (name or '').strip().lower()
+    folder_key = (folder or '').strip().lower()
+    for entries in channels.values():
+        if not isinstance(entries, list):
+            continue
+        for entry in entries:
+            if not isinstance(entry, dict):
+                continue
+            if category_id and entry.get('id') == category_id:
+                return list(entry.get('recent_episodes') or [])
+            if category_id and str(entry.get('id')) == str(category_id):
+                return list(entry.get('recent_episodes') or [])
+            if folder_key and (entry.get('folder') or '').lower() == folder_key:
+                return list(entry.get('recent_episodes') or [])
+            if name_key and (entry.get('name') or '').strip().lower() == name_key:
+                return list(entry.get('recent_episodes') or [])
+    return []
+
+
+def merge_catalog_episodes(posts, category_id=None, name=None, folder=None):
+    """Append TamilDhool-only recent episodes that TamilTvSerial has not published yet."""
+    recent = catalog_recent_episodes(category_id=category_id, name=name, folder=folder)
+    if not recent:
+        return posts
+
+    seen_dates = set()
+    for post in posts:
+        title = strip_html(((post.get('title') or {}).get('rendered')) or post.get('title') or '')
+        match = TITLE_DATE_CAPTURE_PATTERN.search(title)
+        if match:
+            seen_dates.add(
+                f'{int(match.group(1)):02d}-{int(match.group(2)):02d}-{match.group(3)}'
+            )
+
+    extras = []
+    for episode in recent:
+        date = episode.get('date') or ''
+        title = episode.get('title') or ''
+        if not date or not title or date in seen_dates:
+            continue
+        seen_dates.add(date)
+        # Synthetic WP-shaped post so normalize_post / play-by-title both work.
+        extras.append({
+            'id': f'td-{date}',
+            'title': {'rendered': title},
+            'excerpt': {'rendered': ''},
+            'content': {'rendered': ''},
+            'link': episode.get('page') or '',
+            'date': '',
+            'categories': [],
+            '_td_only': True,
+        })
+    return extras + list(posts)
 
 
 def list_serial_categories(channel_id):
