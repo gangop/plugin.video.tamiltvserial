@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-09T07:27:43.670296Z",
+  "updated": "2026-08-09T13:25:50.791889Z",
   "sources": [
     "tamildhool",
     "tamiltvserial"
@@ -84,13 +84,13 @@
       {
         "name": "Ethir Neechal",
         "folder": "ethir-neechal-thodargirathu",
-        "count": 105,
+        "count": 106,
         "sources": [
           "tamildhool",
           "tamiltvserial"
         ],
         "latest_date": "09-08-2026",
-        "latest_title": "Ethir Neechal 09-08-2026",
+        "latest_title": "Ethir Neechal 09-08-2026 | Sun TV Serial",
         "id": 6344,
         "recent_episodes": [
           {
@@ -394,13 +394,13 @@
       {
         "name": "Malli",
         "folder": "malli",
-        "count": 105,
+        "count": 106,
         "sources": [
           "tamildhool",
           "tamiltvserial"
         ],
         "latest_date": "09-08-2026",
-        "latest_title": "Malli 09-08-2026",
+        "latest_title": "Malli 09-08-2026 | Sun TV Serial",
         "id": 6620,
         "recent_episodes": [
           {
@@ -778,13 +778,13 @@
       {
         "name": "Singappenne",
         "folder": "singappenne",
-        "count": 106,
+        "count": 107,
         "sources": [
           "tamildhool",
           "tamiltvserial"
         ],
         "latest_date": "09-08-2026",
-        "latest_title": "Singappenne 09-08-2026",
+        "latest_title": "Singappenne 09-08-2026 | Sun TV Serial",
         "id": 6340,
         "recent_episodes": [
           {
@@ -2415,10 +2415,15 @@
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "08-08-2026",
-        "latest_title": "Paarijatham 08-08-2026 | Zee Tamil TV Serial",
+        "latest_date": "09-08-2026",
+        "latest_title": "Paarijatham 09-08-2026",
         "id": 6732,
         "recent_episodes": [
+          {
+            "date": "09-08-2026",
+            "title": "Paarijatham 09-08-2026 | Zee Tamil Serial",
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/parijatham/parijatham-09-08-2026-zee-tamil-serial-sunday-special/"
+          },
           {
             "date": "08-08-2026",
             "title": "Paarijatham 08-08-2026 | Zee Tamil Serial",
@@ -2473,11 +2478,6 @@
             "date": "28-07-2026",
             "title": "Paarijatham 28-07-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/parijatham/parijatham-28-07-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "27-07-2026",
-            "title": "Paarijatham 27-07-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/parijatham/parijatham-27-07-2026-zee-tamil-serial/"
           }
         ]
       },
