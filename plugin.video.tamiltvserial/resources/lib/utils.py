@@ -327,6 +327,8 @@ def inputstream_adaptive_status():
 
 def playback_referer(referer, stream_url=None):
     stream_lower = (stream_url or '').lower()
+    if 'vkcdn' in stream_lower or 'vkspeed.com' in stream_lower:
+        return 'https://vkspeed.com/'
     if 'b-cdn.net' in stream_lower or 'tamildhool' in stream_lower:
         return 'https://www.tamildhool.tech/'
     referer = (referer or BASE_URL).strip()

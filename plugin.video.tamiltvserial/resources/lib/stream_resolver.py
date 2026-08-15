@@ -15,6 +15,7 @@ import uuid
 from constants import BASE_URL, USER_AGENT, WOODVIOLET_USER_AGENT
 from scraper import extract_maskr_urls
 from tamildhool import resolve_tamildhool_stream
+from tamildhol import resolve_tamildhol_stream
 from utils import is_hls_url, log, log_error
 
 
@@ -547,6 +548,10 @@ def resolve_episode_stream(content_html, episode_link='', episode_title='', allo
         stream_url, stream_referer, cookies = resolve_tamildhool_stream(episode_title)
         if stream_url:
             return stream_url, stream_referer, cookies
+        log('TamilDhool fallback failed; trying tamildhol.my')
+        stream_url, stream_referer, cookies = resolve_tamildhol_stream(episode_title)
+        if stream_url:
+            return stream_url, stream_referer, cookies
 
     if not maskr_urls and not page_urls:
         log('No maskr URLs found in episode content or page')
@@ -594,6 +599,8 @@ def verify_stream_reachable(stream_url, referer='', cookies='', timeout=6):
         headers['Accept-Language'] = 'en-US,en;q=0.9'
         if 'woodviolet' not in (headers['Referer'] or '').lower():
             headers['Referer'] = 'https://woodviolet.xyz/'
+    elif 'vkcdn' in lower or 'vkspeed.com' in lower or 'vkspeed.com' in referer_lower:
+        headers['Referer'] = 'https://vkspeed.com/'
     elif 'b-cdn.net' in lower:
         headers['Origin'] = 'https://www.tamildhool.tech'
         if not referer or 'tamildhool' not in referer_lower:

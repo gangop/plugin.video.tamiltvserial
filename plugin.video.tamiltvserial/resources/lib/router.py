@@ -40,6 +40,7 @@ from stream_resolver import (
     verify_stream_reachable,
 )
 from tamildhool import resolve_from_fallback_index
+from tamildhol import resolve_tamildhol_stream
 from utils import (
     addon,
     api_get,
@@ -373,6 +374,8 @@ class Router:
             )
         if source == 'tamildhool-live':
             return resolve_fallback_stream(title, use_index=False)
+        if source == 'tamildhol-live':
+            return resolve_tamildhol_stream(title)
         return '', '', ''
 
     def _next_verified_candidate(self, episode, source_order):
@@ -547,7 +550,7 @@ class Router:
                 xbmcgui.NOTIFICATION_INFO,
                 2000,
             )
-            source_order = ['tamildhool-index', 'tamildhool-live']
+            source_order = ['tamildhool-index', 'tamildhool-live', 'tamildhol-live']
             candidate, remaining = self._next_verified_candidate(episode, source_order)
             if not candidate:
                 self._clear_autoplay()
@@ -594,8 +597,13 @@ class Router:
             2000,
         )
 
-        # Universal order for every episode: TamilDhool index → TamilTvSerial → TamilDhool live.
-        source_order = ['tamildhool-index', 'tamiltvserial', 'tamildhool-live']
+        # Universal order: TamilDhool index → TamilTvSerial → TamilDhool live → tamildhol.my.
+        source_order = [
+            'tamildhool-index',
+            'tamiltvserial',
+            'tamildhool-live',
+            'tamildhol-live',
+        ]
         candidate, remaining = self._next_verified_candidate(episode, source_order)
         if not candidate:
             self._clear_autoplay()

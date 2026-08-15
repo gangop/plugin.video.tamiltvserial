@@ -148,12 +148,25 @@ def catalog_recent_episodes(category_id=None, name=None, folder=None):
     return []
 
 
-def merge_catalog_episodes(posts, category_id=None, name=None, folder=None):
-    """Append TamilDhool-only recent episodes that TamilTvSerial has not published yet."""
-    recent = catalog_recent_episodes(category_id=category_id, name=name, folder=folder)
-    if not recent:
-        return posts
+def _synthetic_catalog_post(episode):
+    return {
+        'id': f"td-{episode.get('date')}",
+        'title': {'rendered': episode.get('title') or ''},
+        'excerpt': {'rendered': ''},
+        'content': {'rendered': ''},
+        'link': episode.get('page') or '',
+        'date': '',
+        'categories': [],
+        '_td_only': True,
+    }
 
+
+def merge_catalog_episodes(posts, category_id=None, name=None, folder=None):
+    """Append fallback-only recent episodes that TamilTvSerial has not published yet.
+
+    TamilDhool catalog dates and tamildhol.my dates are both added when
+    TamilTvSerial has not published them yet.
+    """
     seen_dates = set()
     for post in posts:
         title = strip_html(((post.get('title') or {}).get('rendered')) or post.get('title') or '')
@@ -164,24 +177,32 @@ def merge_catalog_episodes(posts, category_id=None, name=None, folder=None):
             )
 
     extras = []
-    for episode in recent:
+    for episode in catalog_recent_episodes(category_id=category_id, name=name, folder=folder):
         date = episode.get('date') or ''
         title = episode.get('title') or ''
         if not date or not title or date in seen_dates:
             continue
         seen_dates.add(date)
-        # Synthetic WP-shaped post so normalize_post / play-by-title both work.
-        extras.append({
-            'id': f'td-{date}',
-            'title': {'rendered': title},
-            'excerpt': {'rendered': ''},
-            'content': {'rendered': ''},
-            'link': episode.get('page') or '',
-            'date': '',
-            'categories': [],
-            '_td_only': True,
-        })
-    return extras + list(posts)
+        extras.append(_synthetic_catalog_post(episode))
+
+    try:
+        from tamildhol import list_recent_episodes as tamildhol_recent_episodes
+        tdhol_recent = tamildhol_recent_episodes(name=name, folder=folder)
+    except Exception as exc:
+        log_error(f'tamildhol.my listing unavailable: {exc}')
+        tdhol_recent = []
+
+    tdhol_extras = []
+    for episode in tdhol_recent:
+        date = episode.get('date') or ''
+        title = episode.get('title') or ''
+        if not date or not title or date in seen_dates:
+            continue
+        seen_dates.add(date)
+        tdhol_extras.append(_synthetic_catalog_post(episode))
+
+    extras = tdhol_extras + extras
+    return extras + list(posts) if extras else posts
 
 
 def list_serial_categories(channel_id):
