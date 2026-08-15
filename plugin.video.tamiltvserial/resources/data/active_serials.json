@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-15T07:02:23.806247Z",
+  "updated": "2026-08-15T13:03:18.713188Z",
   "sources": [
     "tamildhool",
     "tamiltvserial"
@@ -89,10 +89,15 @@
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "14-08-2026",
-        "latest_title": "Ethir Neechal 14-08-2026 | Episode 588 | Sun TV Serial",
+        "latest_date": "15-08-2026",
+        "latest_title": "Ethir Neechal 15-08-2026",
         "id": 6344,
         "recent_episodes": [
+          {
+            "date": "15-08-2026",
+            "title": "Ethir Neechal 15-08-2026 | Sun TV Serial",
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/ethir-neechal-thodargirathu/ethir-neechal-thodargirathu-15-08-2026-sun-tv-serial/"
+          },
           {
             "date": "14-08-2026",
             "title": "Ethir Neechal 14-08-2026 | Sun TV Serial",
@@ -147,11 +152,6 @@
             "date": "04-08-2026",
             "title": "Ethir Neechal 04-08-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/ethir-neechal-thodargirathu/ethir-neechal-thodargirathu-04-08-2026-sun-tv-serial/"
-          },
-          {
-            "date": "03-08-2026",
-            "title": "Ethir Neechal 03-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/ethir-neechal-thodargirathu/ethir-neechal-thodargirathu-10-08-2026-sun-tv-serial/"
           }
         ]
       },
@@ -399,10 +399,15 @@
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "14-08-2026",
-        "latest_title": "Malli 14-08-2026 | Episode 827 | Sun TV Serial",
+        "latest_date": "15-08-2026",
+        "latest_title": "Malli 15-08-2026",
         "id": 6620,
         "recent_episodes": [
+          {
+            "date": "15-08-2026",
+            "title": "Malli 15-08-2026 | Sun TV Serial",
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-15-08-2026-sun-tv-serial/"
+          },
           {
             "date": "14-08-2026",
             "title": "Malli 14-08-2026 | Sun TV Serial",
@@ -457,11 +462,6 @@
             "date": "04-08-2026",
             "title": "Malli 04-08-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-04-08-2026-sun-tv-serial/"
-          },
-          {
-            "date": "03-08-2026",
-            "title": "Malli 03-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-10-08-2026-sun-tv-serial/"
           }
         ]
       },
