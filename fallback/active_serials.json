@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-15T13:03:18.713188Z",
+  "updated": "2026-08-15T18:51:25.590275Z",
   "sources": [
     "tamildhool",
     "tamiltvserial"
@@ -84,13 +84,13 @@
       {
         "name": "Ethir Neechal",
         "folder": "ethir-neechal-thodargirathu",
-        "count": 112,
+        "count": 113,
         "sources": [
           "tamildhool",
           "tamiltvserial"
         ],
         "latest_date": "15-08-2026",
-        "latest_title": "Ethir Neechal 15-08-2026",
+        "latest_title": "Ethir Neechal 15-08-2026 | Episode 589 | Sun TV Serial",
         "id": 6344,
         "recent_episodes": [
           {
@@ -382,13 +382,13 @@
       {
         "name": "Malli",
         "folder": "malli",
-        "count": 112,
+        "count": 113,
         "sources": [
           "tamildhool",
           "tamiltvserial"
         ],
         "latest_date": "15-08-2026",
-        "latest_title": "Malli 15-08-2026",
+        "latest_title": "Malli 15-08-2026 | Episode 828 | Sun TV Serial",
         "id": 6620,
         "recent_episodes": [
           {
@@ -2546,15 +2546,20 @@
       {
         "name": "Sandhya Raagam",
         "folder": "sandhya-raagam",
-        "count": 103,
+        "count": 104,
         "sources": [
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "14-08-2026",
-        "latest_title": "Sandhya Raagam 14-08-2026 | Episode 956 | Zee Tamil TV Serial",
+        "latest_date": "15-08-2026",
+        "latest_title": "Sandhya Raagam 15-08-2026 | Episode 957 | Zee Tamil TV Serial",
         "id": 6379,
         "recent_episodes": [
+          {
+            "date": "15-08-2026",
+            "title": "Sandhya Raagam 15-08-2026 | Zee Tamil Serial",
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/sandhya-raagam/sandhya-raagam-15-08-2026-zee-tamil-serial/"
+          },
           {
             "date": "14-08-2026",
             "title": "Sandhya Raagam 14-08-2026 | Zee Tamil Serial",
@@ -2609,11 +2614,6 @@
             "date": "03-08-2026",
             "title": "Sandhya Raagam 03-08-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/sandhya-raagam/sandhya-raagam-03-08-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "01-08-2026",
-            "title": "Sandhya Raagam 01-08-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/sandhya-raagam/sandhya-raagam-01-08-2026-zee-tamil-serial/"
           }
         ]
       },
