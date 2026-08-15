@@ -20,9 +20,9 @@ Kodi video plugin for browsing and streaming content listed on [TamilTvSerial.co
 
 Install the repository **once**. Kodi will then check for addon updates automatically.
 
-1. Download the repository zip from [GitHub Releases](https://github.com/gangop/plugin.video.tamiltvserial/releases/tag/repository-1.0.9), or use:
+1. Download the repository zip from [GitHub Releases](https://github.com/gangop/plugin.video.tamiltvserial/releases/tag/repository-1.0.13), or use:
    ```
-   https://github.com/gangop/plugin.video.tamiltvserial/releases/download/repository-1.0.9/repository.tamiltvserial.zip
+   https://github.com/gangop/plugin.video.tamiltvserial/releases/download/repository-1.0.13/repository.tamiltvserial.zip
    ```
    (Re-install the repository if Kodi is stuck offering an old plugin version — jsDelivr `@main` can lag behind GitHub.)
 2. In Kodi: **Settings → Add-ons → Install from zip file** → select the repository zip.
