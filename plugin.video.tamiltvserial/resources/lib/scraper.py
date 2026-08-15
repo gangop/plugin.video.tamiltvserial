@@ -21,6 +21,90 @@ MASKR_ONCLICK_PATTERN = re.compile(
 EPISODE_NUMBER_PATTERN = re.compile(r'Episode\s+(\d+)', re.I)
 TITLE_DATE_PATTERN = re.compile(r'\s*\d{1,2}-\d{1,2}-\d{4}.*$')
 TITLE_DATE_CAPTURE_PATTERN = re.compile(r'(\d{1,2})-(\d{1,2})-(\d{4})')
+CHANNEL_QUALIFIER_PATTERN = re.compile(
+    r'\s+(?:sun\s*tv|vijay\s*tv|zee\s*tamil)\s+(?:serial|show)s?\s*$',
+    re.I,
+)
+FOLDER_CHANNEL_SUFFIX_PATTERN = re.compile(
+    r'-(?:sun-tv|vijay-tv|zee-tamil)-(?:serial|show)s?$',
+    re.I,
+)
+
+
+def _strip_channel_qualifier(name):
+    cleaned = CHANNEL_QUALIFIER_PATTERN.sub('', name or '').strip(' -|')
+    return re.sub(r'\s+', ' ', cleaned) or (name or '').strip()
+
+
+def _canonical_serial_key(name, folder=''):
+    """Stable key so 'Ethir Neechal' and 'Ethir Neechal Sun tv Serial' collapse."""
+    try:
+        from tamildhool import _show_path_aliases, _slugify
+    except ImportError:
+        def _slugify(value):
+            value = re.sub(r'[^a-z0-9]+', '-', (value or '').lower()).strip('-')
+            return re.sub(r'-{2,}', '-', value)
+
+        def _show_path_aliases():
+            return {}
+
+    candidates = []
+    for value in (_strip_channel_qualifier(name), folder):
+        slug = FOLDER_CHANNEL_SUFFIX_PATTERN.sub('', _slugify(value or ''))
+        if slug and slug not in candidates:
+            candidates.append(slug)
+    if not candidates:
+        return ''
+
+    aliases = _show_path_aliases()
+    for slug in candidates:
+        mapped = aliases.get(slug)
+        if mapped:
+            return mapped[0]
+        for _key, values in aliases.items():
+            if slug in values:
+                return values[0]
+    return candidates[0]
+
+
+def _prefer_serial_entry(current, incoming):
+    def rank(item):
+        item_id = item.get('id')
+        has_id = 1 if item_id not in (None, '') and not str(item_id).startswith('search:') else 0
+        return (
+            has_id,
+            len(item.get('recent_episodes') or []),
+            int(item.get('count') or 0),
+        )
+
+    return incoming if rank(incoming) > rank(current) else current
+
+
+def _dedupe_serials(serials):
+    merged = {}
+    for item in serials:
+        key = _canonical_serial_key(item.get('name') or '', item.get('folder') or '')
+        if not key:
+            key = f"raw:{(item.get('name') or '').lower()}"
+        current = merged.get(key)
+        if current is None:
+            merged[key] = item
+            continue
+        winner = _prefer_serial_entry(current, item)
+        if winner is item:
+            # Keep a cleaner display name when collapsing "Show Sun tv Serial".
+            if _strip_channel_qualifier(current.get('name') or '') == _strip_channel_qualifier(
+                item.get('name') or ''
+            ):
+                shorter = min(
+                    (current.get('name') or '', item.get('name') or ''),
+                    key=lambda name: (len(name), name.lower()),
+                )
+                if shorter:
+                    winner = dict(winner)
+                    winner['name'] = shorter
+            merged[key] = winner
+    return list(merged.values())
 
 
 def extract_maskr_urls(html_content):
@@ -114,6 +198,7 @@ def _serials_from_tamildhool_catalog(channel_id):
             item['channel_id'] = entry.get('channel_id') or channel_id
         serials.append(item)
 
+    serials = _dedupe_serials(serials)
     # Always present serial folders A→Z regardless of catalog publish order.
     return sorted(serials, key=lambda item: (item.get('name') or '').lower()) or None
 

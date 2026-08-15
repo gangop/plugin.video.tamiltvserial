@@ -43,6 +43,14 @@ CHANNEL_SLUGS = {
     'vijay tv': 'vijay-tv',
     'zee tamil': 'zee-tamil',
 }
+CHANNEL_QUALIFIER_PATTERN = re.compile(
+    r'\s+(?:sun\s*tv|vijay\s*tv|zee\s*tamil)\s+(?:serial|show)s?\s*$',
+    re.I,
+)
+FOLDER_CHANNEL_SUFFIX_PATTERN = re.compile(
+    r'-(?:sun-tv|vijay-tv|zee-tamil)-(?:serial|show)s?$',
+    re.I,
+)
 
 # Channel / show category IDs on TamilTvSerial.com
 CHANNEL_CATEGORIES = (
@@ -109,6 +117,11 @@ def slugify(value: str) -> str:
     return re.sub(r'-{2,}', '-', value)
 
 
+def strip_channel_qualifier(name: str) -> str:
+    cleaned = CHANNEL_QUALIFIER_PATTERN.sub('', name or '').strip(' -|')
+    return re.sub(r'\s+', ' ', cleaned) or (name or '').strip()
+
+
 def strip_html(value: str) -> str:
     text = re.sub(r'<[^>]+>', ' ', value or '')
     return html.unescape(re.sub(r'\s+', ' ', text)).strip()
@@ -151,6 +164,7 @@ def parse_title(title: str):
     show = title.split('|', 1)[0]
     show = TITLE_DATE_PATTERN.sub('', show)
     show = re.sub(r'\s+', ' ', show).strip(' -|')
+    show = strip_channel_qualifier(show)
     if not show:
         return None
     return show, date, channel, title
@@ -545,14 +559,17 @@ def _date_sort_key(value: str) -> str:
 def _canonical_slugs(*values):
     slugs = []
     for value in values:
-        slug = slugify(value or '')
-        if not slug:
-            continue
-        for candidate in _tts_slug_candidates(slug, value or ''):
-            if candidate and candidate not in slugs:
-                slugs.append(candidate)
-        if slug not in slugs:
-            slugs.append(slug)
+        raw = slugify(value or '')
+        stripped = FOLDER_CHANNEL_SUFFIX_PATTERN.sub('', raw)
+        cleaned = slugify(strip_channel_qualifier(value or ''))
+        for slug in (cleaned, stripped, raw):
+            if not slug:
+                continue
+            for candidate in _tts_slug_candidates(slug, value or ''):
+                if candidate and candidate not in slugs:
+                    slugs.append(candidate)
+            if slug not in slugs:
+                slugs.append(slug)
     return slugs
 
 
@@ -603,6 +620,7 @@ def collect_tts_recent_shows(parent_id: int, pages: int = TTS_RECENT_POST_PAGES)
             else:
                 show_name = TITLE_DATE_PATTERN.sub('', title.split('|', 1)[0])
                 show_name = re.sub(r'\s+', ' ', show_name).strip(' -|')
+                show_name = strip_channel_qualifier(show_name)
                 date = ''
                 full_title = title
             if _skip_serial_name(show_name) or 'tv show' in show_name.lower():

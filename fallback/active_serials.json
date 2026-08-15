@@ -156,18 +156,6 @@
         ]
       },
       {
-        "name": "Ethir Neechal Sun tv Serial",
-        "folder": "ethir-neechal-sun-tv-serial",
-        "count": 0,
-        "sources": [
-          "tamiltvserial"
-        ],
-        "latest_date": "06-08-2026",
-        "latest_title": "Ethir Neechal 06-08-2026 Sun tv Serial",
-        "search_query": "Ethir Neechal Sun tv Serial",
-        "channel_id": 5
-      },
-      {
         "name": "Iru Malargal",
         "folder": "iru-malargal",
         "count": 95,
@@ -762,18 +750,6 @@
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-01-08-2026-sun-tv-serial/"
           }
         ]
-      },
-      {
-        "name": "Singapenne Sun tv Serial",
-        "folder": "singapenne-sun-tv-serial",
-        "count": 0,
-        "sources": [
-          "tamiltvserial"
-        ],
-        "latest_date": "12-08-2026",
-        "latest_title": "Singapenne 12-08-2026 Sun tv Serial",
-        "search_query": "Singapenne Sun tv Serial",
-        "channel_id": 5
       },
       {
         "name": "Singappenne",
