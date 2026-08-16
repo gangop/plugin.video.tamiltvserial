@@ -69,6 +69,14 @@ SERIAL_MENU_CHANNELS = (
     ('zee-tamil', 4, 'https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/'),
 )
 
+# tamildhol.my WP category ids (serials only).
+TAMILDHOL_WP = 'https://tamildhol.my/wp-json/wp/v2/posts'
+TAMILDHOL_SERIAL_CATEGORIES = {
+    'sun-tv': 4,
+    'vijay-tv': 3,
+    'zee-tamil': 2,
+}
+
 # Keep a serial in the consolidated menu if either source has an episode
 # within this many days (TamilDhool-listed shows are always kept).
 ACTIVE_SERIAL_DAYS = 21
@@ -675,6 +683,114 @@ def _normalize_recent_episodes(raw_episodes, display_name: str, channel_slug: st
     return episodes[:16]
 
 
+def _fetch_tamildhol_json(url: str):
+    request = urllib.request.Request(
+        url,
+        headers={
+            'User-Agent': 'Mozilla/5.0',
+            'Accept': 'application/json',
+        },
+    )
+    with urllib.request.urlopen(request, timeout=20, context=_ssl_context()) as response:
+        return json.loads(response.read().decode('utf-8', 'replace'))
+
+
+def scrape_tamildhol_recent(channel_slug: str, pages: int = 3) -> list[dict]:
+    """Recent dated serial posts from tamildhol.my, newest first."""
+    category_id = TAMILDHOL_SERIAL_CATEGORIES.get(channel_slug)
+    if not category_id:
+        return []
+
+    rows = []
+    for page in range(1, pages + 1):
+        params = {
+            'categories': category_id,
+            'per_page': 40,
+            'page': page,
+            '_fields': 'slug,title,link',
+            'orderby': 'date',
+            'order': 'desc',
+        }
+        url = TAMILDHOL_WP + '?' + urllib.parse.urlencode(params)
+        try:
+            posts = _fetch_tamildhol_json(url)
+        except Exception as exc:
+            print(f'  tamildhol.my fail {channel_slug} page={page}: {exc}')
+            break
+        if not isinstance(posts, list) or not posts:
+            break
+        for post in posts:
+            slug = (post.get('slug') or '').lower()
+            title = strip_html(((post.get('title') or {}).get('rendered')) or '')
+            match = TITLE_DATE_PATTERN.search(slug) or TITLE_DATE_PATTERN.search(title)
+            if not match:
+                continue
+            date = f'{int(match.group(1)):02d}-{int(match.group(2)):02d}-{match.group(3)}'
+            prefix = slug.split(f'-{date}-', 1)[0] if f'-{date}-' in slug else slug
+            if not prefix:
+                continue
+            rows.append({
+                'prefix': prefix,
+                'date': date,
+                'page': post.get('link') or f'https://tamildhol.my/{slug}/',
+            })
+    print(f'  tamildhol.my {channel_slug}: {len(rows)} dated posts')
+    return rows
+
+
+def merge_tamildhol_catalog_channel(entries: list, channel_slug: str) -> int:
+    """Fill catalog dates that TamilDhool/TTS have not published yet."""
+    rows = scrape_tamildhol_recent(channel_slug)
+    if not rows:
+        return 0
+
+    added = 0
+    channel_label = _channel_label(channel_slug)
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        slugs = set(_canonical_slugs(entry.get('folder'), entry.get('name')))
+        if not slugs:
+            continue
+        by_date = {
+            ep.get('date'): ep
+            for ep in (entry.get('recent_episodes') or [])
+            if isinstance(ep, dict) and ep.get('date')
+        }
+        for row in rows:
+            prefix = row['prefix']
+            if prefix not in slugs and not any(
+                prefix == slug or prefix.startswith(slug + '-')
+                for slug in slugs
+            ):
+                continue
+            date = row['date']
+            if date in by_date:
+                continue
+            display = entry.get('name') or prefix.replace('-', ' ').title()
+            by_date[date] = {
+                'date': date,
+                'title': f'{display} {date} | {channel_label} Serial',
+                'page': row['page'],
+            }
+            added += 1
+        if not by_date:
+            continue
+        episodes = sorted(
+            by_date.values(),
+            key=lambda item: _date_sort_key(item.get('date', '')),
+            reverse=True,
+        )[:16]
+        entry['recent_episodes'] = episodes
+        if _date_sort_key(episodes[0]['date']) >= _date_sort_key(entry.get('latest_date') or ''):
+            entry['latest_date'] = episodes[0]['date']
+            entry['latest_title'] = episodes[0]['title']
+        sources = set(entry.get('sources') or [])
+        sources.add('tamildhol')
+        entry['sources'] = sorted(sources)
+    return added
+
+
 def _entry_from_sources(
     *,
     parent_id: int,
@@ -883,12 +999,15 @@ def build_active_serials_catalog(scraper) -> dict:
             merged.values(),
             key=lambda item: (item.get('name') or '').lower(),
         )
+        added = merge_tamildhol_catalog_channel(entries, channel_slug)
+        if added:
+            print(f'  tamildhol.my merged {added} new date(s) into {channel_slug}')
         channels[str(parent_id)] = entries
         print(f'  {len(entries)} consolidated serials for {channel_slug}')
 
     return {
         'updated': datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
-        'sources': ['tamildhool', 'tamiltvserial'],
+        'sources': ['tamildhool', 'tamiltvserial', 'tamildhol'],
         'active_days': ACTIVE_SERIAL_DAYS,
         'channels': channels,
     }

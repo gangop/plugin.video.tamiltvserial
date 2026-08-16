@@ -406,6 +406,8 @@ def list_recent_episodes(name=None, folder=None, limit=12):
             'search': query,
             '_fields': 'id,slug,link,title',
             'per_page': 20,
+            'orderby': 'date',
+            'order': 'desc',
         })
         for post in posts:
             if not _post_matches_show(post, slug_set):
