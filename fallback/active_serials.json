@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-15T18:51:25.590275Z",
+  "updated": "2026-08-16T02:00:38.631281Z",
   "sources": [
     "tamildhool",
     "tamiltvserial"
@@ -989,15 +989,20 @@
       {
         "name": "Ayyanar Thunai",
         "folder": "ayyanar-thunai",
-        "count": 99,
+        "count": 100,
         "sources": [
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "15-08-2026",
-        "latest_title": "Ayyanar Thunai 15-08-2026 | Episode 482 | Vijay TV Serial",
+        "latest_date": "16-08-2026",
+        "latest_title": "Ayyanar Thunai 16-08-2026 | Episode 483 | Vijay TV Serial",
         "id": 6698,
         "recent_episodes": [
+          {
+            "date": "16-08-2026",
+            "title": "Ayyanar Thunai 16-08-2026 | Vijay TV Serial",
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/ayyanar-thunai/ayyanar-thunai-16-08-2026-vijay-tv-serial/"
+          },
           {
             "date": "15-08-2026",
             "title": "Ayyanar Thunai 15-08-2026 | Vijay TV Serial",
@@ -1052,11 +1057,6 @@
             "date": "05-08-2026",
             "title": "Ayyanar Thunai 05-08-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/ayyanar-thunai/ayyanar-thunai-05-08-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "04-08-2026",
-            "title": "Ayyanar Thunai 04-08-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/ayyanar-thunai/ayyanar-thunai-04-08-2026-vijay-tv-serial/"
           }
         ]
       },
@@ -1433,15 +1433,20 @@
       {
         "name": "Pandian Stores",
         "folder": "pandian-stores-s-2",
-        "count": 104,
+        "count": 105,
         "sources": [
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "15-08-2026",
-        "latest_title": "Pandian Stores 15-08-2026 | Episode 860 | Vijay TV Serial",
+        "latest_date": "16-08-2026",
+        "latest_title": "Pandian Stores 16-08-2026 | Episode 861 | Vijay TV Serial",
         "id": 6359,
         "recent_episodes": [
+          {
+            "date": "16-08-2026",
+            "title": "Pandian Stores 16-08-2026 | Vijay TV Serial",
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/pandian-stores-s-2/pandian-stores-16-08-2026-vijay-tv-serial/"
+          },
           {
             "date": "15-08-2026",
             "title": "Pandian Stores 15-08-2026 | Vijay TV Serial",
@@ -1496,11 +1501,6 @@
             "date": "05-08-2026",
             "title": "Pandian Stores 05-08-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/pandian-stores-s-2/pandian-stores-05-08-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "04-08-2026",
-            "title": "Pandian Stores 04-08-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/pandian-stores-s-2/pandian-stores-04-08-2026-vijay-tv-serial/"
           }
         ]
       },
@@ -1581,15 +1581,20 @@
       {
         "name": "Siragadikka Aasai",
         "folder": "siragadikka-aasai",
-        "count": 100,
+        "count": 101,
         "sources": [
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "15-08-2026",
-        "latest_title": "Siragadikka Aasai 15-08-2026 | Episode 1087 | Vijay TV Serial",
+        "latest_date": "16-08-2026",
+        "latest_title": "Siragadikka Aasai 16-08-2026 | Episode 1088 | Vijay TV Serial",
         "id": 6357,
         "recent_episodes": [
+          {
+            "date": "16-08-2026",
+            "title": "Siragadikka Aasai 16-08-2026 | Vijay TV Serial",
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/siragadikka-aasai/siragadikka-aasai-16-08-2026-vijay-tv-serial/"
+          },
           {
             "date": "15-08-2026",
             "title": "Siragadikka Aasai 15-08-2026 | Vijay TV Serial",
@@ -1644,11 +1649,6 @@
             "date": "05-08-2026",
             "title": "Siragadikka Aasai 05-08-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/siragadikka-aasai/siragadikka-aasai-05-08-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "04-08-2026",
-            "title": "Siragadikka Aasai 04-08-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/siragadikka-aasai/siragadikka-aasai-04-08-2026-vijay-tv-serial/"
           }
         ]
       },
