@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-20T13:17:10.954578Z",
+  "updated": "2026-08-20T19:06:24.960508Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -11,7 +11,7 @@
       {
         "name": "Annam",
         "folder": "annam",
-        "count": 110,
+        "count": 22,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -24,7 +24,7 @@
           {
             "date": "20-08-2026",
             "title": "Annam 20-08-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/annam-20-08-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/annam/annam-20-08-2026-sun-tv-serial/"
           },
           {
             "date": "19-08-2026",
@@ -85,18 +85,13 @@
             "date": "06-08-2026",
             "title": "Annam 06-08-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/annam/annam-06-08-2026-sun-tv-serial/"
-          },
-          {
-            "date": "05-08-2026",
-            "title": "Annam 05-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/annam/annam-05-08-2026-sun-tv-serial/"
           }
         ]
       },
       {
         "name": "Ethir Neechal",
         "folder": "ethir-neechal-thodargirathu",
-        "count": 118,
+        "count": 28,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -171,7 +166,7 @@
       {
         "name": "Iru Malargal",
         "folder": "iru-malargal",
-        "count": 99,
+        "count": 21,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -251,7 +246,7 @@
       {
         "name": "Kayal",
         "folder": "kayal",
-        "count": 100,
+        "count": 22,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -411,7 +406,7 @@
       {
         "name": "Malli",
         "folder": "malli",
-        "count": 118,
+        "count": 27,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -568,7 +563,7 @@
       {
         "name": "Moondru Mudichu",
         "folder": "moondru-mudichi",
-        "count": 98,
+        "count": 21,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -581,7 +576,7 @@
           {
             "date": "20-08-2026",
             "title": "Moondru Mudichu 20-08-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/moondru-mudichu-20-08-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichi/moondru-mudichu-20-08-2026-sun-tv-serial/"
           },
           {
             "date": "19-08-2026",
@@ -642,18 +637,13 @@
             "date": "06-08-2026",
             "title": "Moondru Mudichu 06-08-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichi/moondru-mudichu-06-08-2026-sun-tv-serial/"
-          },
-          {
-            "date": "05-08-2026",
-            "title": "Moondru Mudichu 05-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichi/moondru-mudichu-05-08-2026-sun-tv-serial/"
           }
         ]
       },
       {
         "name": "Poongodi",
         "folder": "poongodi",
-        "count": 98,
+        "count": 22,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -733,7 +723,7 @@
       {
         "name": "Pudhu Vasantham",
         "folder": "pudhu-vasantham",
-        "count": 114,
+        "count": 21,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -813,7 +803,7 @@
       {
         "name": "Singappenne",
         "folder": "singappenne",
-        "count": 118,
+        "count": 27,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -893,7 +883,7 @@
       {
         "name": "Siragugal",
         "folder": "siragugal",
-        "count": 24,
+        "count": 22,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -973,7 +963,7 @@
       {
         "name": "Thulasi",
         "folder": "thulasi",
-        "count": 76,
+        "count": 22,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1053,7 +1043,7 @@
       {
         "name": "Vinodhini",
         "folder": "vinodhini",
-        "count": 90,
+        "count": 13,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1084,7 +1074,7 @@
       {
         "name": "Ayyanar Thunai",
         "folder": "ayyanar-thunai",
-        "count": 104,
+        "count": 27,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1159,7 +1149,7 @@
       {
         "name": "Azhagae Azhagu",
         "folder": "azhagae-azhagu",
-        "count": 106,
+        "count": 19,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1234,7 +1224,7 @@
       {
         "name": "Chinna Marumagal",
         "folder": "chinna-marumagal",
-        "count": 183,
+        "count": 40,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1309,7 +1299,7 @@
       {
         "name": "Kadhal Kadhal Kadhal",
         "folder": "kadhal-kadhal-kadhal",
-        "count": 33,
+        "count": 19,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1384,7 +1374,7 @@
       {
         "name": "Kanmani Anbudan",
         "folder": "kanmani-anbudan",
-        "count": 99,
+        "count": 22,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1464,7 +1454,7 @@
       {
         "name": "Onna Irukka Kaththukanum",
         "folder": "onna-irukka-kaththukkanum",
-        "count": 38,
+        "count": 19,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1539,7 +1529,7 @@
       {
         "name": "Pandian Stores",
         "folder": "pandian-stores-s-2",
-        "count": 109,
+        "count": 27,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1614,7 +1604,7 @@
       {
         "name": "Sindhu Bairavi",
         "folder": "sindhu-bairavi-kacheri-arambam",
-        "count": 78,
+        "count": 14,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1709,7 +1699,7 @@
       {
         "name": "Siragadikka Aasai",
         "folder": "siragadikka-aasai",
-        "count": 105,
+        "count": 27,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1784,7 +1774,7 @@
       {
         "name": "Suttum Vizhi Sudare",
         "folder": "suttum-vizhi-sudare",
-        "count": 100,
+        "count": 23,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1864,7 +1854,7 @@
       {
         "name": "Thaai Maaman",
         "folder": "thaai-maaman",
-        "count": 81,
+        "count": 19,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1939,7 +1929,7 @@
       {
         "name": "Thendrale Mella Pesu",
         "folder": "thendrale-mella-pesu",
-        "count": 99,
+        "count": 22,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2016,7 +2006,7 @@
       {
         "name": "Annamalai Kudumbam",
         "folder": "annamalai-kudumbam",
-        "count": 100,
+        "count": 22,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2096,7 +2086,7 @@
       {
         "name": "Aval Varuvala",
         "folder": "aval-varuvala",
-        "count": 286,
+        "count": 54,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2176,7 +2166,7 @@
       {
         "name": "Ayali",
         "folder": "ayali",
-        "count": 104,
+        "count": 26,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2189,7 +2179,7 @@
           {
             "date": "20-08-2026",
             "title": "Ayali 20-08-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/ayali-20-08-2026-zee-tamil-serial-sunday-special/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/ayali/ayali-20-08-2026-zee-tamil-serial/"
           },
           {
             "date": "19-08-2026",
@@ -2250,18 +2240,13 @@
             "date": "06-08-2026",
             "title": "Ayali 06-08-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/ayali/ayali-06-08-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "05-08-2026",
-            "title": "Ayali 05-08-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/ayali/ayali-05-08-2026-zee-tamil-serial/"
           }
         ]
       },
       {
         "name": "Chinnan Siru Kiliye",
         "folder": "chinna-siru-kiliye",
-        "count": 81,
+        "count": 19,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2274,7 +2259,7 @@
           {
             "date": "20-08-2026",
             "title": "Chinnan Siru Kiliye 20-08-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/chinna-siru-kiliye-20-08-2026-zee-tamil-serial/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/chinna-siru-kiliye/chinna-siru-kiliye-20-08-2026-zee-tamil-serial/"
           },
           {
             "date": "19-08-2026",
@@ -2330,18 +2315,13 @@
             "date": "05-08-2026",
             "title": "Chinnan Siru Kiliye 05-08-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/chinna-siru-kiliye/chinna-siru-kiliye-05-08-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "04-08-2026",
-            "title": "Chinnan Siru Kiliye 04-08-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/chinna-siru-kiliye/chinna-siru-kiliye-04-08-2026-zee-tamil-serial/"
           }
         ]
       },
       {
         "name": "Idhayam",
         "folder": "idhayam",
-        "count": 100,
+        "count": 23,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2421,7 +2401,7 @@
       {
         "name": "Karthigai Deepam",
         "folder": "karthigai-deepam",
-        "count": 101,
+        "count": 21,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2434,7 +2414,7 @@
           {
             "date": "20-08-2026",
             "title": "Karthigai Deepam 20-08-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/karthigai-deepam-20-08-2026-zee-tamil-serial/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/karthigai-deepam/karthigai-deepam-20-08-2026-zee-tamil-serial/"
           },
           {
             "date": "19-08-2026",
@@ -2495,18 +2475,13 @@
             "date": "06-08-2026",
             "title": "Karthigai Deepam 06-08-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/karthigai-deepam/karthigai-deepam-06-08-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "05-08-2026",
-            "title": "Karthigai Deepam 05-08-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/karthigai-deepam/karthigai-deepam-05-08-2026-zee-tamil-serial/"
           }
         ]
       },
       {
         "name": "Paarijatham",
         "folder": "parijatham",
-        "count": 88,
+        "count": 24,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2591,7 +2566,7 @@
       {
         "name": "Salangai Oli",
         "folder": "salangai-oli",
-        "count": 208,
+        "count": 39,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2685,7 +2660,7 @@
           {
             "date": "20-08-2026",
             "title": "Samanthi 20-08-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/samanthi-20-08-2026-zee-tamil-serial/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/samanthi/samanthi-20-08-2026-zee-tamil-serial/"
           },
           {
             "date": "19-08-2026",
@@ -2741,18 +2716,13 @@
             "date": "05-08-2026",
             "title": "Samanthi 05-08-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/samanthi/samanthi-05-08-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "04-08-2026",
-            "title": "Samanthi 04-08-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/samanthi/samanthi-04-08-2026-zee-tamil-serial/"
           }
         ]
       },
       {
         "name": "Sandhya Raagam",
         "folder": "sandhya-raagam",
-        "count": 106,
+        "count": 22,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2765,7 +2735,7 @@
           {
             "date": "20-08-2026",
             "title": "Sandhya Raagam 20-08-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/sandhya-raagam-20-08-2026-zee-tamil-serial/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/sandhya-raagam/sandhya-raagam-20-08-2026-zee-tamil-serial/"
           },
           {
             "date": "19-08-2026",
@@ -2821,18 +2791,13 @@
             "date": "07-08-2026",
             "title": "Sandhya Raagam 07-08-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/sandhya-raagam/sandhya-raagam-07-08-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "06-08-2026",
-            "title": "Sandhya Raagam 06-08-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/sandhya-raagam/sandhya-raagam-06-08-2026-zee-tamil-serial/"
           }
         ]
       },
       {
         "name": "Thirumangalyam",
         "folder": "thirumangalyam",
-        "count": 81,
+        "count": 19,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2845,7 +2810,7 @@
           {
             "date": "20-08-2026",
             "title": "Thirumangalyam 20-08-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/thirumangalyam-20-08-2026-zee-tamil-serials/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/thirumangalyam/thirumangalyam-20-08-2026-zee-tamil-serial/"
           },
           {
             "date": "19-08-2026",
@@ -2901,18 +2866,13 @@
             "date": "05-08-2026",
             "title": "Thirumangalyam 05-08-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/thirumangalyam/thirumangalyam-05-08-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "04-08-2026",
-            "title": "Thirumangalyam 04-08-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/thirumangalyam/thirumangalyam-04-08-2026-zee-tamil-serial/"
           }
         ]
       },
       {
         "name": "Vaagai Sooda Vaa",
         "folder": "vaagai-sooda-vaa",
-        "count": 105,
+        "count": 25,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2925,7 +2885,7 @@
           {
             "date": "20-08-2026",
             "title": "Vaagai Sooda Vaa 20-08-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/vaagai-sooda-vaa-20-08-2026-zee-tamil-serial/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/vaagai-sooda-vaa/vaagai-sooda-vaa-20-08-2026-zee-tamil-serial/"
           },
           {
             "date": "19-08-2026",
@@ -2986,18 +2946,13 @@
             "date": "06-08-2026",
             "title": "Vaagai Sooda Vaa 06-08-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/vaagai-sooda-vaa/vaagai-sooda-vaa-06-08-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "05-08-2026",
-            "title": "Vaagai Sooda Vaa 05-08-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/vaagai-sooda-vaa/vaagai-sooda-vaa-05-08-2026-zee-tamil-serial/"
           }
         ]
       },
       {
         "name": "Varisu",
         "folder": "varisu",
-        "count": 100,
+        "count": 23,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -3077,7 +3032,7 @@
       {
         "name": "Veera",
         "folder": "veera",
-        "count": 112,
+        "count": 23,
         "sources": [
           "tamildhol",
           "tamildhool",
