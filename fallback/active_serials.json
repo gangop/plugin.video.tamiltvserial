@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-23T02:04:08.518781Z",
+  "updated": "2026-08-23T07:07:32.633919Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -91,7 +91,7 @@
       {
         "name": "Ethir Neechal",
         "folder": "ethir-neechal-thodargirathu",
-        "count": 30,
+        "count": 31,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -104,7 +104,7 @@
           {
             "date": "23-08-2026",
             "title": "Ethir Neechal 23-08-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/ethir-neechal-thodargirathu-23-08-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/ethir-neechal-thodargirathu/ethir-neechal-thodargirathu-23-08-2026-sun-tv-serial/"
           },
           {
             "date": "22-08-2026",
@@ -160,11 +160,6 @@
             "date": "12-08-2026",
             "title": "Ethir Neechal 12-08-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/ethir-neechal-thodargirathu/ethir-neechal-thodargirathu-12-08-2026-sun-tv-serial/"
-          },
-          {
-            "date": "11-08-2026",
-            "title": "Ethir Neechal 11-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/ethir-neechal-thodargirathu/ethir-neechal-thodargirathu-11-08-2026-sun-tv-serial/"
           }
         ]
       },
@@ -411,16 +406,21 @@
       {
         "name": "Malli",
         "folder": "malli",
-        "count": 29,
+        "count": 30,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "22-08-2026",
-        "latest_title": "Malli 22-08-2026 | Sun TV Serial",
+        "latest_date": "23-08-2026",
+        "latest_title": "Malli 23-08-2026 | Sun TV Serial",
         "id": 6620,
         "recent_episodes": [
+          {
+            "date": "23-08-2026",
+            "title": "Malli 23-08-2026 | Sun TV Serial",
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-23-08-2026-sun-tv-serial/"
+          },
           {
             "date": "22-08-2026",
             "title": "Malli 22-08-2026 | Sun TV Serial",
@@ -475,11 +475,6 @@
             "date": "12-08-2026",
             "title": "Malli 12-08-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-12-08-2026-sun-tv-serial/"
-          },
-          {
-            "date": "11-08-2026",
-            "title": "Malli 11-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-11-08-2026-sun-tv-serial/"
           }
         ]
       },
@@ -808,7 +803,7 @@
       {
         "name": "Singappenne",
         "folder": "singappenne",
-        "count": 29,
+        "count": 30,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -821,7 +816,7 @@
           {
             "date": "23-08-2026",
             "title": "Singappenne 23-08-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/singapenne-23-08-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singapenne-23-08-2026-sun-tv-serial/"
           },
           {
             "date": "22-08-2026",
@@ -882,11 +877,6 @@
             "date": "11-08-2026",
             "title": "Singappenne 11-08-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singapenne-11-08-2026-sun-tv-serial/"
-          },
-          {
-            "date": "10-08-2026",
-            "title": "Singappenne 10-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singapenne-10-08-2026-sun-tv-serial-2/"
           }
         ]
       },
@@ -1603,11 +1593,6 @@
             "date": "12-08-2026",
             "title": "Pandian Stores 12-08-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/pandian-stores-s-2/pandian-stores-12-08-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "11-08-2026",
-            "title": "Pandian Stores 11-08-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/pandian-stores-2-11-08-2026-vijay-tv-serial/"
           }
         ]
       },
