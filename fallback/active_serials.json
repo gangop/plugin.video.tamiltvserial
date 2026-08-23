@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-23T07:07:32.633919Z",
+  "updated": "2026-08-23T13:06:58.079587Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -3032,16 +3032,21 @@
       {
         "name": "Veera",
         "folder": "veera",
-        "count": 25,
+        "count": 29,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "22-08-2026",
-        "latest_title": "Veera 22-08-2026 | Zee Tamil Serial",
+        "latest_date": "23-08-2026",
+        "latest_title": "Veera 23-08-2026 | Zee Tamil Serial",
         "id": 6386,
         "recent_episodes": [
+          {
+            "date": "23-08-2026",
+            "title": "Veera 23-08-2026 | Zee Tamil Serial",
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/veera/veera-23-08-2026-zee-tamil-serial/"
+          },
           {
             "date": "22-08-2026",
             "title": "Veera 22-08-2026 | Zee Tamil Serial",
@@ -3096,11 +3101,6 @@
             "date": "10-08-2026",
             "title": "Veera 10-08-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/veera/veera-10-08-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "08-08-2026",
-            "title": "Veera 08-08-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/veera/veera-08-08-2026-zee-tamil-serial/"
           }
         ]
       }
