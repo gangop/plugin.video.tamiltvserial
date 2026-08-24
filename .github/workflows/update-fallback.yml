@@ -3,10 +3,15 @@ name: Update TamilDhool fallback index
 on:
   workflow_dispatch:
   schedule:
-    # Episode stream index — every 6 hours
+    # Full refresh (episode index + serials menu) every 6 hours.
+    # Do not add a second cron at 06:20 — it double-fires with this schedule
+    # and the two jobs race on git push (one succeeds, one fails).
     - cron: '20 */6 * * *'
-    # Serials menu consolidation (TamilDhool + TamilTvSerial) — daily 06:20 UTC
-    - cron: '20 6 * * *'
+
+# Prevent overlapping schedule/manual runs from racing on the same branch tip.
+concurrency:
+  group: update-tamildhool-fallback
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -44,6 +49,8 @@ jobs:
             plugin.video.tamiltvserial/resources/data/active_serials.json \
             fallback/show_aliases.json
           git commit -m "Refresh TamilDhool fallback index and consolidated serials menu"
+          # Rebase if another run pushed while we were scraping.
+          git pull --rebase origin main
           git push
           # jsDelivr @main can keep a stale active_serials.json without recent_episodes.
           curl -fsS "https://purge.jsdelivr.net/gh/gangop/plugin.video.tamiltvserial@main/fallback/active_serials.json" \
