@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-26T20:13:41.410131Z",
+  "updated": "2026-08-27T10:00:09.642486Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -17,10 +17,15 @@
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Annam 26-08-2026 | Sun TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Annam 27-08-2026 | Sun TV Serial",
         "id": 6692,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Annam 27-08-2026 | Sun TV Serial",
+            "page": "https://tamildhol.my/annam-27-08-2026-sun-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Annam 26-08-2026 | Sun TV Serial",
@@ -86,16 +91,21 @@
       {
         "name": "Ethir Neechal",
         "folder": "ethir-neechal-thodargirathu",
-        "count": 34,
+        "count": 35,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Ethir Neechal 26-08-2026 | Sun TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Ethir Neechal 27-08-2026 | Sun TV Serial",
         "id": 6344,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Ethir Neechal 27-08-2026 | Sun TV Serial",
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/ethir-neechal-thodargirathu/ethir-neechal-thodargirathu-27-08-2026-sun-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Ethir Neechal 26-08-2026 | Sun TV Serial",
@@ -150,11 +160,6 @@
             "date": "16-08-2026",
             "title": "Ethir Neechal 16-08-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/ethir-neechal-thodargirathu/ethir-neechal-thodargirathu-16-08-2026-sun-tv-serial/"
-          },
-          {
-            "date": "15-08-2026",
-            "title": "Ethir Neechal 15-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/ethir-neechal-thodargirathu/ethir-neechal-thodargirathu-15-08-2026-sun-tv-serial/"
           }
         ]
       },
@@ -167,10 +172,15 @@
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Iru Malargal 26-08-2026 | Sun TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Iru Malargal 27-08-2026 | Sun TV Serial",
         "id": 6756,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Iru Malargal 27-08-2026 | Sun TV Serial",
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/iru-malargal/iru-malargal-27-08-2026-sun-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Iru Malargal 26-08-2026 | Sun TV Serial",
@@ -225,27 +235,27 @@
             "date": "13-08-2026",
             "title": "Iru Malargal 13-08-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/iru-malargal/iru-malargal-13-08-2026-sun-tv-serial/"
-          },
-          {
-            "date": "12-08-2026",
-            "title": "Iru Malargal 12-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/iru-malargal/iru-malargal-12-08-2026-sun-tv-serial/"
           }
         ]
       },
       {
         "name": "Kayal",
         "folder": "kayal",
-        "count": 27,
+        "count": 28,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Kayal 26-08-2026 | Sun TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Kayal 27-08-2026 | Sun TV Serial",
         "id": 6339,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Kayal 27-08-2026 | Sun TV Serial",
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kayal/kayal-27-08-2026-sun-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Kayal 26-08-2026 | Sun TV Serial",
@@ -300,11 +310,6 @@
             "date": "13-08-2026",
             "title": "Kayal 13-08-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kayal/kayal-13-08-2026-sun-tv-serial/"
-          },
-          {
-            "date": "12-08-2026",
-            "title": "Kayal 12-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kayal/kayal-12-08-2026-sun-tv-serial/"
           }
         ]
       },
@@ -317,10 +322,15 @@
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Lakshmi 26-08-2026 | Sun TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Lakshmi 27-08-2026 | Sun TV Serial",
         "id": 6438,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Lakshmi 27-08-2026 | Sun TV Serial",
+            "page": "https://tamildhol.my/lakshmi-27-08-2026-sun-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Lakshmi 26-08-2026 | Sun TV Serial",
@@ -386,16 +396,21 @@
       {
         "name": "Malli",
         "folder": "malli",
-        "count": 33,
+        "count": 34,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Malli 26-08-2026 | Sun TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Malli 27-08-2026 | Sun TV Serial",
         "id": 6620,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Malli 27-08-2026 | Sun TV Serial",
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-27-08-2026-sun-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Malli 26-08-2026 | Sun TV Serial",
@@ -450,11 +465,6 @@
             "date": "16-08-2026",
             "title": "Malli 16-08-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-16-08-2026-sun-tv-serial/"
-          },
-          {
-            "date": "15-08-2026",
-            "title": "Malli 15-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-15-08-2026-sun-tv-serial/"
           }
         ]
       },
@@ -467,12 +477,17 @@
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Marumagal 26-08-2026 | Sun TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Marumagal 27-08-2026 | Sun TV Serial",
         "id": 6650,
         "search_query": "Marumagal",
         "channel_id": 5,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Marumagal 27-08-2026 | Sun TV Serial",
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/marumagal/marumagal-27-08-2026-sun-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Marumagal 26-08-2026 | Sun TV Serial",
@@ -527,11 +542,6 @@
             "date": "13-08-2026",
             "title": "Marumagal 13-08-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/marumagal/marumagal-13-08-2026-sun-tv-serial/"
-          },
-          {
-            "date": "12-08-2026",
-            "title": "Marumagal 12-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/marumagal/marumagal-12-08-2026-sun-tv-serial/"
           }
         ]
       },
@@ -544,10 +554,15 @@
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Moondru Mudichu 26-08-2026 | Sun TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Moondru Mudichu 27-08-2026 | Sun TV Serial",
         "id": 6663,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Moondru Mudichu 27-08-2026 | Sun TV Serial",
+            "page": "https://tamildhol.my/moondru-mudichu-27-08-2026-sun-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Moondru Mudichu 26-08-2026 | Sun TV Serial",
@@ -566,7 +581,7 @@
           {
             "date": "22-08-2026",
             "title": "Moondru Mudichu 22-08-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/moondru-mudichu-22-08-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichi/moondru-mudichu-22-08-2026-sun-tv-serial/"
           },
           {
             "date": "21-08-2026",
@@ -586,28 +601,48 @@
           {
             "date": "18-08-2026",
             "title": "Moondru Mudichu 18-08-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/moondru-mudichu-18-08-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichi/moondru-mudichu-18-08-2026-sun-tv-serial/"
           },
           {
             "date": "17-08-2026",
             "title": "Moondru Mudichu 17-08-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/moondru-mudichu-17-08-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichi/moondru-mudichu-17-08-2026-sun-tv-serial/"
+          },
+          {
+            "date": "14-08-2026",
+            "title": "Moondru Mudichu 14-08-2026 | Sun TV Serial",
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichi/moondru-mudichu-14-08-2026-sun-tv-serial/"
+          },
+          {
+            "date": "13-08-2026",
+            "title": "Moondru Mudichu 13-08-2026 | Sun TV Serial",
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichi/moondru-mudichu-13-08-2026-sun-tv-serial/"
+          },
+          {
+            "date": "12-08-2026",
+            "title": "Moondru Mudichu 12-08-2026 | Sun TV Serial",
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichi/moondru-mudichu-12-08-2026-sun-tv-serial/"
           }
         ]
       },
       {
         "name": "Poongodi",
         "folder": "poongodi",
-        "count": 27,
+        "count": 28,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Poongodi 26-08-2026 | Sun TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Poongodi 27-08-2026 | Sun TV Serial",
         "id": 6700,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Poongodi 27-08-2026 | Sun TV Serial",
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/poongodi/poongodi-27-08-2026-sun-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Poongodi 26-08-2026 | Sun TV Serial",
@@ -662,27 +697,27 @@
             "date": "13-08-2026",
             "title": "Poongodi 13-08-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/poongodi/poongodi-13-08-2026-sun-tv-serial/"
-          },
-          {
-            "date": "12-08-2026",
-            "title": "Poongodi 12-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/poongodi/poongodi-12-08-2026-sun-tv-serial/"
           }
         ]
       },
       {
         "name": "Pudhu Vasantham",
         "folder": "pudhu-vasantham",
-        "count": 26,
+        "count": 27,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Pudhu Vasantham 26-08-2026 | Sun TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Pudhu Vasantham 27-08-2026 | Sun TV Serial",
         "id": 6348,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Pudhu Vasantham 27-08-2026 | Sun TV Serial",
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-27-08-2026-sun-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Pudhu Vasantham 26-08-2026 | Sun TV Serial",
@@ -737,27 +772,27 @@
             "date": "13-08-2026",
             "title": "Pudhu Vasantham 13-08-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-13-08-2026-sun-tv-serial/"
-          },
-          {
-            "date": "12-08-2026",
-            "title": "Pudhu Vasantham 12-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/puthu-vasantham-12-08-2026-sun-tv-serial/"
           }
         ]
       },
       {
         "name": "Singappenne",
         "folder": "singappenne",
-        "count": 33,
+        "count": 34,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Singappenne 26-08-2026 | Sun TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Singappenne 27-08-2026 | Sun TV Serial",
         "id": 6340,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Singappenne 27-08-2026 | Sun TV Serial",
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singapenne-27-08-2026-sun-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Singappenne 26-08-2026 | Sun TV Serial",
@@ -812,11 +847,6 @@
             "date": "16-08-2026",
             "title": "Singappenne 16-08-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singapenne-16-08-2026-sun-tv-serial/"
-          },
-          {
-            "date": "14-08-2026",
-            "title": "Singappenne 14-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singapenne-14-08-2026-sun-tv-serial/"
           }
         ]
       },
@@ -829,10 +859,15 @@
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Siragugal 26-08-2026 | Sun TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Siragugal 27-08-2026 | Sun TV Serial",
         "id": 6775,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Siragugal 27-08-2026 | Sun TV Serial",
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/siragugal/siragugal-27-08-2026-sun-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Siragugal 26-08-2026 | Sun TV Serial",
@@ -887,27 +922,27 @@
             "date": "13-08-2026",
             "title": "Siragugal 13-08-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/siragugal/siragugal-13-08-2026-sun-tv-serial/"
-          },
-          {
-            "date": "12-08-2026",
-            "title": "Siragugal 12-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/siragugal/siragugal-12-08-2026-sun-tv-serial/"
           }
         ]
       },
       {
         "name": "Thulasi",
         "folder": "thulasi",
-        "count": 27,
+        "count": 28,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Thulasi 26-08-2026 | Sun TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Thulasi 27-08-2026 | Sun TV Serial",
         "id": 6764,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Thulasi 27-08-2026 | Sun TV Serial",
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/thulasi/thulasi-27-08-2026-sun-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Thulasi 26-08-2026 | Sun TV Serial",
@@ -962,11 +997,6 @@
             "date": "13-08-2026",
             "title": "Thulasi 13-08-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/thulasi/thulasi-13-08-2026-sun-tv-serial/"
-          },
-          {
-            "date": "12-08-2026",
-            "title": "Thulasi 12-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/thulasi/thulasi-12-08-2026-sun-tv-serial/"
           }
         ]
       },
@@ -1055,16 +1085,21 @@
       {
         "name": "Ayyanar Thunai",
         "folder": "ayyanar-thunai",
-        "count": 33,
+        "count": 34,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Ayyanar Thunai 26-08-2026 | Vijay TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Ayyanar Thunai 27-08-2026 | Vijay TV Serial",
         "id": 6698,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Ayyanar Thunai 27-08-2026 | Vijay TV Serial",
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/ayyanar-thunai/ayyanar-thunai-27-08-2026-vijay-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Ayyanar Thunai 26-08-2026 | Vijay TV Serial",
@@ -1119,32 +1154,27 @@
             "date": "16-08-2026",
             "title": "Ayyanar Thunai 16-08-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/ayyanar-thunai/ayyanar-thunai-16-08-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "15-08-2026",
-            "title": "Ayyanar Thunai 15-08-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/ayyanar-thunai/ayyanar-thunai-15-08-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "14-08-2026",
-            "title": "Ayyanar Thunai 14-08-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/ayyanar-thunai-14-08-2026-vijay-tv-serial/"
           }
         ]
       },
       {
         "name": "Azhagae Azhagu",
         "folder": "azhagae-azhagu",
-        "count": 23,
+        "count": 24,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Azhagae Azhagu 26-08-2026 | Vijay TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Azhagae Azhagu 27-08-2026 | Vijay TV Serial",
         "id": 6758,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Azhagae Azhagu 27-08-2026 | Vijay TV Serial",
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/azhagae-azhagu/azhagae-azhagu-27-08-2026-vijay-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Azhagae Azhagu 26-08-2026 | Vijay TV Serial",
@@ -1199,27 +1229,27 @@
             "date": "12-08-2026",
             "title": "Azhagae Azhagu 12-08-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/azhagae-azhagu/azhagae-azhagu-12-08-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "11-08-2026",
-            "title": "Azhagae Azhagu 11-08-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/azhagae-azhagu/azhagae-azhagu-11-08-2026-vijay-tv-serial/"
           }
         ]
       },
       {
         "name": "Chinna Marumagal",
         "folder": "chinna-marumagal",
-        "count": 49,
+        "count": 51,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Chinna Marumagal 26-08-2026 | Vijay TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Chinna Marumagal 27-08-2026 | Vijay TV Serial",
         "id": 6353,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Chinna Marumagal 27-08-2026 | Vijay TV Serial",
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/chinna-marumagal/chinna-marumagal-27-08-2026-vijay-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Chinna Marumagal 26-08-2026 | Vijay TV Serial",
@@ -1274,27 +1304,27 @@
             "date": "12-08-2026",
             "title": "Chinna Marumagal 12-08-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/chinna-marumagal/chinna-marumagal-12-08-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "11-08-2026",
-            "title": "Chinna Marumagal 11-08-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/chinna-marumagal/chinna-marumagal-11-08-2026-vijay-tv-serial/"
           }
         ]
       },
       {
         "name": "Kadhal Kadhal Kadhal",
         "folder": "kadhal-kadhal-kadhal",
-        "count": 23,
+        "count": 24,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Kadhal Kadhal Kadhal 26-08-2026 | Vijay TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Kadhal Kadhal Kadhal 27-08-2026 | Vijay TV Serial",
         "id": 6773,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Kadhal Kadhal Kadhal 27-08-2026 | Vijay TV Serial",
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/kadhal-kadhal-kadhal/kadhal-kadhal-kadhal-27-08-2026-vijay-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Kadhal Kadhal Kadhal 26-08-2026 | Vijay TV Serial",
@@ -1349,11 +1379,6 @@
             "date": "12-08-2026",
             "title": "Kadhal Kadhal Kadhal 12-08-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/kadhal-kadhal-kadhal/kadhal-kadhal-kadhal-12-08-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "11-08-2026",
-            "title": "Kadhal Kadhal Kadhal 11-08-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/kadhal-kadhal-kadhal/kadhal-kadhal-kadhal-11-08-2026-vijay-tv-serial/"
           }
         ]
       },
@@ -1435,16 +1460,21 @@
       {
         "name": "Kanmani Anbudan",
         "folder": "kanmani-anbudan",
-        "count": 27,
+        "count": 28,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Kanmani Anbudan 26-08-2026 | Vijay TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Kanmani Anbudan 27-08-2026 | Vijay TV Serial",
         "id": 6670,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Kanmani Anbudan 27-08-2026 | Vijay TV Serial",
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/kanmani-anbudan/kanmani-anbudan-27-08-2026-vijay-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Kanmani Anbudan 26-08-2026 | Vijay TV Serial",
@@ -1491,11 +1521,6 @@
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/kanmani-anbudan/kanmani-anbudan-17-08-2026-vijay-tv-serial/"
           },
           {
-            "date": "15-08-2026",
-            "title": "Kanmani Anbudan 15-08-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/kanmani-anbudan-15-08-2026-vijay-tv-serial/"
-          },
-          {
             "date": "14-08-2026",
             "title": "Kanmani Anbudan 14-08-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/kanmani-anbudan/kanmani-anbudan-14-08-2026-vijay-tv-serial/"
@@ -1504,11 +1529,6 @@
             "date": "13-08-2026",
             "title": "Kanmani Anbudan 13-08-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/kanmani-anbudan/kanmani-anbudan-13-08-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "12-08-2026",
-            "title": "Kanmani Anbudan 12-08-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/kanmani-anbudan/kanmani-anbudan-12-08-2026-vijay-tv-serial/"
           }
         ]
       },
@@ -1591,16 +1611,21 @@
       {
         "name": "Onna Irukka Kaththukanum",
         "folder": "onna-irukka-kaththukkanum",
-        "count": 23,
+        "count": 24,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Onna Irukka Kaththukanum 26-08-2026 | Vijay TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Onna Irukka Kaththukanum 27-08-2026 | Vijay TV Serial",
         "id": 6768,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Onna Irukka Kaththukanum 27-08-2026 | Vijay TV Serial",
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/onna-irukka-kaththukkanum/onna-irukka-kaththukkanum-27-08-2026-vijay-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Onna Irukka Kaththukanum 26-08-2026 | Vijay TV Serial",
@@ -1655,27 +1680,27 @@
             "date": "12-08-2026",
             "title": "Onna Irukka Kaththukanum 12-08-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/onna-irukka-kaththukkanum/onna-irukka-kaththukkanum-12-08-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "11-08-2026",
-            "title": "Onna Irukka Kaththukanum 11-08-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/onna-irukka-kaththukkanum/onna-irukka-kaththukkanum-11-08-2026-vijay-tv-serial/"
           }
         ]
       },
       {
         "name": "Pandian Stores",
         "folder": "pandian-stores-s-2",
-        "count": 33,
+        "count": 34,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Pandian Stores 26-08-2026 | Vijay TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Pandian Stores 27-08-2026 | Vijay TV Serial",
         "id": 6359,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Pandian Stores 27-08-2026 | Vijay TV Serial",
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/pandian-stores-s-2/pandian-stores-27-08-2026-vijay-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Pandian Stores 26-08-2026 | Vijay TV Serial",
@@ -1734,12 +1759,7 @@
           {
             "date": "15-08-2026",
             "title": "Pandian Stores 15-08-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/pandian-stores-s-2/pandian-stores-15-08-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "14-08-2026",
-            "title": "Pandian Stores 14-08-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/pandian-stores-2-14-08-2026-vijay-tv-serial/"
+            "page": "https://tamildhol.my/pandian-stores-2-15-08-2026-vijay-tv-serial/"
           }
         ]
       },
@@ -1841,16 +1861,21 @@
       {
         "name": "Siragadikka Aasai",
         "folder": "siragadikka-aasai",
-        "count": 33,
+        "count": 34,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Siragadikka Aasai 26-08-2026 | Vijay TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Siragadikka Aasai 27-08-2026 | Vijay TV Serial",
         "id": 6357,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Siragadikka Aasai 27-08-2026 | Vijay TV Serial",
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/siragadikka-aasai/siragadikka-aasai-27-08-2026-vijay-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Siragadikka Aasai 26-08-2026 | Vijay TV Serial",
@@ -1909,23 +1934,28 @@
           {
             "date": "15-08-2026",
             "title": "Siragadikka Aasai 15-08-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/siragadikka-aasai/siragadikka-aasai-15-08-2026-vijay-tv-serial/"
+            "page": "https://tamildhol.my/siragadikka-aasai-15-08-2026-vijay-tv-serial/"
           }
         ]
       },
       {
         "name": "Suttum Vizhi Sudare",
         "folder": "suttum-vizhi-sudare",
-        "count": 28,
+        "count": 29,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Suttum Vizhi Sudare 26-08-2026 | Vijay TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Suttum Vizhi Sudare 27-08-2026 | Vijay TV Serial",
         "id": 6754,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Suttum Vizhi Sudare 27-08-2026 | Vijay TV Serial",
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/suttum-vizhi-sudare/suttum-vizhi-sudare-27-08-2026-vijay-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Suttum Vizhi Sudare 26-08-2026 | Vijay TV Serial",
@@ -1972,11 +2002,6 @@
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/suttum-vizhi-sudare/suttum-vizhi-sudare-17-08-2026-vijay-tv-serial/"
           },
           {
-            "date": "15-08-2026",
-            "title": "Suttum Vizhi Sudare 15-08-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/suttum-vizhi-sudare-15-08-2026-vijay-tv-serial/"
-          },
-          {
             "date": "14-08-2026",
             "title": "Suttum Vizhi Sudare 14-08-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/suttum-vizhi-sudare/suttum-vizhi-sudare-14-08-2026-vijay-tv-serial/"
@@ -1985,27 +2010,27 @@
             "date": "13-08-2026",
             "title": "Suttum Vizhi Sudare 13-08-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/suttum-vizhi-sudare/suttum-vizhi-sudare-13-08-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "12-08-2026",
-            "title": "Suttum Vizhi Sudare 12-08-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/suttum-vizhi-sudare/suttum-vizhi-sudare-12-08-2026-vijay-tv-serial/"
           }
         ]
       },
       {
         "name": "Thaai Maaman",
         "folder": "thaai-maaman",
-        "count": 23,
+        "count": 24,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Thaai Maaman 26-08-2026 | Vijay TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Thaai Maaman 27-08-2026 | Vijay TV Serial",
         "id": 6763,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Thaai Maaman 27-08-2026 | Vijay TV Serial",
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/thaai-maaman/thaai-maaman-27-08-2026-vijay-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Thaai Maaman 26-08-2026 | Vijay TV Serial",
@@ -2060,27 +2085,27 @@
             "date": "12-08-2026",
             "title": "Thaai Maaman 12-08-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/thaai-maaman/thaai-maaman-12-08-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "11-08-2026",
-            "title": "Thaai Maaman 11-08-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/thaai-maaman/thaai-maaman-11-08-2026-vijay-tv-serial/"
           }
         ]
       },
       {
         "name": "Thendrale Mella Pesu",
         "folder": "thendrale-mella-pesu",
-        "count": 27,
+        "count": 28,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Thendrale Mella Pesu 26-08-2026 | Vijay TV Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Thendrale Mella Pesu 27-08-2026 | Vijay TV Serial",
         "id": 6716,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Thendrale Mella Pesu 27-08-2026 | Vijay TV Serial",
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/thendrale-mella-pesu/thendrale-mella-pesu-27-08-2026-vijay-tv-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Thendrale Mella Pesu 26-08-2026 | Vijay TV Serial",
@@ -2135,11 +2160,6 @@
             "date": "13-08-2026",
             "title": "Thendrale Mella Pesu 13-08-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/thendrale-mella-pesu/thendrale-mella-pesu-13-08-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "12-08-2026",
-            "title": "Thendrale Mella Pesu 12-08-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/thendrale-mella-pesu/thendrale-mella-pesu-12-08-2026-vijay-tv-serial/"
           }
         ]
       }
@@ -2148,16 +2168,21 @@
       {
         "name": "Annamalai Kudumbam",
         "folder": "annamalai-kudumbam",
-        "count": 27,
+        "count": 28,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Annamalai Kudumbam 26-08-2026 | Zee Tamil Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Annamalai Kudumbam 27-08-2026 | Zee Tamil Serial",
         "id": 6751,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Annamalai Kudumbam 27-08-2026 | Zee Tamil Serial",
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/annamalai-kudumbam/annamalai-kudumbam-27-08-2026-zee-tamil-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Annamalai Kudumbam 26-08-2026 | Zee Tamil Serial",
@@ -2212,11 +2237,6 @@
             "date": "13-08-2026",
             "title": "Annamalai Kudumbam 13-08-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/annamalai-kudumbam/annamalai-kudumbam-13-08-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "12-08-2026",
-            "title": "Annamalai Kudumbam 12-08-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/annamalai-kudumbam/annamalai-kudumbam-12-08-2026-zee-tamil-serial/"
           }
         ]
       },
@@ -2229,10 +2249,15 @@
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Aval Varuvala 26-08-2026 | Zee Tamil Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Aval Varuvala 27-08-2026 | Zee Tamil Serial",
         "id": 6750,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Aval Varuvala 27-08-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/aval-varuvala-27-08-2026-zee-tamil-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Aval Varuvala 26-08-2026 | Zee Tamil Serial",
@@ -2304,10 +2329,15 @@
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Ayali 26-08-2026 | Zee Tamil Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Ayali 27-08-2026 | Zee Tamil Serial",
         "id": 6715,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Ayali 27-08-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/ayali-27-08-2026-zee-tamil-serial-2/"
+          },
           {
             "date": "26-08-2026",
             "title": "Ayali 26-08-2026 | Zee Tamil Serial",
@@ -2379,10 +2409,15 @@
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Chinnan Siru Kiliye 26-08-2026 | Zee Tamil Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Chinnan Siru Kiliye 27-08-2026 | Zee Tamil Serial",
         "id": 6722,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Chinnan Siru Kiliye 27-08-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/chinna-siru-kiliye-27-08-2026-zee-tamil-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Chinnan Siru Kiliye 26-08-2026 | Zee Tamil Serial",
@@ -2524,16 +2559,21 @@
       {
         "name": "Idhayam",
         "folder": "idhayam",
-        "count": 28,
+        "count": 29,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Idhayam 26-08-2026 | Zee Tamil Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Idhayam 27-08-2026 | Zee Tamil Serial",
         "id": 6378,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Idhayam 27-08-2026 | Zee Tamil Serial",
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/idhayam/idhayam-27-08-2026-zee-tamil-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Idhayam 26-08-2026 | Zee Tamil Serial",
@@ -2588,11 +2628,6 @@
             "date": "13-08-2026",
             "title": "Idhayam 13-08-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/idhayam/idhayam-13-08-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "12-08-2026",
-            "title": "Idhayam 12-08-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/idhayam/idhayam-12-08-2026-zee-tamil-serial/"
           }
         ]
       },
@@ -2605,10 +2640,15 @@
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Karthigai Deepam 26-08-2026 | Zee Tamil Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Karthigai Deepam 27-08-2026 | Zee Tamil Serial",
         "id": 6372,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Karthigai Deepam 27-08-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/karthigai-deepam-27-08-2026-zee-tamil-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Karthigai Deepam 26-08-2026 | Zee Tamil Serial",
@@ -2680,10 +2720,15 @@
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Paarijatham 26-08-2026 | Zee Tamil Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Paarijatham 27-08-2026 | Zee Tamil Serial",
         "id": 6732,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Paarijatham 27-08-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/parijatham-27-08-2026-zee-tamil-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Paarijatham 26-08-2026 | Zee Tamil Serial",
@@ -2749,16 +2794,21 @@
       {
         "name": "Salangai Oli",
         "folder": "salangai-oli",
-        "count": 49,
+        "count": 51,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Salangai Oli 26-08-2026 | Zee Tamil Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Salangai Oli 27-08-2026 | Zee Tamil Serial",
         "id": 6737,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Salangai Oli 27-08-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/salangai-oli-27-08-2026-zee-tamil-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Salangai Oli 26-08-2026 | Zee Tamil Serial",
@@ -2829,12 +2879,17 @@
           "tamildhol",
           "tamildhool"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Samanthi 26-08-2026 | Zee Tamil Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Samanthi 27-08-2026 | Zee Tamil Serial",
         "id": 6774,
         "search_query": "Samanthi",
         "channel_id": 4,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Samanthi 27-08-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/samanthi-27-08-2026-zee-tamil-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Samanthi 26-08-2026 | Zee Tamil Serial",
@@ -2906,10 +2961,15 @@
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Sandhya Raagam 26-08-2026 | Zee Tamil Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Sandhya Raagam 27-08-2026 | Zee Tamil Serial",
         "id": 6379,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Sandhya Raagam 27-08-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/sandhya-raagam-27-08-2026-zee-tamil-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Sandhya Raagam 26-08-2026 | Zee Tamil Serial",
@@ -2981,10 +3041,15 @@
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Thirumangalyam 26-08-2026 | Zee Tamil Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Thirumangalyam 27-08-2026 | Zee Tamil Serial",
         "id": 6749,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Thirumangalyam 27-08-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/thirumangalyam-27-08-2026-zee-tamil-serials/"
+          },
           {
             "date": "26-08-2026",
             "title": "Thirumangalyam 26-08-2026 | Zee Tamil Serial",
@@ -3056,10 +3121,15 @@
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Vaagai Sooda Vaa 26-08-2026 | Zee Tamil Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Vaagai Sooda Vaa 27-08-2026 | Zee Tamil Serial",
         "id": 6760,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Vaagai Sooda Vaa 27-08-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/vaagai-sooda-vaa-27-08-2026-zee-tamil-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Vaagai Sooda Vaa 26-08-2026 | Zee Tamil Serial",
@@ -3125,16 +3195,21 @@
       {
         "name": "Varisu",
         "folder": "varisu",
-        "count": 28,
+        "count": 29,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Varisu 26-08-2026 | Zee Tamil Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Varisu 27-08-2026 | Zee Tamil Serial",
         "id": 6720,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Varisu 27-08-2026 | Zee Tamil Serial",
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/varisu/varisu-27-08-2026-zee-tamil-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Varisu 26-08-2026 | Zee Tamil Serial",
@@ -3189,11 +3264,6 @@
             "date": "13-08-2026",
             "title": "Varisu 13-08-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/varisu/varisu-13-08-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "12-08-2026",
-            "title": "Varisu 12-08-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/varisu/varisu-12-08-2026-zee-tamil-serial/"
           }
         ]
       },
@@ -3206,10 +3276,15 @@
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "26-08-2026",
-        "latest_title": "Veera 26-08-2026 | Zee Tamil Serial",
+        "latest_date": "27-08-2026",
+        "latest_title": "Veera 27-08-2026 | Zee Tamil Serial",
         "id": 6386,
         "recent_episodes": [
+          {
+            "date": "27-08-2026",
+            "title": "Veera 27-08-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/veera-27-08-2026-zee-tamil-serial/"
+          },
           {
             "date": "26-08-2026",
             "title": "Veera 26-08-2026 | Zee Tamil Serial",
