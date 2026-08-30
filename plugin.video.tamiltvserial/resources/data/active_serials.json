@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-29T20:59:55.508489Z",
+  "updated": "2026-08-30T05:32:40.813683Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -92,10 +92,15 @@
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "29-08-2026",
-        "latest_title": "Ethir Neechal 29-08-2026 | Sun TV Serial",
+        "latest_date": "30-08-2026",
+        "latest_title": "Ethir Neechal 30-08-2026 | Sun TV Serial",
         "id": 6344,
         "recent_episodes": [
+          {
+            "date": "30-08-2026",
+            "title": "Ethir Neechal 30-08-2026 | Sun TV Serial",
+            "page": "https://tamildhol.my/ethir-neechal-thodargirathu-30-08-2026-sun-tv-serial/"
+          },
           {
             "date": "29-08-2026",
             "title": "Ethir Neechal 29-08-2026 | Sun TV Serial",
@@ -392,10 +397,15 @@
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "29-08-2026",
-        "latest_title": "Malli 29-08-2026 | Sun TV Serial",
+        "latest_date": "30-08-2026",
+        "latest_title": "Malli 30-08-2026 | Sun TV Serial",
         "id": 6620,
         "recent_episodes": [
+          {
+            "date": "30-08-2026",
+            "title": "Malli 30-08-2026 | Sun TV Serial",
+            "page": "https://tamildhol.my/malli-30-08-2026-sun-tv-serial/"
+          },
           {
             "date": "29-08-2026",
             "title": "Malli 29-08-2026 | Sun TV Serial",
@@ -769,10 +779,15 @@
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "29-08-2026",
-        "latest_title": "Singappenne 29-08-2026 | Sun TV Serial",
+        "latest_date": "30-08-2026",
+        "latest_title": "Singappenne 30-08-2026 | Sun TV Serial",
         "id": 6340,
         "recent_episodes": [
+          {
+            "date": "30-08-2026",
+            "title": "Singappenne 30-08-2026 | Sun TV Serial",
+            "page": "https://tamildhol.my/singapenne-30-08-2026-sun-tv-serial/"
+          },
           {
             "date": "29-08-2026",
             "title": "Singappenne 29-08-2026 | Sun TV Serial",
@@ -1070,16 +1085,21 @@
       {
         "name": "Ayyanar Thunai",
         "folder": "ayyanar-thunai",
-        "count": 36,
+        "count": 37,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "29-08-2026",
-        "latest_title": "Ayyanar Thunai 29-08-2026 | Vijay TV Serial",
+        "latest_date": "30-08-2026",
+        "latest_title": "Ayyanar Thunai 30-08-2026 | Vijay TV Serial",
         "id": 6698,
         "recent_episodes": [
+          {
+            "date": "30-08-2026",
+            "title": "Ayyanar Thunai 30-08-2026 | Vijay TV Serial",
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/ayyanar-thunai/ayyanar-thunai-30-08-2026-vijay-tv-serial/"
+          },
           {
             "date": "29-08-2026",
             "title": "Ayyanar Thunai 29-08-2026 | Vijay TV Serial",
@@ -1138,7 +1158,7 @@
           {
             "date": "18-08-2026",
             "title": "Ayyanar Thunai 18-08-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/ayyanar-thunai/ayyanar-thunai-18-08-2026-vijay-tv-serial/"
+            "page": "https://tamildhol.my/ayyanar-thunai-18-08-2026-vijay-tv-serial/"
           }
         ]
       },
@@ -1671,16 +1691,21 @@
       {
         "name": "Pandian Stores",
         "folder": "pandian-stores-s-2",
-        "count": 36,
+        "count": 37,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "29-08-2026",
-        "latest_title": "Pandian Stores 29-08-2026 | Vijay TV Serial",
+        "latest_date": "30-08-2026",
+        "latest_title": "Pandian Stores 30-08-2026 | Vijay TV Serial",
         "id": 6359,
         "recent_episodes": [
+          {
+            "date": "30-08-2026",
+            "title": "Pandian Stores 30-08-2026 | Vijay TV Serial",
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/pandian-stores-s-2/pandian-stores-30-08-2026-vijay-tv-serial/"
+          },
           {
             "date": "29-08-2026",
             "title": "Pandian Stores 29-08-2026 | Vijay TV Serial",
@@ -1735,11 +1760,6 @@
             "date": "19-08-2026",
             "title": "Pandian Stores 19-08-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/pandian-stores-s-2/pandian-stores-19-08-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "18-08-2026",
-            "title": "Pandian Stores 18-08-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/pandian-stores-s-2/pandian-stores-18-08-2026-vijay-tv-serial/"
           }
         ]
       },
@@ -1841,16 +1861,21 @@
       {
         "name": "Siragadikka Aasai",
         "folder": "siragadikka-aasai",
-        "count": 36,
+        "count": 37,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "29-08-2026",
-        "latest_title": "Siragadikka Aasai 29-08-2026 | Vijay TV Serial",
+        "latest_date": "30-08-2026",
+        "latest_title": "Siragadikka Aasai 30-08-2026 | Vijay TV Serial",
         "id": 6357,
         "recent_episodes": [
+          {
+            "date": "30-08-2026",
+            "title": "Siragadikka Aasai 30-08-2026 | Vijay TV Serial",
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/siragadikka-aasai/siragadikka-aasai-30-08-2026-vijay-tv-serial/"
+          },
           {
             "date": "29-08-2026",
             "title": "Siragadikka Aasai 29-08-2026 | Vijay TV Serial",
@@ -1909,7 +1934,7 @@
           {
             "date": "18-08-2026",
             "title": "Siragadikka Aasai 18-08-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/siragadikka-aasai/siragadikka-aasai-18-08-2026-vijay-tv-serial/"
+            "page": "https://tamildhol.my/siragadikka-aasai-18-08-2026-vijay-tv-serial/"
           }
         ]
       },
