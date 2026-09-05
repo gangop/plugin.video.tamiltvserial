@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-05T15:23:31.283724Z",
+  "updated": "2026-09-05T20:29:51.340352Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -607,7 +607,7 @@
       {
         "name": "Moondru Mudichu",
         "folder": "moondru-mudichi",
-        "count": 34,
+        "count": 35,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -620,7 +620,7 @@
           {
             "date": "05-09-2026",
             "title": "Moondru Mudichu 05-09-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/moondru-mudichu-05-09-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichi/moondru-mudichi-05-09-2026-sun-tv-serial/"
           },
           {
             "date": "04-09-2026",
@@ -2349,7 +2349,8 @@
         "count": 36,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "05-09-2026",
         "latest_title": "Annamalai Kudumbam 05-09-2026 | Zee Tamil Serial",
@@ -2428,7 +2429,8 @@
         "count": 102,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "05-09-2026",
         "latest_title": "Aval Varuvala 05-09-2026 | Zee Tamil Serial",
@@ -2507,7 +2509,8 @@
         "count": 39,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "05-09-2026",
         "latest_title": "Ayali 05-09-2026 | Zee Tamil Serial",
@@ -2586,7 +2589,8 @@
         "count": 30,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "04-09-2026",
         "latest_title": "Chinnan Siru Kiliye 04-09-2026 | Zee Tamil Serial",
@@ -2735,7 +2739,8 @@
         "count": 37,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "05-09-2026",
         "latest_title": "Idhayam 05-09-2026 | Zee Tamil Serial",
@@ -2811,10 +2816,11 @@
       {
         "name": "Karthigai Deepam",
         "folder": "karthigai-deepam",
-        "count": 34,
+        "count": 36,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "05-09-2026",
         "latest_title": "Karthigai Deepam 05-09-2026 | Zee Tamil Serial",
@@ -2823,7 +2829,7 @@
           {
             "date": "05-09-2026",
             "title": "Karthigai Deepam 05-09-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/karthigai-deepam-05-09-2026-zee-tamil-serial/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/karthigai-deepam/karthigai-deepam-05-09-2026-zee-tamil-serial/"
           },
           {
             "date": "04-09-2026",
@@ -2898,7 +2904,8 @@
         "count": 38,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "05-09-2026",
         "latest_title": "Paarijatham 05-09-2026 | Zee Tamil Serial",
@@ -2977,7 +2984,8 @@
         "count": 61,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "05-09-2026",
         "latest_title": "Salangai Oli 05-09-2026 | Zee Tamil Serial",
@@ -3056,7 +3064,8 @@
         "count": 30,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "04-09-2026",
         "latest_title": "Samanthi 04-09-2026 | Zee Tamil Serial",
@@ -3127,10 +3136,11 @@
       {
         "name": "Sandhya Raagam",
         "folder": "sandhya-raagam",
-        "count": 35,
+        "count": 36,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "05-09-2026",
         "latest_title": "Sandhya Raagam 05-09-2026 | Zee Tamil Serial",
@@ -3139,7 +3149,7 @@
           {
             "date": "05-09-2026",
             "title": "Sandhya Raagam 05-09-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/sandhya-raagam-05-09-2026-zee-tamil-serial/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/sandhya-raagam/sandhya-raagam-05-09-2026-zee-tamil-serial/"
           },
           {
             "date": "04-09-2026",
@@ -3214,7 +3224,8 @@
         "count": 30,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "04-09-2026",
         "latest_title": "Thirumangalyam 04-09-2026 | Zee Tamil Serial",
@@ -3285,15 +3296,21 @@
       {
         "name": "Vaagai Sooda Vaa",
         "folder": "vaagai-sooda-vaa",
-        "count": 38,
+        "count": 39,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
-        "latest_date": "04-09-2026",
-        "latest_title": "Vaagai Sooda Vaa 04-09-2026 | Zee Tamil Serial",
+        "latest_date": "05-09-2026",
+        "latest_title": "Vaagai Sooda Vaa 05-09-2026 | Zee Tamil Serial",
         "id": 6760,
         "recent_episodes": [
+          {
+            "date": "05-09-2026",
+            "title": "Vaagai Sooda Vaa 05-09-2026 | Zee Tamil Serial",
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/vaagai-sooda-vaa/vaagai-sooda-vaa-05-09-2026-zee-tamil-serial/"
+          },
           {
             "date": "04-09-2026",
             "title": "Vaagai Sooda Vaa 04-09-2026 | Zee Tamil Serial",
@@ -3367,7 +3384,8 @@
         "count": 41,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "05-09-2026",
         "latest_title": "Varisu 05-09-2026 | Zee Tamil Serial",
@@ -3451,7 +3469,8 @@
         "count": 41,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "05-09-2026",
         "latest_title": "Veera 05-09-2026 | Zee Tamil Serial",
