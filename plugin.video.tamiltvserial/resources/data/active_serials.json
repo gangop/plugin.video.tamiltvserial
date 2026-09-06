@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-06T04:51:00.042049Z",
+  "updated": "2026-09-06T11:06:49.300217Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -86,7 +86,7 @@
       {
         "name": "Ethir Neechal",
         "folder": "ethir-neechal-thodargirathu",
-        "count": 44,
+        "count": 45,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -99,7 +99,7 @@
           {
             "date": "06-09-2026",
             "title": "Ethir Neechal 06-09-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/ethir-neechal-thodargirathu-06-09-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/ethir-neechal-thodargirathu/ethir-neechal-thodargirathu-06-09-2026-sun-tv-serial/"
           },
           {
             "date": "05-09-2026",
@@ -155,11 +155,6 @@
             "date": "26-08-2026",
             "title": "Ethir Neechal 26-08-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/ethir-neechal-thodargirathu/ethir-neechal-thodargirathu-26-08-2026-sun-tv-serial/"
-          },
-          {
-            "date": "25-08-2026",
-            "title": "Ethir Neechal 25-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/ethir-neechal-thodargirathu/ethir-neechal-thodargirathu-25-08-2026-sun-tv-serial/"
           }
         ]
       },
@@ -404,7 +399,7 @@
           {
             "date": "06-09-2026",
             "title": "Malli 06-09-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/malli-06-09-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-06-09-2026-sun-tv-serial/"
           },
           {
             "date": "05-09-2026",
@@ -460,11 +455,6 @@
             "date": "26-08-2026",
             "title": "Malli 26-08-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-26-08-2026-sun-tv-serial/"
-          },
-          {
-            "date": "25-08-2026",
-            "title": "Malli 25-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-25-08-2026-sun-tv-serial/"
           }
         ]
       },
@@ -772,7 +762,7 @@
       {
         "name": "Singappenne",
         "folder": "singappenne",
-        "count": 43,
+        "count": 44,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -785,7 +775,7 @@
           {
             "date": "06-09-2026",
             "title": "Singappenne 06-09-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/singapenne-06-09-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singappenne-06-09-2026-sun-tv-serial/"
           },
           {
             "date": "05-09-2026",
@@ -841,11 +831,6 @@
             "date": "26-08-2026",
             "title": "Singappenne 26-08-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singapenne-26-08-2026-sun-tv-serial/"
-          },
-          {
-            "date": "25-08-2026",
-            "title": "Singappenne 25-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singapenne-25-08-2026-sun-tv-serial/"
           }
         ]
       },
