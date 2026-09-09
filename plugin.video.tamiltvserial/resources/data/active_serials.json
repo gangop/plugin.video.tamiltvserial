@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-09T16:47:18.652243Z",
+  "updated": "2026-09-09T21:01:24.194265Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -236,7 +236,7 @@
       {
         "name": "Kayal",
         "folder": "kayal",
-        "count": 38,
+        "count": 39,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -537,7 +537,7 @@
       {
         "name": "Moondru Mudichu",
         "folder": "moondru-mudichi",
-        "count": 37,
+        "count": 38,
         "sources": [
           "tamildhol",
           "tamildhool",
