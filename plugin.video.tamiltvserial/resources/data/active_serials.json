@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-11T21:03:57.998399Z",
+  "updated": "2026-09-12T04:44:26.431143Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -1055,7 +1055,8 @@
         "count": 13,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "08-08-2026",
         "latest_title": "Vinodhini 08-08-2026 | Sun TV Serial",
@@ -1128,7 +1129,7 @@
       {
         "name": "Ayyanar Thunai",
         "folder": "ayyanar-thunai",
-        "count": 48,
+        "count": 49,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1141,7 +1142,7 @@
           {
             "date": "12-09-2026",
             "title": "Ayyanar Thunai 12-09-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/ayyanar-thunai-12-09-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/ayyanar-thunai/ayyanar-thunai-12-09-2026-vijay-tv-serial/"
           },
           {
             "date": "11-09-2026",
@@ -1373,16 +1374,21 @@
       {
         "name": "Kadhal Kadhal Kadhal",
         "folder": "kadhal-kadhal-kadhal",
-        "count": 35,
+        "count": 36,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "11-09-2026",
-        "latest_title": "Kadhal Kadhal Kadhal 11-09-2026 | Vijay TV Serial",
+        "latest_date": "12-09-2026",
+        "latest_title": "Kadhal Kadhal Kadhal 12-09-2026 | Vijay TV Serial",
         "id": 6773,
         "recent_episodes": [
+          {
+            "date": "12-09-2026",
+            "title": "Kadhal Kadhal Kadhal 12-09-2026 | Vijay TV Serial",
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/kadhal-kadhal-kadhal/kadhal-kadhal-kadhal-12-09-2026-vijay-tv-serial/"
+          },
           {
             "date": "11-09-2026",
             "title": "Kadhal Kadhal Kadhal 11-09-2026 | Vijay TV Serial",
@@ -1437,11 +1443,6 @@
             "date": "28-08-2026",
             "title": "Kadhal Kadhal Kadhal 28-08-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/kadhal-kadhal-kadhal/kadhal-kadhal-kadhal-28-08-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "27-08-2026",
-            "title": "Kadhal Kadhal Kadhal 27-08-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/kadhal-kadhal-kadhal/kadhal-kadhal-kadhal-27-08-2026-vijay-tv-serial/"
           }
         ]
       },
@@ -1523,7 +1524,7 @@
       {
         "name": "Kanmani Anbudan",
         "folder": "kanmani-anbudan",
-        "count": 41,
+        "count": 42,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1536,7 +1537,7 @@
           {
             "date": "12-09-2026",
             "title": "Kanmani Anbudan 12-09-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/kanmani-anbudan-12-09-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/kanmani-anbudan/kanmani-anbudan-12-09-2026-vijay-tv-serial/"
           },
           {
             "date": "11-09-2026",
@@ -1753,7 +1754,7 @@
       {
         "name": "Pandian Stores",
         "folder": "pandian-stores-s-2",
-        "count": 48,
+        "count": 49,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1766,7 +1767,7 @@
           {
             "date": "12-09-2026",
             "title": "Pandian Stores 12-09-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/pandian-stores-2-12-09-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/pandian-stores-s-2/pandian-stores-s2-12-09-2026-vijay-tv-serial/"
           },
           {
             "date": "11-09-2026",
@@ -1918,7 +1919,7 @@
       {
         "name": "Siragadikka Aasai",
         "folder": "siragadikka-aasai",
-        "count": 48,
+        "count": 49,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1931,7 +1932,7 @@
           {
             "date": "12-09-2026",
             "title": "Siragadikka Aasai 12-09-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/siragadikka-aasai-12-09-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/siragadikka-aasai/siragadikka-aasai-12-09-2026-vijay-tv-serial/"
           },
           {
             "date": "11-09-2026",
@@ -2008,7 +2009,7 @@
       {
         "name": "Suttum Vizhi Sudare",
         "folder": "suttum-vizhi-sudare",
-        "count": 42,
+        "count": 43,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2021,7 +2022,7 @@
           {
             "date": "12-09-2026",
             "title": "Suttum Vizhi Sudare 12-09-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/suttum-vizhi-sudare-12-09-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/suttum-vizhi-sudare/suttum-vizhi-sudare-12-09-2026-vijay-tv-serial/"
           },
           {
             "date": "11-09-2026",
@@ -2163,16 +2164,21 @@
       {
         "name": "Thendrale Mella Pesu",
         "folder": "thendrale-mella-pesu",
-        "count": 41,
+        "count": 42,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "11-09-2026",
-        "latest_title": "Thendrale Mella Pesu 11-09-2026 | Vijay TV Serial",
+        "latest_date": "12-09-2026",
+        "latest_title": "Thendrale Mella Pesu 12-09-2026 | Vijay TV Serial",
         "id": 6716,
         "recent_episodes": [
+          {
+            "date": "12-09-2026",
+            "title": "Thendrale Mella Pesu 12-09-2026 | Vijay TV Serial",
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/thendrale-mella-pesu/thendrale-mella-pesu-12-09-2026-vijay-tv-serial/"
+          },
           {
             "date": "11-09-2026",
             "title": "Thendrale Mella Pesu 11-09-2026 | Vijay TV Serial",
