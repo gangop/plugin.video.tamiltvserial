@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-13T12:04:01.374480Z",
+  "updated": "2026-09-13T16:28:18.076821Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -2436,16 +2436,21 @@
       {
         "name": "Chinnan Siru Kiliye",
         "folder": "chinna-siru-kiliye",
-        "count": 36,
+        "count": 39,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
         "latest_date": "13-09-2026",
-        "latest_title": "Chinnan Siru Kiliye 13-09-2026 | Episode 299 | Zee Tamil TV Serial",
+        "latest_title": "Chinnan Siru Kiliye 13-09-2026 | Zee Tamil Serial",
         "id": 6722,
         "recent_episodes": [
+          {
+            "date": "13-09-2026",
+            "title": "Chinnan Siru Kiliye 13-09-2026 | Zee Tamil Serial",
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/chinna-siru-kiliye/chinna-siru-kiliye-13-09-2026-zee-tamil-serial/"
+          },
           {
             "date": "11-09-2026",
             "title": "Chinnan Siru Kiliye 11-09-2026 | Zee Tamil Serial",
@@ -2500,11 +2505,6 @@
             "date": "28-08-2026",
             "title": "Chinnan Siru Kiliye 28-08-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/chinna-siru-kiliye/chinna-siru-kiliye-28-08-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "27-08-2026",
-            "title": "Chinnan Siru Kiliye 27-08-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/chinna-siru-kiliye/chinna-siru-kiliye-27-08-2026-zee-tamil-serial/"
           }
         ]
       },
