@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-15T05:02:33.600324Z",
+  "updated": "2026-09-15T11:54:05.868706Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -96,7 +96,7 @@
       {
         "name": "Ethir Neechal",
         "folder": "ethir-neechal-thodargirathu",
-        "count": 53,
+        "count": 54,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -109,7 +109,7 @@
           {
             "date": "15-09-2026",
             "title": "Ethir Neechal 15-09-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/ethir-neechal-thodargirathu-15-09-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/ethir-neechal-thodargirathu/ethir-neechal-thodargirathu-15-09-2026-sun-tv-serial/"
           },
           {
             "date": "14-09-2026",
@@ -186,7 +186,7 @@
       {
         "name": "Iru Malargal",
         "folder": "iru-malargal",
-        "count": 41,
+        "count": 42,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -199,7 +199,7 @@
           {
             "date": "15-09-2026",
             "title": "Iru Malargal 15-09-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/iru-malargal-15-09-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/iru-malargal/iru-malargal-15-09-2026-sun-tv-serial/"
           },
           {
             "date": "14-09-2026",
@@ -351,7 +351,7 @@
       {
         "name": "Lakshmi",
         "folder": "lakshmi",
-        "count": 41,
+        "count": 42,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -364,7 +364,7 @@
           {
             "date": "15-09-2026",
             "title": "Lakshmi 15-09-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/lakshmi-15-09-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/lakshmi/lakshmi-15-09-2026-sun-tv-serial/"
           },
           {
             "date": "14-09-2026",
@@ -436,7 +436,7 @@
       {
         "name": "Malli",
         "folder": "malli",
-        "count": 52,
+        "count": 53,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -449,7 +449,7 @@
           {
             "date": "15-09-2026",
             "title": "Malli 15-09-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/malli-15-09-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-15-09-2026-sun-tv-serial/"
           },
           {
             "date": "14-09-2026",
@@ -532,25 +532,20 @@
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "21-09-2026",
-        "latest_title": "Marumagal 21-09-2026 | Sun TV Serial",
+        "latest_date": "15-09-2026",
+        "latest_title": "Marumagal 15-09-2026 | Sun TV Serial",
         "search_query": "Marumagal",
         "channel_id": 5,
         "recent_episodes": [
           {
-            "date": "21-09-2026",
-            "title": "Marumagal 21-09-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/marumagal/marumagal-21-09-2026-sun-tv-serial/"
-          },
-          {
             "date": "15-09-2026",
             "title": "Marumagal 15-09-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/marumagal-15-09-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/marumagal/marumagal-15-09-2026-sun-tv-serial/"
           },
           {
             "date": "14-09-2026",
             "title": "Marumagal 14-09-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/marumagal-14-09-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/marumagal/marumagal-21-09-2026-sun-tv-serial/"
           },
           {
             "date": "12-09-2026",
@@ -697,7 +692,7 @@
       {
         "name": "Poongodi",
         "folder": "poongodi",
-        "count": 42,
+        "count": 43,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -710,7 +705,7 @@
           {
             "date": "15-09-2026",
             "title": "Poongodi 15-09-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/poongodi-15-09-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/poongodi/poongodi-15-09-2026-sun-tv-serial/"
           },
           {
             "date": "14-09-2026",
@@ -771,18 +766,13 @@
             "date": "01-09-2026",
             "title": "Poongodi 01-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/poongodi/poongodi-01-09-2026-sun-tv-serial/"
-          },
-          {
-            "date": "31-08-2026",
-            "title": "Poongodi 31-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/poongodi/poongodi-31-08-2026-sun-tv-serial/"
           }
         ]
       },
       {
         "name": "Pudhu Vasantham",
         "folder": "pudhu-vasantham",
-        "count": 41,
+        "count": 42,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -795,7 +785,7 @@
           {
             "date": "15-09-2026",
             "title": "Pudhu Vasantham 15-09-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/puthu-vasantham-15-09-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/pudhu-vasantham-15-09-2026-sun-tv-serial/"
           },
           {
             "date": "14-09-2026",
@@ -856,18 +846,13 @@
             "date": "01-09-2026",
             "title": "Pudhu Vasantham 01-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/pudhu-vasantham-01-09-2026-sun-tv-serial/"
-          },
-          {
-            "date": "31-08-2026",
-            "title": "Pudhu Vasantham 31-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/pudhu-vasantham-31-08-2026-sun-tv-serial/"
           }
         ]
       },
       {
         "name": "Singappenne",
         "folder": "singappenne",
-        "count": 52,
+        "count": 53,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -880,7 +865,7 @@
           {
             "date": "15-09-2026",
             "title": "Singappenne 15-09-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/singapenne-15-09-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singappenne-15-09-2026-sun-tv-serial/"
           },
           {
             "date": "14-09-2026",
@@ -957,7 +942,7 @@
       {
         "name": "Siragugal",
         "folder": "siragugal",
-        "count": 42,
+        "count": 43,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -970,7 +955,7 @@
           {
             "date": "15-09-2026",
             "title": "Siragugal 15-09-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/siragugal-15-09-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/siragugal/siragugal-15-09-2026-sun-tv-serial/"
           },
           {
             "date": "14-09-2026",
@@ -1031,18 +1016,13 @@
             "date": "01-09-2026",
             "title": "Siragugal 01-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/siragugal/siragugal-01-09-2026-sun-tv-serial/"
-          },
-          {
-            "date": "31-08-2026",
-            "title": "Siragugal 31-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/siragugal/siragugal-31-08-2026-sun-tv-serial/"
           }
         ]
       },
       {
         "name": "Thulasi",
         "folder": "thulasi",
-        "count": 42,
+        "count": 43,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1055,7 +1035,7 @@
           {
             "date": "15-09-2026",
             "title": "Thulasi 15-09-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/thulasi-15-09-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/thulasi/thulasi-15-09-2026-sun-tv-serial/"
           },
           {
             "date": "14-09-2026",
@@ -1116,11 +1096,6 @@
             "date": "01-09-2026",
             "title": "Thulasi 01-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/thulasi/thulasi-01-09-2026-sun-tv-serial/"
-          },
-          {
-            "date": "31-08-2026",
-            "title": "Thulasi 31-08-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/thulasi/thulasi-31-08-2026-sun-tv-serial/"
           }
         ]
       },
@@ -1204,7 +1179,7 @@
       {
         "name": "Ayyanar Thunai",
         "folder": "ayyanar-thunai",
-        "count": 51,
+        "count": 52,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1299,7 +1274,7 @@
       {
         "name": "Azhagae Azhagu",
         "folder": "azhagae-azhagu",
-        "count": 36,
+        "count": 37,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1374,7 +1349,7 @@
       {
         "name": "Chinna Marumagal",
         "folder": "chinna-marumagal",
-        "count": 37,
+        "count": 38,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1459,7 +1434,7 @@
       {
         "name": "Kadhal Kadhal Kadhal",
         "folder": "kadhal-kadhal-kadhal",
-        "count": 36,
+        "count": 37,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1614,7 +1589,7 @@
       {
         "name": "Kanmani Anbudan",
         "folder": "kanmani-anbudan",
-        "count": 42,
+        "count": 43,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1779,7 +1754,7 @@
       {
         "name": "Onna Irukka Kaththukanum",
         "folder": "onna-irukka-kaththukkanum",
-        "count": 36,
+        "count": 37,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1854,7 +1829,7 @@
       {
         "name": "Pandian Stores",
         "folder": "pandian-stores-s-2",
-        "count": 51,
+        "count": 52,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2024,7 +1999,7 @@
       {
         "name": "Siragadikka Aasai",
         "folder": "siragadikka-aasai",
-        "count": 51,
+        "count": 52,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2119,7 +2094,7 @@
       {
         "name": "Suttum Vizhi Sudare",
         "folder": "suttum-vizhi-sudare",
-        "count": 43,
+        "count": 44,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2209,7 +2184,7 @@
       {
         "name": "Thaai Maaman",
         "folder": "thaai-maaman",
-        "count": 36,
+        "count": 37,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2289,7 +2264,7 @@
       {
         "name": "Thendrale Mella Pesu",
         "folder": "thendrale-mella-pesu",
-        "count": 42,
+        "count": 43,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2376,7 +2351,7 @@
       {
         "name": "Annamalai Kudumbam",
         "folder": "annamalai-kudumbam",
-        "count": 43,
+        "count": 44,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2389,7 +2364,7 @@
           {
             "date": "15-09-2026",
             "title": "Annamalai Kudumbam 15-09-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/annamalai-kudumbam-15-09-2026-zee-tamil-serial/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/annamalai-kudumbam/annamalai-kudumbam-15-09-2026-zee-tamil-serial/"
           },
           {
             "date": "14-09-2026",
@@ -2451,7 +2426,7 @@
       {
         "name": "Aval Varuvala",
         "folder": "aval-varuvala",
-        "count": 126,
+        "count": 131,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2464,7 +2439,7 @@
           {
             "date": "15-09-2026",
             "title": "Aval Varuvala 15-09-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/aval-varuvala-15-09-2026-zee-tamil-serial/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/aval-varuvala/aval-varuvala-15-09-2026-zee-tamil-serial/"
           },
           {
             "date": "14-09-2026",
@@ -2525,11 +2500,6 @@
             "date": "01-09-2026",
             "title": "Aval Varuvala 01-09-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/aval-varuvala/aval-varuvala-01-09-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "31-08-2026",
-            "title": "Aval Varuvala 31-08-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/aval-varuvala/aval-varuvala-31-08-2026-zee-tamil-serial/"
           }
         ]
       },
@@ -2776,7 +2746,7 @@
       {
         "name": "Idhayam",
         "folder": "idhayam",
-        "count": 44,
+        "count": 45,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2789,7 +2759,7 @@
           {
             "date": "15-09-2026",
             "title": "Idhayam 15-09-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/idhayam-15-09-2026-zee-tamil-serial/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/idhayam/idhayam-15-09-2026-zee-tamil-serial/"
           },
           {
             "date": "14-09-2026",
@@ -3021,7 +2991,7 @@
       {
         "name": "Salangai Oli",
         "folder": "salangai-oli",
-        "count": 68,
+        "count": 69,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -3034,7 +3004,7 @@
           {
             "date": "15-09-2026",
             "title": "Salangai Oli 15-09-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/salangai-oli-15-09-2026-zee-tamil-serial/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/salangai-oli/salangai-oli-15-09-2026-zee-tamil-serial/"
           },
           {
             "date": "14-09-2026",
@@ -3436,7 +3406,7 @@
       {
         "name": "Varisu",
         "folder": "varisu",
-        "count": 48,
+        "count": 49,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -3449,7 +3419,7 @@
           {
             "date": "15-09-2026",
             "title": "Varisu 15-09-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/varisu-15-09-2026-zee-tamil-serials/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/varisu/varisu-15-09-2026-zee-tamil-serial/"
           },
           {
             "date": "14-09-2026",
