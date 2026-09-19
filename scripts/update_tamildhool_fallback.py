@@ -24,6 +24,7 @@ import html
 import json
 import re
 import ssl
+import time
 import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
@@ -31,6 +32,7 @@ from pathlib import Path
 
 try:
     import cloudscraper
+    from requests.exceptions import RequestException
 except ImportError as exc:
     raise SystemExit('Install cloudscraper first: pip install cloudscraper') from exc
 
@@ -330,6 +332,21 @@ def collect_catalog_episodes(catalog: dict | None = None):
     return episodes, page_hints
 
 
+def _scraper_get(scraper, url: str, timeout: int = 30, retries: int = 3):
+    """GET with short retries for transient TamilDhool connection drops."""
+    last_exc: Exception | None = None
+    for attempt in range(1, retries + 1):
+        try:
+            return scraper.get(url, timeout=timeout)
+        except RequestException as exc:
+            last_exc = exc
+            if attempt >= retries:
+                break
+            time.sleep(min(2 ** (attempt - 1), 4))
+    assert last_exc is not None
+    raise last_exc
+
+
 def resolve_page(scraper, show: str, date: str, channel: str, title: str, page_hint: str = ''):
     channel_slug = CHANNEL_SLUGS[channel]
     kind = kind_slug(channel, title)
@@ -352,7 +369,7 @@ def resolve_page(scraper, show: str, date: str, channel: str, title: str, page_h
     # If canonical URLs 404/410, discover the dated link from the show folder.
     show_index = f'https://www.tamildhool.tech/{channel_slug}/{kind}/{folder_slug}/'
     try:
-        listing = scraper.get(show_index, timeout=30)
+        listing = _scraper_get(scraper, show_index, timeout=30)
         if listing.status_code == 200:
             # Allow suffixes like -grand-climax / -grand-finale before the kind tag.
             found = re.findall(
@@ -371,7 +388,12 @@ def resolve_page(scraper, show: str, date: str, channel: str, title: str, page_h
     last_page = pages[0] if pages else ''
     for page in pages:
         last_page = page
-        response = scraper.get(page, timeout=30)
+        try:
+            response = _scraper_get(scraper, page, timeout=30)
+        except RequestException as exc:
+            print(f'  fetch fail {page}: {exc}')
+            last_status = 0
+            continue
         last_status = response.status_code
         if response.status_code != 200 or 'just a moment' in response.text.lower()[:400]:
             continue
