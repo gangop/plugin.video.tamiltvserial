@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-19T20:50:30.603417Z",
+  "updated": "2026-09-20T05:02:32.158396Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -1339,7 +1339,7 @@
       {
         "name": "Ayyanar Thunai",
         "folder": "ayyanar-thunai",
-        "count": 56,
+        "count": 57,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1352,7 +1352,7 @@
           {
             "date": "20-09-2026",
             "title": "Ayyanar Thunai 20-09-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/ayyanar-thunai-20-09-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/ayyanar-thunai/ayyanar-thunai-20-09-2026-vijay-tv-serial/"
           },
           {
             "date": "19-09-2026",
@@ -1584,6 +1584,16 @@
           "tamildhool"
         ],
         "search_query": "Chinnan Siru Kiliye",
+        "channel_id": 3
+      },
+      {
+        "name": "Ethir Neechal",
+        "folder": "ethir-neechal-thodargirathu",
+        "count": 0,
+        "sources": [
+          "tamildhool"
+        ],
+        "search_query": "Ethir Neechal",
         "channel_id": 3
       },
       {
@@ -1947,6 +1957,26 @@
         ]
       },
       {
+        "name": "Malli",
+        "folder": "malli",
+        "count": 0,
+        "sources": [
+          "tamildhool"
+        ],
+        "search_query": "Malli",
+        "channel_id": 3
+      },
+      {
+        "name": "Marumagal",
+        "folder": "marumagal",
+        "count": 0,
+        "sources": [
+          "tamildhool"
+        ],
+        "search_query": "Marumagal",
+        "channel_id": 3
+      },
+      {
         "name": "Moondru Mudichu",
         "folder": "moondru-mudichu",
         "count": 0,
@@ -2044,7 +2074,7 @@
       {
         "name": "Pandian Stores",
         "folder": "pandian-stores-s-2",
-        "count": 56,
+        "count": 57,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2057,7 +2087,7 @@
           {
             "date": "20-09-2026",
             "title": "Pandian Stores 20-09-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/pandian-stores-2-20-09-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/pandian-stores-2/pandian-stores-2-20-09-2026-vijay-tv-serial/"
           },
           {
             "date": "19-09-2026",
@@ -2117,7 +2147,7 @@
           {
             "date": "08-09-2026",
             "title": "Pandian Stores 08-09-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/pandian-stores-2/pandian-stores-s2-08-09-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/pandian-stores-s-2/pandian-stores-s2-08-09-2026-vijay-tv-serial/"
           },
           {
             "date": "05-09-2026",
@@ -2125,6 +2155,16 @@
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/pandian-stores-s-2/pandian-stores-05-09-2026-vijay-tv-serial/"
           }
         ]
+      },
+      {
+        "name": "Poongodi",
+        "folder": "poongodi",
+        "count": 0,
+        "sources": [
+          "tamildhool"
+        ],
+        "search_query": "Poongodi",
+        "channel_id": 3
       },
       {
         "name": "Pudhu Vasantham",
@@ -2242,9 +2282,19 @@
         ]
       },
       {
+        "name": "Singappenne",
+        "folder": "singappenne",
+        "count": 0,
+        "sources": [
+          "tamildhool"
+        ],
+        "search_query": "Singappenne",
+        "channel_id": 3
+      },
+      {
         "name": "Siragadikka Aasai",
         "folder": "siragadikka-aasai",
-        "count": 56,
+        "count": 57,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2257,7 +2307,7 @@
           {
             "date": "20-09-2026",
             "title": "Siragadikka Aasai 20-09-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/siragadikka-aasai-20-09-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/siragadikka-aasai/siragadikka-aasai-20-09-2026-vijay-tv-serial/"
           },
           {
             "date": "19-09-2026",
