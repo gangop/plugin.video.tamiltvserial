@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-20T11:37:16.198693Z",
+  "updated": "2026-09-20T16:17:51.539266Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -3891,16 +3891,21 @@
       {
         "name": "Veera",
         "folder": "veera",
-        "count": 58,
+        "count": 60,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
         "latest_date": "20-09-2026",
-        "latest_title": "Veera 20-09-2026 | Episode 764 | Zee Tamil TV Serial",
+        "latest_title": "Veera 20-09-2026 | Zee Tamil Serial",
         "id": 6386,
         "recent_episodes": [
+          {
+            "date": "20-09-2026",
+            "title": "Veera 20-09-2026 | Zee Tamil Serial",
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/veera/veera-grand-climax-20-09-2026-zee-tamil-serial-sunday-special/"
+          },
           {
             "date": "19-09-2026",
             "title": "Veera 19-09-2026 | Zee Tamil Serial",
@@ -3960,11 +3965,6 @@
             "date": "07-09-2026",
             "title": "Veera 07-09-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/veera/veera-07-09-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "05-09-2026",
-            "title": "Veera 05-09-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/veera/veera-05-09-2026-zee-tamil-serial/"
           }
         ]
       }
