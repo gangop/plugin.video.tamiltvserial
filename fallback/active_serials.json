@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-23T11:50:53.756668Z",
+  "updated": "2026-09-23T17:15:45.281666Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -11,7 +11,7 @@
       {
         "name": "Annam",
         "folder": "annam",
-        "count": 50,
+        "count": 51,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -24,7 +24,7 @@
           {
             "date": "23-09-2026",
             "title": "Annam 23-09-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/annam-23-09-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/annam/annam-23-09-2026-sun-tv-serial/"
           },
           {
             "date": "22-09-2026",
@@ -80,11 +80,6 @@
             "date": "10-09-2026",
             "title": "Annam 10-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/annam/annam-10-09-2026-sun-tv-serial/"
-          },
-          {
-            "date": "09-09-2026",
-            "title": "Annam 09-09-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/annam/annam-09-09-2026-sun-tv-serial/"
           }
         ]
       },
@@ -236,7 +231,7 @@
       {
         "name": "Iru Malargal",
         "folder": "iru-malargal",
-        "count": 48,
+        "count": 49,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -341,7 +336,7 @@
       {
         "name": "Kayal",
         "folder": "kayal",
-        "count": 50,
+        "count": 51,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -354,7 +349,7 @@
           {
             "date": "23-09-2026",
             "title": "Kayal 23-09-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/kayal-23-09-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kayal/kayal-23-09-2026-sun-tv-serial/"
           },
           {
             "date": "22-09-2026",
@@ -410,18 +405,13 @@
             "date": "10-09-2026",
             "title": "Kayal 10-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kayal/kayal-10-09-2026-sun-tv-serial/"
-          },
-          {
-            "date": "09-09-2026",
-            "title": "Kayal 09-09-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kayal/kayal-09-09-2026-sun-tv-serial/"
           }
         ]
       },
       {
         "name": "Lakshmi",
         "folder": "lakshmi",
-        "count": 48,
+        "count": 49,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -647,7 +637,7 @@
       {
         "name": "Moondru Mudichu",
         "folder": "moondru-mudichu",
-        "count": 49,
+        "count": 50,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -660,7 +650,7 @@
           {
             "date": "23-09-2026",
             "title": "Moondru Mudichu 23-09-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/moondru-mudichi-23-09-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichu/moondru-mudichu-23-09-2026-sun-tv-serial/"
           },
           {
             "date": "22-09-2026",
@@ -716,11 +706,6 @@
             "date": "10-09-2026",
             "title": "Moondru Mudichu 10-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichu/moondru-mudichi-10-09-2026-sun-tv-serial-2/"
-          },
-          {
-            "date": "09-09-2026",
-            "title": "Moondru Mudichu 09-09-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichu/moondru-mudichi-10-09-2026-sun-tv-serial/"
           }
         ]
       },
@@ -2820,7 +2805,7 @@
       {
         "name": "Ayali",
         "folder": "ayali",
-        "count": 54,
+        "count": 55,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2833,7 +2818,7 @@
           {
             "date": "23-09-2026",
             "title": "Ayali 23-09-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/ayali-23-09-2026-zee-tamil-serial/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/ayali/ayali-23-09-2026-zee-tamil-serial/"
           },
           {
             "date": "22-09-2026",
@@ -2889,11 +2874,6 @@
             "date": "10-09-2026",
             "title": "Ayali 10-09-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/ayali/ayali-10-09-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "09-09-2026",
-            "title": "Ayali 09-09-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/ayali/ayali-09-09-2026-zee-tamil-serial/"
           }
         ]
       },
@@ -2930,7 +2910,7 @@
       {
         "name": "Chinnan Siru Kiliye",
         "folder": "chinnan-siru-kiliye",
-        "count": 46,
+        "count": 47,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2943,7 +2923,7 @@
           {
             "date": "23-09-2026",
             "title": "Chinnan Siru Kiliye 23-09-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/chinna-siru-kiliye-23-09-2026-zee-tamil-serial/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/chinnan-siru-kiliye/chinnan-siru-kiliye-23-09-2026-zee-tamil-serial/"
           },
           {
             "date": "22-09-2026",
@@ -3004,18 +2984,13 @@
             "date": "09-09-2026",
             "title": "Chinnan Siru Kiliye 09-09-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/chinnan-siru-kiliye/chinna-siru-kiliye-09-09-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "08-09-2026",
-            "title": "Chinnan Siru Kiliye 08-09-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/chinnan-siru-kiliye/chinna-siru-kiliye-08-09-2026-zee-tamil-serial/"
           }
         ]
       },
       {
         "name": "Enna Solla Pogirai",
         "folder": "enna-solla-pogirai",
-        "count": 1,
+        "count": 2,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -3243,7 +3218,7 @@
           {
             "date": "23-09-2026",
             "title": "Karthigai Deepam 23-09-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/karthigai-deepam-23-09-2026-zee-tamil-serial/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/karthigai-deepam/karthigai-deepam-23-09-2026-zee-tamil-serial/"
           },
           {
             "date": "22-09-2026",
@@ -3299,11 +3274,6 @@
             "date": "10-09-2026",
             "title": "Karthigai Deepam 10-09-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/karthigai-deepam/karthigai-deepam-10-09-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "09-09-2026",
-            "title": "Karthigai Deepam 09-09-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/karthigai-deepam/karthigai-deepam-09-09-2026-zee-tamil-serial/"
           }
         ]
       },
@@ -3370,7 +3340,7 @@
       {
         "name": "Paarijatham",
         "folder": "paarijatham",
-        "count": 52,
+        "count": 53,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -3383,7 +3353,7 @@
           {
             "date": "23-09-2026",
             "title": "Paarijatham 23-09-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/parijatham-23-09-2026-zee-tamil-serial/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/paarijatham/paarijatham-23-09-2026-zee-tamil-serial/"
           },
           {
             "date": "22-09-2026",
@@ -3439,11 +3409,6 @@
             "date": "10-09-2026",
             "title": "Paarijatham 10-09-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/paarijatham/parijatham-10-09-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "09-09-2026",
-            "title": "Paarijatham 09-09-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/paarijatham/parijatham-09-09-2026-zee-tamil-serial/"
           }
         ]
       },
@@ -3555,7 +3520,7 @@
       {
         "name": "Samanthi",
         "folder": "samanthi",
-        "count": 42,
+        "count": 43,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -3568,7 +3533,7 @@
           {
             "date": "23-09-2026",
             "title": "Samanthi 23-09-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/samanthi-23-09-2026-zee-tamil-serial/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/samanthi/samanthi-23-09-2026-zee-tamil-serial/"
           },
           {
             "date": "22-09-2026",
@@ -3624,18 +3589,13 @@
             "date": "08-09-2026",
             "title": "Samanthi 08-09-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/samanthi/samanthi-08-09-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "07-09-2026",
-            "title": "Samanthi 07-09-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/samanthi/samanthi-07-09-2026-zee-tamil-serial/"
           }
         ]
       },
       {
         "name": "Sandhya Raagam",
         "folder": "sandhya-raagam",
-        "count": 51,
+        "count": 52,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -3648,7 +3608,7 @@
           {
             "date": "23-09-2026",
             "title": "Sandhya Raagam 23-09-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/sandhya-raagam-23-09-2026-zee-tamil-serial/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/sandhya-raagam/sandhya-raagam-23-09-2026-zee-tamil-serial/"
           },
           {
             "date": "22-09-2026",
@@ -3704,11 +3664,6 @@
             "date": "10-09-2026",
             "title": "Sandhya Raagam 10-09-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/sandhya-raagam/sandhya-raagam-10-09-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "09-09-2026",
-            "title": "Sandhya Raagam 09-09-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/sandhya-raagam/sandhya-raagam-09-09-2026-zee-tamil-serial/"
           }
         ]
       },
@@ -3775,7 +3730,7 @@
       {
         "name": "Thirumangalyam",
         "folder": "thirumangalyam",
-        "count": 47,
+        "count": 48,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -3788,7 +3743,7 @@
           {
             "date": "23-09-2026",
             "title": "Thirumangalyam 23-09-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/thirumangalyam-23-09-2026-zee-tamil-serials/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/thirumangalyam/thirumangalyam-23-09-2026-zee-tamil-serial/"
           },
           {
             "date": "22-09-2026",
@@ -3844,11 +3799,6 @@
             "date": "08-09-2026",
             "title": "Thirumangalyam 08-09-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/thirumangalyam/thirumangalyam-08-09-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "07-09-2026",
-            "title": "Thirumangalyam 07-09-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/thirumangalyam/thirumangalyam-07-09-2026-zee-tamil-serial/"
           }
         ]
       },
@@ -3865,7 +3815,7 @@
       {
         "name": "Vaagai Sooda Vaa",
         "folder": "vaagai-sooda-vaa",
-        "count": 53,
+        "count": 54,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -3878,7 +3828,7 @@
           {
             "date": "23-09-2026",
             "title": "Vaagai Sooda Vaa 23-09-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/vaagai-sooda-vaa-23-09-2026-zee-tamil-serial/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/vaagai-sooda-vaa/vaagai-sooda-vaa-23-09-2026-zee-tamil-serial/"
           },
           {
             "date": "22-09-2026",
@@ -3934,11 +3884,6 @@
             "date": "10-09-2026",
             "title": "Vaagai Sooda Vaa 10-09-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/vaagai-sooda-vaa/vaagai-sooda-vaa-10-09-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "09-09-2026",
-            "title": "Vaagai Sooda Vaa 09-09-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/vaagai-sooda-vaa/vaagai-sooda-vaa-09-09-2026-zee-tamil-serial/"
           }
         ]
       },
@@ -4020,16 +3965,21 @@
       {
         "name": "Vasudha",
         "folder": "vasudha",
-        "count": 1,
+        "count": 2,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "22-09-2026",
-        "latest_title": "Vasudha 22-09-2026 | Zee Tamil Serial",
+        "latest_date": "23-09-2026",
+        "latest_title": "Vasudha 23-09-2026 | Zee Tamil Serial",
         "id": 6800,
         "recent_episodes": [
+          {
+            "date": "23-09-2026",
+            "title": "Vasudha 23-09-2026 | Zee Tamil Serial",
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/vasudha/vasudha-23-09-2026-zee-tamil-serial/"
+          },
           {
             "date": "22-09-2026",
             "title": "Vasudha 22-09-2026 | Zee Tamil Serial",
