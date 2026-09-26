@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-26T16:33:03.979884Z",
+  "updated": "2026-09-26T21:18:55.262250Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -14,8 +14,7 @@
         "count": 54,
         "sources": [
           "tamildhol",
-          "tamildhool",
-          "tamiltvserial"
+          "tamildhool"
         ],
         "latest_date": "26-09-2026",
         "latest_title": "Annam 26-09-2026 | Sun TV Serial",
@@ -149,8 +148,7 @@
         "count": 65,
         "sources": [
           "tamildhol",
-          "tamildhool",
-          "tamiltvserial"
+          "tamildhool"
         ],
         "latest_date": "26-09-2026",
         "latest_title": "Ethir Neechal 26-09-2026 | Sun TV Serial",
@@ -234,8 +232,7 @@
         "count": 52,
         "sources": [
           "tamildhol",
-          "tamildhool",
-          "tamiltvserial"
+          "tamildhool"
         ],
         "latest_date": "26-09-2026",
         "latest_title": "Iru Malargal 26-09-2026 | Sun TV Serial",
@@ -336,11 +333,10 @@
       {
         "name": "Kayal",
         "folder": "kayal",
-        "count": 53,
+        "count": 54,
         "sources": [
           "tamildhol",
-          "tamildhool",
-          "tamiltvserial"
+          "tamildhool"
         ],
         "latest_date": "26-09-2026",
         "latest_title": "Kayal 26-09-2026 | Sun TV Serial",
@@ -414,8 +410,7 @@
         "count": 52,
         "sources": [
           "tamildhol",
-          "tamildhool",
-          "tamiltvserial"
+          "tamildhool"
         ],
         "latest_date": "26-09-2026",
         "latest_title": "Lakshmi 26-09-2026 | Sun TV Serial",
@@ -489,8 +484,7 @@
         "count": 64,
         "sources": [
           "tamildhol",
-          "tamildhool",
-          "tamiltvserial"
+          "tamildhool"
         ],
         "latest_date": "26-09-2026",
         "latest_title": "Malli 26-09-2026 | Sun TV Serial",
@@ -564,12 +558,11 @@
         "count": 0,
         "sources": [
           "tamildhol",
-          "tamildhool",
-          "tamiltvserial"
+          "tamildhool"
         ],
         "latest_date": "26-09-2026",
         "latest_title": "Marumagal | 26-09-2026 | Sun TV Serial",
-        "search_query": "Marumagal",
+        "search_query": "Marumagal |",
         "channel_id": 5,
         "recent_episodes": [
           {
@@ -637,11 +630,10 @@
       {
         "name": "Moondru Mudichu",
         "folder": "moondru-mudichu",
-        "count": 52,
+        "count": 53,
         "sources": [
           "tamildhol",
-          "tamildhool",
-          "tamiltvserial"
+          "tamildhool"
         ],
         "latest_date": "26-09-2026",
         "latest_title": "Moondru Mudichu 26-09-2026 | Sun TV Serial",
@@ -745,8 +737,7 @@
         "count": 53,
         "sources": [
           "tamildhol",
-          "tamildhool",
-          "tamiltvserial"
+          "tamildhool"
         ],
         "latest_date": "26-09-2026",
         "latest_title": "Poongodi 26-09-2026 | Sun TV Serial",
@@ -820,8 +811,7 @@
         "count": 52,
         "sources": [
           "tamildhol",
-          "tamildhool",
-          "tamiltvserial"
+          "tamildhool"
         ],
         "latest_date": "26-09-2026",
         "latest_title": "Pudhu Vasantham 26-09-2026 | Sun TV Serial",
@@ -925,8 +915,7 @@
         "count": 64,
         "sources": [
           "tamildhol",
-          "tamildhool",
-          "tamiltvserial"
+          "tamildhool"
         ],
         "latest_date": "26-09-2026",
         "latest_title": "Singappenne 26-09-2026 | Sun TV Serial",
@@ -1010,8 +999,7 @@
         "count": 53,
         "sources": [
           "tamildhol",
-          "tamildhool",
-          "tamiltvserial"
+          "tamildhool"
         ],
         "latest_date": "26-09-2026",
         "latest_title": "Siragugal 26-09-2026 | Sun TV Serial",
@@ -1125,8 +1113,7 @@
         "count": 53,
         "sources": [
           "tamildhol",
-          "tamildhool",
-          "tamiltvserial"
+          "tamildhool"
         ],
         "latest_date": "26-09-2026",
         "latest_title": "Thulasi 26-09-2026 | Sun TV Serial",
