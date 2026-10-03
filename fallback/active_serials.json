@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-02T22:22:50.985462Z",
+  "updated": "2026-10-03T05:29:51.173385Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -9,123 +9,121 @@
   "channels": {
     "5": [
       {
-        "name": "Abirami |",
+        "name": "Abirami",
         "folder": "abirami",
-        "count": 0,
+        "count": 5,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
         "latest_date": "02-10-2026",
-        "latest_title": "Abirami | 02-10-2026 | Sun TV Serial",
-        "search_query": "Abirami",
-        "channel_id": 5,
+        "latest_title": "Abirami 02-10-2026 | Sun TV Serial",
+        "id": 6802,
         "recent_episodes": [
           {
             "date": "02-10-2026",
-            "title": "Abirami | 02-10-2026 | Sun TV Serial",
+            "title": "Abirami 02-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/abirami/abirami-02-10-2026-sun-tv-serial/"
           },
           {
             "date": "01-10-2026",
-            "title": "Abirami | 01-10-2026 | Sun TV Serial",
+            "title": "Abirami 01-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/abirami/abirami-01-10-2026-sun-tv-serial/"
           },
           {
             "date": "30-09-2026",
-            "title": "Abirami | 30-09-2026 | Sun TV Serial",
+            "title": "Abirami 30-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/abirami/abirami-30-09-2026-sun-tv-serial/"
           },
           {
             "date": "29-09-2026",
-            "title": "Abirami | 29-09-2026 | Sun TV Serial",
+            "title": "Abirami 29-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/abirami/abirami-29-09-2026-sun-tv-serial/"
           },
           {
             "date": "28-09-2026",
-            "title": "Abirami | 28-09-2026 | Sun TV Serial",
+            "title": "Abirami 28-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/abirami/abirami-28-09-2026-sun-tv-serial/"
           }
         ]
       },
       {
-        "name": "Annam |",
+        "name": "Annam",
         "folder": "annam",
-        "count": 0,
+        "count": 59,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
-        "latest_title": "Annam | 03-10-2026 | Sun TV Serial",
-        "search_query": "Annam",
-        "channel_id": 5,
+        "latest_title": "Annam 03-10-2026 | Sun TV Serial",
+        "id": 6692,
         "recent_episodes": [
           {
             "date": "03-10-2026",
-            "title": "Annam | 03-10-2026 | Sun TV Serial",
+            "title": "Annam 03-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/annam-03-10-2026-sun-tv-serial/"
           },
           {
             "date": "02-10-2026",
-            "title": "Annam | 02-10-2026 | Sun TV Serial",
+            "title": "Annam 02-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/annam/annam-02-10-2026-sun-tv-serial/"
           },
           {
             "date": "01-10-2026",
-            "title": "Annam | 01-10-2026 | Sun TV Serial",
+            "title": "Annam 01-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/annam/annam-01-10-2026-sun-tv-serial/"
           },
           {
             "date": "30-09-2026",
-            "title": "Annam | 30-09-2026 | Sun TV Serial",
+            "title": "Annam 30-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/annam/annam-30-09-2026-sun-tv-serial/"
           },
           {
             "date": "29-09-2026",
-            "title": "Annam | 29-09-2026 | Sun TV Serial",
+            "title": "Annam 29-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/annam/annam-29-09-2026-sun-tv-serial/"
           },
           {
             "date": "28-09-2026",
-            "title": "Annam | 28-09-2026 | Sun TV Serial",
+            "title": "Annam 28-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/annam/annam-28-09-2026-sun-tv-serial/"
           },
           {
             "date": "26-09-2026",
-            "title": "Annam | 26-09-2026 | Sun TV Serial",
+            "title": "Annam 26-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/annam/annam-26-09-2026-sun-tv-serial/"
           },
           {
             "date": "25-09-2026",
-            "title": "Annam | 25-09-2026 | Sun TV Serial",
+            "title": "Annam 25-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/annam/annam-25-09-2026-sun-tv-serial/"
           },
           {
             "date": "24-09-2026",
-            "title": "Annam | 24-09-2026 | Sun TV Serial",
+            "title": "Annam 24-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/annam/annam-24-09-2026-sun-tv-serial/"
           },
           {
             "date": "23-09-2026",
-            "title": "Annam | 23-09-2026 | Sun TV Serial",
+            "title": "Annam 23-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/annam/annam-23-09-2026-sun-tv-serial/"
           },
           {
             "date": "22-09-2026",
-            "title": "Annam | 22-09-2026 | Sun TV Serial",
+            "title": "Annam 22-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/annam/annam-22-09-2026-sun-tv-serial/"
           },
           {
             "date": "21-09-2026",
-            "title": "Annam | 21-09-2026 | Sun TV Serial",
+            "title": "Annam 21-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/annam/annam-21-09-2026-sun-tv-serial/"
           },
           {
             "date": "19-09-2026",
-            "title": "Annam | 19-09-2026 | Sun TV Serial",
+            "title": "Annam 19-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/annam/annam-19-09-2026-sun-tv-serial/"
           }
         ]
@@ -193,7 +191,7 @@
       {
         "name": "Ethir Neechal",
         "folder": "ethir-neechal-thodargirathu",
-        "count": 0,
+        "count": 71,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -201,8 +199,7 @@
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Ethir Neechal 03-10-2026 | Sun TV Serial",
-        "search_query": "Ethir Neechal",
-        "channel_id": 5,
+        "id": 6344,
         "recent_episodes": [
           {
             "date": "03-10-2026",
@@ -282,82 +279,81 @@
         "channel_id": 5
       },
       {
-        "name": "Iru Malargal |",
+        "name": "Iru Malargal",
         "folder": "iru-malargal",
-        "count": 0,
+        "count": 57,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
-        "latest_title": "Iru Malargal | 03-10-2026 | Sun TV Serial",
-        "search_query": "Iru Malargal",
-        "channel_id": 5,
+        "latest_title": "Iru Malargal 03-10-2026 | Sun TV Serial",
+        "id": 6756,
         "recent_episodes": [
           {
             "date": "03-10-2026",
-            "title": "Iru Malargal | 03-10-2026 | Sun TV Serial",
+            "title": "Iru Malargal 03-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/iru-malargal-03-10-2026-sun-tv-serial/"
           },
           {
             "date": "02-10-2026",
-            "title": "Iru Malargal | 02-10-2026 | Sun TV Serial",
+            "title": "Iru Malargal 02-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/iru-malargal/iru-malargal-02-10-2026-sun-tv-serial/"
           },
           {
             "date": "01-10-2026",
-            "title": "Iru Malargal | 01-10-2026 | Sun TV Serial",
+            "title": "Iru Malargal 01-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/iru-malargal/iru-malargal-01-10-2026-sun-tv-serial/"
           },
           {
             "date": "30-09-2026",
-            "title": "Iru Malargal | 30-09-2026 | Sun TV Serial",
+            "title": "Iru Malargal 30-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/iru-malargal/iru-malargal-30-09-2026-sun-tv-serial/"
           },
           {
             "date": "29-09-2026",
-            "title": "Iru Malargal | 29-09-2026 | Sun TV Serial",
+            "title": "Iru Malargal 29-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/iru-malargal/iru-malargal-29-09-2026-sun-tv-serial/"
           },
           {
             "date": "28-09-2026",
-            "title": "Iru Malargal | 28-09-2026 | Sun TV Serial",
+            "title": "Iru Malargal 28-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/iru-malargal/iru-malargal-28-09-2026-sun-tv-serial/"
           },
           {
             "date": "26-09-2026",
-            "title": "Iru Malargal | 26-09-2026 | Sun TV Serial",
+            "title": "Iru Malargal 26-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/iru-malargal/iru-malargal-26-09-2026-sun-tv-serial/"
           },
           {
             "date": "25-09-2026",
-            "title": "Iru Malargal | 25-09-2026 | Sun TV Serial",
+            "title": "Iru Malargal 25-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/iru-malargal/iru-malargal-25-09-2026-sun-tv-serial/"
           },
           {
             "date": "24-09-2026",
-            "title": "Iru Malargal | 24-09-2026 | Sun TV Serial",
+            "title": "Iru Malargal 24-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/iru-malargal/iru-malargal-24-09-2026-sun-tv-serial/"
           },
           {
             "date": "23-09-2026",
-            "title": "Iru Malargal | 23-09-2026 | Sun TV Serial",
+            "title": "Iru Malargal 23-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/iru-malargal/iru-malargal-23-09-2026-sun-tv-serial/"
           },
           {
             "date": "22-09-2026",
-            "title": "Iru Malargal | 22-09-2026 | Sun TV Serial",
+            "title": "Iru Malargal 22-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/iru-malargal/iru-malargal-22-09-2026-sun-tv-serial/"
           },
           {
             "date": "21-09-2026",
-            "title": "Iru Malargal | 21-09-2026 | Sun TV Serial",
+            "title": "Iru Malargal 21-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/iru-malargal/iru-malargal-21-09-2026-sun-tv-serial/"
           },
           {
             "date": "19-09-2026",
-            "title": "Iru Malargal | 19-09-2026 | Sun TV Serial",
+            "title": "Iru Malargal 19-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/iru-malargal/iru-malargal-19-09-2026-sun-tv-serial/"
           }
         ]
@@ -383,285 +379,281 @@
         "channel_id": 5
       },
       {
-        "name": "Kayal |",
+        "name": "Kayal",
         "folder": "kayal",
-        "count": 0,
+        "count": 59,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
-        "latest_title": "Kayal | 03-10-2026 | Sun TV Serial",
-        "search_query": "Kayal",
-        "channel_id": 5,
+        "latest_title": "Kayal 03-10-2026 | Sun TV Serial",
+        "id": 6339,
         "recent_episodes": [
           {
             "date": "03-10-2026",
-            "title": "Kayal | 03-10-2026 | Sun TV Serial",
+            "title": "Kayal 03-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/kayal-03-10-2026-sun-tv-serial/"
           },
           {
             "date": "02-10-2026",
-            "title": "Kayal | 02-10-2026 | Sun TV Serial",
+            "title": "Kayal 02-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kayal/kayal-02-10-2026-sun-tv-serial/"
           },
           {
             "date": "01-10-2026",
-            "title": "Kayal | 01-10-2026 | Sun TV Serial",
+            "title": "Kayal 01-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kayal/kayal-01-10-2026-sun-tv-serial/"
           },
           {
             "date": "30-09-2026",
-            "title": "Kayal | 30-09-2026 | Sun TV Serial",
+            "title": "Kayal 30-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kayal/kayal-30-09-2026-sun-tv-serial/"
           },
           {
             "date": "29-09-2026",
-            "title": "Kayal | 29-09-2026 | Sun TV Serial",
+            "title": "Kayal 29-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kayal/kayal-29-09-2026-sun-tv-serial/"
           },
           {
             "date": "28-09-2026",
-            "title": "Kayal | 28-09-2026 | Sun TV Serial",
+            "title": "Kayal 28-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kayal/kayal-28-09-2026-sun-tv-serial/"
           },
           {
             "date": "26-09-2026",
-            "title": "Kayal | 26-09-2026 | Sun TV Serial",
+            "title": "Kayal 26-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kayal/kayal-26-09-2026-sun-tv-serial/"
           },
           {
             "date": "25-09-2026",
-            "title": "Kayal | 25-09-2026 | Sun TV Serial",
+            "title": "Kayal 25-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kayal/kayal-25-09-2026-sun-tv-serial/"
           },
           {
             "date": "24-09-2026",
-            "title": "Kayal | 24-09-2026 | Sun TV Serial",
+            "title": "Kayal 24-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kayal/kayal-24-09-2026-sun-tv-serial/"
           },
           {
             "date": "23-09-2026",
-            "title": "Kayal | 23-09-2026 | Sun TV Serial",
+            "title": "Kayal 23-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kayal/kayal-23-09-2026-sun-tv-serial/"
           },
           {
             "date": "22-09-2026",
-            "title": "Kayal | 22-09-2026 | Sun TV Serial",
+            "title": "Kayal 22-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kayal/kayal-22-09-2026-sun-tv-serial/"
           },
           {
             "date": "21-09-2026",
-            "title": "Kayal | 21-09-2026 | Sun TV Serial",
+            "title": "Kayal 21-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kayal/kayal-21-09-2026-sun-tv-serial/"
           },
           {
             "date": "19-09-2026",
-            "title": "Kayal | 19-09-2026 | Sun TV Serial",
+            "title": "Kayal 19-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kayal/kayal-19-09-2026-sun-tv-serial/"
           }
         ]
       },
       {
-        "name": "Kurinji |",
+        "name": "Kurinji",
         "folder": "kurinji",
-        "count": 0,
+        "count": 5,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
         "latest_date": "02-10-2026",
-        "latest_title": "Kurinji | 02-10-2026 | Sun TV Serial",
-        "search_query": "Kurinji",
-        "channel_id": 5,
+        "latest_title": "Kurinji 02-10-2026 | Sun TV Serial",
+        "id": 6801,
         "recent_episodes": [
           {
             "date": "02-10-2026",
-            "title": "Kurinji | 02-10-2026 | Sun TV Serial",
+            "title": "Kurinji 02-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kurinji/kurinji-02-10-2026-sun-tv-serial/"
           },
           {
             "date": "01-10-2026",
-            "title": "Kurinji | 01-10-2026 | Sun TV Serial",
+            "title": "Kurinji 01-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kurinji/kurinji-01-10-2026-sun-tv-serial/"
           },
           {
             "date": "30-09-2026",
-            "title": "Kurinji | 30-09-2026 | Sun TV Serial",
+            "title": "Kurinji 30-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kurinji/kurinji-30-09-2026-sun-tv-serial/"
           },
           {
             "date": "29-09-2026",
-            "title": "Kurinji | 29-09-2026 | Sun TV Serial",
+            "title": "Kurinji 29-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kurinji/kurinji-29-09-2026-sun-tv-serial/"
           },
           {
             "date": "28-09-2026",
-            "title": "Kurinji | 28-09-2026 | Sun TV Serial",
+            "title": "Kurinji 28-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kurinji/kurinji-28-09-2026-sun-tv-serial/"
           }
         ]
       },
       {
-        "name": "Lakshmi |",
+        "name": "Lakshmi",
         "folder": "lakshmi",
-        "count": 0,
+        "count": 57,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
-        "latest_title": "Lakshmi | 03-10-2026 | Sun TV Serial",
-        "search_query": "Lakshmi",
-        "channel_id": 5,
+        "latest_title": "Lakshmi 03-10-2026 | Sun TV Serial",
+        "id": 6438,
         "recent_episodes": [
           {
             "date": "03-10-2026",
-            "title": "Lakshmi | 03-10-2026 | Sun TV Serial",
+            "title": "Lakshmi 03-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/lakshmi-03-10-2026-sun-tv-serial/"
           },
           {
             "date": "02-10-2026",
-            "title": "Lakshmi | 02-10-2026 | Sun TV Serial",
+            "title": "Lakshmi 02-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/lakshmi/lakshmi-02-10-2026-sun-tv-serial/"
           },
           {
             "date": "01-10-2026",
-            "title": "Lakshmi | 01-10-2026 | Sun TV Serial",
+            "title": "Lakshmi 01-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/lakshmi/lakshmi-01-10-2026-sun-tv-serial/"
           },
           {
             "date": "30-09-2026",
-            "title": "Lakshmi | 30-09-2026 | Sun TV Serial",
+            "title": "Lakshmi 30-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/lakshmi/lakshmi-30-09-2026-sun-tv-serial/"
           },
           {
             "date": "29-09-2026",
-            "title": "Lakshmi | 29-09-2026 | Sun TV Serial",
+            "title": "Lakshmi 29-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/lakshmi/lakshmi-29-09-2026-sun-tv-serial/"
           },
           {
             "date": "28-09-2026",
-            "title": "Lakshmi | 28-09-2026 | Sun TV Serial",
+            "title": "Lakshmi 28-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/lakshmi/lakshmi-28-09-2026-sun-tv-serial/"
           },
           {
             "date": "26-09-2026",
-            "title": "Lakshmi | 26-09-2026 | Sun TV Serial",
+            "title": "Lakshmi 26-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/lakshmi/lakshmi-26-09-2026-sun-tv-serial/"
           },
           {
             "date": "25-09-2026",
-            "title": "Lakshmi | 25-09-2026 | Sun TV Serial",
+            "title": "Lakshmi 25-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/lakshmi/lakshmi-25-09-2026-sun-tv-serial/"
           },
           {
             "date": "24-09-2026",
-            "title": "Lakshmi | 24-09-2026 | Sun TV Serial",
+            "title": "Lakshmi 24-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/lakshmi/lakshmi-24-09-2026-sun-tv-serial/"
           },
           {
             "date": "23-09-2026",
-            "title": "Lakshmi | 23-09-2026 | Sun TV Serial",
+            "title": "Lakshmi 23-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/lakshmi/lakshmi-23-09-2026-sun-tv-serial/"
           },
           {
             "date": "22-09-2026",
-            "title": "Lakshmi | 22-09-2026 | Sun TV Serial",
+            "title": "Lakshmi 22-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/lakshmi/lakshmi-22-09-2026-sun-tv-serial/"
           },
           {
             "date": "21-09-2026",
-            "title": "Lakshmi | 21-09-2026 | Sun TV Serial",
+            "title": "Lakshmi 21-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/lakshmi/lakshmi-21-09-2026-sun-tv-serial/"
           },
           {
             "date": "19-09-2026",
-            "title": "Lakshmi | 19-09-2026 | Sun TV Serial",
+            "title": "Lakshmi 19-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/lakshmi/lakshmi-19-09-2026-sun-tv-serial/"
           }
         ]
       },
       {
-        "name": "Malli |",
+        "name": "Malli",
         "folder": "malli",
-        "count": 0,
+        "count": 70,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
-        "latest_title": "Malli | 03-10-2026 | Sun TV Serial",
-        "search_query": "Malli",
-        "channel_id": 5,
+        "latest_title": "Malli 03-10-2026 | Sun TV Serial",
+        "id": 6620,
         "recent_episodes": [
           {
             "date": "03-10-2026",
-            "title": "Malli | 03-10-2026 | Sun TV Serial",
+            "title": "Malli 03-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/malli-03-10-2026-sun-tv-serial/"
           },
           {
             "date": "02-10-2026",
-            "title": "Malli | 02-10-2026 | Sun TV Serial",
+            "title": "Malli 02-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-tamil-03-10-2026-sun-tv-serial/"
           },
           {
             "date": "01-10-2026",
-            "title": "Malli | 01-10-2026 | Sun TV Serial",
+            "title": "Malli 01-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-01-10-2026-sun-tv-serial/"
           },
           {
             "date": "30-09-2026",
-            "title": "Malli | 30-09-2026 | Sun TV Serial",
+            "title": "Malli 30-09-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/malli-30-09-2026-sun-tv-serial/"
           },
           {
             "date": "29-09-2026",
-            "title": "Malli | 29-09-2026 | Sun TV Serial",
+            "title": "Malli 29-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-29-09-2026-sun-tv-serial-2/"
           },
           {
             "date": "28-09-2026",
-            "title": "Malli | 28-09-2026 | Sun TV Serial",
+            "title": "Malli 28-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-28-09-2026-sun-tv-serial/"
           },
           {
             "date": "27-09-2026",
-            "title": "Malli | 27-09-2026 | Sun TV Serial",
+            "title": "Malli 27-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-tamil-27-09-2026-sun-tv-serial/"
           },
           {
             "date": "26-09-2026",
-            "title": "Malli | 26-09-2026 | Sun TV Serial",
+            "title": "Malli 26-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-26-09-2026-sun-tv-serial/"
           },
           {
             "date": "25-09-2026",
-            "title": "Malli | 25-09-2026 | Sun TV Serial",
+            "title": "Malli 25-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-25-09-2026-sun-tv-serial/"
           },
           {
             "date": "24-09-2026",
-            "title": "Malli | 24-09-2026 | Sun TV Serial",
+            "title": "Malli 24-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-24-09-2026-sun-tv-serial/"
           },
           {
             "date": "23-09-2026",
-            "title": "Malli | 23-09-2026 | Sun TV Serial",
+            "title": "Malli 23-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-23-09-2026-sun-tv-serial/"
           },
           {
             "date": "22-09-2026",
-            "title": "Malli | 22-09-2026 | Sun TV Serial",
+            "title": "Malli 22-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-22-09-2026-sun-tv-serial/"
           },
           {
             "date": "21-09-2026",
-            "title": "Malli | 21-09-2026 | Sun TV Serial",
+            "title": "Malli 21-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-21-09-2026-sun-tv-serial/"
           }
         ]
@@ -748,82 +740,81 @@
         ]
       },
       {
-        "name": "Moondru Mudichu |",
+        "name": "Moondru Mudichu",
         "folder": "moondru-mudichu",
-        "count": 0,
+        "count": 58,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
-        "latest_title": "Moondru Mudichu | 03-10-2026 | Sun TV Serial",
-        "search_query": "Moondru Mudichu",
-        "channel_id": 5,
+        "latest_title": "Moondru Mudichu 03-10-2026 | Sun TV Serial",
+        "id": 6663,
         "recent_episodes": [
           {
             "date": "03-10-2026",
-            "title": "Moondru Mudichu | 03-10-2026 | Sun TV Serial",
+            "title": "Moondru Mudichu 03-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/moondru-mudichu-03-10-2026-sun-tv-serial/"
           },
           {
             "date": "02-10-2026",
-            "title": "Moondru Mudichu | 02-10-2026 | Sun TV Serial",
+            "title": "Moondru Mudichu 02-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichu/moondru-mudichu-02-10-2026-sun-tv-serial/"
           },
           {
             "date": "01-10-2026",
-            "title": "Moondru Mudichu | 01-10-2026 | Sun TV Serial",
+            "title": "Moondru Mudichu 01-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichu/moondru-mudichu-01-10-2026-sun-tv-serial/"
           },
           {
             "date": "30-09-2026",
-            "title": "Moondru Mudichu | 30-09-2026 | Sun TV Serial",
+            "title": "Moondru Mudichu 30-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichu/moondru-mudichu-30-09-2026-sun-tv-serial/"
           },
           {
             "date": "29-09-2026",
-            "title": "Moondru Mudichu | 29-09-2026 | Sun TV Serial",
+            "title": "Moondru Mudichu 29-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichu/moondru-mudichu-29-09-2026-sun-tv-serial/"
           },
           {
             "date": "28-09-2026",
-            "title": "Moondru Mudichu | 28-09-2026 | Sun TV Serial",
+            "title": "Moondru Mudichu 28-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichu/moondru-mudichu-28-09-2026-sun-tv-serial/"
           },
           {
             "date": "26-09-2026",
-            "title": "Moondru Mudichu | 26-09-2026 | Sun TV Serial",
+            "title": "Moondru Mudichu 26-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichu/moondru-mudichu-26-09-2026-sun-tv-serial/"
           },
           {
             "date": "25-09-2026",
-            "title": "Moondru Mudichu | 25-09-2026 | Sun TV Serial",
+            "title": "Moondru Mudichu 25-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichu/moondru-mudichu-25-09-2026-sun-tv-serial/"
           },
           {
             "date": "24-09-2026",
-            "title": "Moondru Mudichu | 24-09-2026 | Sun TV Serial",
+            "title": "Moondru Mudichu 24-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichu/moondru-mudichu-24-09-2026-sun-tv-serial/"
           },
           {
             "date": "23-09-2026",
-            "title": "Moondru Mudichu | 23-09-2026 | Sun TV Serial",
+            "title": "Moondru Mudichu 23-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichu/moondru-mudichu-23-09-2026-sun-tv-serial/"
           },
           {
             "date": "22-09-2026",
-            "title": "Moondru Mudichu | 22-09-2026 | Sun TV Serial",
+            "title": "Moondru Mudichu 22-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichu/moondru-mudichu-22-09-2026-sun-tv-serial/"
           },
           {
             "date": "21-09-2026",
-            "title": "Moondru Mudichu | 21-09-2026 | Sun TV Serial",
+            "title": "Moondru Mudichu 21-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichu/moondru-mudichu-21-09-2026-sun-tv-serial/"
           },
           {
             "date": "19-09-2026",
-            "title": "Moondru Mudichu | 19-09-2026 | Sun TV Serial",
+            "title": "Moondru Mudichu 19-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichu/moondru-mudichu-19-09-2026-sun-tv-serial/"
           }
         ]
@@ -859,178 +850,176 @@
         "channel_id": 5
       },
       {
-        "name": "Poongodi |",
+        "name": "Poongodi",
         "folder": "poongodi",
-        "count": 0,
+        "count": 58,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
-        "latest_title": "Poongodi | 03-10-2026 | Sun TV Serial",
-        "search_query": "Poongodi",
-        "channel_id": 5,
+        "latest_title": "Poongodi 03-10-2026 | Sun TV Serial",
+        "id": 6700,
         "recent_episodes": [
           {
             "date": "03-10-2026",
-            "title": "Poongodi | 03-10-2026 | Sun TV Serial",
+            "title": "Poongodi 03-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/poongodi-03-10-2026-sun-tv-serial/"
           },
           {
             "date": "02-10-2026",
-            "title": "Poongodi | 02-10-2026 | Sun TV Serial",
+            "title": "Poongodi 02-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/poongodi/poongodi-02-10-2026-sun-tv-serial/"
           },
           {
             "date": "01-10-2026",
-            "title": "Poongodi | 01-10-2026 | Sun TV Serial",
+            "title": "Poongodi 01-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/poongodi/poongodi-01-10-2026-sun-tv-serial/"
           },
           {
             "date": "30-09-2026",
-            "title": "Poongodi | 30-09-2026 | Sun TV Serial",
+            "title": "Poongodi 30-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/poongodi/poongodi-30-09-2026-sun-tv-serial/"
           },
           {
             "date": "29-09-2026",
-            "title": "Poongodi | 29-09-2026 | Sun TV Serial",
+            "title": "Poongodi 29-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/poongodi/poongodi-29-09-2026-sun-tv-serial/"
           },
           {
             "date": "28-09-2026",
-            "title": "Poongodi | 28-09-2026 | Sun TV Serial",
+            "title": "Poongodi 28-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/poongodi/poongodi-28-09-2026-sun-tv-serial/"
           },
           {
             "date": "26-09-2026",
-            "title": "Poongodi | 26-09-2026 | Sun TV Serial",
+            "title": "Poongodi 26-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/poongodi/poongodi-26-09-2026-sun-tv-serial/"
           },
           {
             "date": "25-09-2026",
-            "title": "Poongodi | 25-09-2026 | Sun TV Serial",
+            "title": "Poongodi 25-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/poongodi/poongodi-25-09-2026-sun-tv-serial/"
           },
           {
             "date": "24-09-2026",
-            "title": "Poongodi | 24-09-2026 | Sun TV Serial",
+            "title": "Poongodi 24-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/poongodi/poongodi-24-09-2026-sun-tv-serial/"
           },
           {
             "date": "23-09-2026",
-            "title": "Poongodi | 23-09-2026 | Sun TV Serial",
+            "title": "Poongodi 23-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/poongodi/poongodi-23-09-2026-sun-tv-serial/"
           },
           {
             "date": "22-09-2026",
-            "title": "Poongodi | 22-09-2026 | Sun TV Serial",
+            "title": "Poongodi 22-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/poongodi/poongodi-22-09-2026-sun-tv-serial/"
           },
           {
             "date": "21-09-2026",
-            "title": "Poongodi | 21-09-2026 | Sun TV Serial",
+            "title": "Poongodi 21-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/poongodi/poongodi-21-09-2026-sun-tv-serial/"
           },
           {
             "date": "19-09-2026",
-            "title": "Poongodi | 19-09-2026 | Sun TV Serial",
+            "title": "Poongodi 19-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/poongodi/poongodi-19-09-2026-sun-tv-serial/"
           }
         ]
       },
       {
-        "name": "Pudhu Vasantham |",
+        "name": "Pudhu Vasantham",
         "folder": "pudhu-vasantham",
-        "count": 0,
+        "count": 52,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
-        "latest_title": "Pudhu Vasantham | 03-10-2026 | Sun TV Serial",
-        "search_query": "Pudhu Vasantham",
-        "channel_id": 5,
+        "latest_title": "Pudhu Vasantham 03-10-2026 | Sun TV Serial",
+        "id": 6348,
         "recent_episodes": [
           {
             "date": "03-10-2026",
-            "title": "Pudhu Vasantham | 03-10-2026 | Sun TV Serial",
+            "title": "Pudhu Vasantham 03-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/pudhu-vasantham-03-10-2026-sun-tv-serial/"
           },
           {
             "date": "02-10-2026",
-            "title": "Pudhu Vasantham | 02-10-2026 | Sun TV Serial",
+            "title": "Pudhu Vasantham 02-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/pudhu-vasantham-02-10-2026-sun-tv-serial/"
           },
           {
             "date": "01-10-2026",
-            "title": "Pudhu Vasantham | 01-10-2026 | Sun TV Serial",
+            "title": "Pudhu Vasantham 01-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/pudhu-vasantham-01-10-2026-sun-tv-serials/"
           },
           {
             "date": "30-09-2026",
-            "title": "Pudhu Vasantham | 30-09-2026 | Sun TV Serial",
+            "title": "Pudhu Vasantham 30-09-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/pudhu-vasantham-30-09-2026-sun-tv-serial/"
           },
           {
             "date": "29-09-2026",
-            "title": "Pudhu Vasantham | 29-09-2026 | Sun TV Serial",
+            "title": "Pudhu Vasantham 29-09-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/pudhu-vasantham-29-09-2026-sun-tv-serial/"
           },
           {
             "date": "28-09-2026",
-            "title": "Pudhu Vasantham | 28-09-2026 | Sun TV Serial",
+            "title": "Pudhu Vasantham 28-09-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/pudhu-vasantham-28-09-2026-sun-tv-serial/"
           },
           {
             "date": "26-09-2026",
-            "title": "Pudhu Vasantham | 26-09-2026 | Sun TV Serial",
+            "title": "Pudhu Vasantham 26-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/pudhu-vasantham-26-09-2026-sun-tv-serial/"
           },
           {
             "date": "25-09-2026",
-            "title": "Pudhu Vasantham | 25-09-2026 | Sun TV Serial",
+            "title": "Pudhu Vasantham 25-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/pudhu-vasantham-25-09-2026-sun-tv-serial/"
           },
           {
             "date": "24-09-2026",
-            "title": "Pudhu Vasantham | 24-09-2026 | Sun TV Serial",
+            "title": "Pudhu Vasantham 24-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/pudhu-vasantham-24-09-2026-sun-tv-serial/"
           },
           {
             "date": "23-09-2026",
-            "title": "Pudhu Vasantham | 23-09-2026 | Sun TV Serial",
+            "title": "Pudhu Vasantham 23-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/pudhu-vasantham-23-09-2026-sun-tv-serial/"
           },
           {
             "date": "22-09-2026",
-            "title": "Pudhu Vasantham | 22-09-2026 | Sun TV Serial",
+            "title": "Pudhu Vasantham 22-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/pudhu-vasantham-22-09-2026-sun-tv-serial/"
           },
           {
             "date": "21-09-2026",
-            "title": "Pudhu Vasantham | 21-09-2026 | Sun TV Serial",
+            "title": "Pudhu Vasantham 21-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/pudhu-vasantham-21-09-2026-sun-tv-serial/"
           },
           {
             "date": "19-09-2026",
-            "title": "Pudhu Vasantham | 19-09-2026 | Sun TV Serial",
+            "title": "Pudhu Vasantham 19-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/pudhu-vasantham-19-09-2026-sun-tv-serial/"
           },
           {
             "date": "18-09-2026",
-            "title": "Pudhu Vasantham | 18-09-2026 | Sun TV Serial",
+            "title": "Pudhu Vasantham 18-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/pudhu-vasantham-18-09-2026-sun-tv-serial/"
           },
           {
             "date": "17-09-2026",
-            "title": "Pudhu Vasantham | 17-09-2026 | Sun TV Serial",
+            "title": "Pudhu Vasantham 17-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/pudhu-vasantham-17-09-2026-sun-tv-serial/"
           },
           {
             "date": "16-09-2026",
-            "title": "Pudhu Vasantham | 16-09-2026 | Sun TV Serial",
+            "title": "Pudhu Vasantham 16-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/pudhu-vasantham/pudhu-vasantham-16-09-2026-sun-tv-serial/"
           }
         ]
@@ -1066,82 +1055,81 @@
         "channel_id": 5
       },
       {
-        "name": "Singappenne |",
+        "name": "Singappenne",
         "folder": "singappenne",
-        "count": 0,
+        "count": 70,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
-        "latest_title": "Singappenne | 03-10-2026 | Sun TV Serial",
-        "search_query": "Singappenne",
-        "channel_id": 5,
+        "latest_title": "Singappenne 03-10-2026 | Sun TV Serial",
+        "id": 6340,
         "recent_episodes": [
           {
             "date": "03-10-2026",
-            "title": "Singappenne | 03-10-2026 | Sun TV Serial",
+            "title": "Singappenne 03-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/singappenne-03-10-2026-sun-tv-serial/"
           },
           {
             "date": "02-10-2026",
-            "title": "Singappenne | 02-10-2026 | Sun TV Serial",
+            "title": "Singappenne 02-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singappenne-02-10-2026-sun-tv-serial/"
           },
           {
             "date": "01-10-2026",
-            "title": "Singappenne | 01-10-2026 | Sun TV Serial",
+            "title": "Singappenne 01-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singappenne-01-10-2026-sun-tv-serial/"
           },
           {
             "date": "30-09-2026",
-            "title": "Singappenne | 30-09-2026 | Sun TV Serial",
+            "title": "Singappenne 30-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singappenne-30-09-2026-sun-tv-serial/"
           },
           {
             "date": "29-09-2026",
-            "title": "Singappenne | 29-09-2026 | Sun TV Serial",
+            "title": "Singappenne 29-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singappenne-29-09-2026-sun-tv-serial/"
           },
           {
             "date": "28-09-2026",
-            "title": "Singappenne | 28-09-2026 | Sun TV Serial",
+            "title": "Singappenne 28-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singappenne-28-09-2026-sun-tv-serial/"
           },
           {
             "date": "27-09-2026",
-            "title": "Singappenne | 27-09-2026 | Sun TV Serial",
+            "title": "Singappenne 27-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singappenne-27-09-2026-sun-tv-serial/"
           },
           {
             "date": "26-09-2026",
-            "title": "Singappenne | 26-09-2026 | Sun TV Serial",
+            "title": "Singappenne 26-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singappenne-26-09-2026-sun-tv-serial/"
           },
           {
             "date": "25-09-2026",
-            "title": "Singappenne | 25-09-2026 | Sun TV Serial",
+            "title": "Singappenne 25-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singappenne-25-09-2026-sun-tv-serial/"
           },
           {
             "date": "24-09-2026",
-            "title": "Singappenne | 24-09-2026 | Sun TV Serial",
+            "title": "Singappenne 24-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singappenne-24-09-2026-sun-tv-serial/"
           },
           {
             "date": "23-09-2026",
-            "title": "Singappenne | 23-09-2026 | Sun TV Serial",
+            "title": "Singappenne 23-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singappenne-23-09-2026-sun-tv-serial/"
           },
           {
             "date": "22-09-2026",
-            "title": "Singappenne | 22-09-2026 | Sun TV Serial",
+            "title": "Singappenne 22-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singappenne-22-09-2026-sun-tv-serial/"
           },
           {
             "date": "21-09-2026",
-            "title": "Singappenne | 21-09-2026 | Sun TV Serial",
+            "title": "Singappenne 21-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singappenne-21-09-2026-sun-tv-serial/"
           }
         ]
@@ -1157,82 +1145,81 @@
         "channel_id": 5
       },
       {
-        "name": "Siragugal |",
+        "name": "Siragugal",
         "folder": "siragugal",
-        "count": 0,
+        "count": 58,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
-        "latest_title": "Siragugal | 03-10-2026 | Sun TV Serial",
-        "search_query": "Siragugal",
-        "channel_id": 5,
+        "latest_title": "Siragugal 03-10-2026 | Sun TV Serial",
+        "id": 6775,
         "recent_episodes": [
           {
             "date": "03-10-2026",
-            "title": "Siragugal | 03-10-2026 | Sun TV Serial",
+            "title": "Siragugal 03-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/siragugal-03-10-2026-sun-tv-serial/"
           },
           {
             "date": "02-10-2026",
-            "title": "Siragugal | 02-10-2026 | Sun TV Serial",
+            "title": "Siragugal 02-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/siragugal/siragugal-02-10-2026-sun-tv-serial/"
           },
           {
             "date": "01-10-2026",
-            "title": "Siragugal | 01-10-2026 | Sun TV Serial",
+            "title": "Siragugal 01-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/siragugal/siragugal-01-10-2026-sun-tv-serial/"
           },
           {
             "date": "30-09-2026",
-            "title": "Siragugal | 30-09-2026 | Sun TV Serial",
+            "title": "Siragugal 30-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/siragugal/siragugal-30-09-2026-sun-tv-serial/"
           },
           {
             "date": "29-09-2026",
-            "title": "Siragugal | 29-09-2026 | Sun TV Serial",
+            "title": "Siragugal 29-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/siragugal/siragugal-29-09-2026-sun-tv-serial/"
           },
           {
             "date": "28-09-2026",
-            "title": "Siragugal | 28-09-2026 | Sun TV Serial",
+            "title": "Siragugal 28-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/siragugal/siragugal-28-09-2026-sun-tv-serial/"
           },
           {
             "date": "26-09-2026",
-            "title": "Siragugal | 26-09-2026 | Sun TV Serial",
+            "title": "Siragugal 26-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/siragugal/siragugal-26-09-2026-sun-tv-serial/"
           },
           {
             "date": "25-09-2026",
-            "title": "Siragugal | 25-09-2026 | Sun TV Serial",
+            "title": "Siragugal 25-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/siragugal/siragugal-25-09-2026-sun-tv-serial/"
           },
           {
             "date": "24-09-2026",
-            "title": "Siragugal | 24-09-2026 | Sun TV Serial",
+            "title": "Siragugal 24-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/siragugal/siragugal-24-09-2026-sun-tv-serial/"
           },
           {
             "date": "23-09-2026",
-            "title": "Siragugal | 23-09-2026 | Sun TV Serial",
+            "title": "Siragugal 23-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/siragugal/siragugal-23-09-2026-sun-tv-serial/"
           },
           {
             "date": "22-09-2026",
-            "title": "Siragugal | 22-09-2026 | Sun TV Serial",
+            "title": "Siragugal 22-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/siragugal/siragugal-22-09-2026-sun-tv-serial/"
           },
           {
             "date": "21-09-2026",
-            "title": "Siragugal | 21-09-2026 | Sun TV Serial",
+            "title": "Siragugal 21-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/siragugal/siragugal-21-09-2026-sun-tv-serial/"
           },
           {
             "date": "19-09-2026",
-            "title": "Siragugal | 19-09-2026 | Sun TV Serial",
+            "title": "Siragugal 19-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/siragugal/siragugal-19-09-2026-sun-tv-serial/"
           }
         ]
@@ -1278,82 +1265,81 @@
         "channel_id": 5
       },
       {
-        "name": "Thulasi |",
+        "name": "Thulasi",
         "folder": "thulasi",
-        "count": 0,
+        "count": 58,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
-        "latest_title": "Thulasi | 03-10-2026 | Sun TV Serial",
-        "search_query": "Thulasi",
-        "channel_id": 5,
+        "latest_title": "Thulasi 03-10-2026 | Sun TV Serial",
+        "id": 6764,
         "recent_episodes": [
           {
             "date": "03-10-2026",
-            "title": "Thulasi | 03-10-2026 | Sun TV Serial",
+            "title": "Thulasi 03-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/thulasi-03-10-2026-sun-tv-serial/"
           },
           {
             "date": "02-10-2026",
-            "title": "Thulasi | 02-10-2026 | Sun TV Serial",
+            "title": "Thulasi 02-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/thulasi/thulasi-02-10-2026-sun-tv-serial/"
           },
           {
             "date": "01-10-2026",
-            "title": "Thulasi | 01-10-2026 | Sun TV Serial",
+            "title": "Thulasi 01-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/thulasi/thulasi-01-10-2026-sun-tv-serial/"
           },
           {
             "date": "30-09-2026",
-            "title": "Thulasi | 30-09-2026 | Sun TV Serial",
+            "title": "Thulasi 30-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/thulasi/thulasi-30-09-2026-sun-tv-serial/"
           },
           {
             "date": "29-09-2026",
-            "title": "Thulasi | 29-09-2026 | Sun TV Serial",
+            "title": "Thulasi 29-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/thulasi/thulasi-29-09-2026-sun-tv-serial/"
           },
           {
             "date": "28-09-2026",
-            "title": "Thulasi | 28-09-2026 | Sun TV Serial",
+            "title": "Thulasi 28-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/thulasi/thulasi-28-09-2026-sun-tv-serial/"
           },
           {
             "date": "26-09-2026",
-            "title": "Thulasi | 26-09-2026 | Sun TV Serial",
+            "title": "Thulasi 26-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/thulasi/thulasi-26-09-2026-sun-tv-serial/"
           },
           {
             "date": "25-09-2026",
-            "title": "Thulasi | 25-09-2026 | Sun TV Serial",
+            "title": "Thulasi 25-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/thulasi/thulasi-25-09-2026-sun-tv-serial/"
           },
           {
             "date": "24-09-2026",
-            "title": "Thulasi | 24-09-2026 | Sun TV Serial",
+            "title": "Thulasi 24-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/thulasi/thulasi-24-09-2026-sun-tv-serial/"
           },
           {
             "date": "23-09-2026",
-            "title": "Thulasi | 23-09-2026 | Sun TV Serial",
+            "title": "Thulasi 23-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/thulasi/thulasi-23-09-2026-sun-tv-serial/"
           },
           {
             "date": "22-09-2026",
-            "title": "Thulasi | 22-09-2026 | Sun TV Serial",
+            "title": "Thulasi 22-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/thulasi/thulasi-22-09-2026-sun-tv-serial/"
           },
           {
             "date": "21-09-2026",
-            "title": "Thulasi | 21-09-2026 | Sun TV Serial",
+            "title": "Thulasi 21-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/thulasi/thulasi-21-09-2026-sun-tv-serial/"
           },
           {
             "date": "19-09-2026",
-            "title": "Thulasi | 19-09-2026 | Sun TV Serial",
+            "title": "Thulasi 19-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/thulasi/thulasi-19-09-2026-sun-tv-serial/"
           }
         ]
@@ -1381,15 +1367,14 @@
       {
         "name": "Vinodhini",
         "folder": "vinodhini",
-        "count": 0,
+        "count": 13,
         "sources": [
           "tamildhol",
           "tamildhool"
         ],
         "latest_date": "08-08-2026",
         "latest_title": "Vinodhini 08-08-2026 | Sun TV Serial",
-        "search_query": "Vinodhini",
-        "channel_id": 5,
+        "id": 6713,
         "recent_episodes": [
           {
             "date": "08-08-2026",
@@ -1498,7 +1483,7 @@
       {
         "name": "Ayyanar Thunai",
         "folder": "ayyanar-thunai",
-        "count": 69,
+        "count": 70,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1511,7 +1496,7 @@
           {
             "date": "03-10-2026",
             "title": "Ayyanar Thunai 03-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/ayyanar-thunai-03-10-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/ayyanar-thunai/ayyanar-thunai-03-10-2026-vijay-tv-serial/"
           },
           {
             "date": "02-10-2026",
@@ -1567,11 +1552,6 @@
             "date": "22-09-2026",
             "title": "Ayyanar Thunai 22-09-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/ayyanar-thunai/ayyanar-thunai-22-09-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "21-09-2026",
-            "title": "Ayyanar Thunai 21-09-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/ayyanar-thunai/ayyanar-thunai-21-09-2026-vijay-tv-serial/"
           }
         ]
       },
@@ -1768,7 +1748,7 @@
       {
         "name": "Kadhal Kadhal Kadhal",
         "folder": "kadhal-kadhal-kadhal",
-        "count": 52,
+        "count": 53,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1781,7 +1761,7 @@
           {
             "date": "03-10-2026",
             "title": "Kadhal Kadhal Kadhal 03-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/kadhal-kadhal-kadhal-03-10-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/kadhal-kadhal-kadhal/kadhal-kadhal-kadhal-03-10-2026-vijay-tv-serial/"
           },
           {
             "date": "02-10-2026",
@@ -1837,11 +1817,6 @@
             "date": "21-09-2026",
             "title": "Kadhal Kadhal Kadhal 21-09-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/kadhal-kadhal-kadhal/kadhal-kadhal-kadhal-21-09-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "19-09-2026",
-            "title": "Kadhal Kadhal Kadhal 19-09-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/kadhal-kadhal-kadhal/kadhal-kadhal-kadhal-19-09-2026-vijay-tv-serial/"
           }
         ]
       },
@@ -2223,7 +2198,7 @@
       {
         "name": "Pandian Stores",
         "folder": "pandian-stores-2",
-        "count": 70,
+        "count": 71,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2236,7 +2211,7 @@
           {
             "date": "03-10-2026",
             "title": "Pandian Stores 03-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/pandian-stores-2-03-10-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/pandian-stores-2/pandian-stores-2-03-10-2026-vijay-tv-serial/"
           },
           {
             "date": "02-10-2026",
@@ -2292,11 +2267,6 @@
             "date": "22-09-2026",
             "title": "Pandian Stores 22-09-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/pandian-stores-2/pandian-stores-2-22-09-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "21-09-2026",
-            "title": "Pandian Stores 21-09-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/pandian-stores-2/pandian-stores-2-21-09-2026-vijay-tv-serial/"
           }
         ]
       },
@@ -2438,7 +2408,7 @@
       {
         "name": "Siragadikka Aasai",
         "folder": "siragadikka-aasai",
-        "count": 69,
+        "count": 70,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2451,7 +2421,7 @@
           {
             "date": "03-10-2026",
             "title": "Siragadikka Aasai 03-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/siragadikka-aasai-03-10-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/siragadikka-aasai/siragadikka-aasai-03-10-2026-vijay-tv-serial/"
           },
           {
             "date": "02-10-2026",
@@ -2507,11 +2477,6 @@
             "date": "22-09-2026",
             "title": "Siragadikka Aasai 22-09-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/siragadikka-aasai/siragadikka-aasai-22-09-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "21-09-2026",
-            "title": "Siragadikka Aasai 21-09-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/siragadikka-aasai/siragadikka-aasai-21-09-2026-vijay-tv-serial/"
           }
         ]
       },
@@ -2528,7 +2493,7 @@
       {
         "name": "Suttum Vizhi Sudare",
         "folder": "suttum-vizhi-sudare",
-        "count": 59,
+        "count": 60,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2541,7 +2506,7 @@
           {
             "date": "03-10-2026",
             "title": "Suttum Vizhi Sudare 03-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/suttum-vizhi-sudare-03-10-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/suttum-vizhi-sudare/suttum-vizhi-sudare-03-10-2026-vijay-tv-serial/"
           },
           {
             "date": "02-10-2026",
@@ -2597,11 +2562,6 @@
             "date": "21-09-2026",
             "title": "Suttum Vizhi Sudare 21-09-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/suttum-vizhi-sudare/suttum-vizhi-sudare-21-09-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "19-09-2026",
-            "title": "Suttum Vizhi Sudare 19-09-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/suttum-vizhi-sudare/suttum-vizhi-sudare-19-09-2026-vijay-tv-serial/"
           }
         ]
       },
@@ -2683,16 +2643,21 @@
       {
         "name": "Thendrale Mella Pesu",
         "folder": "thendrale-mella-pesu",
-        "count": 58,
+        "count": 59,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "02-10-2026",
-        "latest_title": "Thendrale Mella Pesu 02-10-2026 | Vijay TV Serial",
+        "latest_date": "03-10-2026",
+        "latest_title": "Thendrale Mella Pesu 03-10-2026 | Vijay TV Serial",
         "id": 6716,
         "recent_episodes": [
+          {
+            "date": "03-10-2026",
+            "title": "Thendrale Mella Pesu 03-10-2026 | Vijay TV Serial",
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/thendrale-mella-pesu/thendrale-mella-pesu-03-10-2026-vijay-tv-serial/"
+          },
           {
             "date": "02-10-2026",
             "title": "Thendrale Mella Pesu 02-10-2026 | Vijay TV Serial",
@@ -2747,11 +2712,6 @@
             "date": "21-09-2026",
             "title": "Thendrale Mella Pesu 21-09-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/thendrale-mella-pesu/thendrale-mella-pesu-21-09-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "19-09-2026",
-            "title": "Thendrale Mella Pesu 19-09-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/thendrale-mella-pesu/thendrale-mella-pesu-19-09-2026-vijay-tv-serial/"
           }
         ]
       },
