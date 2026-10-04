@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-03T21:29:33.937290Z",
+  "updated": "2026-10-04T06:04:06.317816Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -14,7 +14,8 @@
         "count": 6,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Abirami 03-10-2026 | Sun TV Serial",
@@ -58,7 +59,8 @@
         "count": 60,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Annam 03-10-2026 | Sun TV Serial",
@@ -132,7 +134,8 @@
         "count": 72,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "04-10-2026",
         "latest_title": "Ethir Neechal 04-10-2026 | Sun TV Serial",
@@ -211,7 +214,8 @@
         "count": 58,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Iru Malargal 03-10-2026 | Sun TV Serial",
@@ -285,7 +289,8 @@
         "count": 60,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Kayal 03-10-2026 | Sun TV Serial",
@@ -359,7 +364,8 @@
         "count": 6,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Kurinji 03-10-2026 | Sun TV Serial",
@@ -403,7 +409,8 @@
         "count": 58,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Lakshmi 03-10-2026 | Sun TV Serial",
@@ -477,7 +484,8 @@
         "count": 71,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "04-10-2026",
         "latest_title": "Malli 04-10-2026 | Sun TV Serial",
@@ -556,11 +564,12 @@
         "count": 0,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Marumagal | 03-10-2026 | Sun TV Serial",
-        "search_query": "Marumagal |",
+        "search_query": "Marumagal",
         "channel_id": 5,
         "recent_episodes": [
           {
@@ -631,7 +640,8 @@
         "count": 59,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Moondru Mudichu 03-10-2026 | Sun TV Serial",
@@ -705,7 +715,8 @@
         "count": 59,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Poongodi 03-10-2026 | Sun TV Serial",
@@ -779,7 +790,8 @@
         "count": 52,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Pudhu Vasantham 03-10-2026 | Sun TV Serial",
@@ -788,7 +800,7 @@
           {
             "date": "03-10-2026",
             "title": "Pudhu Vasantham 03-10-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/pudhu-vasantham-03-10-2026-sun-tv-serial/"
+            "page": "https://tamildhol.my/pudhu-vasantham-03-10-2026-sun-tv-serials/"
           },
           {
             "date": "02-10-2026",
@@ -873,7 +885,8 @@
         "count": 71,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "04-10-2026",
         "latest_title": "Singappenne 04-10-2026 | Sun TV Serial",
@@ -952,7 +965,8 @@
         "count": 59,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Siragugal 03-10-2026 | Sun TV Serial",
@@ -1026,7 +1040,8 @@
         "count": 59,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Thulasi 03-10-2026 | Sun TV Serial",
@@ -1176,7 +1191,8 @@
         "count": 70,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "04-10-2026",
         "latest_title": "Ayyanar Thunai 04-10-2026 | Vijay TV Serial",
@@ -1255,7 +1271,8 @@
         "count": 50,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "02-10-2026",
         "latest_title": "Azhagae Azhagu 02-10-2026 | Vijay TV Serial",
@@ -1329,7 +1346,8 @@
         "count": 51,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "02-10-2026",
         "latest_title": "Chinna Marumagal 02-10-2026 | Vijay TV Serial",
@@ -1403,7 +1421,8 @@
         "count": 53,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Kadhal Kadhal Kadhal 03-10-2026 | Vijay TV Serial",
@@ -1552,7 +1571,8 @@
         "count": 59,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Kanmani Anbudan 03-10-2026 | Vijay TV Serial",
@@ -1701,7 +1721,8 @@
         "count": 50,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "02-10-2026",
         "latest_title": "Onna Irukka Kaththukanum 02-10-2026 | Vijay TV Serial",
@@ -1775,7 +1796,8 @@
         "count": 71,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "04-10-2026",
         "latest_title": "Pandian Stores 04-10-2026 | Vijay TV Serial",
@@ -1854,7 +1876,8 @@
         "count": 14,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "14-08-2026",
         "latest_title": "Sindhu Bairavi 14-08-2026 | Vijay TV Serial",
@@ -1928,7 +1951,8 @@
         "count": 70,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "04-10-2026",
         "latest_title": "Siragadikka Aasai 04-10-2026 | Vijay TV Serial",
@@ -2007,7 +2031,8 @@
         "count": 60,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Suttum Vizhi Sudare 03-10-2026 | Vijay TV Serial",
@@ -2081,7 +2106,8 @@
         "count": 49,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "02-10-2026",
         "latest_title": "Thaai Maaman 02-10-2026 | Vijay TV Serial",
@@ -2155,7 +2181,8 @@
         "count": 59,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Thendrale Mella Pesu 03-10-2026 | Vijay TV Serial",
@@ -2231,7 +2258,8 @@
         "count": 60,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Annamalai Kudumbam 03-10-2026 | Zee Tamil Serial",
@@ -2305,7 +2333,8 @@
         "count": 147,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "26-09-2026",
         "latest_title": "Aval Varuvala 26-09-2026 | Zee Tamil Serial",
@@ -2389,7 +2418,8 @@
         "count": 64,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Ayali 03-10-2026 | Zee Tamil Serial",
@@ -2463,7 +2493,8 @@
         "count": 54,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "02-10-2026",
         "latest_title": "Chinnan Siru Kiliye 02-10-2026 | Zee Tamil Serial",
@@ -2537,7 +2568,8 @@
         "count": 19,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Enna Solla Pogirai 03-10-2026 | Zee Tamil Serial",
@@ -2681,7 +2713,8 @@
         "count": 64,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "04-10-2026",
         "latest_title": "Idhayam 04-10-2026 | Zee Tamil Serial",
@@ -2760,7 +2793,8 @@
         "count": 69,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Karthigai Deepam 03-10-2026 | Zee Tamil Serial",
@@ -2834,7 +2868,8 @@
         "count": 65,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Paarijatham 03-10-2026 | Zee Tamil Serial",
@@ -2908,7 +2943,8 @@
         "count": 85,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Salangai Oli 03-10-2026 | Zee Tamil Serial",
@@ -2982,7 +3018,8 @@
         "count": 50,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "02-10-2026",
         "latest_title": "Samanthi 02-10-2026 | Zee Tamil Serial",
@@ -3056,7 +3093,8 @@
         "count": 61,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Sandhya Raagam 03-10-2026 | Zee Tamil Serial",
@@ -3130,7 +3168,8 @@
         "count": 55,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "02-10-2026",
         "latest_title": "Thirumangalyam 02-10-2026 | Zee Tamil Serial",
@@ -3204,7 +3243,8 @@
         "count": 63,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Vaagai Sooda Vaa 03-10-2026 | Zee Tamil Serial",
@@ -3278,7 +3318,8 @@
         "count": 65,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Varisu 03-10-2026 | Zee Tamil Serial",
@@ -3352,7 +3393,8 @@
         "count": 17,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "03-10-2026",
         "latest_title": "Vasudha 03-10-2026 | Zee Tamil Serial",
@@ -3421,7 +3463,8 @@
         "count": 60,
         "sources": [
           "tamildhol",
-          "tamildhool"
+          "tamildhool",
+          "tamiltvserial"
         ],
         "latest_date": "27-09-2026",
         "latest_title": "Veera 27-09-2026 | Zee Tamil Serial",
