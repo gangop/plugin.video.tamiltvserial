@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-04T06:04:06.317816Z",
+  "updated": "2026-10-04T12:34:01.410766Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -481,7 +481,7 @@
       {
         "name": "Malli",
         "folder": "malli",
-        "count": 71,
+        "count": 72,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -494,7 +494,7 @@
           {
             "date": "04-10-2026",
             "title": "Malli 04-10-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/malli-04-10-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-04-10-2026-sun-tv-serial/"
           },
           {
             "date": "03-10-2026",
@@ -550,11 +550,6 @@
             "date": "23-09-2026",
             "title": "Malli 23-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-23-09-2026-sun-tv-serial/"
-          },
-          {
-            "date": "22-09-2026",
-            "title": "Malli 22-09-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-22-09-2026-sun-tv-serial/"
           }
         ]
       },
