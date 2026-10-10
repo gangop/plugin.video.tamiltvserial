@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-10T12:46:03.639784Z",
+  "updated": "2026-10-10T21:52:08.279077Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -86,7 +86,7 @@
       {
         "name": "Annam",
         "folder": "annam",
-        "count": 65,
+        "count": 66,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -99,7 +99,7 @@
           {
             "date": "10-10-2026",
             "title": "Annam 10-10-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/annam-10-10-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/annam/annam-10-10-2026-sun-tv-serial/"
           },
           {
             "date": "09-10-2026",
@@ -155,11 +155,6 @@
             "date": "28-09-2026",
             "title": "Annam 28-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/annam/annam-28-09-2026-sun-tv-serial/"
-          },
-          {
-            "date": "26-09-2026",
-            "title": "Annam 26-09-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/annam/annam-26-09-2026-sun-tv-serial/"
           }
         ]
       },
@@ -321,7 +316,7 @@
       {
         "name": "Kayal",
         "folder": "kayal",
-        "count": 65,
+        "count": 66,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -334,7 +329,7 @@
           {
             "date": "10-10-2026",
             "title": "Kayal 10-10-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/kayal-10-10-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kayal/kayal-10-10-2026-sun-tv-serial/"
           },
           {
             "date": "09-10-2026",
@@ -390,11 +385,6 @@
             "date": "28-09-2026",
             "title": "Kayal 28-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kayal/kayal-28-09-2026-sun-tv-serial/"
-          },
-          {
-            "date": "26-09-2026",
-            "title": "Kayal 26-09-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/kayal/kayal-26-09-2026-sun-tv-serial/"
           }
         ]
       },
@@ -697,7 +687,7 @@
       {
         "name": "Moondru Mudichu",
         "folder": "moondru-mudichu",
-        "count": 64,
+        "count": 65,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -710,7 +700,7 @@
           {
             "date": "10-10-2026",
             "title": "Moondru Mudichu 10-10-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/moondru-mudichu-10-10-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichu/moondru-mudichu-10-10-2026-sun-tv-serial/"
           },
           {
             "date": "09-10-2026",
@@ -766,11 +756,6 @@
             "date": "28-09-2026",
             "title": "Moondru Mudichu 28-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichu/moondru-mudichu-28-09-2026-sun-tv-serial/"
-          },
-          {
-            "date": "26-09-2026",
-            "title": "Moondru Mudichu 26-09-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/moondru-mudichu/moondru-mudichu-26-09-2026-sun-tv-serial/"
           }
         ]
       },
@@ -2509,7 +2494,7 @@
       {
         "name": "Ayali",
         "folder": "ayali",
-        "count": 69,
+        "count": 70,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2522,7 +2507,7 @@
           {
             "date": "10-10-2026",
             "title": "Ayali 10-10-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/ayali-10-10-2026-zee-tamil-serial/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/ayali/ayali-10-10-2026-zee-tamil-serial/"
           },
           {
             "date": "09-10-2026",
@@ -2578,11 +2563,6 @@
             "date": "28-09-2026",
             "title": "Ayali 28-09-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/ayali/ayali-28-09-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "26-09-2026",
-            "title": "Ayali 26-09-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/ayali/ayali-26-09-2026-zee-tamil-serial/"
           }
         ]
       },
@@ -2894,7 +2874,7 @@
       {
         "name": "Karthigai Deepam",
         "folder": "karthigai-deepam",
-        "count": 79,
+        "count": 81,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2907,7 +2887,7 @@
           {
             "date": "10-10-2026",
             "title": "Karthigai Deepam 10-10-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/karthigai-deepam-10-10-2026-zee-tamil-serial/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/karthigai-deepam/karthigai-deepam-10-10-2026-zee-tamil-serial/"
           },
           {
             "date": "09-10-2026",
@@ -2963,18 +2943,13 @@
             "date": "28-09-2026",
             "title": "Karthigai Deepam 28-09-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/karthigai-deepam/karthigai-deepam-28-09-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "26-09-2026",
-            "title": "Karthigai Deepam 26-09-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/karthigai-deepam/karthigai-deepam-26-09-2026-zee-tamil-serial/"
           }
         ]
       },
       {
         "name": "Paarijatham",
         "folder": "paarijatham",
-        "count": 70,
+        "count": 71,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2987,7 +2962,7 @@
           {
             "date": "10-10-2026",
             "title": "Paarijatham 10-10-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/paarijatham-10-10-2026-zee-tamil-serial/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/paarijatham/paarijatham-10-10-2026-zee-tamil-serial/"
           },
           {
             "date": "09-10-2026",
@@ -3043,11 +3018,6 @@
             "date": "28-09-2026",
             "title": "Paarijatham 28-09-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/paarijatham/paarijatham-28-09-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "26-09-2026",
-            "title": "Paarijatham 26-09-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/paarijatham/paarijatham-26-09-2026-zee-tamil-serial/"
           }
         ]
       },
@@ -3354,7 +3324,7 @@
       {
         "name": "Vaagai Sooda Vaa",
         "folder": "vaagai-sooda-vaa",
-        "count": 68,
+        "count": 69,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -3367,7 +3337,7 @@
           {
             "date": "10-10-2026",
             "title": "Vaagai Sooda Vaa 10-10-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/vaagai-sooda-vaa-10-10-2026-zee-tamil-serial/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/vaagai-sooda-vaa/vaagai-sooda-vaa-10-10-2026-zee-tamil-serial/"
           },
           {
             "date": "09-10-2026",
@@ -3423,11 +3393,6 @@
             "date": "28-09-2026",
             "title": "Vaagai Sooda Vaa 28-09-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/vaagai-sooda-vaa/vaagai-sooda-vaa-28-09-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "26-09-2026",
-            "title": "Vaagai Sooda Vaa 26-09-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/vaagai-sooda-vaa/vaagai-sooda-vaa-26-09-2026-zee-tamil-serial/"
           }
         ]
       },
