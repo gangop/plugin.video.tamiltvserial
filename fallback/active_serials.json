@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-11T06:00:44.682981Z",
+  "updated": "2026-10-11T13:06:19.920184Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -541,16 +541,21 @@
       {
         "name": "Malli",
         "folder": "malli",
-        "count": 78,
+        "count": 79,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "10-10-2026",
-        "latest_title": "Malli 10-10-2026 | Sun TV Serial",
+        "latest_date": "11-10-2026",
+        "latest_title": "Malli 11-10-2026 | Sun TV Serial",
         "id": 6620,
         "recent_episodes": [
+          {
+            "date": "11-10-2026",
+            "title": "Malli 11-10-2026 | Sun TV Serial",
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-11-10-2026-sun-tv-serial/"
+          },
           {
             "date": "10-10-2026",
             "title": "Malli 10-10-2026 | Sun TV Serial",
@@ -922,16 +927,21 @@
       {
         "name": "Singappenne",
         "folder": "singappenne",
-        "count": 75,
+        "count": 76,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "10-10-2026",
-        "latest_title": "Singappenne 10-10-2026 | Sun TV Serial",
+        "latest_date": "11-10-2026",
+        "latest_title": "Singappenne 11-10-2026 | Sun TV Serial",
         "id": 6340,
         "recent_episodes": [
+          {
+            "date": "11-10-2026",
+            "title": "Singappenne 11-10-2026 | Sun TV Serial",
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singappenne-11-10-2026-sun-tv-serial/"
+          },
           {
             "date": "10-10-2026",
             "title": "Singappenne 10-10-2026 | Sun TV Serial",
@@ -991,11 +1001,6 @@
             "date": "29-09-2026",
             "title": "Singappenne 29-09-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singappenne-29-09-2026-sun-tv-serial/"
-          },
-          {
-            "date": "28-09-2026",
-            "title": "Singappenne 28-09-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/singappenne/singappenne-28-09-2026-sun-tv-serial/"
           }
         ]
       },
