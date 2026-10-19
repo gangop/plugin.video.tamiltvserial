@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-19T04:54:47.540529Z",
+  "updated": "2026-10-19T13:37:40.793978Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -91,7 +91,7 @@
       {
         "name": "Annam",
         "folder": "annam",
-        "count": 72,
+        "count": 73,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -171,7 +171,7 @@
       {
         "name": "Ethir Neechal",
         "folder": "ethir-neechal-thodargirathu",
-        "count": 83,
+        "count": 84,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -184,7 +184,7 @@
           {
             "date": "19-10-2026",
             "title": "Ethir Neechal 19-10-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/ethir-neechal-thodargirathu-19-10-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/ethir-neechal-thodargirathu/ethir-neechal-thodargirathu-19-10-2026-sun-tv-serial/"
           },
           {
             "date": "18-10-2026",
@@ -240,11 +240,6 @@
             "date": "07-10-2026",
             "title": "Ethir Neechal 07-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/ethir-neechal-thodargirathu/ethir-neechal-thodargirathu-07-10-2026-sun-tv-serial-2/"
-          },
-          {
-            "date": "06-10-2026",
-            "title": "Ethir Neechal 06-10-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/ethir-neechal-thodargirathu/ethir-neechal-thodargirathu-07-10-2026-sun-tv-serial/"
           }
         ]
       },
@@ -571,7 +566,7 @@
       {
         "name": "Malli",
         "folder": "malli",
-        "count": 86,
+        "count": 87,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -584,7 +579,7 @@
           {
             "date": "19-10-2026",
             "title": "Malli 19-10-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/malli-19-10-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-19-10-2026-sun-tv-serial/"
           },
           {
             "date": "18-10-2026",
@@ -640,11 +635,6 @@
             "date": "08-10-2026",
             "title": "Malli 08-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-09-10-2026-sun-tv-serial/"
-          },
-          {
-            "date": "07-10-2026",
-            "title": "Malli 07-10-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-07-10-2026-sun-tv-serial-2/"
           }
         ]
       },
@@ -1337,11 +1327,6 @@
             "date": "07-10-2026",
             "title": "Ayyanar Thunai 07-10-2026 | Vijay TV Serial",
             "page": "https://tamildhol.my/ayyanar-thunai-07-10-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "06-10-2026",
-            "title": "Ayyanar Thunai 06-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/ayyanar-thunai-06-10-2026-vijay-tv-serial-2/"
           }
         ]
       },
@@ -2597,7 +2582,7 @@
           {
             "date": "19-10-2026",
             "title": "Chinnan Siru Kiliye 19-10-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/chinnan-siru-kiliye-19-10-2026-zee-tamil-serial/"
+            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/chinnan-siru-kiliye/chinnan-siru-kiliye-19-10-2026-zee-tamil-serial/"
           },
           {
             "date": "16-10-2026",
@@ -2653,11 +2638,6 @@
             "date": "02-10-2026",
             "title": "Chinnan Siru Kiliye 02-10-2026 | Zee Tamil Serial",
             "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/chinnan-siru-kiliye/chinnan-siru-kiliye-02-10-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "01-10-2026",
-            "title": "Chinnan Siru Kiliye 01-10-2026 | Zee Tamil Serial",
-            "page": "https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/chinnan-siru-kiliye/chinnan-siru-kiliye-01-10-2026-zee-tamil-serial/"
           }
         ]
       },
