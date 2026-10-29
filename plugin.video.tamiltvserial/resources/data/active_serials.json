@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-28T22:42:27.349941Z",
+  "updated": "2026-10-29T06:00:49.763553Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -182,10 +182,15 @@
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "28-10-2026",
-        "latest_title": "Bhairavi 28-10-2026 | Sun TV Serial",
+        "latest_date": "29-10-2026",
+        "latest_title": "Bhairavi 29-10-2026 | Sun TV Serial",
         "id": 6820,
         "recent_episodes": [
+          {
+            "date": "29-10-2026",
+            "title": "Bhairavi 29-10-2026 | Sun TV Serial",
+            "page": "https://tamildhol.my/bhairavi-29-10-2026-sun-tv-serial/"
+          },
           {
             "date": "28-10-2026",
             "title": "Bhairavi 28-10-2026 | Sun TV Serial",
@@ -1227,7 +1232,7 @@
       {
         "name": "Ayyanar Thunai",
         "folder": "ayyanar-thunai",
-        "count": 94,
+        "count": 95,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1240,7 +1245,7 @@
           {
             "date": "29-10-2026",
             "title": "Ayyanar Thunai 29-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/ayyanar-thunai-29-10-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/ayyanar-thunai/ayyanar-thunai-29-10-2026-vijay-tv-serial/"
           },
           {
             "date": "28-10-2026",
@@ -1296,18 +1301,13 @@
             "date": "18-10-2026",
             "title": "Ayyanar Thunai 18-10-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/ayyanar-thunai/ayyanar-thunai-18-10-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "17-10-2026",
-            "title": "Ayyanar Thunai 17-10-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/ayyanar-thunai/ayyanar-thunai-17-10-2026-vijay-tv-serial/"
           }
         ]
       },
       {
         "name": "Azhagae Azhagu",
         "folder": "azhagae-azhagu",
-        "count": 68,
+        "count": 69,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1320,7 +1320,7 @@
           {
             "date": "29-10-2026",
             "title": "Azhagae Azhagu 29-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/azhagae-azhagu-29-10-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/azhagae-azhagu/azhagae-azhagu-29-10-2026-vijay-tv-serial/"
           },
           {
             "date": "28-10-2026",
@@ -1376,18 +1376,13 @@
             "date": "14-10-2026",
             "title": "Azhagae Azhagu 14-10-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/azhagae-azhagu/azhagae-azhagu-14-10-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "13-10-2026",
-            "title": "Azhagae Azhagu 13-10-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/azhagae-azhagu/azhagae-azhagu-13-10-2026-vijay-tv-serial/"
           }
         ]
       },
       {
         "name": "Chinna Marumagal",
         "folder": "chinna-marumagal",
-        "count": 69,
+        "count": 70,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1400,7 +1395,7 @@
           {
             "date": "29-10-2026",
             "title": "Chinna Marumagal 29-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/chinna-marumagal-29-10-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/chinna-marumagal/chinna-marumagal-29-10-2026-vijay-tv-serial/"
           },
           {
             "date": "28-10-2026",
@@ -1456,18 +1451,13 @@
             "date": "14-10-2026",
             "title": "Chinna Marumagal 14-10-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/chinna-marumagal/chinna-marumagal-14-10-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "13-10-2026",
-            "title": "Chinna Marumagal 13-10-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/chinna-marumagal/chinna-marumagal-13-10-2026-vijay-tv-serial/"
           }
         ]
       },
       {
         "name": "Kadhal Kadhal Kadhal",
         "folder": "kadhal-kadhal-kadhal",
-        "count": 72,
+        "count": 73,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1480,7 +1470,7 @@
           {
             "date": "29-10-2026",
             "title": "Kadhal Kadhal Kadhal 29-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/kadhal-kadhal-kadhal-29-10-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/kadhal-kadhal-kadhal/kadhal-kadhal-kadhal-29-10-2026-vijay-tv-serial/"
           },
           {
             "date": "28-10-2026",
@@ -1546,11 +1536,6 @@
             "date": "14-10-2026",
             "title": "Kadhal Kadhal Kadhal 14-10-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/kadhal-kadhal-kadhal/kadhal-kadhal-kadhal-14-10-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "13-10-2026",
-            "title": "Kadhal Kadhal Kadhal 13-10-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/kadhal-kadhal-kadhal/kadhal-kadhal-kadhal-13-10-2026-vijay-tv-serial/"
           }
         ]
       },
@@ -1632,7 +1617,7 @@
       {
         "name": "Kanmani Anbudan",
         "folder": "kanmani-anbudan",
-        "count": 78,
+        "count": 79,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1645,7 +1630,7 @@
           {
             "date": "29-10-2026",
             "title": "Kanmani Anbudan 29-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/kanmani-anbudan-29-10-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/kanmani-anbudan/kanmani-anbudan-29-10-2026-vijay-tv-serial/"
           },
           {
             "date": "28-10-2026",
@@ -1711,11 +1696,6 @@
             "date": "14-10-2026",
             "title": "Kanmani Anbudan 14-10-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/kanmani-anbudan/kanmani-anbudan-14-10-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "13-10-2026",
-            "title": "Kanmani Anbudan 13-10-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/kanmani-anbudan/kanmani-anbudan-13-10-2026-vijay-tv-serial/"
           }
         ]
       },
@@ -1797,7 +1777,7 @@
       {
         "name": "Onna Irukka Kaththukanum",
         "folder": "onna-irukka-kaththukkanum",
-        "count": 68,
+        "count": 69,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1810,7 +1790,7 @@
           {
             "date": "29-10-2026",
             "title": "Onna Irukka Kaththukanum 29-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/onna-irukka-kaththukanum-29-10-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/onna-irukka-kaththukkanum/onna-irukka-kaththukanum-29-10-2026-vijay-tv-serial/"
           },
           {
             "date": "28-10-2026",
@@ -1866,18 +1846,13 @@
             "date": "14-10-2026",
             "title": "Onna Irukka Kaththukanum 14-10-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/onna-irukka-kaththukkanum/onna-irukka-kaththukanum-14-10-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "13-10-2026",
-            "title": "Onna Irukka Kaththukanum 13-10-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/onna-irukka-kaththukkanum/onna-irukka-kaththukanum-13-10-2026-vijay-tv-serial/"
           }
         ]
       },
       {
         "name": "Pandian Stores",
         "folder": "pandian-stores-2",
-        "count": 95,
+        "count": 96,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -1890,7 +1865,7 @@
           {
             "date": "29-10-2026",
             "title": "Pandian Stores 29-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/pandian-stores-2-29-10-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/pandian-stores-2/pandian-stores-2-29-10-2026-vijay-tv-serial/"
           },
           {
             "date": "28-10-2026",
@@ -1950,7 +1925,7 @@
           {
             "date": "17-10-2026",
             "title": "Pandian Stores 17-10-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/pandian-stores-2/pandian-stores-2-17-10-2026-vijay-tv-serial/"
+            "page": "https://tamildhol.my/pandian-stores-2-17-10-2026-vijay-tv-serial/"
           }
         ]
       },
@@ -2031,7 +2006,7 @@
       {
         "name": "Siragadikka Aasai",
         "folder": "siragadikka-aasai",
-        "count": 94,
+        "count": 95,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2044,7 +2019,7 @@
           {
             "date": "29-10-2026",
             "title": "Siragadikka Aasai 29-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/siragadikka-aasai-29-10-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/siragadikka-aasai/siragadikka-aasai-29-10-2026-vijay-tv-serial/"
           },
           {
             "date": "28-10-2026",
@@ -2104,14 +2079,14 @@
           {
             "date": "17-10-2026",
             "title": "Siragadikka Aasai 17-10-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/siragadikka-aasai/siragadikka-aasai-17-10-2026-vijay-tv-serial/"
+            "page": "https://tamildhol.my/siragadikka-aasai-17-10-2026-vijay-tv-serial/"
           }
         ]
       },
       {
         "name": "Suttum Vizhi Sudare",
         "folder": "suttum-vizhi-sudare",
-        "count": 76,
+        "count": 77,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2124,7 +2099,7 @@
           {
             "date": "29-10-2026",
             "title": "Suttum Vizhi Sudare 29-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/suttum-vizhi-sudare-29-10-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/suttum-vizhi-sudare/suttum-vizhi-sudare-29-10-2026-vijay-tv-serial/"
           },
           {
             "date": "28-10-2026",
@@ -2190,18 +2165,13 @@
             "date": "14-10-2026",
             "title": "Suttum Vizhi Sudare 14-10-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/suttum-vizhi-sudare/suttum-vizhi-sudare-14-10-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "13-10-2026",
-            "title": "Suttum Vizhi Sudare 13-10-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/suttum-vizhi-sudare/suttum-vizhi-sudare-13-10-2026-vijay-tv-serial/"
           }
         ]
       },
       {
         "name": "Thaai Maaman",
         "folder": "thaai-maaman",
-        "count": 67,
+        "count": 68,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -2214,7 +2184,7 @@
           {
             "date": "29-10-2026",
             "title": "Thaai Maaman 29-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/thaai-maaman-29-10-2026-vijay-tv-serial/"
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/thaai-maaman/thaai-maaman-29-10-2026-vijay-tv-serial/"
           },
           {
             "date": "28-10-2026",
@@ -2270,27 +2240,27 @@
             "date": "14-10-2026",
             "title": "Thaai Maaman 14-10-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/thaai-maaman/thaai-maaman-14-10-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "13-10-2026",
-            "title": "Thaai Maaman 13-10-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/thaai-maaman/thaai-maaman-13-10-2026-vijay-tv-serial/"
           }
         ]
       },
       {
         "name": "Thendrale Mella Pesu",
         "folder": "thendrale-mella-pesu",
-        "count": 78,
+        "count": 79,
         "sources": [
           "tamildhol",
           "tamildhool",
           "tamiltvserial"
         ],
-        "latest_date": "28-10-2026",
-        "latest_title": "Thendrale Mella Pesu 28-10-2026 | Vijay TV Serial",
+        "latest_date": "29-10-2026",
+        "latest_title": "Thendrale Mella Pesu 29-10-2026 | Vijay TV Serial",
         "id": 6716,
         "recent_episodes": [
+          {
+            "date": "29-10-2026",
+            "title": "Thendrale Mella Pesu 29-10-2026 | Vijay TV Serial",
+            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/thendrale-mella-pesu/thendrale-mella-pesu-29-10-2026-vijay-tv-serial/"
+          },
           {
             "date": "28-10-2026",
             "title": "Thendrale Mella Pesu 28-10-2026 | Vijay TV Serial",
@@ -2345,11 +2315,6 @@
             "date": "14-10-2026",
             "title": "Thendrale Mella Pesu 14-10-2026 | Vijay TV Serial",
             "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/thendrale-mella-pesu/thendrale-mella-pesu-14-10-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "13-10-2026",
-            "title": "Thendrale Mella Pesu 13-10-2026 | Vijay TV Serial",
-            "page": "https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/thendrale-mella-pesu/thendrale-mella-pesu-13-10-2026-vijay-tv-serial/"
           }
         ]
       }
