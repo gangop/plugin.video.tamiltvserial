@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-01T06:25:06.408340Z",
+  "updated": "2026-11-01T18:02:01.828584Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -206,7 +206,7 @@
       {
         "name": "Ethir Neechal",
         "folder": "ethir-neechal-thodargirathu",
-        "count": 96,
+        "count": 97,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -219,7 +219,7 @@
           {
             "date": "01-11-2026",
             "title": "Ethir Neechal 01-11-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/ethir-neechal-thodargirathu-01-11-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/ethir-neechal-thodargirathu/ethir-neechal-thodargirathu-01-11-2026-sun-tv-serial/"
           },
           {
             "date": "31-10-2026",
@@ -275,11 +275,6 @@
             "date": "21-10-2026",
             "title": "Ethir Neechal 21-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/ethir-neechal-thodargirathu/ethir-neechal-thodargirathu-21-10-2026-sun-tv-serial/"
-          },
-          {
-            "date": "20-10-2026",
-            "title": "Ethir Neechal 20-10-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/ethir-neechal-thodargirathu/ethir-neechal-thodargirathu-20-10-2026-sun-tv-serial/"
           }
         ]
       },
@@ -606,7 +601,7 @@
       {
         "name": "Malli",
         "folder": "malli",
-        "count": 99,
+        "count": 100,
         "sources": [
           "tamildhol",
           "tamildhool",
@@ -619,7 +614,7 @@
           {
             "date": "01-11-2026",
             "title": "Malli 01-11-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/malli-01-11-2026-sun-tv-serial/"
+            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-01-11-2026-sun-tv-serial/"
           },
           {
             "date": "31-10-2026",
@@ -675,11 +670,6 @@
             "date": "21-10-2026",
             "title": "Malli 21-10-2026 | Sun TV Serial",
             "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-21-10-2026-sun-tv-serial/"
-          },
-          {
-            "date": "20-10-2026",
-            "title": "Malli 20-10-2026 | Sun TV Serial",
-            "page": "https://www.tamildhool.tech/sun-tv/sun-tv-serial/malli/malli-20-10-2026-sun-tv-serial/"
           }
         ]
       },
