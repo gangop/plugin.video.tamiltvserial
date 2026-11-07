@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-06T19:33:28.082691Z",
+  "updated": "2026-11-07T06:13:55.764159Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -803,7 +803,7 @@
       {
         "name": "Ayyanar Thunai",
         "folder": "ayyanar-thunai",
-        "count": 103,
+        "count": 104,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1015,15 +1015,20 @@
       {
         "name": "Kadhal Kadhal Kadhal",
         "folder": "kadhal-kadhal-kadhal",
-        "count": 79,
+        "count": 80,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "06-11-2026",
-        "latest_title": "Kadhal Kadhal Kadhal 06-11-2026 | Vijay TV Serial",
+        "latest_date": "07-11-2026",
+        "latest_title": "Kadhal Kadhal Kadhal 07-11-2026 | Vijay TV Serial",
         "id": 6773,
         "recent_episodes": [
+          {
+            "date": "07-11-2026",
+            "title": "Kadhal Kadhal Kadhal 07-11-2026 | Vijay TV Serial",
+            "page": "https://tamildhol.my/kadhal-kadhal-kadhal-07-11-2026-vijay-tv-serial/"
+          },
           {
             "date": "06-11-2026",
             "title": "Kadhal Kadhal Kadhal 06-11-2026 | Vijay TV Serial",
@@ -1084,15 +1089,20 @@
       {
         "name": "Kanmani Anbudan",
         "folder": "kanmani-anbudan",
-        "count": 85,
+        "count": 86,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "06-11-2026",
-        "latest_title": "Kanmani Anbudan 06-11-2026 | Vijay TV Serial",
+        "latest_date": "07-11-2026",
+        "latest_title": "Kanmani Anbudan 07-11-2026 | Vijay TV Serial",
         "id": 6670,
         "recent_episodes": [
+          {
+            "date": "07-11-2026",
+            "title": "Kanmani Anbudan 07-11-2026 | Vijay TV Serial",
+            "page": "https://tamildhol.my/kanmani-anbudan-07-11-2026-vijay-tv-serial/"
+          },
           {
             "date": "06-11-2026",
             "title": "Kanmani Anbudan 06-11-2026 | Vijay TV Serial",
@@ -1206,11 +1216,6 @@
             "date": "27-10-2026",
             "title": "Onna Irukka Kaththukanum 27-10-2026 | Vijay TV Serial",
             "page": "https://tamildhol.my/onna-irukka-kaththukanum-27-10-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "26-10-2026",
-            "title": "Onna Irukka Kaththukanum 26-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/onna-irukka-kaththukanum-26-10-2026-vijay-tv-serial/"
           }
         ]
       },
@@ -1290,18 +1295,13 @@
             "date": "26-10-2026",
             "title": "Pandian Stores 26-10-2026 | Vijay TV Serial",
             "page": "https://tamildhol.my/pandian-stores-2-26-10-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "25-10-2026",
-            "title": "Pandian Stores 25-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/pandian-stores-2-25-10-2026-vijay-tv-serial/"
           }
         ]
       },
       {
         "name": "Siragadikka Aasai",
         "folder": "siragadikka-aasai",
-        "count": 103,
+        "count": 104,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1380,15 +1380,20 @@
       {
         "name": "Suttum Vizhi Sudare",
         "folder": "suttum-vizhi-sudare",
-        "count": 86,
+        "count": 87,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "06-11-2026",
-        "latest_title": "Suttum Vizhi Sudare 06-11-2026 | Vijay TV Serial",
+        "latest_date": "07-11-2026",
+        "latest_title": "Suttum Vizhi Sudare 07-11-2026 | Vijay TV Serial",
         "id": 6754,
         "recent_episodes": [
+          {
+            "date": "07-11-2026",
+            "title": "Suttum Vizhi Sudare 07-11-2026 | Vijay TV Serial",
+            "page": "https://tamildhol.my/suttum-vizhi-sudare-07-11-2026-vijay-tv-serial/"
+          },
           {
             "date": "06-11-2026",
             "title": "Suttum Vizhi Sudare 06-11-2026 | Vijay TV Serial",
@@ -1513,12 +1518,12 @@
       {
         "name": "Thendrale Mella Pesu",
         "folder": "thendrale-mella-pesu",
-        "count": 85,
+        "count": 86,
         "sources": [
           "tamiltvserial"
         ],
-        "latest_date": "06-11-2026",
-        "latest_title": "Thendrale Mella Pesu 06-11-2026 | Episode 418 | Vijay Tv Serial",
+        "latest_date": "07-11-2026",
+        "latest_title": "Thendrale Mella Pesu 07-11-2026 | Episode 419 | Vijay Tv Serial",
         "id": 6716
       }
     ],
