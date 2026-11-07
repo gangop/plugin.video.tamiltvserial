@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-07T06:13:55.764159Z",
+  "updated": "2026-11-07T13:17:41.993846Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -11,7 +11,7 @@
       {
         "name": "Abirami",
         "folder": "abirami",
-        "count": 33,
+        "count": 34,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -193,7 +193,7 @@
       {
         "name": "Ethir Neechal",
         "folder": "ethirneechal",
-        "count": 102,
+        "count": 103,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -257,7 +257,7 @@
       {
         "name": "Iru Malargal",
         "folder": "iru-malargal",
-        "count": 85,
+        "count": 86,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -350,7 +350,7 @@
       {
         "name": "Kurinji",
         "folder": "kurinji",
-        "count": 33,
+        "count": 34,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -409,7 +409,7 @@
       {
         "name": "Lakshmi",
         "folder": "lakshmi",
-        "count": 85,
+        "count": 86,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -473,7 +473,7 @@
       {
         "name": "Malli",
         "folder": "malli",
-        "count": 105,
+        "count": 106,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -613,7 +613,7 @@
       {
         "name": "Poongodi",
         "folder": "poongodi",
-        "count": 86,
+        "count": 87,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -683,7 +683,7 @@
       {
         "name": "Siragugal",
         "folder": "siragugal",
-        "count": 86,
+        "count": 87,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -742,7 +742,7 @@
       {
         "name": "Thulasi",
         "folder": "thulasi",
-        "count": 86,
+        "count": 87,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1222,7 +1222,7 @@
       {
         "name": "Pandian Stores",
         "folder": "pandian-stores",
-        "count": 104,
+        "count": 105,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1531,7 +1531,7 @@
       {
         "name": "Annamalai Kudumbam",
         "folder": "annamalai-kudumbam",
-        "count": 87,
+        "count": 88,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1752,7 +1752,7 @@
       {
         "name": "Idhayam",
         "folder": "idhayam",
-        "count": 91,
+        "count": 92,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1929,13 +1929,13 @@
       {
         "name": "Salangai Oli",
         "folder": "salangai-oli",
-        "count": 111,
+        "count": 112,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "06-11-2026",
-        "latest_title": "Salangai Oli 06-11-2026 | Zee Tamil Serial",
+        "latest_date": "07-11-2026",
+        "latest_title": "Salangai Oli 07-11-2026 | Episode 744 | Zee Tamil Serial",
         "id": 6737,
         "recent_episodes": [
           {
@@ -2199,7 +2199,7 @@
       {
         "name": "Varisu",
         "folder": "varisu",
-        "count": 92,
+        "count": 93,
         "sources": [
           "tamildhol",
           "tamiltvserial"
