@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-08T22:16:30.494340Z",
+  "updated": "2026-11-09T06:52:43.642651Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -188,7 +188,7 @@
       {
         "name": "Ethir Neechal",
         "folder": "ethirneechal",
-        "count": 103,
+        "count": 104,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -453,7 +453,7 @@
       {
         "name": "Malli",
         "folder": "malli",
-        "count": 106,
+        "count": 107,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -783,7 +783,7 @@
       {
         "name": "Ayyanar Thunai",
         "folder": "ayyanar-thunai",
-        "count": 104,
+        "count": 105,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -867,7 +867,7 @@
       {
         "name": "Azhagae Azhagu",
         "folder": "azhagae-azhagu",
-        "count": 75,
+        "count": 76,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -926,7 +926,7 @@
       {
         "name": "Chinna Marumagal",
         "folder": "chinna-marumagal",
-        "count": 76,
+        "count": 77,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -995,7 +995,7 @@
       {
         "name": "Kadhal Kadhal Kadhal",
         "folder": "kadhal-kadhal-kadhal",
-        "count": 80,
+        "count": 81,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1069,7 +1069,7 @@
       {
         "name": "Kanmani Anbudan",
         "folder": "kanmani-anbudan",
-        "count": 86,
+        "count": 87,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1138,7 +1138,7 @@
       {
         "name": "Onna Irukka Kaththukanum",
         "folder": "onna-irukka-kaththukanum",
-        "count": 75,
+        "count": 76,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1202,7 +1202,7 @@
       {
         "name": "Pandian Stores",
         "folder": "pandian-stores",
-        "count": 105,
+        "count": 106,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1281,7 +1281,7 @@
       {
         "name": "Siragadikka Aasai",
         "folder": "siragadikka-aasai",
-        "count": 104,
+        "count": 105,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1360,7 +1360,7 @@
       {
         "name": "Suttum Vizhi Sudare",
         "folder": "suttum-vizhi-sudare",
-        "count": 87,
+        "count": 88,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1434,7 +1434,7 @@
       {
         "name": "Thaai Maaman",
         "folder": "thaai-maaman",
-        "count": 74,
+        "count": 75,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1498,12 +1498,12 @@
       {
         "name": "Thendrale Mella Pesu",
         "folder": "thendrale-mella-pesu",
-        "count": 86,
+        "count": 87,
         "sources": [
           "tamiltvserial"
         ],
-        "latest_date": "07-11-2026",
-        "latest_title": "Thendrale Mella Pesu 07-11-2026 | Episode 419 | Vijay Tv Serial",
+        "latest_date": "09-11-2026",
+        "latest_title": "Thendrale Mella Pesu 09-11-2026 | Episode 420 | Vijay Tv Serial",
         "id": 6716
       }
     ],
