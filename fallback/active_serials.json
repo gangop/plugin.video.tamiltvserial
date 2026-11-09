@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-09T06:52:43.642651Z",
+  "updated": "2026-11-09T22:31:22.860477Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -11,15 +11,20 @@
       {
         "name": "Abirami",
         "folder": "abirami",
-        "count": 34,
+        "count": 35,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Abirami 09-11-2026 | Sun TV Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Abirami 10-11-2026 | Sun TV Serial",
         "id": 6802,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Abirami 10-11-2026 | Sun TV Serial",
+            "page": "https://tamildhol.my/abirami-10-11-2026-sun-tv-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Abirami 09-11-2026 | Sun TV Serial",
@@ -59,18 +64,13 @@
             "date": "31-10-2026",
             "title": "Abirami 31-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/abirami-31-10-2026-sun-tv-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Abirami 30-10-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/abirami-30-10-2026-sun-tv-serial/"
           }
         ]
       },
       {
         "name": "Annam",
         "folder": "annam",
-        "count": 90,
+        "count": 91,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -118,26 +118,26 @@
             "date": "31-10-2026",
             "title": "Annam 31-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/annam-31-10-2026-sun-tv-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Annam 30-10-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/annam-30-10-2026-sun-tv-serial/"
           }
         ]
       },
       {
         "name": "Bhairavi",
         "folder": "bhairavi",
-        "count": 12,
+        "count": 13,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Bhairavi 09-11-2026 | Sun TV Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Bhairavi 10-11-2026 | Sun TV Serial",
         "id": 6820,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Bhairavi 10-11-2026 | Sun TV Serial",
+            "page": "https://tamildhol.my/bhairavi-10-11-2026-sun-tv-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Bhairavi 09-11-2026 | Sun TV Serial",
@@ -177,11 +177,6 @@
             "date": "31-10-2026",
             "title": "Bhairavi 31-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/bhairavi-31-10-2026-sun-tv-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Bhairavi 30-10-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/bhairavi-30-10-2026-sun-tv-serial/"
           }
         ]
       },
@@ -193,10 +188,15 @@
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Ethir Neechal 09-11-2026 | Sun TV Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Ethir Neechal 10-11-2026 | Sun TV Serial",
         "id": 6344,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Ethir Neechal 10-11-2026 | Sun TV Serial",
+            "page": "https://tamildhol.my/ethir-neechal-thodargirathu-10-11-2026-sun-tv-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Ethir Neechal 09-11-2026 | Sun TV Serial",
@@ -246,26 +246,26 @@
             "date": "31-10-2026",
             "title": "Ethir Neechal 31-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/ethir-neechal-thodargirathu-31-10-2026-sun-tv-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Ethir Neechal 30-10-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/ethir-neechal-thodargirathu-30-10-2026-sun-tv-serial/"
           }
         ]
       },
       {
         "name": "Iru Malargal",
         "folder": "iru-malargal",
-        "count": 86,
+        "count": 87,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Iru Malargal 09-11-2026 | Sun TV Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Iru Malargal 10-11-2026 | Sun TV Serial",
         "id": 6756,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Iru Malargal 10-11-2026 | Sun TV Serial",
+            "page": "https://tamildhol.my/iru-malargal-10-11-2026-sun-tv-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Iru Malargal 09-11-2026 | Sun TV Serial",
@@ -305,11 +305,6 @@
             "date": "31-10-2026",
             "title": "Iru Malargal 31-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/iru-malargal-31-10-2026-sun-tv-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Iru Malargal 30-10-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/iru-malargal-30-10-2026-sun-tv-serial/"
           }
         ]
       },
@@ -318,32 +313,29 @@
         "folder": "kayal",
         "count": 78,
         "sources": [
-          "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "31-10-2026",
-        "latest_title": "Kayal 31-10-2026 | Sun TV Serial",
-        "id": 6339,
-        "recent_episodes": [
-          {
-            "date": "31-10-2026",
-            "title": "Kayal 31-10-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/kayal-31-10-2026-sun-tv-serial/"
-          }
-        ]
+        "latest_date": "24-10-2026",
+        "latest_title": "Kayal 24-10-2026 | Episode 1555 | Sun Tv Serial",
+        "id": 6339
       },
       {
         "name": "Kurinji",
         "folder": "kurinji",
-        "count": 34,
+        "count": 35,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Kurinji 09-11-2026 | Sun TV Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Kurinji 10-11-2026 | Sun TV Serial",
         "id": 6801,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Kurinji 10-11-2026 | Sun TV Serial",
+            "page": "https://tamildhol.my/kurinji-10-11-2026-sun-tv-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Kurinji 09-11-2026 | Sun TV Serial",
@@ -383,26 +375,26 @@
             "date": "31-10-2026",
             "title": "Kurinji 31-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/kurinji-31-10-2026-sun-tv-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Kurinji 30-10-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/kurinji-30-10-2026-sun-tv-serial/"
           }
         ]
       },
       {
         "name": "Lakshmi",
         "folder": "lakshmi",
-        "count": 86,
+        "count": 87,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Lakshmi 09-11-2026 | Sun TV Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Lakshmi 10-11-2026 | Sun TV Serial",
         "id": 6438,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Lakshmi 10-11-2026 | Sun TV Serial",
+            "page": "https://tamildhol.my/lakshmi-10-11-2026-sun-tv-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Lakshmi 09-11-2026 | Sun TV Serial",
@@ -442,11 +434,6 @@
             "date": "31-10-2026",
             "title": "Lakshmi 31-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/lakshmi-31-10-2026-sun-tv-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Lakshmi 30-10-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/lakshmi-30-10-2026-sun-tv-serial/"
           }
         ]
       },
@@ -458,10 +445,15 @@
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Malli 09-11-2026 | Sun TV Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Malli 10-11-2026 | Sun TV Serial",
         "id": 6620,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Malli 10-11-2026 | Sun TV Serial",
+            "page": "https://tamildhol.my/malli-10-11-2026-sun-tv-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Malli 09-11-2026 | Sun TV Serial",
@@ -511,11 +503,6 @@
             "date": "31-10-2026",
             "title": "Malli 31-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/malli-31-10-2026-sun-tv-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Malli 30-10-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/malli-30-10-2026-sun-tv-serial/"
           }
         ]
       },
@@ -527,15 +514,20 @@
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Marumagal 09-11-2026 | Sun TV Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Marumagal 10-11-2026 | Sun TV Serial",
         "search_query": "Marumagal",
         "channel_id": 5,
         "recent_episodes": [
           {
+            "date": "10-11-2026",
+            "title": "Marumagal 10-11-2026 | Sun TV Serial",
+            "page": "https://tamildhol.my/marumagal-10-11-2026-sun-tv-serial/"
+          },
+          {
             "date": "09-11-2026",
             "title": "Marumagal 09-11-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/marumagal-moondru-mudichu-singapenne-meha-sangamam-09-11-2026-sun-tv-serial/"
+            "page": "https://tamildhol.my/marumagal-09-11-2026-sun-tv-serial/"
           },
           {
             "date": "07-11-2026",
@@ -571,37 +563,45 @@
             "date": "31-10-2026",
             "title": "Marumagal 31-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/marumagal-moondru-mudichu-singapenne-meha-sangamam-31-10-2026-sun-tv-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Marumagal 30-10-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/marumagal-moondru-mudichu-singapenne-meha-sangamam-30-10-2026-sun-tv-serial/"
           }
         ]
       },
       {
         "name": "Moondru Mudichu",
         "folder": "moondru-mudichu",
-        "count": 89,
-        "sources": [
-          "tamiltvserial"
-        ],
-        "latest_date": "07-11-2026",
-        "latest_title": "Moondru Mudichu 07-11-2026 | Episode 685 | Sun Tv Serial",
-        "id": 6663
-      },
-      {
-        "name": "Poongodi",
-        "folder": "poongodi",
-        "count": 87,
+        "count": 90,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
         "latest_date": "09-11-2026",
-        "latest_title": "Poongodi 09-11-2026 | Sun TV Serial",
+        "latest_title": "Moondru Mudichu 09-11-2026 | Sun TV Serial",
+        "id": 6663,
+        "recent_episodes": [
+          {
+            "date": "09-11-2026",
+            "title": "Moondru Mudichu 09-11-2026 | Sun TV Serial",
+            "page": "https://tamildhol.my/moondru-mudichu-09-11-2026-sun-tv-serial/"
+          }
+        ]
+      },
+      {
+        "name": "Poongodi",
+        "folder": "poongodi",
+        "count": 88,
+        "sources": [
+          "tamildhol",
+          "tamiltvserial"
+        ],
+        "latest_date": "10-11-2026",
+        "latest_title": "Poongodi 10-11-2026 | Sun TV Serial",
         "id": 6700,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Poongodi 10-11-2026 | Sun TV Serial",
+            "page": "https://tamildhol.my/poongodi-10-11-2026-sun-tv-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Poongodi 09-11-2026 | Sun TV Serial",
@@ -641,37 +641,37 @@
             "date": "31-10-2026",
             "title": "Poongodi 31-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/poongodi-31-10-2026-sun-tv-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Poongodi 30-10-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/poongodi-30-10-2026-sun-tv-serial/"
           }
         ]
       },
       {
         "name": "Singappenne",
         "folder": "singappenne",
-        "count": 100,
+        "count": 101,
         "sources": [
           "tamiltvserial"
         ],
-        "latest_date": "07-11-2026",
-        "latest_title": "Singappenne 07-11-2026 | Episode 987 | Sun Tv Serial",
+        "latest_date": "09-11-2026",
+        "latest_title": "Singappenne 09-11-2026 | Episode 988 | Sun Tv Serial",
         "id": 6340
       },
       {
         "name": "Siragugal",
         "folder": "siragugal",
-        "count": 87,
+        "count": 88,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Siragugal 09-11-2026 | Sun TV Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Siragugal 10-11-2026 | Sun TV Serial",
         "id": 6775,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Siragugal 10-11-2026 | Sun TV Serial",
+            "page": "https://tamildhol.my/siragugal-10-11-2026-sun-tv-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Siragugal 09-11-2026 | Sun TV Serial",
@@ -711,26 +711,26 @@
             "date": "31-10-2026",
             "title": "Siragugal 31-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/siragugal-31-10-2026-sun-tv-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Siragugal 30-10-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/siragugal-30-10-2026-sun-tv-serial/"
           }
         ]
       },
       {
         "name": "Thulasi",
         "folder": "thulasi",
-        "count": 87,
+        "count": 88,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Thulasi 09-11-2026 | Sun TV Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Thulasi 10-11-2026 | Sun TV Serial",
         "id": 6764,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Thulasi 10-11-2026 | Sun TV Serial",
+            "page": "https://tamildhol.my/thulasi-10-11-2026-sun-tv-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Thulasi 09-11-2026 | Sun TV Serial",
@@ -770,11 +770,6 @@
             "date": "31-10-2026",
             "title": "Thulasi 31-10-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/thulasi-31-10-2026-sun-tv-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Thulasi 30-10-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/thulasi-30-10-2026-sun-tv-serial/"
           }
         ]
       }
@@ -788,10 +783,15 @@
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Ayyanar Thunai 09-11-2026 | Vijay TV Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Ayyanar Thunai 10-11-2026 | Vijay TV Serial",
         "id": 6698,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Ayyanar Thunai 10-11-2026 | Vijay TV Serial",
+            "page": "https://tamildhol.my/ayyanar-thunai-10-11-2026-vijay-tv-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Ayyanar Thunai 09-11-2026 | Vijay TV Serial",
@@ -856,11 +856,6 @@
             "date": "28-10-2026",
             "title": "Ayyanar Thunai 28-10-2026 | Vijay TV Serial",
             "page": "https://tamildhol.my/ayyanar-thunai-28-10-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "27-10-2026",
-            "title": "Ayyanar Thunai 27-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/ayyanar-thunai-27-10-2026-vijay-tv-serial/"
           }
         ]
       },
@@ -872,10 +867,15 @@
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Azhagae Azhagu 09-11-2026 | Vijay TV Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Azhagae Azhagu 10-11-2026 | Vijay TV Serial",
         "id": 6758,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Azhagae Azhagu 10-11-2026 | Vijay TV Serial",
+            "page": "https://tamildhol.my/azhagae-azhagu-10-11-2026-vijay-tv-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Azhagae Azhagu 09-11-2026 | Vijay TV Serial",
@@ -931,10 +931,15 @@
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Chinna Marumagal 09-11-2026 | Vijay TV Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Chinna Marumagal 10-11-2026 | Vijay TV Serial",
         "id": 6353,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Chinna Marumagal 10-11-2026 | Vijay TV Serial",
+            "page": "https://tamildhol.my/chinna-marumagal-10-11-2026-vijay-tv-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Chinna Marumagal 09-11-2026 | Vijay TV Serial",
@@ -979,16 +984,6 @@
             "date": "29-10-2026",
             "title": "Chinna Marumagal 29-10-2026 | Vijay TV Serial",
             "page": "https://tamildhol.my/chinna-marumagal-29-10-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "28-10-2026",
-            "title": "Chinna Marumagal 28-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/chinna-marumagal-28-10-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "27-10-2026",
-            "title": "Chinna Marumagal 27-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/chinna-marumagal-27-10-2026-vijay-tv-serial-2/"
           }
         ]
       },
@@ -1058,11 +1053,6 @@
             "date": "28-10-2026",
             "title": "Kadhal Kadhal Kadhal 28-10-2026 | Vijay TV Serial",
             "page": "https://tamildhol.my/kadhal-kadhal-kadhal-28-10-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "27-10-2026",
-            "title": "Kadhal Kadhal Kadhal 27-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/kadhal-kadhal-kadhal-27-10-2026-vijay-tv-serial/"
           }
         ]
       },
@@ -1074,10 +1064,15 @@
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Kanmani Anbudan 09-11-2026 | Vijay TV Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Kanmani Anbudan 10-11-2026 | Vijay TV Serial",
         "id": 6670,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Kanmani Anbudan 10-11-2026 | Vijay TV Serial",
+            "page": "https://tamildhol.my/kanmani-anbudan-10-11-2026-vijay-tv-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Kanmani Anbudan 09-11-2026 | Vijay TV Serial",
@@ -1143,10 +1138,15 @@
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Onna Irukka Kaththukanum 09-11-2026 | Vijay TV Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Onna Irukka Kaththukanum 10-11-2026 | Vijay TV Serial",
         "id": 6768,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Onna Irukka Kaththukanum 10-11-2026 | Vijay TV Serial",
+            "page": "https://tamildhol.my/onna-irukka-kaththukanum-10-11-2026-vijay-tv-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Onna Irukka Kaththukanum 09-11-2026 | Vijay TV Serial",
@@ -1191,11 +1191,6 @@
             "date": "28-10-2026",
             "title": "Onna Irukka Kaththukanum 28-10-2026 | Vijay TV Serial",
             "page": "https://tamildhol.my/onna-irukka-kaththukanum-28-10-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "27-10-2026",
-            "title": "Onna Irukka Kaththukanum 27-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/onna-irukka-kaththukanum-27-10-2026-vijay-tv-serial/"
           }
         ]
       },
@@ -1207,10 +1202,15 @@
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Pandian Stores 09-11-2026 | Vijay TV Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Pandian Stores 10-11-2026 | Vijay TV Serial",
         "id": 6359,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Pandian Stores 10-11-2026 | Vijay TV Serial",
+            "page": "https://tamildhol.my/pandian-stores-2-10-11-2026-vijay-tv-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Pandian Stores 09-11-2026 | Vijay TV Serial",
@@ -1286,10 +1286,15 @@
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Siragadikka Aasai 09-11-2026 | Vijay TV Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Siragadikka Aasai 10-11-2026 | Vijay TV Serial",
         "id": 6357,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Siragadikka Aasai 10-11-2026 | Vijay TV Serial",
+            "page": "https://tamildhol.my/siragadikka-aasai-10-11-2026-vijay-tv-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Siragadikka Aasai 09-11-2026 | Vijay TV Serial",
@@ -1365,10 +1370,15 @@
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Suttum Vizhi Sudare 09-11-2026 | Vijay TV Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Suttum Vizhi Sudare 10-11-2026 | Vijay TV Serial",
         "id": 6754,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Suttum Vizhi Sudare 10-11-2026 | Vijay TV Serial",
+            "page": "https://tamildhol.my/suttum-vizhi-sudare-10-11-2026-vijay-tv-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Suttum Vizhi Sudare 09-11-2026 | Vijay TV Serial",
@@ -1423,11 +1433,6 @@
             "date": "28-10-2026",
             "title": "Suttum Vizhi Sudare 28-10-2026 | Vijay TV Serial",
             "page": "https://tamildhol.my/suttum-vizhi-sudare-28-10-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "27-10-2026",
-            "title": "Suttum Vizhi Sudare 27-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/suttum-vizhi-sudare-27-10-2026-vijay-tv-serial/"
           }
         ]
       },
@@ -1439,10 +1444,15 @@
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Thaai Maaman 09-11-2026 | Vijay TV Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Thaai Maaman 10-11-2026 | Vijay TV Serial",
         "id": 6763,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Thaai Maaman 10-11-2026 | Vijay TV Serial",
+            "page": "https://tamildhol.my/thaai-maaman-10-11-2026-vijay-tv-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Thaai Maaman 09-11-2026 | Vijay TV Serial",
@@ -1482,16 +1492,6 @@
             "date": "29-10-2026",
             "title": "Thaai Maaman 29-10-2026 | Vijay TV Serial",
             "page": "https://tamildhol.my/thaai-maaman-29-10-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "28-10-2026",
-            "title": "Thaai Maaman 28-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/thaai-maaman-28-10-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "27-10-2026",
-            "title": "Thaai Maaman 27-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/thaai-maaman-27-10-2026-vijay-tv-serial/"
           }
         ]
       },
@@ -1511,19 +1511,24 @@
       {
         "name": "Annamalai Kudumbam",
         "folder": "annamalai-kudumbam",
-        "count": 88,
+        "count": 89,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Annamalai Kudumbam 09-11-2026 | Zee Tamil Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Annamalai Kudumbam 10-11-2026 | Zee Tamil Serial",
         "id": 6751,
         "recent_episodes": [
           {
+            "date": "10-11-2026",
+            "title": "Annamalai Kudumbam 10-11-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/annamalai-kudumbam-10-11-2026-zee-tamil-serial-2/"
+          },
+          {
             "date": "09-11-2026",
             "title": "Annamalai Kudumbam 09-11-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/annamalai-kudumbam-09-11-2026-zee-tamil-serial/"
+            "page": "https://tamildhol.my/annamalai-kudumbam-09-11-2026-zee-tamil-serial-2/"
           },
           {
             "date": "07-11-2026",
@@ -1559,26 +1564,26 @@
             "date": "31-10-2026",
             "title": "Annamalai Kudumbam 31-10-2026 | Zee Tamil Serial",
             "page": "https://tamildhol.my/annamalai-kudumbam-31-10-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Annamalai Kudumbam 30-10-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/annamalai-kudumbam-30-10-2026-zee-tamil-serial/"
           }
         ]
       },
       {
         "name": "Ayali",
         "folder": "ayali",
-        "count": 94,
+        "count": 95,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Ayali 09-11-2026 | Zee Tamil Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Ayali 10-11-2026 | Zee Tamil Serial",
         "id": 6715,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Ayali 10-11-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/ayali-10-11-2026-zee-tamil-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Ayali 09-11-2026 | Zee Tamil Serial",
@@ -1618,26 +1623,26 @@
             "date": "31-10-2026",
             "title": "Ayali 31-10-2026 | Zee Tamil Serial",
             "page": "https://tamildhol.my/ayali-31-10-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Ayali 30-10-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/ayali-30-10-2026-zee-tamil-serial/"
           }
         ]
       },
       {
         "name": "Chinnan Siru Kiliye",
         "folder": "chinnan-siru-kiliye",
-        "count": 79,
+        "count": 80,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Chinnan Siru Kiliye 09-11-2026 | Zee Tamil Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Chinnan Siru Kiliye 10-11-2026 | Zee Tamil Serial",
         "id": 6722,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Chinnan Siru Kiliye 10-11-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/chinnan-siru-kiliye-10-11-2026-zee-tamil-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Chinnan Siru Kiliye 09-11-2026 | Zee Tamil Serial",
@@ -1667,11 +1672,6 @@
             "date": "02-11-2026",
             "title": "Chinnan Siru Kiliye 02-11-2026 | Zee Tamil Serial",
             "page": "https://tamildhol.my/chinnan-siru-kiliye-02-11-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Chinnan Siru Kiliye 30-10-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/chinnan-siru-kiliye-30-10-2026-zee-tamil-serial/"
           }
         ]
       },
@@ -1683,10 +1683,15 @@
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Enna Solla Pogirai 09-11-2026 | Zee Tamil Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Enna Solla Pogirai 10-11-2026 | Zee Tamil Serial",
         "id": 6799,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Enna Solla Pogirai 10-11-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/enna-solla-pogirai-10-11-2026-zee-tamil-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Enna Solla Pogirai 09-11-2026 | Zee Tamil Serial",
@@ -1721,26 +1726,26 @@
             "date": "31-10-2026",
             "title": "Enna Solla Pogirai 31-10-2026 | Zee Tamil Serial",
             "page": "https://tamildhol.my/enna-solla-pogirai-31-10-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Enna Solla Pogirai 30-10-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/enna-solla-pogirai-30-10-2026-zee-tamil-serial/"
           }
         ]
       },
       {
         "name": "Idhayam",
         "folder": "idhayam",
-        "count": 92,
+        "count": 93,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Idhayam 09-11-2026 | Zee Tamil Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Idhayam 10-11-2026 | Zee Tamil Serial",
         "id": 6378,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Idhayam 10-11-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/idhayam-10-11-2026-zee-tamil-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Idhayam 09-11-2026 | Zee Tamil Serial",
@@ -1780,26 +1785,26 @@
             "date": "31-10-2026",
             "title": "Idhayam 31-10-2026 | Zee Tamil Serial",
             "page": "https://tamildhol.my/idhayam-31-10-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Idhayam 30-10-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/idhayam-30-10-2026-zee-tamil-serial/"
           }
         ]
       },
       {
         "name": "Karthigai Deepam",
         "folder": "karthigai-deepam",
-        "count": 129,
+        "count": 131,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Karthigai Deepam 09-11-2026 | Zee Tamil Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Karthigai Deepam 10-11-2026 | Zee Tamil Serial",
         "id": 6372,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Karthigai Deepam 10-11-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/karthigai-deepam-10-11-2026-zee-tamil-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Karthigai Deepam 09-11-2026 | Zee Tamil Serial",
@@ -1839,26 +1844,26 @@
             "date": "31-10-2026",
             "title": "Karthigai Deepam 31-10-2026 | Zee Tamil Serial",
             "page": "https://tamildhol.my/karthigai-deepam-31-10-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Karthigai Deepam 30-10-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/karthigai-deepam-30-10-2026-zee-tamil-serial/"
           }
         ]
       },
       {
         "name": "Paarijatham",
         "folder": "paarijatham",
-        "count": 93,
+        "count": 94,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Paarijatham 09-11-2026 | Zee Tamil Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Paarijatham 10-11-2026 | Zee Tamil Serial",
         "id": 6732,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Paarijatham 10-11-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/paarijatham-10-11-2026-zee-tamil-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Paarijatham 09-11-2026 | Zee Tamil Serial",
@@ -1893,26 +1898,26 @@
             "date": "31-10-2026",
             "title": "Paarijatham 31-10-2026 | Zee Tamil Serial",
             "page": "https://tamildhol.my/paarijatham-31-10-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Paarijatham 30-10-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/paarijatham-30-10-2026-zee-tamil-serial/"
           }
         ]
       },
       {
         "name": "Salangai Oli",
         "folder": "salangai-oli",
-        "count": 112,
+        "count": 113,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Salangai Oli 09-11-2026 | Zee Tamil Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Salangai Oli 10-11-2026 | Zee Tamil Serial",
         "id": 6737,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Salangai Oli 10-11-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/salangai-oli-10-11-2026-zee-tamil-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Salangai Oli 09-11-2026 | Zee Tamil Serial",
@@ -1952,26 +1957,26 @@
             "date": "31-10-2026",
             "title": "Salangai Oli 31-10-2026 | Zee Tamil Serial",
             "page": "https://tamildhol.my/salangai-oli-31-10-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Salangai Oli 30-10-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/salangai-oli-30-10-2026-zee-tamil-serial/"
           }
         ]
       },
       {
         "name": "Samanthi",
         "folder": "samanthi",
-        "count": 75,
+        "count": 76,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Samanthi 09-11-2026 | Zee Tamil Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Samanthi 10-11-2026 | Zee Tamil Serial",
         "id": 6792,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Samanthi 10-11-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/samanthi-10-11-2026-zee-tamil-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Samanthi 09-11-2026 | Zee Tamil Serial",
@@ -2001,26 +2006,26 @@
             "date": "02-11-2026",
             "title": "Samanthi 02-11-2026 | Zee Tamil Serial",
             "page": "https://tamildhol.my/samanthi-02-11-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Samanthi 30-10-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/samanthi-30-10-2026-zee-tamil-serial/"
           }
         ]
       },
       {
         "name": "Sandhya Raagam",
         "folder": "sandhya-raagam",
-        "count": 88,
+        "count": 89,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Sandhya Raagam 09-11-2026 | Zee Tamil Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Sandhya Raagam 10-11-2026 | Zee Tamil Serial",
         "id": 6379,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Sandhya Raagam 10-11-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/sandhya-raagam-10-11-2026-zee-tamil-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Sandhya Raagam 09-11-2026 | Zee Tamil Serial",
@@ -2060,26 +2065,26 @@
             "date": "31-10-2026",
             "title": "Sandhya Raagam 31-10-2026 | Zee Tamil Serial",
             "page": "https://tamildhol.my/sandhya-raagam-31-10-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Sandhya Raagam 30-10-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/sandhya-raagam-30-10-2026-zee-tamil-serial/"
           }
         ]
       },
       {
         "name": "Thirumangalyam",
         "folder": "thirumangalyam",
-        "count": 80,
+        "count": 81,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Thirumangalyam 09-11-2026 | Zee Tamil Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Thirumangalyam 10-11-2026 | Zee Tamil Serial",
         "id": 6749,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Thirumangalyam 10-11-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/thirumangalyam-10-11-2026-zee-tamil-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Thirumangalyam 09-11-2026 | Zee Tamil Serial",
@@ -2109,26 +2114,26 @@
             "date": "02-11-2026",
             "title": "Thirumangalyam 02-11-2026 | Zee Tamil Serial",
             "page": "https://tamildhol.my/thirumangalyam-02-11-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Thirumangalyam 30-10-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/thirumangalyam-30-10-2026-zee-tamil-serial/"
           }
         ]
       },
       {
         "name": "Vaagai Sooda Vaa",
         "folder": "vaagai-sooda-vaa",
-        "count": 93,
+        "count": 94,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Vaagai Sooda Vaa 09-11-2026 | Zee Tamil Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Vaagai Sooda Vaa 10-11-2026 | Zee Tamil Serial",
         "id": 6760,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Vaagai Sooda Vaa 10-11-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/vaagai-sooda-vaa-10-11-2026-zee-tamil-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Vaagai Sooda Vaa 09-11-2026 | Zee Tamil Serial",
@@ -2163,26 +2168,26 @@
             "date": "31-10-2026",
             "title": "Vaagai Sooda Vaa 31-10-2026 | Zee Tamil Serial",
             "page": "https://tamildhol.my/vaagai-sooda-vaa-31-10-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Vaagai Sooda Vaa 30-10-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/vaagai-sooda-vaa-30-10-2026-zee-tamil-serial/"
           }
         ]
       },
       {
         "name": "Varisu",
         "folder": "varisu",
-        "count": 93,
+        "count": 94,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Varisu 09-11-2026 | Zee Tamil Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Varisu 10-11-2026 | Zee Tamil Serial",
         "id": 6720,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Varisu 10-11-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/varisu-10-11-2026-zee-tamil-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Varisu 09-11-2026 | Zee Tamil Serial",
@@ -2217,16 +2222,6 @@
             "date": "02-11-2026",
             "title": "Varisu 02-11-2026 | Zee Tamil Serial",
             "page": "https://tamildhol.my/varisu-02-11-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "31-10-2026",
-            "title": "Varisu 31-10-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/varisu-31-10-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Varisu 30-10-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/varisu-30-10-2026-zee-tamil-serial/"
           }
         ]
       },
@@ -2238,10 +2233,15 @@
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "09-11-2026",
-        "latest_title": "Vasudha 09-11-2026 | Zee Tamil Serial",
+        "latest_date": "10-11-2026",
+        "latest_title": "Vasudha 10-11-2026 | Zee Tamil Serial",
         "id": 6800,
         "recent_episodes": [
+          {
+            "date": "10-11-2026",
+            "title": "Vasudha 10-11-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/vasudha-10-11-2026-zee-tamil-serial/"
+          },
           {
             "date": "09-11-2026",
             "title": "Vasudha 09-11-2026 | Zee Tamil Serial",
@@ -2271,16 +2271,6 @@
             "date": "02-11-2026",
             "title": "Vasudha 02-11-2026 | Zee Tamil Serial",
             "page": "https://tamildhol.my/vasudha-02-11-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "31-10-2026",
-            "title": "Vasudha 31-10-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/vasudha-31-10-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "30-10-2026",
-            "title": "Vasudha 30-10-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/vasudha-30-10-2026-zee-tamil-serial/"
           }
         ]
       }
