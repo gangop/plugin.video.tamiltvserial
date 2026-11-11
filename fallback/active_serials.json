@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10T19:52:16.680492Z",
+  "updated": "2026-11-11T06:47:17.661898Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -188,7 +188,7 @@
       {
         "name": "Ethir Neechal",
         "folder": "ethirneechal",
-        "count": 105,
+        "count": 106,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -440,7 +440,7 @@
       {
         "name": "Malli",
         "folder": "malli",
-        "count": 108,
+        "count": 109,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -652,12 +652,12 @@
       {
         "name": "Singappenne",
         "folder": "singappenne",
-        "count": 102,
+        "count": 103,
         "sources": [
           "tamiltvserial"
         ],
-        "latest_date": "10-11-2026",
-        "latest_title": "Singappenne 10-11-2026 | Episode 989 | Sun Tv Serial",
+        "latest_date": "11-11-2026",
+        "latest_title": "Singappenne 11-11-2026 | Episode 990 | Sun Tv Serial",
         "id": 6340
       },
       {
@@ -783,15 +783,20 @@
       {
         "name": "Ayyanar Thunai",
         "folder": "ayyanar-thunai",
-        "count": 106,
+        "count": 107,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "10-11-2026",
-        "latest_title": "Ayyanar Thunai 10-11-2026 | Vijay TV Serial",
+        "latest_date": "11-11-2026",
+        "latest_title": "Ayyanar Thunai 11-11-2026 | Vijay TV Serial",
         "id": 6698,
         "recent_episodes": [
+          {
+            "date": "11-11-2026",
+            "title": "Ayyanar Thunai 11-11-2026 | Vijay TV Serial",
+            "page": "https://tamildhol.my/ayyanar-thunai-11-11-2026-vijay-tv-serial/"
+          },
           {
             "date": "10-11-2026",
             "title": "Ayyanar Thunai 10-11-2026 | Vijay TV Serial",
@@ -862,7 +867,7 @@
       {
         "name": "Azhagae Azhagu",
         "folder": "azhagae-azhagu",
-        "count": 77,
+        "count": 78,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -915,18 +920,13 @@
             "date": "30-10-2026",
             "title": "Azhagae Azhagu 30-10-2026 | Vijay TV Serial",
             "page": "https://tamildhol.my/azhagae-azhagu-30-10-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "29-10-2026",
-            "title": "Azhagae Azhagu 29-10-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/azhagae-azhagu-29-10-2026-vijay-tv-serial/"
           }
         ]
       },
       {
         "name": "Chinna Marumagal",
         "folder": "chinna-marumagal",
-        "count": 78,
+        "count": 79,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -995,7 +995,7 @@
       {
         "name": "Kadhal Kadhal Kadhal",
         "folder": "kadhal-kadhal-kadhal",
-        "count": 82,
+        "count": 83,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1069,7 +1069,7 @@
       {
         "name": "Kanmani Anbudan",
         "folder": "kanmani-anbudan",
-        "count": 88,
+        "count": 89,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1197,7 +1197,7 @@
       {
         "name": "Pandian Stores",
         "folder": "pandian-stores",
-        "count": 107,
+        "count": 108,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1281,7 +1281,7 @@
       {
         "name": "Siragadikka Aasai",
         "folder": "siragadikka-aasai",
-        "count": 106,
+        "count": 107,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1365,7 +1365,7 @@
       {
         "name": "Suttum Vizhi Sudare",
         "folder": "suttum-vizhi-sudare",
-        "count": 89,
+        "count": 90,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1439,7 +1439,7 @@
       {
         "name": "Thaai Maaman",
         "folder": "thaai-maaman",
-        "count": 76,
+        "count": 77,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1503,12 +1503,12 @@
       {
         "name": "Thendrale Mella Pesu",
         "folder": "thendrale-mella-pesu",
-        "count": 88,
+        "count": 89,
         "sources": [
           "tamiltvserial"
         ],
-        "latest_date": "10-11-2026",
-        "latest_title": "Thendrale Mella Pesu 10-11-2026 | Episode 421 | Vijay Tv Serial",
+        "latest_date": "11-11-2026",
+        "latest_title": "Thendrale Mella Pesu 11-11-2026 | Episode 422 | Vijay Tv Serial",
         "id": 6716
       }
     ],
