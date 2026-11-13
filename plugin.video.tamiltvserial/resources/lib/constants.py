@@ -30,6 +30,11 @@ CHANNEL_GROUPS = (
         'shows_id': 6402,
     },
     {
+        'name': 'Sony Vizha',
+        'serials_id': 6811,
+        'shows_id': 6810,
+    },
+    {
         'name': 'Others',
         'shows_id': 6382,
         'other_shows': True,

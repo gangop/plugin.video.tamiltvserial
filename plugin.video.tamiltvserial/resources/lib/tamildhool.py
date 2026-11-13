@@ -43,6 +43,7 @@ CHANNEL_SLUGS = (
     ('sun tv', 'sun-tv'),
     ('vijay tv', 'vijay-tv'),
     ('zee tamil', 'zee-tamil'),
+    ('sony vizha', 'sony-vizha'),
 )
 
 # Built-in show-level aliases (folder names). Episode streams are NOT stored here —

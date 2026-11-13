@@ -427,6 +427,10 @@ def list_recent_episodes(name=None, folder=None, limit=12):
                 channel_label = 'Vijay TV Show' if 'show' in lower_slug else 'Vijay TV Serial'
             elif 'zee-tamil' in lower_slug:
                 channel_label = 'Zee Tamil Show' if 'show' in lower_slug else 'Zee Tamil Serial'
+            elif 'sony-vizha' in lower_slug:
+                channel_label = (
+                    'Sony Vizha Tv Show' if 'show' in lower_slug else 'Sony Vizha Tv Serial'
+                )
             episodes.append({
                 'date': date,
                 'title': f'{display} {date} | {channel_label}',

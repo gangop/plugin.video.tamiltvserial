@@ -22,11 +22,12 @@ EPISODE_NUMBER_PATTERN = re.compile(r'Episode\s+(\d+)', re.I)
 TITLE_DATE_PATTERN = re.compile(r'\s*\d{1,2}-\d{1,2}-\d{4}.*$')
 TITLE_DATE_CAPTURE_PATTERN = re.compile(r'(\d{1,2})-(\d{1,2})-(\d{4})')
 CHANNEL_QUALIFIER_PATTERN = re.compile(
-    r'\s+(?:sun\s*tv|vijay\s*tv|zee\s*tamil)\s+(?:serial|show)s?\s*$',
+    r'\s+(?:sun\s*tv|vijay\s*tv|zee\s*tamil|sony\s*vizha)\s+'
+    r'(?:tv\s+)?(?:serial|show)s?\s*$',
     re.I,
 )
 FOLDER_CHANNEL_SUFFIX_PATTERN = re.compile(
-    r'-(?:sun-tv|vijay-tv|zee-tamil)-(?:serial|show)s?$',
+    r'-(?:sun-tv|vijay-tv|zee-tamil|sony-vizha)-(?:serial|show)s?$',
     re.I,
 )
 
@@ -381,7 +382,13 @@ def _has_known_channel_title(title):
     lower = (title or '').lower()
     return any(
         token in lower
-        for token in ('sun tv show', 'vijay tv show', 'zee tamil tv show')
+        for token in (
+            'sun tv show',
+            'vijay tv show',
+            'zee tamil tv show',
+            'sony vizha tv show',
+            'sony vizha show',
+        )
     )
 
 

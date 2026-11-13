@@ -2,14 +2,14 @@
 """Refresh TamilDhool fallback data used by the Kodi addon.
 
 Writes:
-  - fallback/active_serials.json — daily consolidated Sun/Vijay/Zee serials menu
-    from TamilDhool + recent TamilTvSerial posts (newest first); also mirrored into
-    plugin.video.tamiltvserial/resources/data/
+  - fallback/active_serials.json — daily consolidated Sun/Vijay/Zee/Sony Vizha
+    serials menu from TamilDhool + recent TamilTvSerial posts (newest first);
+    also mirrored into plugin.video.tamiltvserial/resources/data/
   - fallback/tamildhool.json — episode→stream map for recent serials and shows
 
-The episode indexer is show-agnostic: it walks every Sun/Vijay/Zee serial and
-show folder on TamilTvSerial and maps recent episodes to TamilDhool BunnyCDN /
-Dailymotion streams.
+The episode indexer is show-agnostic: it walks every Sun/Vijay/Zee/Sony Vizha
+serial and show folder on TamilTvSerial and maps recent episodes to TamilDhool
+BunnyCDN / Dailymotion streams.
 
 Hand-maintained show folder aliases live in fallback/show_aliases.json.
 Do not add individual episode keys by hand — run this script (or the
@@ -44,24 +44,29 @@ CHANNEL_SLUGS = {
     'sun tv': 'sun-tv',
     'vijay tv': 'vijay-tv',
     'zee tamil': 'zee-tamil',
+    'sony vizha': 'sony-vizha',
 }
 CHANNEL_QUALIFIER_PATTERN = re.compile(
-    r'\s+(?:sun\s*tv|vijay\s*tv|zee\s*tamil)\s+(?:serial|show)s?\s*$',
+    r'\s+(?:sun\s*tv|vijay\s*tv|zee\s*tamil|sony\s*vizha)\s+'
+    r'(?:tv\s+)?(?:serial|show)s?\s*$',
     re.I,
 )
 FOLDER_CHANNEL_SUFFIX_PATTERN = re.compile(
-    r'-(?:sun-tv|vijay-tv|zee-tamil)-(?:serial|show)s?$',
+    r'-(?:sun-tv|vijay-tv|zee-tamil|sony-vizha)-(?:serial|show)s?$',
     re.I,
 )
+TD_CHANNEL_PATTERN = r'sun-tv|vijay-tv|zee-tamil|sony-vizha'
 
 # Channel / show category IDs on TamilTvSerial.com
 CHANNEL_CATEGORIES = (
     (5, 'Sun TV'),
     (3, 'Vijay TV'),
     (4, 'Zee Tamil'),
+    (6811, 'Sony Vizha'),
     (6392, 'Sun TV Shows'),
     (6383, 'Vijay TV Shows'),
     (6402, 'Zee Tamil TV Shows'),
+    (6810, 'Sony Vizha Shows'),
 )
 
 # Serial parent categories used for the Kodi serials menu.
@@ -69,6 +74,7 @@ SERIAL_MENU_CHANNELS = (
     ('sun-tv', 5, 'https://www.tamildhool.tech/sun-tv/sun-tv-serial/'),
     ('vijay-tv', 3, 'https://www.tamildhool.tech/vijay-tv/vijay-tv-serial/'),
     ('zee-tamil', 4, 'https://www.tamildhool.tech/zee-tamil/zee-tamil-serial/'),
+    ('sony-vizha', 6811, 'https://www.tamildhool.tech/sony-vizha/sony-vizha-serial/'),
 )
 
 # tamildhol.my WP category ids (serials only).
@@ -298,6 +304,7 @@ def collect_catalog_episodes(catalog: dict | None = None):
         '5': 'sun tv',
         '3': 'vijay tv',
         '4': 'zee tamil',
+        '6811': 'sony vizha',
     }
     episodes = {}
     page_hints = {}
@@ -449,13 +456,13 @@ def _match_tts_category(folder: str, title: str, by_slug: dict):
 def scrape_tamildhool_serials(scraper, base_url: str, pages: int = 6):
     """Return ordered show rows with recent episode dates from TamilDhool."""
     folder_re = re.compile(
-        r'/(sun-tv|vijay-tv|zee-tamil)/(?:sun-tv|vijay-tv|zee-tamil)-serial/([a-z0-9-]+)/',
+        rf'/({TD_CHANNEL_PATTERN})/(?:{TD_CHANNEL_PATTERN})-serial/([a-z0-9-]+)/',
         re.I,
     )
     title_re = re.compile(
-        r'href=["\'](https://www\.tamildhool\.tech/(sun-tv|vijay-tv|zee-tamil)/'
-        r'(?:sun-tv|vijay-tv|zee-tamil)-serial/([a-z0-9-]+)/[^"\']+)["\'][^>]*>\s*'
-        r'([^<]+?)\s+(\d{1,2}-\d{1,2}-\d{4})',
+        rf'href=["\'](https://www\.tamildhool\.tech/({TD_CHANNEL_PATTERN})/'
+        rf'(?:{TD_CHANNEL_PATTERN})-serial/([a-z0-9-]+)/[^"\']+)["\'][^>]*>\s*'
+        rf'([^<]+?)\s+(\d{{1,2}}-\d{{1,2}}-\d{{4}})',
         re.I,
     )
     skip = {'page', 'feed', 'amp'}
@@ -521,7 +528,9 @@ def scrape_tamildhool_serials(scraper, base_url: str, pages: int = 6):
     # Pull each show folder page for a denser recent-episode list.
     for folder in list(order):
         channel = 'sun-tv'
-        if 'vijay-tv' in base_url:
+        if 'sony-vizha' in base_url:
+            channel = 'sony-vizha'
+        elif 'vijay-tv' in base_url:
             channel = 'vijay-tv'
         elif 'zee-tamil' in base_url:
             channel = 'zee-tamil'
@@ -679,6 +688,7 @@ def _channel_label(channel_slug: str) -> str:
         'sun-tv': 'Sun TV',
         'vijay-tv': 'Vijay TV',
         'zee-tamil': 'Zee Tamil',
+        'sony-vizha': 'Sony Vizha',
     }.get(channel_slug, channel_slug.replace('-', ' ').title())
 
 
