@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-14T06:44:08.229268Z",
+  "updated": "2026-11-14T18:18:10.716165Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -11,7 +11,7 @@
       {
         "name": "Abirami",
         "folder": "abirami",
-        "count": 39,
+        "count": 40,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -70,7 +70,7 @@
       {
         "name": "Annam",
         "folder": "annam",
-        "count": 95,
+        "count": 96,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -124,7 +124,7 @@
       {
         "name": "Bhairavi",
         "folder": "bhairavi",
-        "count": 17,
+        "count": 18,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -242,7 +242,7 @@
       {
         "name": "Iru Malargal",
         "folder": "iru-malargal",
-        "count": 91,
+        "count": 92,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -299,20 +299,9 @@
         ]
       },
       {
-        "name": "Kayal",
-        "folder": "kayal",
-        "count": 78,
-        "sources": [
-          "tamiltvserial"
-        ],
-        "latest_date": "24-10-2026",
-        "latest_title": "Kayal 24-10-2026 | Episode 1555 | Sun Tv Serial",
-        "id": 6339
-      },
-      {
         "name": "Kurinji",
         "folder": "kurinji",
-        "count": 39,
+        "count": 40,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -371,7 +360,7 @@
       {
         "name": "Lakshmi",
         "folder": "lakshmi",
-        "count": 91,
+        "count": 92,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -543,24 +532,19 @@
             "date": "06-11-2026",
             "title": "Marumagal 06-11-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/marumagal-moondru-mudichu-singapenne-meha-sangamam-06-11-2026-sun-tv-serial/"
-          },
-          {
-            "date": "05-11-2026",
-            "title": "Marumagal 05-11-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/marumagal-moondru-mudichu-singapenne-meha-sangamam-05-11-2026-sun-tv-serial/"
           }
         ]
       },
       {
         "name": "Moondru Mudichu",
         "folder": "moondru-mudichu",
-        "count": 94,
+        "count": 95,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "13-11-2026",
-        "latest_title": "Moondru Mudichu 13-11-2026 | Sun TV Serial",
+        "latest_date": "14-11-2026",
+        "latest_title": "Moondru Mudichu 14-11-2026 | Episode 691 | Sun Tv Serial",
         "id": 6663,
         "recent_episodes": [
           {
@@ -593,7 +577,7 @@
       {
         "name": "Poongodi",
         "folder": "poongodi",
-        "count": 92,
+        "count": 93,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -658,9 +642,14 @@
           "tamiltvserial"
         ],
         "latest_date": "14-11-2026",
-        "latest_title": "Singappenne 14-11-2026 | Episode 993 | Sun Tv Serial",
+        "latest_title": "Singappenne 14-11-2026 | Sun TV Serial",
         "id": 6340,
         "recent_episodes": [
+          {
+            "date": "14-11-2026",
+            "title": "Singappenne 14-11-2026 | Sun TV Serial",
+            "page": "https://tamildhol.my/singappenne-14-11-2026-sun-tv-serial/"
+          },
           {
             "date": "12-11-2026",
             "title": "Singappenne 12-11-2026 | Sun TV Serial",
@@ -676,7 +665,7 @@
       {
         "name": "Siragugal",
         "folder": "siragugal",
-        "count": 92,
+        "count": 93,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -735,7 +724,7 @@
       {
         "name": "Thulasi",
         "folder": "thulasi",
-        "count": 92,
+        "count": 93,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1519,7 +1508,7 @@
       {
         "name": "Annamalai Kudumbam",
         "folder": "annamalai-kudumbam",
-        "count": 93,
+        "count": 94,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1578,7 +1567,7 @@
       {
         "name": "Ayali",
         "folder": "ayali",
-        "count": 99,
+        "count": 100,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1681,13 +1670,13 @@
       {
         "name": "Enna Solla Pogirai",
         "folder": "enna-solla-pogirai",
-        "count": 79,
+        "count": 81,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "13-11-2026",
-        "latest_title": "Enna Solla Pogirai 13-11-2026 | Zee Tamil Serial",
+        "latest_date": "14-11-2026",
+        "latest_title": "Enna Solla Pogirai 14-11-2026 | Episode 86 | Zee Tamil Serial",
         "id": 6799,
         "recent_episodes": [
           {
@@ -1730,7 +1719,7 @@
       {
         "name": "Idhayam",
         "folder": "idhayam",
-        "count": 97,
+        "count": 98,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1789,7 +1778,7 @@
       {
         "name": "Karthigai Deepam",
         "folder": "karthigai-deepam",
-        "count": 139,
+        "count": 141,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1837,24 +1826,19 @@
             "date": "06-11-2026",
             "title": "Karthigai Deepam 06-11-2026 | Zee Tamil Serial",
             "page": "https://tamildhol.my/karthigai-deepam-06-11-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "05-11-2026",
-            "title": "Karthigai Deepam 05-11-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/karthigai-deepam-05-11-2026-zee-tamil-serial/"
           }
         ]
       },
       {
         "name": "Paarijatham",
         "folder": "paarijatham",
-        "count": 98,
+        "count": 99,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "13-11-2026",
-        "latest_title": "Paarijatham 13-11-2026 | Zee Tamil Serial",
+        "latest_date": "14-11-2026",
+        "latest_title": "Paarijatham 14-11-2026 | Episode 358 | Zee Tamil Serial",
         "id": 6732,
         "recent_episodes": [
           {
@@ -1897,7 +1881,7 @@
       {
         "name": "Salangai Oli",
         "folder": "salangai-oli",
-        "count": 117,
+        "count": 118,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -2005,15 +1989,20 @@
       {
         "name": "Sandhya Raagam",
         "folder": "sandhya-raagam",
-        "count": 93,
+        "count": 94,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "13-11-2026",
-        "latest_title": "Sandhya Raagam 13-11-2026 | Zee Tamil Serial",
+        "latest_date": "14-11-2026",
+        "latest_title": "Sandhya Raagam 14-11-2026 | Zee Tamil Serial",
         "id": 6379,
         "recent_episodes": [
+          {
+            "date": "14-11-2026",
+            "title": "Sandhya Raagam 14-11-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/sandhya-raagam-14-11-2026-zee-tamil-serial/"
+          },
           {
             "date": "13-11-2026",
             "title": "Sandhya Raagam 13-11-2026 | Zee Tamil Serial",
@@ -2103,7 +2092,7 @@
       {
         "name": "Vaagai Sooda Vaa",
         "folder": "vaagai-sooda-vaa",
-        "count": 98,
+        "count": 99,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -2162,7 +2151,7 @@
       {
         "name": "Varisu",
         "folder": "varisu",
-        "count": 98,
+        "count": 99,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -2221,13 +2210,13 @@
       {
         "name": "Vasudha",
         "folder": "vasudha",
-        "count": 77,
+        "count": 79,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "13-11-2026",
-        "latest_title": "Vasudha 13-11-2026 | Zee Tamil Serial",
+        "latest_date": "14-11-2026",
+        "latest_title": "Vasudha 14-11-2026 | Episode 85 | Zee Tamil Serial",
         "id": 6800,
         "recent_episodes": [
           {
@@ -2272,12 +2261,12 @@
       {
         "name": "CID Tamil",
         "folder": "cid-tamil",
-        "count": 5,
+        "count": 6,
         "sources": [
           "tamiltvserial"
         ],
-        "latest_date": "07-11-2026",
-        "latest_title": "CID Tamil 07-11-2026 | Episode 5 | Sony Vizha Tv Serial",
+        "latest_date": "14-11-2026",
+        "latest_title": "CID Tamil 14-11-2026 | Episode 6 | Sony Vizha Tv Serial",
         "id": 6819
       },
       {
