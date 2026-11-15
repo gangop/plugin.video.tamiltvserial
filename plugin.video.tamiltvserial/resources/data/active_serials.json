@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-14T22:37:12.181618Z",
+  "updated": "2026-11-15T06:49:19.953867Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -59,11 +59,6 @@
             "date": "06-11-2026",
             "title": "Abirami 06-11-2026 | Sun TV Serial",
             "page": "https://tamildhol.my/abirami-06-11-2026-sun-tv-serial/"
-          },
-          {
-            "date": "05-11-2026",
-            "title": "Abirami 05-11-2026 | Sun TV Serial",
-            "page": "https://tamildhol.my/abirami-05-11-2026-sun-tv-serial/"
           }
         ]
       },
@@ -178,7 +173,7 @@
       {
         "name": "Ethir Neechal",
         "folder": "ethirneechal",
-        "count": 109,
+        "count": 110,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -299,17 +294,6 @@
         ]
       },
       {
-        "name": "Kayal",
-        "folder": "kayal",
-        "count": 78,
-        "sources": [
-          "tamiltvserial"
-        ],
-        "latest_date": "24-10-2026",
-        "latest_title": "Kayal 24-10-2026 | Episode 1555 | Sun Tv Serial",
-        "id": 6339
-      },
-      {
         "name": "Kurinji",
         "folder": "kurinji",
         "count": 40,
@@ -425,7 +409,7 @@
       {
         "name": "Malli",
         "folder": "malli",
-        "count": 112,
+        "count": 113,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -550,9 +534,14 @@
           "tamiltvserial"
         ],
         "latest_date": "14-11-2026",
-        "latest_title": "Moondru Mudichu 14-11-2026 | Episode 691 | Sun Tv Serial",
+        "latest_title": "Moondru Mudichu 14-11-2026 | Sun TV Serial",
         "id": 6663,
         "recent_episodes": [
+          {
+            "date": "14-11-2026",
+            "title": "Moondru Mudichu 14-11-2026 | Sun TV Serial",
+            "page": "https://tamildhol.my/moondru-mudichu-14-11-2026-sun-tv-serial/"
+          },
           {
             "date": "13-11-2026",
             "title": "Moondru Mudichu 13-11-2026 | Sun TV Serial",
@@ -781,7 +770,7 @@
       {
         "name": "Ayyanar Thunai",
         "folder": "ayyanar-thunai",
-        "count": 110,
+        "count": 111,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1259,7 +1248,7 @@
       {
         "name": "Siragadikka Aasai",
         "folder": "siragadikka-aasai",
-        "count": 110,
+        "count": 111,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1647,9 +1636,14 @@
           "tamiltvserial"
         ],
         "latest_date": "14-11-2026",
-        "latest_title": "Enna Solla Pogirai 14-11-2026 | Episode 86 | Zee Tamil Serial",
+        "latest_title": "Enna Solla Pogirai 14-11-2026 | Zee Tamil Serial",
         "id": 6799,
         "recent_episodes": [
+          {
+            "date": "14-11-2026",
+            "title": "Enna Solla Pogirai 14-11-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/enna-solla-pogirai-14-11-2026-zee-tamil-serial/"
+          },
           {
             "date": "13-11-2026",
             "title": "Enna Solla Pogirai 13-11-2026 | Zee Tamil Serial",
@@ -2155,11 +2149,6 @@
             "date": "06-11-2026",
             "title": "Varisu 06-11-2026 | Zee Tamil Serial",
             "page": "https://tamildhol.my/varisu-06-11-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "05-11-2026",
-            "title": "Varisu 05-11-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/varisu-05-11-2026-zee-tamil-serial/"
           }
         ]
       },
@@ -2172,9 +2161,14 @@
           "tamiltvserial"
         ],
         "latest_date": "14-11-2026",
-        "latest_title": "Vasudha 14-11-2026 | Episode 85 | Zee Tamil Serial",
+        "latest_title": "Vasudha 14-11-2026 | Zee Tamil Serial",
         "id": 6800,
         "recent_episodes": [
+          {
+            "date": "14-11-2026",
+            "title": "Vasudha 14-11-2026 | Zee Tamil Serial",
+            "page": "https://tamildhol.my/vasudha-14-11-2026-zee-tamil-serial/"
+          },
           {
             "date": "13-11-2026",
             "title": "Vasudha 13-11-2026 | Zee Tamil Serial",
@@ -2204,11 +2198,6 @@
             "date": "06-11-2026",
             "title": "Vasudha 06-11-2026 | Zee Tamil Serial",
             "page": "https://tamildhol.my/vasudha-06-11-2026-zee-tamil-serial/"
-          },
-          {
-            "date": "05-11-2026",
-            "title": "Vasudha 05-11-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/vasudha-05-11-2026-zee-tamil-serial/"
           }
         ]
       }
