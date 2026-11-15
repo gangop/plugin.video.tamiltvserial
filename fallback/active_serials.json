@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-15T06:49:19.953867Z",
+  "updated": "2026-11-15T18:58:07.988935Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -626,13 +626,13 @@
       {
         "name": "Singappenne",
         "folder": "singappenne",
-        "count": 106,
+        "count": 107,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "14-11-2026",
-        "latest_title": "Singappenne 14-11-2026 | Sun TV Serial",
+        "latest_date": "15-11-2026",
+        "latest_title": "Singappenne 15-11-2026 | Episode 994 | Sun Tv Serial",
         "id": 6340,
         "recent_episodes": [
           {
@@ -2206,12 +2206,12 @@
       {
         "name": "CID Tamil",
         "folder": "cid-tamil",
-        "count": 6,
+        "count": 7,
         "sources": [
           "tamiltvserial"
         ],
-        "latest_date": "14-11-2026",
-        "latest_title": "CID Tamil 14-11-2026 | Episode 6 | Sony Vizha Tv Serial",
+        "latest_date": "15-11-2026",
+        "latest_title": "CID Tamil 15-11-2026 | Episode 7 | Sony Vizha Tv Serial",
         "id": 6819
       },
       {
