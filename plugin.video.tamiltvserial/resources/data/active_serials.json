@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-17T21:05:51.352685Z",
+  "updated": "2026-11-18T07:46:00.958234Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -183,7 +183,7 @@
       {
         "name": "Ethir Neechal",
         "folder": "ethirneechal",
-        "count": 112,
+        "count": 113,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -409,7 +409,7 @@
       {
         "name": "Malli",
         "folder": "malli",
-        "count": 115,
+        "count": 116,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -582,7 +582,7 @@
       {
         "name": "Poongodi",
         "folder": "poongodi",
-        "count": 95,
+        "count": 96,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -636,7 +636,7 @@
       {
         "name": "Singappenne",
         "folder": "singappenne",
-        "count": 109,
+        "count": 110,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -739,7 +739,7 @@
       {
         "name": "Thulasi",
         "folder": "thulasi",
-        "count": 95,
+        "count": 96,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -795,7 +795,7 @@
       {
         "name": "Ayyanar Thunai",
         "folder": "ayyanar-thunai",
-        "count": 113,
+        "count": 114,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -874,7 +874,7 @@
       {
         "name": "Azhagae Azhagu",
         "folder": "azhagae-azhagu",
-        "count": 82,
+        "count": 83,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -933,7 +933,7 @@
       {
         "name": "Chinna Marumagal",
         "folder": "chinna-marumagal",
-        "count": 83,
+        "count": 84,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -992,7 +992,7 @@
       {
         "name": "Kadhal Kadhal Kadhal",
         "folder": "kadhal-kadhal-kadhal",
-        "count": 88,
+        "count": 89,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1061,7 +1061,7 @@
       {
         "name": "Kanmani Anbudan",
         "folder": "kanmani-anbudan",
-        "count": 94,
+        "count": 95,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1135,7 +1135,7 @@
       {
         "name": "Onna Irukka Kaththukanum",
         "folder": "onna-irukka-kaththukanum",
-        "count": 82,
+        "count": 83,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1194,7 +1194,7 @@
       {
         "name": "Pandian Stores",
         "folder": "pandian-stores",
-        "count": 113,
+        "count": 114,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1273,7 +1273,7 @@
       {
         "name": "Siragadikka Aasai",
         "folder": "siragadikka-aasai",
-        "count": 113,
+        "count": 114,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1352,7 +1352,7 @@
       {
         "name": "Suttum Vizhi Sudare",
         "folder": "suttum-vizhi-sudare",
-        "count": 95,
+        "count": 96,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1421,7 +1421,7 @@
       {
         "name": "Thaai Maaman",
         "folder": "thaai-maaman",
-        "count": 81,
+        "count": 82,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1480,7 +1480,7 @@
       {
         "name": "Thendrale Mella Pesu",
         "folder": "thendrale-mella-pesu",
-        "count": 94,
+        "count": 95,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -2259,24 +2259,26 @@
       {
         "name": "CID Tamil",
         "folder": "cid-tamil",
-        "count": 7,
+        "count": 0,
         "sources": [
           "tamiltvserial"
         ],
         "latest_date": "15-11-2026",
         "latest_title": "CID Tamil 15-11-2026 | Episode 7 | Sony Vizha Tv Serial",
-        "id": 6819
+        "search_query": "CID Tamil",
+        "channel_id": 6811
       },
       {
-        "name": "Veera Mahabaratham - Athyayam Ondru",
+        "name": "Veera Mahabaratham – Athyayam Ondru",
         "folder": "veera-mahabaratham-athyayam-ondru",
-        "count": 83,
+        "count": 0,
         "sources": [
           "tamiltvserial"
         ],
         "latest_date": "17-11-2026",
         "latest_title": "Veera Mahabaratham – Athyayam Ondru 17-11-2026 | Episode 84 | Sony Vizha Tv Serial",
-        "id": 6817
+        "search_query": "Veera Mahabaratham – Athyayam Ondru",
+        "channel_id": 6811
       }
     ]
   }
