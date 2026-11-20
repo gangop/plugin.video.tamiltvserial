@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-19T20:48:32.294713Z",
+  "updated": "2026-11-20T07:29:58.508467Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -183,7 +183,7 @@
       {
         "name": "Ethir Neechal",
         "folder": "ethirneechal",
-        "count": 114,
+        "count": 115,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -409,7 +409,7 @@
       {
         "name": "Malli",
         "folder": "malli",
-        "count": 117,
+        "count": 118,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -582,7 +582,7 @@
       {
         "name": "Poongodi",
         "folder": "poongodi",
-        "count": 97,
+        "count": 98,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -636,13 +636,13 @@
       {
         "name": "Singappenne",
         "folder": "singappenne",
-        "count": 111,
+        "count": 112,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "19-11-2026",
-        "latest_title": "Singappenne 19-11-2026 | Sun TV Serial",
+        "latest_date": "20-11-2026",
+        "latest_title": "Singappenne 20-11-2026 | Episode 999 | Sun Tv Serial",
         "id": 6340,
         "recent_episodes": [
           {
@@ -795,7 +795,7 @@
       {
         "name": "Ayyanar Thunai",
         "folder": "ayyanar-thunai",
-        "count": 115,
+        "count": 116,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -869,7 +869,7 @@
       {
         "name": "Azhagae Azhagu",
         "folder": "azhagae-azhagu",
-        "count": 84,
+        "count": 85,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -933,7 +933,7 @@
       {
         "name": "Chinna Marumagal",
         "folder": "chinna-marumagal",
-        "count": 85,
+        "count": 86,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -997,7 +997,7 @@
       {
         "name": "Kadhal Kadhal Kadhal",
         "folder": "kadhal-kadhal-kadhal",
-        "count": 90,
+        "count": 91,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1066,7 +1066,7 @@
       {
         "name": "Kanmani Anbudan",
         "folder": "kanmani-anbudan",
-        "count": 96,
+        "count": 97,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1135,7 +1135,7 @@
       {
         "name": "Onna Irukka Kaththukanum",
         "folder": "onna-irukka-kaththukanum",
-        "count": 84,
+        "count": 85,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1199,13 +1199,13 @@
       {
         "name": "Pandian Stores",
         "folder": "pandian-stores",
-        "count": 115,
+        "count": 116,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "19-11-2026",
-        "latest_title": "Pandian Stores 19-11-2026 | Vijay TV Serial",
+        "latest_date": "20-11-2026",
+        "latest_title": "Pandian Stores 20-11-2026 | Episode 953 | Vijay Tv Serial",
         "id": 6359,
         "recent_episodes": [
           {
@@ -1268,7 +1268,7 @@
       {
         "name": "Siragadikka Aasai",
         "folder": "siragadikka-aasai",
-        "count": 115,
+        "count": 116,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1342,7 +1342,7 @@
       {
         "name": "Suttum Vizhi Sudare",
         "folder": "suttum-vizhi-sudare",
-        "count": 97,
+        "count": 98,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1411,7 +1411,7 @@
       {
         "name": "Thaai Maaman",
         "folder": "thaai-maaman",
-        "count": 83,
+        "count": 84,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1475,7 +1475,7 @@
       {
         "name": "Thendrale Mella Pesu",
         "folder": "thendrale-mella-pesu",
-        "count": 96,
+        "count": 97,
         "sources": [
           "tamildhol",
           "tamiltvserial"
