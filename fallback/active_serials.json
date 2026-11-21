@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-20T20:32:55.145292Z",
+  "updated": "2026-11-21T07:25:51.484611Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -178,7 +178,7 @@
       {
         "name": "Ethir Neechal",
         "folder": "ethirneechal",
-        "count": 115,
+        "count": 116,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -409,7 +409,7 @@
       {
         "name": "Malli",
         "folder": "malli",
-        "count": 118,
+        "count": 119,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -577,7 +577,7 @@
       {
         "name": "Poongodi",
         "folder": "poongodi",
-        "count": 98,
+        "count": 99,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -631,7 +631,7 @@
       {
         "name": "Singappenne",
         "folder": "singappenne",
-        "count": 112,
+        "count": 113,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -795,7 +795,7 @@
       {
         "name": "Ayyanar Thunai",
         "folder": "ayyanar-thunai",
-        "count": 116,
+        "count": 117,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -987,7 +987,7 @@
       {
         "name": "Kadhal Kadhal Kadhal",
         "folder": "kadhal-kadhal-kadhal",
-        "count": 91,
+        "count": 92,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1061,7 +1061,7 @@
       {
         "name": "Kanmani Anbudan",
         "folder": "kanmani-anbudan",
-        "count": 97,
+        "count": 98,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1199,13 +1199,13 @@
       {
         "name": "Pandian Stores",
         "folder": "pandian-stores",
-        "count": 116,
+        "count": 117,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "20-11-2026",
-        "latest_title": "Pandian Stores 20-11-2026 | Episode 953 | Vijay Tv Serial",
+        "latest_date": "21-11-2026",
+        "latest_title": "Pandian Stores 21-11-2026 | Episode 954 | Vijay Tv Serial",
         "id": 6359,
         "recent_episodes": [
           {
@@ -1263,7 +1263,7 @@
       {
         "name": "Siragadikka Aasai",
         "folder": "siragadikka-aasai",
-        "count": 116,
+        "count": 117,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1337,7 +1337,7 @@
       {
         "name": "Suttum Vizhi Sudare",
         "folder": "suttum-vizhi-sudare",
-        "count": 98,
+        "count": 99,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1475,7 +1475,7 @@
       {
         "name": "Thendrale Mella Pesu",
         "folder": "thendrale-mella-pesu",
-        "count": 97,
+        "count": 98,
         "sources": [
           "tamildhol",
           "tamiltvserial"
