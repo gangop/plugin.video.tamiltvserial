@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-21T19:30:13.718294Z",
+  "updated": "2026-11-22T07:06:30.643865Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -173,7 +173,7 @@
       {
         "name": "Ethir Neechal",
         "folder": "ethirneechal",
-        "count": 116,
+        "count": 117,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -626,7 +626,7 @@
       {
         "name": "Singappenne",
         "folder": "singappenne",
-        "count": 113,
+        "count": 114,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -790,7 +790,7 @@
       {
         "name": "Ayyanar Thunai",
         "folder": "ayyanar-thunai",
-        "count": 117,
+        "count": 118,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1194,15 +1194,20 @@
       {
         "name": "Pandian Stores",
         "folder": "pandian-stores",
-        "count": 117,
+        "count": 118,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "21-11-2026",
-        "latest_title": "Pandian Stores 21-11-2026 | Episode 954 | Vijay Tv Serial",
+        "latest_date": "22-11-2026",
+        "latest_title": "Pandian Stores 22-11-2026 | Vijay TV Serial",
         "id": 6359,
         "recent_episodes": [
+          {
+            "date": "22-11-2026",
+            "title": "Pandian Stores 22-11-2026 | Vijay TV Serial",
+            "page": "https://tamildhol.my/pandian-stores-2-22-11-2026-vijay-tv-serial/"
+          },
           {
             "date": "19-11-2026",
             "title": "Pandian Stores 19-11-2026 | Vijay TV Serial",
@@ -1459,11 +1464,6 @@
             "date": "10-11-2026",
             "title": "Thaai Maaman 10-11-2026 | Vijay TV Serial",
             "page": "https://tamildhol.my/thaai-maaman-10-11-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "09-11-2026",
-            "title": "Thaai Maaman 09-11-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/thaai-maaman-09-11-2026-vijay-tv-serial/"
           }
         ]
       },
