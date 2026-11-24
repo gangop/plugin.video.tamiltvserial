@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-24T00:04:10.764054Z",
+  "updated": "2026-11-24T10:06:14.232130Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -11,7 +11,7 @@
       {
         "name": "Abirami",
         "folder": "abirami",
-        "count": 47,
+        "count": 48,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -173,7 +173,7 @@
       {
         "name": "Ethir Neechal",
         "folder": "ethirneechal",
-        "count": 118,
+        "count": 119,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -237,7 +237,7 @@
       {
         "name": "Iru Malargal",
         "folder": "iru-malargal",
-        "count": 99,
+        "count": 100,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -291,7 +291,7 @@
       {
         "name": "Kurinji",
         "folder": "kurinji",
-        "count": 47,
+        "count": 48,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -340,7 +340,7 @@
       {
         "name": "Lakshmi",
         "folder": "lakshmi",
-        "count": 99,
+        "count": 100,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -394,7 +394,7 @@
       {
         "name": "Malli",
         "folder": "malli",
-        "count": 121,
+        "count": 122,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -567,7 +567,7 @@
       {
         "name": "Poongodi",
         "folder": "poongodi",
-        "count": 100,
+        "count": 101,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -621,7 +621,7 @@
       {
         "name": "Singappenne",
         "folder": "singappenne",
-        "count": 115,
+        "count": 116,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -680,7 +680,7 @@
       {
         "name": "Siragugal",
         "folder": "siragugal",
-        "count": 100,
+        "count": 101,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -734,7 +734,7 @@
       {
         "name": "Thulasi",
         "folder": "thulasi",
-        "count": 100,
+        "count": 101,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -790,7 +790,7 @@
       {
         "name": "Ayyanar Thunai",
         "folder": "ayyanar-thunai",
-        "count": 119,
+        "count": 120,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -869,7 +869,7 @@
       {
         "name": "Azhagae Azhagu",
         "folder": "azhagae-azhagu",
-        "count": 86,
+        "count": 87,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -928,7 +928,7 @@
       {
         "name": "Chinna Marumagal",
         "folder": "chinna-marumagal",
-        "count": 87,
+        "count": 88,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -987,7 +987,7 @@
       {
         "name": "Kadhal Kadhal Kadhal",
         "folder": "kadhal-kadhal-kadhal",
-        "count": 93,
+        "count": 94,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1056,7 +1056,7 @@
       {
         "name": "Kanmani Anbudan",
         "folder": "kanmani-anbudan",
-        "count": 99,
+        "count": 100,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1125,7 +1125,7 @@
       {
         "name": "Onna Irukka Kaththukanum",
         "folder": "onna-irukka-kaththukanum",
-        "count": 86,
+        "count": 87,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1184,7 +1184,7 @@
       {
         "name": "Pandian Stores",
         "folder": "pandian-stores",
-        "count": 119,
+        "count": 120,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1253,7 +1253,7 @@
       {
         "name": "Siragadikka Aasai",
         "folder": "siragadikka-aasai",
-        "count": 119,
+        "count": 120,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1332,7 +1332,7 @@
       {
         "name": "Suttum Vizhi Sudare",
         "folder": "suttum-vizhi-sudare",
-        "count": 100,
+        "count": 101,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1401,7 +1401,7 @@
       {
         "name": "Thaai Maaman",
         "folder": "thaai-maaman",
-        "count": 85,
+        "count": 86,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1460,7 +1460,7 @@
       {
         "name": "Thendrale Mella Pesu",
         "folder": "thendrale-mella-pesu",
-        "count": 99,
+        "count": 100,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1511,7 +1511,7 @@
       {
         "name": "Annamalai Kudumbam",
         "folder": "annamalai-kudumbam",
-        "count": 101,
+        "count": 102,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1732,7 +1732,7 @@
       {
         "name": "Idhayam",
         "folder": "idhayam",
-        "count": 105,
+        "count": 106,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1899,7 +1899,7 @@
       {
         "name": "Salangai Oli",
         "folder": "salangai-oli",
-        "count": 125,
+        "count": 126,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -2169,7 +2169,7 @@
       {
         "name": "Varisu",
         "folder": "varisu",
-        "count": 106,
+        "count": 107,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -2228,7 +2228,7 @@
       {
         "name": "Vasudha",
         "folder": "vasudha",
-        "count": 93,
+        "count": 95,
         "sources": [
           "tamildhol",
           "tamiltvserial"
