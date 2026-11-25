@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-24T22:36:49.172143Z",
+  "updated": "2026-11-25T08:51:24.290474Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -11,7 +11,7 @@
       {
         "name": "Abirami",
         "folder": "abirami",
-        "count": 48,
+        "count": 49,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -178,7 +178,7 @@
       {
         "name": "Ethir Neechal",
         "folder": "ethirneechal",
-        "count": 119,
+        "count": 120,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -409,7 +409,7 @@
       {
         "name": "Malli",
         "folder": "malli",
-        "count": 122,
+        "count": 123,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -577,7 +577,7 @@
       {
         "name": "Poongodi",
         "folder": "poongodi",
-        "count": 101,
+        "count": 102,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -636,7 +636,7 @@
       {
         "name": "Singappenne",
         "folder": "singappenne",
-        "count": 116,
+        "count": 117,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -749,13 +749,13 @@
       {
         "name": "Thulasi",
         "folder": "thulasi",
-        "count": 101,
+        "count": 102,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "24-11-2026",
-        "latest_title": "Thulasi 24-11-2026 | Sun TV Serial",
+        "latest_date": "25-11-2026",
+        "latest_title": "Thulasi 25-11-2026 | Episode 167 | Sun Tv Serial",
         "id": 6764,
         "recent_episodes": [
           {
@@ -805,7 +805,7 @@
       {
         "name": "Ayyanar Thunai",
         "folder": "ayyanar-thunai",
-        "count": 120,
+        "count": 121,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -884,7 +884,7 @@
       {
         "name": "Azhagae Azhagu",
         "folder": "azhagae-azhagu",
-        "count": 87,
+        "count": 88,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -943,7 +943,7 @@
       {
         "name": "Chinna Marumagal",
         "folder": "chinna-marumagal",
-        "count": 88,
+        "count": 89,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1002,7 +1002,7 @@
       {
         "name": "Kadhal Kadhal Kadhal",
         "folder": "kadhal-kadhal-kadhal",
-        "count": 94,
+        "count": 95,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1071,7 +1071,7 @@
       {
         "name": "Kanmani Anbudan",
         "folder": "kanmani-anbudan",
-        "count": 100,
+        "count": 101,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1140,7 +1140,7 @@
       {
         "name": "Onna Irukka Kaththukanum",
         "folder": "onna-irukka-kaththukanum",
-        "count": 87,
+        "count": 88,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1199,7 +1199,7 @@
       {
         "name": "Pandian Stores",
         "folder": "pandian-stores",
-        "count": 120,
+        "count": 121,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1268,7 +1268,7 @@
       {
         "name": "Siragadikka Aasai",
         "folder": "siragadikka-aasai",
-        "count": 120,
+        "count": 121,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1342,7 +1342,7 @@
       {
         "name": "Suttum Vizhi Sudare",
         "folder": "suttum-vizhi-sudare",
-        "count": 101,
+        "count": 102,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1411,7 +1411,7 @@
       {
         "name": "Thaai Maaman",
         "folder": "thaai-maaman",
-        "count": 86,
+        "count": 87,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1470,7 +1470,7 @@
       {
         "name": "Thendrale Mella Pesu",
         "folder": "thendrale-mella-pesu",
-        "count": 100,
+        "count": 101,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1538,7 +1538,7 @@
           {
             "date": "25-11-2026",
             "title": "Annamalai Kudumbam 25-11-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/annamalai-kudumbam-25-11-2026-zee-tamil-serial/"
+            "page": "https://tamildhol.my/annamalai-kudumbam-25-11-2026-zee-tamil-serials/"
           },
           {
             "date": "24-11-2026",
@@ -1597,7 +1597,7 @@
           {
             "date": "25-11-2026",
             "title": "Ayali 25-11-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/ayali-25-11-2026-zee-tamil-serial/"
+            "page": "https://tamildhol.my/ayali-25-11-2026-zee-tamil-serials/"
           },
           {
             "date": "24-11-2026",
@@ -1656,7 +1656,7 @@
           {
             "date": "25-11-2026",
             "title": "Chinnan Siru Kiliye 25-11-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/chinnan-siru-kiliye-25-11-2026-zee-tamil-serial/"
+            "page": "https://tamildhol.my/chinnan-siru-kiliye-25-11-2026-zee-tamil-serials/"
           },
           {
             "date": "24-11-2026",
@@ -1710,7 +1710,7 @@
           {
             "date": "25-11-2026",
             "title": "Enna Solla Pogirai 25-11-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/enna-solla-pogirai-25-11-2026-zee-tamil-serial/"
+            "page": "https://tamildhol.my/enna-solla-pogirai-25-11-2026-zee-tamil-serials/"
           },
           {
             "date": "24-11-2026",
@@ -1752,7 +1752,7 @@
       {
         "name": "Idhayam",
         "folder": "idhayam",
-        "count": 106,
+        "count": 107,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1764,7 +1764,7 @@
           {
             "date": "25-11-2026",
             "title": "Idhayam 25-11-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/idhayam-25-11-2026-zee-tamil-serial/"
+            "page": "https://tamildhol.my/idhayam-25-11-2026-zee-tamil-serials/"
           },
           {
             "date": "24-11-2026",
@@ -1823,7 +1823,7 @@
           {
             "date": "25-11-2026",
             "title": "Karthigai Deepam 25-11-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/karthigai-deepam-25-11-2026-zee-tamil-serial/"
+            "page": "https://tamildhol.my/karthigai-deepam-25-11-2026-zee-tamil-serials/"
           },
           {
             "date": "24-11-2026",
@@ -1882,7 +1882,7 @@
           {
             "date": "25-11-2026",
             "title": "Paarijatham 25-11-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/paarijatham-25-11-2026-zee-tamil-serial/"
+            "page": "https://tamildhol.my/paarijatham-25-11-2026-zee-tamil-serials/"
           },
           {
             "date": "24-11-2026",
@@ -1936,7 +1936,7 @@
           {
             "date": "25-11-2026",
             "title": "Salangai Oli 25-11-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/salangai-oli-25-11-2026-zee-tamil-serial/"
+            "page": "https://tamildhol.my/salangai-oli-25-11-2026-zee-tamil-serials/"
           },
           {
             "date": "24-11-2026",
@@ -1995,7 +1995,7 @@
           {
             "date": "25-11-2026",
             "title": "Samanthi 25-11-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/samanthi-25-11-2026-zee-tamil-serial/"
+            "page": "https://tamildhol.my/samanthi-25-11-2026-zee-tamil-serials/"
           },
           {
             "date": "24-11-2026",
@@ -2044,7 +2044,7 @@
           {
             "date": "25-11-2026",
             "title": "Sandhya Raagam 25-11-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/sandhya-raagam-25-11-2026-zee-tamil-serial/"
+            "page": "https://tamildhol.my/sandhya-raagam-25-11-2026-zee-tamil-serials/"
           },
           {
             "date": "24-11-2026",
@@ -2103,7 +2103,7 @@
           {
             "date": "25-11-2026",
             "title": "Thirumangalyam 25-11-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/thirumangalyam-25-11-2026-zee-tamil-serial/"
+            "page": "https://tamildhol.my/thirumangalyam-25-11-2026-zee-tamil-serials/"
           },
           {
             "date": "24-11-2026",
@@ -2152,7 +2152,7 @@
           {
             "date": "25-11-2026",
             "title": "Vaagai Sooda Vaa 25-11-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/vaagai-sooda-vaa-25-11-2026-zee-tamil-serial/"
+            "page": "https://tamildhol.my/vaagai-sooda-vaa-25-11-2026-zee-tamil-serials/"
           },
           {
             "date": "24-11-2026",
@@ -2199,7 +2199,7 @@
       {
         "name": "Varisu",
         "folder": "varisu",
-        "count": 107,
+        "count": 108,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -2211,7 +2211,7 @@
           {
             "date": "25-11-2026",
             "title": "Varisu 25-11-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/varisu-25-11-2026-zee-tamil-serial/"
+            "page": "https://tamildhol.my/varisu-25-11-2026-zee-tamil-serials/"
           },
           {
             "date": "24-11-2026",
@@ -2270,7 +2270,7 @@
           {
             "date": "25-11-2026",
             "title": "Vasudha 25-11-2026 | Zee Tamil Serial",
-            "page": "https://tamildhol.my/vasudha-25-11-2026-zee-tamil-serial/"
+            "page": "https://tamildhol.my/vasudha-25-11-2026-zee-tamil-serials/"
           },
           {
             "date": "24-11-2026",
