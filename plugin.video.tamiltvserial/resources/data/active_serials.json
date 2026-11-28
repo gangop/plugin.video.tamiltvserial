@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27T21:28:03.770709Z",
+  "updated": "2026-11-28T08:05:23.973772Z",
   "sources": [
     "tamildhool",
     "tamiltvserial",
@@ -183,7 +183,7 @@
       {
         "name": "Ethir Neechal",
         "folder": "ethirneechal",
-        "count": 122,
+        "count": 123,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -301,7 +301,7 @@
       {
         "name": "Kurinji",
         "folder": "kurinji",
-        "count": 51,
+        "count": 52,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -414,7 +414,7 @@
       {
         "name": "Malli",
         "folder": "malli",
-        "count": 125,
+        "count": 126,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -582,7 +582,7 @@
       {
         "name": "Poongodi",
         "folder": "poongodi",
-        "count": 104,
+        "count": 105,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -636,7 +636,7 @@
       {
         "name": "Singappenne",
         "folder": "singappenne",
-        "count": 119,
+        "count": 120,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -749,7 +749,7 @@
       {
         "name": "Thulasi",
         "folder": "thulasi",
-        "count": 104,
+        "count": 105,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -805,7 +805,7 @@
       {
         "name": "Ayyanar Thunai",
         "folder": "ayyanar-thunai",
-        "count": 123,
+        "count": 124,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1002,7 +1002,7 @@
       {
         "name": "Kadhal Kadhal Kadhal",
         "folder": "kadhal-kadhal-kadhal",
-        "count": 97,
+        "count": 98,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1065,18 +1065,13 @@
             "date": "17-11-2026",
             "title": "Kadhal Kadhal Kadhal 17-11-2026 | Vijay TV Serial",
             "page": "https://tamildhol.my/kadhal-kadhal-kadhal-17-11-2026-vijay-tv-serial/"
-          },
-          {
-            "date": "16-11-2026",
-            "title": "Kadhal Kadhal Kadhal 16-11-2026 | Vijay TV Serial",
-            "page": "https://tamildhol.my/kadhal-kadhal-kadhal-16-11-2026-vijay-tv-serial/"
           }
         ]
       },
       {
         "name": "Kanmani Anbudan",
         "folder": "kanmani-anbudan",
-        "count": 103,
+        "count": 104,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1209,7 +1204,7 @@
       {
         "name": "Pandian Stores",
         "folder": "pandian-stores",
-        "count": 123,
+        "count": 124,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1273,15 +1268,20 @@
       {
         "name": "Siragadikka Aasai",
         "folder": "siragadikka-aasai",
-        "count": 123,
+        "count": 124,
         "sources": [
           "tamildhol",
           "tamiltvserial"
         ],
-        "latest_date": "27-11-2026",
-        "latest_title": "Siragadikka Aasai 27-11-2026 | Vijay TV Serial",
+        "latest_date": "28-11-2026",
+        "latest_title": "Siragadikka Aasai 28-11-2026 | Vijay TV Serial",
         "id": 6357,
         "recent_episodes": [
+          {
+            "date": "28-11-2026",
+            "title": "Siragadikka Aasai 28-11-2026 | Vijay TV Serial",
+            "page": "https://tamildhol.my/siragadikka-aasai-28-11-2026-vijay-tv-serial/"
+          },
           {
             "date": "27-11-2026",
             "title": "Siragadikka Aasai 27-11-2026 | Vijay TV Serial",
@@ -1347,7 +1347,7 @@
       {
         "name": "Suttum Vizhi Sudare",
         "folder": "suttum-vizhi-sudare",
-        "count": 104,
+        "count": 105,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -1485,7 +1485,7 @@
       {
         "name": "Thendrale Mella Pesu",
         "folder": "thendrale-mella-pesu",
-        "count": 103,
+        "count": 104,
         "sources": [
           "tamildhol",
           "tamiltvserial"
@@ -2229,7 +2229,7 @@
       {
         "name": "Varisu",
         "folder": "varisu",
-        "count": 110,
+        "count": 111,
         "sources": [
           "tamildhol",
           "tamiltvserial"
